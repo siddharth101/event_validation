@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>
+        {% block title %}
+        {{ summary[0] }} validation summary
+        {% endblock %}
+    </h1>
+    {% block main %}
+    Validation status: {{ summary[1] }}
+    <br>
+    Validation conclusion: {{ summary[3] }}
+    <br>
+    <br>
+    Lowest frequency: {{ summary[4] }} Hz
+    <br>
+    Highest frequency: {{ summary[5] }} Hz
+    <br>
+    <br>
+    DQR url: <a href="{{ summary[6] }}">{{ summary[6] }}</a>
+    <br>
+    Wiki url: <a href="{{ summary[7] }}">{{ summary[7] }}</a>
+    <br>
+    Git issue url: <a href="{{ summary[8] }}">{{ summary[8] }}</a>
+    <br>
+    <br>
+    Validator: {{ summary[10] }}
+    <br>
+    Validator's email: <a href="mailto:{{ summary[11] }}">{{ summary[11] }}</a>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        .message {
+            padding: 10px;
+            margin: 5px;
+            background-color: #e5eaf5
+        }
+        nav a {
+            color: #1E90FF;
+            font-size: 3em;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: #970020;
+            background-color: #ffd5de;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}"> O4 DEVIL &nbsp </a>
+        <a href="{{ url_for('faq') }}"> F.A.Q. &nbsp </a>
+        <a href="{{ url_for('about') }}"> About </a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

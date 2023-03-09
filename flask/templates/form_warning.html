@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <h1>{% block title %}
+        {{ args[0] }} validation was completed by {{ args[1] }} ({{ args[2] }}), see the summary <a href="{{ args[3] }}">here</a>.  
+    {% endblock %}</h1>
+    
+    {% block main %}
+    If you want to overwrite the validation summary, <a href="{{ args[4] }}">click here</a> to fill the event validation form.
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{
+    "event_name": "G1355672500",
+    "dqr_status": 1,
+    "valid_status": 0,
+    "valid_conclusion": [],
+    "flow": [],
+    "fhigh": [],
+    "dqr_url": "https://dqr.update_me.com/G1355672500",
+    "git_issue_url": "https://git.ligo.org/ronaldas.macas/devil/-/issues",
+    "devil_form_url": [],
+    "validator_name": "Boris Johnson",
+    "validator_email": "boris.johnson@ligo.org"
+}

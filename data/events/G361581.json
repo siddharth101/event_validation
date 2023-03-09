@@ -1,0 +1,20 @@
+{
+    "event_name": "G361581",
+    "dqr_status": 1,
+    "valid_status": 2,
+    "valid_conclusion": 1,
+    "flow": 20,
+    "fhigh": 1024,
+    "comments": [],
+    "dqr_url": "https://dqr.update_me.com/G123",
+    "git_issue_url": "https://git.ligo.org/ronaldas.macas/devil/-/issues",
+    "devil_form_url": "http://127.0.0.1:5000/forms/G361581",
+    "validator_name": "aa vv",
+    "validator_email": "ronaldas.macas@port.ac.uk",
+    "rrt_name": "Tony Blair",
+    "rrt_email": " tony.blair@ligo.org",
+    "lead1_name": "Ronaldas Macas",
+    "lead1_email": "ronaldas.macas@ligo.org",
+    "lead2_name": "Ronaldas Macas",
+    "lead2_email": "ronaldas.macas@ligo.org"
+}

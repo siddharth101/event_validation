@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <h1>{% block title %}
+    Event validation summary page not available likely because the event {{ gid }} has not been validated yet. 
+    {% endblock %}</h1>
+    
+    {% block main %}
+    If you think this is a mistake, please contact Ronaldas Macas (ronaldas.macas@port.ac.uk).
+    {% endblock %}
+
+{% endblock %}

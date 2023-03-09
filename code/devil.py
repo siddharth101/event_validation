@@ -15,7 +15,7 @@ __email__ = 'ronaldas.macas@ligo.org'
 __version__ = '0.1'
 __process_name__ = 'DEVIL'
 
-def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, ignore_far, git_dir, events_file, md_file, vol_file, contact_file, validator, rrt, dqr_status, val_status, dqr_url, gitlab_url, cmd, logger):
+def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, ignore_far, git_dir, events_file, md_file, vol_file, contact_file, validator, rrt, dqr_status, val_status, dqr_url, gitlab_url, docs_url, cmd, logger):
 
     logger.info(f'DEVIL: start')
 
@@ -67,18 +67,17 @@ def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, igno
     event_fname = create_event_file(event_data, git_dir, logger)
 
     # update data files
-    # TODO: fix the update_data fn by adding proper dict values, eg rrt member, etc
     logger.debug('Updating data files')
     update_data(event_data, git_dir, events_file, md_file, logger)
 
-    # create a git issue by writing an email to
-    # contact+ronaldas-macas-devil-12506-iczve9w98b94opzztj2puptg-issue@support.ligo.org
-    # can tag people, e.g. @ronaldas.macas
-    print('TODO: create a git issue by sending an email')
-    # git_issue(event_data, gitlab_base_issue_url, logger)
+    # create a git issue by sending an email
+    logger.debug('Making git issue')
+    issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
+# git_issue(event_data, git_dir, issue_email, logger)
 
-    # same as creating a git issue but easier
-    print('TODO: send emails to validators')
+    # send emails
+    logger.debug('Sending emails')
+# emails(event_data, git_dir, docs_url, logger)
 
     logger.info('DEVIL: end')
 
@@ -111,7 +110,8 @@ def main():
     parser.add_argument('--dqr_url', type=str,  required=True,help='Data quality report URL')
     parser.add_argument('--dqr_status', type=int, help='DQR status: 0 - not started, 1 - ongoing, 2 - finished, 3 - error')
     parser.add_argument('--val_status', type=int, default=0, help='Validation status: 0 - not completed, 1 - completed, 2 - issues, default: 0')
-    parser.add_argument('--gitlab_url', type=str, default='TBD', help='GitLab issue URL, default: TDB')
+    parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
+    parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/')
     args = parser.parse_args()
 
     # command line used to run this script
@@ -149,6 +149,7 @@ def main():
                      dqr_status=args.dqr_status,
                      val_status=args.val_status,
                      gitlab_url=args.gitlab_url,
+                     docs_url=args.docs_url,
                      cmd=cmd_line,
                      logger=logger)
 

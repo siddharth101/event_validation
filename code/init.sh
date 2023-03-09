@@ -1,6 +1,6 @@
 python devil.py \
     --verbose \
-    --git_dir /home/ronaldas.macas/projects/evval \
+    --git_dir /home/ronaldas.macas/projects/eval \
     --events_file events_testing.csv \
     --contact_file contacts_testing.csv \
     --validator 'Liz Truss' \

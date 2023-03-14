@@ -1,9 +1,9 @@
 {
-    "event_name": "G361581",
+    "event_name": "G0001",
     "valid_status": 0,
     "valid_conclusion": [],
     "dqr_url": "https://dqr.updateMe.com",
-    "eval_form_url": "https://dqr.updateMe.com/G361581",
+    "eval_form_url": "https://dqr.updateMe.com/G0001",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
     "noise_mitigation": {
         "method": [],
@@ -32,8 +32,8 @@
         "lead2_name": [],
         "lead2_email": []
     },
-    "validator_name": "Liz Truss",
-    "validator_email": "liz.truss@ligo.org",
+    "validator_name": "Gordon Brown",
+    "validator_email": "gordon.brown@ligo.org",
     "rrt_name": "Tony Blair",
     "rrt_email": "tony.blair@ligo.org",
     "glitch_name": "John Major",

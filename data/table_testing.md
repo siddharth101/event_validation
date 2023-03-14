@@ -1,6 +1,6 @@
-| Candidate event   |  DQR status  |  Validation status  | Validation conclusion   | Volunteer      | Email                     |
-|:------------------|:------------:|:-------------------:|:------------------------|:---------------|:--------------------------|
-| G1355672491       |      1       |          0          |                         | Boris Johnson  | boris.johnson@ligo.org    |
-| G1355672496       |      1       |          2          | 2                       | Ronaldas Macas | MacasR@cardiff.ac.uk      |
-| G1355672500       |      1       |          0          |                         | Boris Johnson  | boris.johnson@ligo.org    |
-| G361581           |      1       |          2          | 1                       | aa vv          | ronaldas.macas@port.ac.uk |
+| Event      | Status      | Conclusion   | Summary                                               | Contact person                                         |
+|:-----------|:------------|:-------------|:------------------------------------------------------|:-------------------------------------------------------|
+| G361581    | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G361581)    | Liz Truss ([email](mailto:liz.truss@ligo.org))         |
+| 1245       | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/1245)       | Liz Truss ([email](mailto:liz.truss@ligo.org))         |
+| G185851923 | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G185851923) | David Cameron ([email](mailto:david.cameron@ligo.org)) |
+| G0001      | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G0001)      | Gordon Brown ([email](mailto:gordon.brown@ligo.org))   |

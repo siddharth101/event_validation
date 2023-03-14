@@ -15,9 +15,11 @@ __email__ = 'ronaldas.macas@ligo.org'
 __version__ = '0.1'
 __process_name__ = 'DEVIL'
 
-def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, ignore_far, git_dir, events_file, md_file, vol_file, contact_file, validator, rrt, dqr_status, val_status, dqr_url, gitlab_url, docs_url, cmd, logger):
+def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, ignore_far, git_dir, events_file, md_file, vol_file, contact_file, validator, rrt, glitch, dqr_url, eval_url, gitlab_url, docs_url, cmd, logger):
 
     logger.info(f'DEVIL: start')
+
+    #--------------------------------------------------------------------------
 
     # find what to use, graceid, json or event name
     if jsonid:
@@ -46,6 +48,8 @@ def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, igno
     else:
         raise ValueError('Need to provide either event name, json file or GraceDB ID.')
 
+    #--------------------------------------------------------------------------
+
     # decide if prepare event validation depending on FAR
     if far:
         if far > far_threshold:
@@ -55,29 +59,80 @@ def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, igno
                 logger.warning(f'Event FAR ({far}) is bigger than FAR threshold ({far_threshold}). No need for event validation, exiting.')
                 exit()
 
+    #--------------------------------------------------------------------------
+
     # make event dict
-    event_data = create_event_data(event_name, dqr_status, val_status, dqr_url, gitlab_url, logger)
+    logger.debug(f'Creating event dictionary for {event_name}')
+    valid_status = 0  # i.e. not started
+    eval_form_url = f'{eval_url}/{event_name}'
+    event_data = {'event_name': event_name,
+                  'valid_status': valid_status,
+                  'valid_conclusion': [],
+                  'dqr_url': dqr_url,
+                  'eval_form_url': eval_form_url,
+                  'git_issue_url': gitlab_url,
+                  'noise_mitigation': {'method': [],
+                                       'flow': [],
+                                       'fhigh': [],
+                                       'tstart': [],
+                                       'tend': [],
+                                       'frame': []
+                                        },
+                  'comments': {'validator': [],
+                               'rrt': [],
+                               'glitch': [],
+                               'lead': [],
+                               'final': []
+                               },
+                  'contacts': {'validator_name': [],
+                               'validator_email': [],
+                               'rrt_name': [],
+                               'rrt_email': [],
+                               'glitch_name': [],
+                               'glitch_email': [],
+                               'lead1_name': [],
+                               'lead1_email': [],
+                               'lead2_name': [],
+                               'lead2_email': []
+                               }
+                  }
+
+    #--------------------------------------------------------------------------
 
     # assign people
     logger.debug('Assigning volunteers')
-    event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, rrt, logger)
+    event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, rrt, glitch, logger)
 
-    # create a file for the event
+    #--------------------------------------------------------------------------
+
+    # create a json for the event
     logger.debug('Creating event file')
-    event_fname = create_event_file(event_data, git_dir, logger)
+    event_fname = f'{git_dir}/data/events/{event_name}.json'
+    with open(event_fname, 'w', encoding='utf-8') as f:
+        json.dump(event_data, f, ensure_ascii=False, indent=4)
+
+    logger.info(f'Created event file: {git_dir}/data/events/{event_name}.json')
+
+    #--------------------------------------------------------------------------
 
     # update data files
     logger.debug('Updating data files')
-    update_data(event_data, git_dir, events_file, md_file, logger)
+    update_data(event_data, git_dir, events_file, md_file, eval_url, logger)
+
+    #--------------------------------------------------------------------------
 
     # create a git issue by sending an email
     logger.debug('Making git issue')
     issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
 # git_issue(event_data, git_dir, issue_email, logger)
 
+    #--------------------------------------------------------------------------
+
     # send emails
     logger.debug('Sending emails')
 # emails(event_data, git_dir, docs_url, logger)
+
+    #--------------------------------------------------------------------------
 
     logger.info('DEVIL: end')
 
@@ -107,16 +162,19 @@ def main():
     parser.add_argument('--contact_file', type=str, required=True, help="csv file containing volunteer contact information in 'data' folder")
     parser.add_argument('--validator', type=str, help="Validator name and surname")
     parser.add_argument('--rrt', type=str, help="RRT name and surname")
+    parser.add_argument('--glitch', type=str, help="Noise mitigation contact name and surname")
     parser.add_argument('--dqr_url', type=str,  required=True,help='Data quality report URL')
-    parser.add_argument('--dqr_status', type=int, help='DQR status: 0 - not started, 1 - ongoing, 2 - finished, 3 - error')
-    parser.add_argument('--val_status', type=int, default=0, help='Validation status: 0 - not completed, 1 - completed, 2 - issues, default: 0')
+# parser.add_argument('--dqr_status', type=int, help='DQR status: 0 - not started, 1 - ongoing, 2 - finished, 3 - error')
+# parser.add_argument('--val_status', type=int, default=0, help='Validation status: 0 - not completed, 1 - completed, 2 - issues, default: 0')
+    parser.add_argument('--eval_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/eval', help='Event validation form URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/eval/')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
     parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/')
     args = parser.parse_args()
 
+#------------------------------------------------------------------------------
+
     # command line used to run this script
     cmd_line = ' '.join(sys.argv)
-
 
     # set up logging
     logging.basicConfig(format='%(asctime)s %(levelname)-8s %(message)s')
@@ -145,14 +203,17 @@ def main():
                      contact_file=args.contact_file,
                      validator=args.validator,
                      rrt=args.rrt,
+                     glitch=args.glitch,
                      dqr_url=args.dqr_url,
-                     dqr_status=args.dqr_status,
-                     val_status=args.val_status,
+# dqr_status=args.dqr_status,
+# val_status=args.val_status,
+                     eval_url=args.eval_url,
                      gitlab_url=args.gitlab_url,
                      docs_url=args.docs_url,
                      cmd=cmd_line,
                      logger=logger)
 
+#------------------------------------------------------------------------------
 
 # allow to be run on the command line
 if __name__ == "__main__":

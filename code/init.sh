@@ -3,14 +3,13 @@ python devil.py \
     --git_dir /home/ronaldas.macas/projects/eval \
     --events_file events_testing.csv \
     --contact_file contacts_testing.csv \
-    --validator 'Liz Truss' \
-    --rrt 'Tony Blair' \
     --md_file table_testing.md \
     --vol_file rota_testing.csv \
-    --dqr_url https://dqr.update_me.com/G123 \
-    --dqr_status 1 \
-    --ignore_far 0 \
-    --val_status 0 \
-    --gitlab_url https://git.ligo.org/detchar/event-validation/-/issues \
+    --dqr_url https://dqr.updateMe.com \
+    --eval_url https://dqr.updateMe.com \
+    --validator 'Liz Truss' \
+    --rrt 'Tony Blair' \
+    --glitch 'John Major' \
     --far 0.5 \
+    --ignore_far 0 \
     --json G361581.json

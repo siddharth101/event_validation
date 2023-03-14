@@ -37,7 +37,7 @@ def create_event_data(event_name, dqr_status, val_status,  dqr_url, gitlab_url, 
     return event_data
 
 
-def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, rrt, logger):
+def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, rrt, glitch, logger):
 
     # determine which time to use
     if time:
@@ -82,6 +82,17 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
         event_data['rrt_name'] = vol_data.iloc[vol_idx,:]['rrt_name']
         event_data['rrt_email'] = vol_data.iloc[vol_idx,:]['rrt_email']
 
+    if glitch:
+        try:
+            contact_idx = contact_data.index[contact_data['name'] == glitch][0]
+            event_data['glitch_name'] = contact_data.iloc[contact_idx,:]['name']
+            event_data['glitch_email'] = contact_data.iloc[contact_idx,:]['email']
+        except:
+            raise ValueError(f'Unable to find {glitch} in {contact_file}')
+    else:
+        event_data['glitch_name'] = vol_data.iloc[vol_idx,:]['glitch_name']
+        event_data['glitch_email'] = vol_data.iloc[vol_idx,:]['glitch_email']
+
     event_data['lead1_name'] = vol_data.iloc[vol_idx,:]['lead1_name']
     event_data['lead1_email'] = vol_data.iloc[vol_idx,:]['lead1_email']
     event_data['lead2_name'] = vol_data.iloc[vol_idx,:]['lead2_name']
@@ -89,8 +100,10 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
 
     logger.info(f"Assigned event validation team: validator {event_data['validator_name']}, "
                 f"RRT {event_data['rrt_name']}, "
+                f"noise mitigation {event_data['glitch_name']}, "
                 f"lead {event_data['lead1_name']}, "
                 f"lead {event_data['lead2_name']}")
+
     return event_data
 
 
@@ -108,12 +121,18 @@ def create_event_file(event_data, git_dir, logger):
     return event_fname
 
 
-def update_data(event_data, git_dir, events_file, md_file, logger):
+def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
+
+    eval_summary_url = f"{eval_url}/summaries/{event_data['event_name']}"
+    eval_url_md = f'[link]({eval_summary_url})'
+    contact_md = f"{event_data['validator_name']} ([email](mailto:{event_data['validator_email']}))"
 
     # create new event dict
-    new_event = {'Candidate event': event_data['event_name'], 'DQR status': [event_data['dqr_status']], 'Validation status': [event_data['valid_status']], 'Validation conclusion':event_data['valid_conclusion'], 'Volunteer':event_data['validator_name'], 'Email':event_data['validator_email']}
-    # edit empty validation conclusion
-    new_event['Validation conclusion'] = ''
+    new_event = {'Event': [event_data['event_name']],
+                 'Status': 'Not started',
+                 'Conclusion': 'N/A',
+                 'Summary': [eval_url_md],
+                 'Contact person': [contact_md]}
 
     # list_fname = f'{git_dir}/data/event_list.csv'
     # new_event_df = pd.DataFrame.from_dict(new_event)
@@ -129,7 +148,6 @@ def update_data(event_data, git_dir, events_file, md_file, logger):
 
     # write to csv
     new_event_list.to_csv(f'{git_dir}/data/{events_file}', index=False)
-
 
     # update website's md table
     md_fname = f'{git_dir}/data/{md_file}'

@@ -1,6 +1,6 @@
-| Event      | Status      | Conclusion   | Summary                                               | Contact person                                         |
-|:-----------|:------------|:-------------|:------------------------------------------------------|:-------------------------------------------------------|
-| G361581    | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G361581)    | Liz Truss ([email](mailto:liz.truss@ligo.org))         |
-| 1245       | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/1245)       | Liz Truss ([email](mailto:liz.truss@ligo.org))         |
-| G185851923 | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G185851923) | David Cameron ([email](mailto:david.cameron@ligo.org)) |
-| G0001      | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G0001)      | Gordon Brown ([email](mailto:gordon.brown@ligo.org))   |
+| Event   | Status      | Conclusion   | Summary                                            | Contact person                                         |
+|:--------|:------------|:-------------|:---------------------------------------------------|:-------------------------------------------------------|
+| G159123 | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G159123) | Liz Truss ([email](mailto:liz.truss@ligo.org))         |
+| G12124  | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G12124)  | David Cameron ([email](mailto:david.cameron@ligo.org)) |
+| G1111   | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G1111)   | John Major ([email](mailto:john.major@ligo.org))       |
+| G361581 | Not started | N/A          | [link](https://dqr.updateMe.com/summaries/G361581) | Liz Truss ([email](mailto:liz.truss@ligo.org))         |

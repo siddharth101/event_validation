@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/devil/</loc>
-         <lastmod>2023-03-14</lastmod>
+         <lastmod>2023-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/devil/ER15/</loc>
-         <lastmod>2023-03-14</lastmod>
+         <lastmod>2023-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/devil/O4a/</loc>
-         <lastmod>2023-03-14</lastmod>
+         <lastmod>2023-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/devil/testing/</loc>
-         <lastmod>2023-03-14</lastmod>
+         <lastmod>2023-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/devil/training/</loc>
-         <lastmod>2023-03-14</lastmod>
+         <lastmod>2023-03-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

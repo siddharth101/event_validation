@@ -1,9 +1,9 @@
 {
-    "event_name": "G361581",
+    "event_name": "G159123",
     "valid_status": 0,
     "valid_conclusion": [],
     "dqr_url": "https://dqr.updateMe.com",
-    "eval_form_url": "https://dqr.updateMe.com/G361581",
+    "eval_form_url": "https://dqr.updateMe.com/G159123",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
     "noise_mitigation": {
         "required": [],

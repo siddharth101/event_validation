@@ -71,7 +71,8 @@ def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, igno
                   'dqr_url': dqr_url,
                   'eval_form_url': eval_form_url,
                   'git_issue_url': gitlab_url,
-                  'noise_mitigation': {'method': [],
+                  'noise_mitigation': {'required': [],
+                                       'method': [],
                                        'flow': [],
                                        'fhigh': [],
                                        'tstart': [],
@@ -94,7 +95,8 @@ def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, igno
                                'lead1_email': [],
                                'lead2_name': [],
                                'lead2_email': []
-                               }
+                               },
+                  'other': [],
                   }
 
     #--------------------------------------------------------------------------
@@ -131,6 +133,13 @@ def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, igno
     # send emails
     logger.debug('Sending emails')
 # emails(event_data, git_dir, docs_url, logger)
+
+     #--------------------------------------------------------------------------
+
+    # update mkdocs
+    logger.debug('Updating mkdocs')
+    os.system(f'cd {git_dir}; mkdocs -q build')
+    logger.info('Updated mkdocs')
 
     #--------------------------------------------------------------------------
 

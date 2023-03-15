@@ -63,46 +63,46 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
     if validator:
         try:
             contact_idx = contact_data.index[contact_data['name'] == validator][0]
-            event_data['validator_name'] = contact_data.iloc[contact_idx,:]['name']
-            event_data['validator_email'] = contact_data.iloc[contact_idx,:]['email']
+            event_data['contacts']['validator_name'] = contact_data.iloc[contact_idx,:]['name']
+            event_data['contacts']['validator_email'] = contact_data.iloc[contact_idx,:]['email']
         except:
             raise ValueError(f'Unable to find {validator} in {contact_file}')
     else:
-        event_data['validator_name'] = vol_data.iloc[vol_idx,:]['validator_name']
-        event_data['validator_email'] = vol_data.iloc[vol_idx,:]['validator_email']
+        event_data['contacts']['validator_name'] = vol_data.iloc[vol_idx,:]['validator_name']
+        event_data['contacts']['validator_email'] = vol_data.iloc[vol_idx,:]['validator_email']
 
     if rrt:
         try:
             contact_idx = contact_data.index[contact_data['name'] == rrt][0]
-            event_data['rrt_name'] = contact_data.iloc[contact_idx,:]['name']
-            event_data['rrt_email'] = contact_data.iloc[contact_idx,:]['email']
+            event_data['contacts']['rrt_name'] = contact_data.iloc[contact_idx,:]['name']
+            event_data['contacts']['rrt_email'] = contact_data.iloc[contact_idx,:]['email']
         except:
             raise ValueError(f'Unable to find {rrt} in {contact_file}')
     else:
-        event_data['rrt_name'] = vol_data.iloc[vol_idx,:]['rrt_name']
-        event_data['rrt_email'] = vol_data.iloc[vol_idx,:]['rrt_email']
+        event_data['contacts']['rrt_name'] = vol_data.iloc[vol_idx,:]['rrt_name']
+        event_data['contacts']['rrt_email'] = vol_data.iloc[vol_idx,:]['rrt_email']
 
     if glitch:
         try:
             contact_idx = contact_data.index[contact_data['name'] == glitch][0]
-            event_data['glitch_name'] = contact_data.iloc[contact_idx,:]['name']
-            event_data['glitch_email'] = contact_data.iloc[contact_idx,:]['email']
+            event_data['contacts']['glitch_name'] = contact_data.iloc[contact_idx,:]['name']
+            event_data['contacts']['glitch_email'] = contact_data.iloc[contact_idx,:]['email']
         except:
             raise ValueError(f'Unable to find {glitch} in {contact_file}')
     else:
-        event_data['glitch_name'] = vol_data.iloc[vol_idx,:]['glitch_name']
-        event_data['glitch_email'] = vol_data.iloc[vol_idx,:]['glitch_email']
+        event_data['contacts']['glitch_name'] = vol_data.iloc[vol_idx,:]['glitch_name']
+        event_data['contacts']['glitch_email'] = vol_data.iloc[vol_idx,:]['glitch_email']
 
-    event_data['lead1_name'] = vol_data.iloc[vol_idx,:]['lead1_name']
-    event_data['lead1_email'] = vol_data.iloc[vol_idx,:]['lead1_email']
-    event_data['lead2_name'] = vol_data.iloc[vol_idx,:]['lead2_name']
-    event_data['lead2_email'] = vol_data.iloc[vol_idx,:]['lead2_email']
+    event_data['contacts']['lead1_name'] = vol_data.iloc[vol_idx,:]['lead1_name']
+    event_data['contacts']['lead1_email'] = vol_data.iloc[vol_idx,:]['lead1_email']
+    event_data['contacts']['lead2_name'] = vol_data.iloc[vol_idx,:]['lead2_name']
+    event_data['contacts']['lead2_email'] = vol_data.iloc[vol_idx,:]['lead2_email']
 
-    logger.info(f"Assigned event validation team: validator {event_data['validator_name']}, "
-                f"RRT {event_data['rrt_name']}, "
-                f"noise mitigation {event_data['glitch_name']}, "
-                f"lead {event_data['lead1_name']}, "
-                f"lead {event_data['lead2_name']}")
+    logger.info(f"Assigned event validation team: validator {event_data['contacts']['validator_name']}, "
+                f"RRT {event_data['contacts']['rrt_name']}, "
+                f"noise mitigation {event_data['contacts']['glitch_name']}, "
+                f"lead {event_data['contacts']['lead1_name']}, "
+                f"lead {event_data['contacts']['lead2_name']}")
 
     return event_data
 
@@ -125,7 +125,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
 
     eval_summary_url = f"{eval_url}/summaries/{event_data['event_name']}"
     eval_url_md = f'[link]({eval_summary_url})'
-    contact_md = f"{event_data['validator_name']} ([email](mailto:{event_data['validator_email']}))"
+    contact_md = f"{event_data['contacts']['validator_name']} ([email](mailto:{event_data['contacts']['validator_email']}))"
 
     # create new event dict
     new_event = {'Event': [event_data['event_name']],

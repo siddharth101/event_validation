@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # vim: nu:ai:ts=4:sw=4
 
-"""                     ***IN PROGRESS***
+"""
 A script to be executed by the DQR workflow to distribute candidate events and
-notify people related to the event validation. Based on https://dcc.ligo.org/..
+notify people related to the event validation. Based on LIGO-T2200265
 """
 
 import argparse, os, sys, logging
@@ -12,16 +12,36 @@ from utils import *
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.1'
-__process_name__ = 'DEVIL'
+__version__ = '0.2'
+__process_name__ = 'Event Validation'
 
-def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, ignore_far, git_dir, events_file, md_file, vol_file, contact_file, validator, rrt, glitch, dqr_url, eval_url, gitlab_url, docs_url, cmd, logger):
+def init_event_validation(event_name,
+                          graceid,
+                          jsonid,
+                          time,
+                          far,
+                          far_threshold,
+                          ignore_far,
+                          git_dir,
+                          events_file,
+                          md_file,
+                          vol_file,
+                          contact_file,
+                          validator,
+                          rrt,
+                          glitch,
+                          dqr_url,
+                          eval_url,
+                          gitlab_url,
+                          docs_url,
+                          cmd,
+                          logger):
 
-    logger.info(f'DEVIL: start')
+    logger.info(f'EVAL: start')
 
     #--------------------------------------------------------------------------
 
-    # find what to use, graceid, json or event name
+    # find what to use: GraceDB ID, json or event name
     if jsonid:
         logger.info(f'Reading event {jsonid}')
         try:
@@ -103,7 +123,8 @@ def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, igno
 
     # assign people
     logger.debug('Assigning volunteers')
-    event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, rrt, glitch, logger)
+    event_data = assign_people(event_data, time, git_dir, vol_file,
+                               contact_file, validator, rrt, glitch, logger)
 
     #--------------------------------------------------------------------------
 
@@ -143,7 +164,7 @@ def initialize_devil(event_name, graceid, jsonid, time, far, far_threshold, igno
 
     #--------------------------------------------------------------------------
 
-    logger.info('DEVIL: end')
+    logger.info('EVAL: end')
 
 
 def main():
@@ -173,8 +194,6 @@ def main():
     parser.add_argument('--rrt', type=str, help="RRT name and surname")
     parser.add_argument('--glitch', type=str, help="Noise mitigation contact name and surname")
     parser.add_argument('--dqr_url', type=str,  required=True,help='Data quality report URL')
-# parser.add_argument('--dqr_status', type=int, help='DQR status: 0 - not started, 1 - ongoing, 2 - finished, 3 - error')
-# parser.add_argument('--val_status', type=int, default=0, help='Validation status: 0 - not completed, 1 - completed, 2 - issues, default: 0')
     parser.add_argument('--eval_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/eval', help='Event validation form URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/eval/')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
     parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/')
@@ -198,29 +217,27 @@ def main():
     else:
         logger.setLevel(logging.DEBUG)
 
-    initialize_devil(event_name=args.event_name,
-                     graceid=args.graceid,
-                     jsonid=args.jsonid,
-                     time=args.time,
-                     far=args.far,
-                     far_threshold=args.far_threshold,
-                     ignore_far=args.ignore_far,
-                     git_dir=args.git_dir,
-                     events_file=args.events_file,
-                     md_file=args.md_file,
-                     vol_file=args.vol_file,
-                     contact_file=args.contact_file,
-                     validator=args.validator,
-                     rrt=args.rrt,
-                     glitch=args.glitch,
-                     dqr_url=args.dqr_url,
-# dqr_status=args.dqr_status,
-# val_status=args.val_status,
-                     eval_url=args.eval_url,
-                     gitlab_url=args.gitlab_url,
-                     docs_url=args.docs_url,
-                     cmd=cmd_line,
-                     logger=logger)
+    init_event_validation(event_name=args.event_name,
+                          graceid=args.graceid,
+                          jsonid=args.jsonid,
+                          time=args.time,
+                          far=args.far,
+                          far_threshold=args.far_threshold,
+                          ignore_far=args.ignore_far,
+                          git_dir=args.git_dir,
+                          events_file=args.events_file,
+                          md_file=args.md_file,
+                          vol_file=args.vol_file,
+                          contact_file=args.contact_file,
+                          validator=args.validator,
+                          rrt=args.rrt,
+                          glitch=args.glitch,
+                          dqr_url=args.dqr_url,
+                          eval_url=args.eval_url,
+                          gitlab_url=args.gitlab_url,
+                          docs_url=args.docs_url,
+                          cmd=cmd_line,
+                          logger=logger)
 
 #------------------------------------------------------------------------------
 

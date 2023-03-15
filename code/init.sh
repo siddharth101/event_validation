@@ -1,4 +1,4 @@
-python devil.py \
+python eval.py \
     --verbose \
     --git_dir /home/ronaldas.macas/projects/eval \
     --events_file events_testing.csv \

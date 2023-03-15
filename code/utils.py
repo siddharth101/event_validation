@@ -1,40 +1,11 @@
-# DEVIL: DetChar Event Validation Infrastructure for the LVK - Ronaldas Macas
+# DetChar Event Validation - Ronaldas Macas
 
-import pdb
-import json
-import subprocess
+import pdb, json, subprocess, datetime
 import pandas as pd
-from mdutils.mdutils import MdUtils
-
-import datetime
-from astropy.time import Time
 import numpy as np
 
-
-def create_event_data(event_name, dqr_status, val_status,  dqr_url, gitlab_url, logger):
-    event_data = {'event_name': event_name,
-                  'dqr_status': dqr_status,
-                  'valid_status': val_status,
-                  'valid_conclusion': [],
-                  'flow': [],
-                  'fhigh': [],
-                  'comments': [],
-                  'dqr_url': dqr_url,
-                  'git_issue_url': gitlab_url,
-                  'devil_form_url': [],
-                  'validator_name': [],
-                  'validator_email': [],
-                  'rrt_name': [],
-                  'rrt_email': [],
-                  'lead1_name': [],
-                  'lead1_email': [],
-                  'lead2_name': [],
-                  'lead2_email': []
-                  }
-
-    logger.debug(f'Created event dictionary for {event_name}')
-
-    return event_data
+from astropy.time import Time
+from mdutils.mdutils import MdUtils
 
 
 def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, rrt, glitch, logger):
@@ -105,20 +76,6 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
                 f"lead {event_data['contacts']['lead2_name']}")
 
     return event_data
-
-
-def create_event_file(event_data, git_dir, logger):
-
-    event_name = event_data['event_name']
-
-    # write to a file
-    event_fname = f'{git_dir}/data/events/{event_name}.json'
-    with open(event_fname, 'w', encoding='utf-8') as f:
-        json.dump(event_data, f, ensure_ascii=False, indent=4)
-
-    logger.info(f'Created event file: {git_dir}/data/events/{event_name}.json')
-
-    return event_fname
 
 
 def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):

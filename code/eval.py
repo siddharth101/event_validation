@@ -29,7 +29,7 @@ def init_event_validation(event_name,
                           contact_file,
                           validator,
                           rrt,
-                          glitch,
+                          mitigation,
                           dqr_url,
                           eval_url,
                           gitlab_url,
@@ -87,23 +87,27 @@ def init_event_validation(event_name,
     logger.debug(f'Creating event dictionary for {event_name}')
     valid_status = 0  # i.e. not started
     eval_form_url = f'{eval_url}/{event_name}'
+    noise_mitig_dict = {'required': [],
+                        'reviewed': [],
+                        'method': [],
+                        'flow': [],
+                        'fhigh': [],
+                        'tstart': [],
+                        'tend': [],
+                        'frame': []
+                        }
     event_data = {'event_name': event_name,
                   'valid_status': valid_status,
                   'valid_conclusion': [],
                   'dqr_url': dqr_url,
                   'eval_form_url': eval_form_url,
                   'git_issue_url': gitlab_url,
-                  'noise_mitigation': {'required': [],
-                                       'method': [],
-                                       'flow': [],
-                                       'fhigh': [],
-                                       'tstart': [],
-                                       'tend': [],
-                                       'frame': []
-                                        },
+                  'noise_mitigation': {'H1': noise_mitig_dict,
+                                       'L1': noise_mitig_dict,
+                                       'V1': noise_mitig_dict},
                   'comments': {'validator': [],
                                'rrt': [],
-                               'glitch': [],
+                               'mitigation': [],
                                'lead': [],
                                'final': []
                                },
@@ -111,8 +115,8 @@ def init_event_validation(event_name,
                                'validator_email': [],
                                'rrt_name': [],
                                'rrt_email': [],
-                               'glitch_name': [],
-                               'glitch_email': [],
+                               'mitigation_name': [],
+                               'mitigation_email': [],
                                'lead1_name': [],
                                'lead1_email': [],
                                'lead2_name': [],
@@ -126,7 +130,7 @@ def init_event_validation(event_name,
     # assign people
     logger.debug('Assigning volunteers')
     event_data = assign_people(event_data, time, git_dir, vol_file,
-                               contact_file, validator, rrt, glitch, logger)
+                               contact_file, validator, rrt, mitigation, logger)
 
     #--------------------------------------------------------------------------
 
@@ -196,7 +200,7 @@ def main():
     parser.add_argument('--contact_file', type=str, required=True, help="csv file containing volunteer contact information in 'data' folder")
     parser.add_argument('--validator', type=str, help="Validator name and surname")
     parser.add_argument('--rrt', type=str, help="RRT name and surname")
-    parser.add_argument('--glitch', type=str, help="Noise mitigation contact name and surname")
+    parser.add_argument('--mitigation', type=str, help="Noise mitigation contact name and surname")
     parser.add_argument('--dqr_url', type=str,  required=True,help='Data quality report URL')
     parser.add_argument('--eval_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/eval', help='Event validation form URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/eval/')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
@@ -237,7 +241,7 @@ def main():
                           contact_file=args.contact_file,
                           validator=args.validator,
                           rrt=args.rrt,
-                          glitch=args.glitch,
+                          mitigation=args.mitigation,
                           dqr_url=args.dqr_url,
                           eval_url=args.eval_url,
                           gitlab_url=args.gitlab_url,

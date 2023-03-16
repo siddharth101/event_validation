@@ -8,7 +8,7 @@ from astropy.time import Time
 from mdutils.mdutils import MdUtils
 
 
-def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, rrt, glitch, logger):
+def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, rrt, mitigation, logger):
 
     # determine which time to use
     if time:
@@ -53,16 +53,16 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
         event_data['contacts']['rrt_name'] = vol_data.iloc[vol_idx,:]['rrt_name']
         event_data['contacts']['rrt_email'] = vol_data.iloc[vol_idx,:]['rrt_email']
 
-    if glitch:
+    if mitigation:
         try:
-            contact_idx = contact_data.index[contact_data['name'] == glitch][0]
-            event_data['contacts']['glitch_name'] = contact_data.iloc[contact_idx,:]['name']
-            event_data['contacts']['glitch_email'] = contact_data.iloc[contact_idx,:]['email']
+            contact_idx = contact_data.index[contact_data['name'] == mitigation][0]
+            event_data['contacts']['mitigation_name'] = contact_data.iloc[contact_idx,:]['name']
+            event_data['contacts']['mitigation_email'] = contact_data.iloc[contact_idx,:]['email']
         except:
-            raise ValueError(f'Unable to find {glitch} in {contact_file}')
+            raise ValueError(f'Unable to find {mitigation} in {contact_file}')
     else:
-        event_data['contacts']['glitch_name'] = vol_data.iloc[vol_idx,:]['glitch_name']
-        event_data['contacts']['glitch_email'] = vol_data.iloc[vol_idx,:]['glitch_email']
+        event_data['contacts']['mitigation_name'] = vol_data.iloc[vol_idx,:]['mitigation_name']
+        event_data['contacts']['mitigation_email'] = vol_data.iloc[vol_idx,:]['mitigation_email']
 
     event_data['contacts']['lead1_name'] = vol_data.iloc[vol_idx,:]['lead1_name']
     event_data['contacts']['lead1_email'] = vol_data.iloc[vol_idx,:]['lead1_email']
@@ -71,7 +71,7 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
 
     logger.info(f"Assigned event validation team: validator {event_data['contacts']['validator_name']}, "
                 f"RRT {event_data['contacts']['rrt_name']}, "
-                f"noise mitigation {event_data['contacts']['glitch_name']}, "
+                f"noise mitigation {event_data['contacts']['mitigation_name']}, "
                 f"lead {event_data['contacts']['lead1_name']}, "
                 f"lead {event_data['contacts']['lead2_name']}")
 
@@ -88,6 +88,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
     new_event = {'Event': [event_data['event_name']],
                  'Status': 'Not started',
                  'Conclusion': 'N/A',
+                 'Noise mitigation': 'N/A',
                  'Summary': [eval_url_md],
                  'Contact person': [contact_md]}
 
@@ -136,13 +137,13 @@ def emails(event_data, git_dir, docs_url, logger):
 
     valid_email = event_data['contacts']['validator_email']
     rrt_email = event_data['contacts']['rrt_email']
-    glitch_email = event_data['contacts']['glitch_email']
+    mitigation_email = event_data['contacts']['mitigation_email']
     lead1_email = event_data['contacts']['lead1_email']
     lead2_email = event_data['contacts']['lead2_email']
 
     valid_name = event_data['contacts']['validator_name']
     rrt_name = event_data['contacts']['rrt_name']
-    glitch_name = event_data['contacts']['glitch_name']
+    mitigation_name = event_data['contacts']['mitigation_name']
     lead1_name = event_data['contacts']['lead1_name']
     lead2_name = event_data['contacts']['lead2_name']
 
@@ -158,7 +159,7 @@ def emails(event_data, git_dir, docs_url, logger):
             f"Event validation documentation: {docs_url}\n"
             f"Validator: {valid_name} ({valid_email})\n"
             f"RRT: {rrt_name} ({rrt_email})\n"
-            f"Noise mitigation: {glitch_name} ({glitch_email})\n\n")
+            f"Noise mitigation: {mitigation_name} ({mitigation_name})\n\n")
     post_body = f"For any questions, contact {lead1_name} ({lead1_email}) and {lead2_name} ({lead2_name})."
 
 

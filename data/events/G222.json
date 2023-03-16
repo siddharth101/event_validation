@@ -1,9 +1,9 @@
 {
-    "event_name": "G1111",
+    "event_name": "G222",
     "valid_status": 0,
     "valid_conclusion": [],
     "dqr_url": "https://dqr.updateMe.com",
-    "eval_form_url": "https://dqr.updateMe.com/G1111",
+    "eval_form_url": "https://dqr.updateMe.com/G222",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
     "noise_mitigation": {
         "H1": {
@@ -45,8 +45,8 @@
         "final": []
     },
     "contacts": {
-        "validator_name": "David Cameron",
-        "validator_email": "david.cameron@ligo.org",
+        "validator_name": "Tony Blair",
+        "validator_email": "tony.blair@ligo.org",
         "rrt_name": "Tony Blair",
         "rrt_email": "tony.blair@ligo.org",
         "mitigation_name": "John Major",

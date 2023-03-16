@@ -6,18 +6,41 @@
     "eval_form_url": "https://dqr.updateMe.com/G361581",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
     "noise_mitigation": {
-        "required": [],
-        "method": [],
-        "flow": [],
-        "fhigh": [],
-        "tstart": [],
-        "tend": [],
-        "frame": []
+        "H1": {
+            "required": [],
+            "reviewed": [],
+            "method": [],
+            "flow": [],
+            "fhigh": [],
+            "tstart": [],
+            "tend": [],
+            "frame": []
+        },
+        "L1": {
+            "required": [],
+            "reviewed": [],
+            "method": [],
+            "flow": [],
+            "fhigh": [],
+            "tstart": [],
+            "tend": [],
+            "frame": []
+        },
+        "V1": {
+            "required": [],
+            "reviewed": [],
+            "method": [],
+            "flow": [],
+            "fhigh": [],
+            "tstart": [],
+            "tend": [],
+            "frame": []
+        }
     },
     "comments": {
         "validator": [],
         "rrt": [],
-        "glitch": [],
+        "mitigation": [],
         "lead": [],
         "final": []
     },
@@ -26,8 +49,8 @@
         "validator_email": "liz.truss@ligo.org",
         "rrt_name": "Tony Blair",
         "rrt_email": "tony.blair@ligo.org",
-        "glitch_name": "John Major",
-        "glitch_email": "john.major@ligo.org",
+        "mitigation_name": "John Major",
+        "mitigation_email": "john.major@ligo.org",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Ronaldas Macas",

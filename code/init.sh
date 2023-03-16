@@ -9,7 +9,7 @@ python eval.py \
     --eval_url https://dqr.updateMe.com \
     --validator 'Liz Truss' \
     --rrt 'Tony Blair' \
-    --glitch 'John Major' \
+    --mitigation 'John Major' \
     --far 0.5 \
     --ignore_far 0 \
     --json G361581.json

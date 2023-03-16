@@ -34,6 +34,8 @@ def init_event_validation(event_name,
                           eval_url,
                           gitlab_url,
                           docs_url,
+                          send_email,
+                          create_issue,
                           cmd,
                           logger):
 
@@ -145,15 +147,17 @@ def init_event_validation(event_name,
     #--------------------------------------------------------------------------
 
     # create a git issue by sending an email
-    logger.debug('Making git issue')
-    issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
-# git_issue(event_data, git_dir, issue_email, logger)
+    if create_issue == 1:
+        logger.debug('Making a git issue')
+        issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
+        git_issue(event_data, git_dir, issue_email, logger)
 
     #--------------------------------------------------------------------------
 
     # send emails
-    logger.debug('Sending emails')
-# emails(event_data, git_dir, docs_url, logger)
+    if send_email == 1:
+        logger.debug('Sending emails')
+        emails(event_data, git_dir, docs_url, logger)
 
      #--------------------------------------------------------------------------
 
@@ -197,6 +201,8 @@ def main():
     parser.add_argument('--eval_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/eval', help='Event validation form URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/eval/')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
     parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/')
+    parser.add_argument('--send_email', type=int, default=0, help='Send notification emails. Default: 0 (False).')
+    parser.add_argument('--create_issue', type=int, default=0, help='Create a git issue for the candidate event. Default: 0 (False).')
     args = parser.parse_args()
 
 #------------------------------------------------------------------------------
@@ -236,6 +242,8 @@ def main():
                           eval_url=args.eval_url,
                           gitlab_url=args.gitlab_url,
                           docs_url=args.docs_url,
+                          send_email=args.send_email,
+                          create_issue=args.create_issue,
                           cmd=cmd_line,
                           logger=logger)
 

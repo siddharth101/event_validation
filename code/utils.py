@@ -89,6 +89,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
                  'Status': 'Not started',
                  'Conclusion': 'N/A',
                  'Noise mitigation': 'N/A',
+                 'Reviewed': 'No',
                  'Summary': [eval_url_md],
                  'Contact person': [contact_md]}
 

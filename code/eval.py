@@ -86,9 +86,10 @@ def init_event_validation(event_name,
     # make event dict
     logger.debug(f'Creating event dictionary for {event_name}')
     valid_status = 0  # i.e. not started
-    eval_form_url = f'{eval_url}/{event_name}'
+    eval_form_url = f'{eval_url}/forms/{event_name}'
     noise_mitig_dict = {'required': [],
-                        'reviewed': [],
+                        'status': [],
+                        'reviewed': 0,
                         'method': [],
                         'flow': [],
                         'fhigh': [],
@@ -99,6 +100,7 @@ def init_event_validation(event_name,
     event_data = {'event_name': event_name,
                   'valid_status': valid_status,
                   'valid_conclusion': [],
+                  'reviewed': 0,
                   'dqr_url': dqr_url,
                   'eval_form_url': eval_form_url,
                   'git_issue_url': gitlab_url,
@@ -108,8 +110,9 @@ def init_event_validation(event_name,
                   'comments': {'validator': [],
                                'rrt': [],
                                'mitigation': [],
-                               'lead': [],
-                               'final': []
+                               'mitigation_review': [],
+                               'review': [],
+                               'other': []
                                },
                   'contacts': {'validator_name': [],
                                'validator_email': [],

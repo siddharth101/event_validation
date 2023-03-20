@@ -1,6 +1,6 @@
 python eval.py \
     --verbose \
-    --git_dir /home/ronaldas.macas/projects/eval \
+    --git_dir /home/jdo86av3c/projects/eval \
     --events_file events_testing.csv \
     --contact_file contacts_testing.csv \
     --md_file table_testing.md \

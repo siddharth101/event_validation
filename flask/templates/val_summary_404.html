@@ -3,11 +3,11 @@
 {% block content %}
     
     <h1>{% block title %}
-    Event validation summary page not available likely because the event {{ gid }} has not been validated yet. 
+    Event validation summary page not available likely because the event {{ args[0] }} has not been validated yet. 
     {% endblock %}</h1>
     
     {% block main %}
-    If you think this is a mistake, please contact Ronaldas Macas (ronaldas.macas@port.ac.uk).
+    If you think this is a mistake, please contact {{ args[1] }} ({{ args[2] }}).
     {% endblock %}
 
 {% endblock %}

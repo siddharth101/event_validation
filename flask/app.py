@@ -7,7 +7,7 @@ FLASK website for event validation
 Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 """
 
-import json, argparse
+import json, argparse, os
 import pandas as pd
 
 from wtforms import Form, TextAreaField, validators, SubmitField, SelectField, IntegerField
@@ -25,7 +25,7 @@ __process_name__ = 'eval-website'
 def get_events_dict(list_fname, git_dir):
 
     list_content = pd.read_csv(list_fname)
-    list_events = list_content['Candidate event']
+    list_events = list_content['Event']
 
     events = {}
     for event in list_events:
@@ -44,29 +44,38 @@ def get_events_dict(list_fname, git_dir):
 
     return events
 
+def first_upper(string):
+    final_string = f'{string[0].upper()}{string[1:]}'
+    return final_string
 
 #------------------------------------------------------------------------------
 
 
 def create_app(port, git_dir, event_list, website_md):
     app = Flask(__name__)
+    
+    #TODO: remove the secret
+    app.config['SECRET_KEY'] = 'gw150914'
+    app.config['DEBUG'] = True
 
     flask_base_url = f'http://127.0.0.1:{port}/'
 
     event_list_fname = f'{git_dir}/data/{event_list}'
     events = get_events_dict(event_list_fname, git_dir)
-
-    val_flags = ['not started', 'ongoing', 'completed', 'issues']
-    dq_flags = ['no DQ issues', 'limited analysis window', 'needs further DQ mitigation']
+        
+    ifos = ['H1', 'L1', 'V1']
+    val_flags = ['not started', 'in progress', 'completed']
+    dq_flags = ['N/A', 'no DQ issues', 'noise mitigation required']
+    mitigation_flag = ['N/A', 'in progress', 'completed']
 
     messages = []
     for key, item in sorted(list(events.items()), key=lambda x:x[0].lower(), reverse=True):
-        if item["valid_status"] == 2:
-            title = f'{key}: {dq_flags[item["valid_conclusion"]]}'
-            form_url = f'{flask_base_url}warning/{key}'
-        else:
+        if item["valid_status"] == 0:
             title = f'{key}: {val_flags[item["valid_status"]]}'
             form_url = f'{flask_base_url}forms/{key}'
+        else:
+            title = f'{key}: {val_flags[item["valid_status"]]}; {dq_flags[item["valid_conclusion"]]}.'
+            form_url = f'{flask_base_url}warning/{key}'
 
         summary_url = f'{flask_base_url}summaries/{key}'
         dqr_url = events[key]['dqr_url']
@@ -78,87 +87,263 @@ def create_app(port, git_dir, event_list, website_md):
     class Questionnaire(Form):
 
         name = TextAreaField('name', [validators.InputRequired()])
-        surname = TextAreaField('surname:', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
-        flow = IntegerField('flow', [validators.InputRequired(), validators.NumberRange(min=10, max=4096, message='Lowest frequency must be within 10-4096 Hz range.')])
-        fhigh = IntegerField('fhigh:', [validators.InputRequired(), validators.NumberRange(min=10, max=4096, message='Highest frequency must be within 10-4096 Hz range.')])
-
+        
         validation_status = [(0, dq_flags[0]), (1, dq_flags[1]), (2, dq_flags[2])]
 
-        conclusion = SelectField('conclusion:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
+        conclusion_h1 = SelectField('conclusion_h1:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
+        conclusion_l1 = SelectField('conclusion_l1:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
+        conclusion_v1 = SelectField('conclusion_v1:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
+        
+        comment = TextAreaField('comment:')
 
+    class Questionnaire_mitigation(Form):
+
+        name = TextAreaField('name', [validators.InputRequired()])
+        email = TextAreaField('email:', [validators.InputRequired()])
+        comment = TextAreaField('comment:')
+        
+        H1_method = TextAreaField('H1_method:')
+        H1_tstart = TextAreaField('H1_tstart:')
+        H1_tend = TextAreaField('H1_tend:')
+        H1_fstart = TextAreaField('H1_fstart:')
+        H1_fend = TextAreaField('H1_fend:')
+        H1_frame = TextAreaField('H1_frame:')
+
+        L1_method = TextAreaField('L1_method:')
+        L1_tstart = TextAreaField('L1_tstart:')
+        L1_tend = TextAreaField('L1_tend:')
+        L1_fstart = TextAreaField('L1_fstart:')
+        L1_fend = TextAreaField('L1_fend:')
+        L1_frame = TextAreaField('L1_frame:')
+        
+        V1_method = TextAreaField('V1_method:')
+        V1_tstart = TextAreaField('V1_tstart:')
+        V1_tend = TextAreaField('V1_tend:')
+        V1_fstart = TextAreaField('V1_fstart:')
+        V1_fend = TextAreaField('V1_fend:')
+        V1_frame = TextAreaField('V1_frame:')
 
     @app.route('/')
     def index():
         return render_template('index.html', messages=messages)
 
+    # val_flags = ['not started', 'in progress', 'completed']
+    # dq_flags = ['N/A', 'no DQ issues', 'noise mitigation required']
+    # mitigation_flag = ['N/A', 'in progress', 'completed']
+
 
     @app.route('/summaries/<gid>', methods=('GET', 'POST'))
     def get_summary(gid):
-
-        if events[gid]['valid_status'] == 2:
-            summary = [gid] + list(events[gid].values())
-            # express validation status and conclusion in str
-            summary[1] = val_flags[2]
-            summary[3] = dq_flags[summary[3]]
-            return render_template('val_summary.html', summary=summary)
+            
+        if events[gid]['valid_status'] == 0:
+                
+            args = [gid, events[gid]['contacts']['lead1_name'], events[gid]['contacts']['lead1_email']]
+            return render_template('val_summary_404.html', args=args)
+       
         else:
-            return render_template('val_summary_404.html', gid=gid)
+            summary = [gid]
+            summary.append(val_flags[events[gid]['valid_status']])
+            summary.append(dq_flags[events[gid]['valid_conclusion']])
+            summary.append(events[gid]['comments']['validator'])
+            for ifo in ifos:
+                if events[gid]['noise_mitigation'][ifo]['required'] == 1:
+                    summary.append('required')
+                else:
+                    summary.append('not required')
+                summary.append(f"{mitigation_flag[events[gid]['noise_mitigation'][ifo]['status']]}")
+            
+            summary.append(events[gid]['eval_form_url'])
+            summary.append(events[gid]['dqr_url'])
+            summary.append(events[gid]['git_issue_url'])
+            summary.append(events[gid]['contacts']['validator_name'])
+            summary.append(events[gid]['contacts']['validator_email'])
+            summary.append(events[gid]['contacts']['rrt_name'])
+            summary.append(events[gid]['contacts']['rrt_email'])
+            summary.append(events[gid]['contacts']['mitigation_name'])
+            summary.append(events[gid]['contacts']['mitigation_email'])
+            summary.append(events[gid]['contacts']['lead1_name'])
+            summary.append(events[gid]['contacts']['lead1_email'])
+            summary.append(events[gid]['contacts']['lead2_name'])
+            summary.append(events[gid]['contacts']['lead2_email'])
+
+            return render_template('val_summary.html', summary=summary)
 
 
     @app.route('/warning/<gid>', methods=('GET', 'POST'))
     def form_warning(gid):
-
-        fname = events[gid]['validator_name']
-        args = [gid, fname, events[gid]['validator_email'],
+        
+        fname = events[gid]['contacts']['validator_name']
+        args = [gid, fname, events[gid]['contacts']['validator_email'],
                 f'{flask_base_url}summaries/{gid}',
                 f'{flask_base_url}forms/{gid}']
 
         return render_template('form_warning.html', args=args)
 
+    @app.route('/mitigation/<gid>', methods=('GET', 'POST'))
+    def gen_mitigation_form(gid):
 
-    @app.route('/forms/<gid>', methods=('GET', 'POST'))
-    def gen_event_form(gid):
-
-        form = Questionnaire(request.form)
-        form_output = {"fname":form.name.data, "lname":form.surname.data,
-                "email":form.email.data, "flow":form.flow.data, "fhigh":form.fhigh.data,
-                "val_conclusion": form.conclusion.data}
-
+        form = Questionnaire_mitigation(request.form)
+        form_output = {"fname":form.name.data,
+                       "email":form.email.data,
+                       "comment": form.comment.data,
+                       "H1_method": form.H1_method.data,
+                       "H1_tstart": form.H1_tstart.data,
+                       "H1_tend": form.H1_tend.data,
+                       "H1_fstart": form.H1_fstart.data,
+                       "H1_fend": form.H1_fend.data,
+                       "H1_frame": form.H1_frame.data,
+                       "L1_method": form.L1_method.data,
+                       "L1_tstart": form.L1_tstart.data,
+                       "L1_tend": form.L1_tend.data,
+                       "L1_fstart": form.L1_fstart.data,
+                       "L1_fend": form.L1_fend.data,
+                       "L1_frame": form.L1_frame.data,
+                       "V1_method": form.V1_method.data,
+                       "V1_tstart": form.V1_tstart.data,
+                       "V1_tend": form.V1_tend.data,
+                       "V1_fstart": form.V1_fstart.data,
+                       "V1_fend": form.V1_fend.data,
+                       "V1_frame": form.V1_frame.data
+                       }
         if request.method == 'POST':
             if form.validate():
 
-                validator_name = f'{form.name.data} {form.surname.data}'
+               
+                # read event json
+                with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+                    event_data = json.load(fp)
+
+                # update the event json
+                for ifo in ifos:
+                    event_data['noise_mitigation'][ifo]['status'] = 2
+                    event_data['noise_mitigation'][ifo]['method'] = form_output[f'{ifo}_method']
+                    event_data['noise_mitigation'][ifo]['tstart'] = form_output[f'{ifo}_tstart']
+                    event_data['noise_mitigation'][ifo]['tend'] = form_output[f'{ifo}_tend']
+                    event_data['noise_mitigation'][ifo]['fstart'] = form_output[f'{ifo}_fstart']
+                    event_data['noise_mitigation'][ifo]['fend'] = form_output[f'{ifo}_fend']
+                    event_data['noise_mitigation'][ifo]['frame'] = form_output[f'{ifo}_frame']
+                
+                event_data['comments']['mitigation'] = form.comment.data
+                event_data['contacts']['mitigation_name'] = form.name.data
+                event_data['contacts']['mitigation_email'] = form.email.data
+
+                # update event json
+                with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
+                    json.dump(event_data, fp, indent=4)
+                
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                 # update the events list
-                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-                gid_idx = event_list_df.loc[event_list_df['Candidate event'].isin([gid])].index[0]
-                event_list_df.at[gid_idx,'Validation status'] = 2
-                event_list_df.at[gid_idx,'Validation conclusion'] = form.conclusion.data
-                event_list_df.at[gid_idx,'Volunteer'] = validator_name
-                event_list_df.at[gid_idx,'Email'] = form.email.data
+                event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flag[2])
+                event_list_df.at[gid_idx,'Contact person'] = f'{form.name.data} ([email](mailto:{form.email.data}))'
                 event_list_df.to_csv(event_list_fname, index=False)
 
                 # update website's .md table
                 md_fname = f'{git_dir}/data/{website_md}'
                 with open(md_fname, 'w') as md:
                     event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {git_dir}; mkdocs -q build')
 
-                # update the event json
+                # TODO: STOPPED HERE
+                # TODO: send emails
+                # TODO: reviewer person contact -- add in rota, send email to him
+                # TODO: contact person in event_list_df above and everywhere in such workflow shouldbe the next person, so here it should be reviewer
+                # TODO: update summary to include results from the mitigation
+                # TODO: next step -- reviewer page
+                
+                return render_template('form_mitigation_success.html', gid=gid, name=form.name.data, h1=form.H1_method.data, l1=form.L1_method.data, v1=form.V1_method.data)
+
+            else:
+                flash('Error:'+str(form.errors),'danger')
+
+        
+        return render_template('form_mitigation.html', form=form, gid=gid)
+
+
+    @app.route('/forms/<gid>', methods=('GET', 'POST'))
+    def gen_event_form(gid):
+
+        form = Questionnaire(request.form)
+
+        if request.method == 'POST':
+            if form.validate():
+
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+               
+                # read event json
                 with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
-                event_data['validator_name'] = validator_name
-                event_data['validator_email'] = form.email.data
-                event_data['flow'] = form.flow.data
-                event_data['fhigh'] = form.fhigh.data
-                event_data['valid_conclusion'] = form.conclusion.data
-                event_data['valid_status'] = 2
-                event_data['devil_form_url'] = f'{flask_base_url}forms/{gid}'
+                
+                # if h/l/v have no DQ issues
+                if (form.conclusion_h1.data == 1 or form.conclusion_h1.data == 0) and (form.conclusion_l1.data == 1 or form.conclusion_l1.data == 0) and (form.conclusion_v1.data == 1 or form.conclusion_v1.data == 0):
+                
+                    # update the event json
+                    event_data['valid_status'] = 2
+                    event_data['valid_conclusion'] = 1
+                    event_data['noise_mitigation']['H1']['required'] = 0
+                    event_data['noise_mitigation']['H1']['status'] = 0
+                    event_data['noise_mitigation']['L1']['required'] = 0
+                    event_data['noise_mitigation']['L1']['status'] = 0
+                    event_data['noise_mitigation']['V1']['required'] = 0
+                    event_data['noise_mitigation']['V1']['status'] = 0
+                    event_data['comments']['validator'] = form.comment.data
+                    event_data['contacts']['validator_name'] = form.name.data
+                    event_data['contacts']['validator_email'] = form.email.data
+
+                    # update the events list
+                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[2])
+                    event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[1])
+                    event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flag[0])
+                    event_list_df.at[gid_idx,'Contact person'] = f'{form.name.data} ([email](mailto:{form.email.data}))'
+                    event_list_df.to_csv(event_list_fname, index=False)
+
+                    # TODO: send email to relevant parties, i.e. leads, validator, rrt
+                  
+
+                else: # if h/l/v have issues
+
+                    # val_flags = ['not started', 'in progress', 'completed']
+                    # dq_flags = ['N/A', 'no DQ issues', 'noise mitigation required']
+                    # mitigation_flag = ['N/A', 'in progress', 'completed']
+                
+                    # update the event json
+                    event_data['valid_status'] = 1
+                    event_data['valid_conclusion'] = 2
+                    event_data['noise_mitigation']['H1']['required'] = 1 if form.conclusion_h1.data == 2 else 0
+                    event_data['noise_mitigation']['H1']['status'] = 1 if form.conclusion_h1.data == 2 else 0
+                    event_data['noise_mitigation']['L1']['required'] = 1 if form.conclusion_l1.data == 2 else 0
+                    event_data['noise_mitigation']['L1']['status'] = 1 if form.conclusion_l1.data == 2 else 0
+                    event_data['noise_mitigation']['V1']['required'] = 1 if form.conclusion_v1.data == 2 else 0
+                    event_data['noise_mitigation']['V1']['status'] = 1 if form.conclusion_v1.data == 2 else 0
+                    event_data['comments']['validator'] = form.comment.data
+                    event_data['contacts']['validator_name'] = form.name.data
+                    event_data['contacts']['validator_email'] = form.email.data
+ 
+                    # update the events list
+                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
+                    event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[2])
+                    event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flag[1])
+                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitigation_name']} ([email](mailto:{event_data['contacts']['mitigation_email']}))"
+                    event_list_df.to_csv(event_list_fname, index=False)
+
+                    # TODO: send emails to relevant parties, i.e. leads, validator, rrt, glitch mitigation team
+               
+                # update website's .md table
+                md_fname = f'{git_dir}/data/{website_md}'
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {git_dir}; mkdocs -q build')
+
+                # update event json
                 with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-
-                return render_template('form_success.html', gid=gid, name=form.name.data, val_conclusion=dq_flags[form.conclusion.data])
+                return render_template('form_success.html', gid=gid, name=form.name.data, h1=dq_flags[form.conclusion_h1.data], l1=dq_flags[form.conclusion_l1.data], v1=dq_flags[form.conclusion_v1.data])
 
             else:
                 flash('Error:'+str(form.errors),'danger')

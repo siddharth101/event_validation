@@ -9,23 +9,42 @@
     {% block main %}
     Validation status: {{ summary[1] }}
     <br>
-    Validation conclusion: {{ summary[3] }}
+    <br>
+    Volunteer's conclusion: {{ summary[2] }}
+    <br>
+    Volunteer's comment: {{ summary[3] }}
     <br>
     <br>
-    Lowest frequency: {{ summary[4] }} Hz
+    Noise mitigation for H1: {{ summary[4] }}
     <br>
-    Highest frequency: {{ summary[5] }} Hz
-    <br>
-    <br>
-    DQR url: <a href="{{ summary[6] }}">{{ summary[6] }}</a>
-    <br>
-    Wiki url: <a href="{{ summary[7] }}">{{ summary[7] }}</a>
-    <br>
-    Git issue url: <a href="{{ summary[8] }}">{{ summary[8] }}</a>
+    Noise mitigation status for H1: {{ summary[5] }}
     <br>
     <br>
-    Validator: {{ summary[10] }}
+    Noise mitigation for L1: {{ summary[6] }}
     <br>
-    Validator's email: <a href="mailto:{{ summary[11] }}">{{ summary[11] }}</a>
+    Noise mitigation status for L1: {{ summary[7] }}
+    <br>
+    <br>
+    Noise mitigation for V1: {{ summary[8] }}
+    <br>
+    Noise mitigation status for V1: {{ summary[9] }}
+    <br>
+    <br>
+    Volunteer's validation form: <a href="{{ summary[10] }}">{{ summary[10] }}</a>
+    <br>
+    DQR: <a href="{{ summary[11] }}">{{ summary[11] }}</a>
+    <br>
+    Git issue: <a href="{{ summary[12] }}">{{ summary[12] }}</a>
+    <br>
+    <br>
+    Validator: {{ summary[13] }} (<a href="mailto:{{ summary[14] }}">{{ summary[14] }}</a>)
+    <br>
+    RRT: {{ summary[15] }} (<a href="mailto:{{ summary[16] }}">{{ summary[16] }}</a>)
+    <br>
+    Noise mitigation: {{ summary[17] }} (<a href="mailto:{{ summary[18] }}">{{ summary[18] }}</a>)
+    <br>
+    Lead: {{ summary[19] }} (<a href="mailto:{{ summary[20] }}">{{ summary[20] }}</a>)
+    <br>
+    Lead: {{ summary[21] }} (<a href="mailto:{{ summary[22] }}">{{ summary[22] }}</a>)
     {% endblock %}
 {% endblock %}

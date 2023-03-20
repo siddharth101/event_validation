@@ -26,28 +26,35 @@
             {{ form.csrf }}
             <div class="form-group">
               <label for="name">Name:</label>
-              <input type="text" class="form-control" name="name">
-                <br>
-              <label for="surname">Surname:</label>
-              <input type="text" class="form-control" name="surname">
-    	         <br>
-    	        <label for="email">Email:</label>
+                <input type="text" class="form-control" name="name">
+              <br>
+    	      <label for="email">Email:</label>
     	        <input type="text" class="form-control" name="email">
               <br>
-              <label for="flow">Lowest frequency (default=10 Hz):</label>
-    	        <input type="text" class="form-control" name="flow">
-              <br>
-              <label for="fhigh">Highest frequency (default=4096 Hz):</label>
-    	        <input type="text" class="form-control" name="fhigh">
-              <br>
-              <label for="conclusion">Validation conclusion:</label>
-              <select class="form-control" name="conclusion">
-                <option value="0">No DQ issues</option>
-                <option value="1">Limited analysis window</option>
-                <option value="2">Needs further DQ mitigation</option>
+              <label for="conclusion_h1">Validation conclusion for H1:</label>
+              <select class="form-control" name="conclusion_h1">
+                <option value="0">N/A</option>
+                <option value="1">No DQ issues</option>
+                <option value="2">Noise mitigation required</option>
               </select>
+              <br>
+              <label for="conclusion_l1">Validation conclusion for L1:</label>
+              <select class="form-control" name="conclusion_l1">
+                <option value="0">N/A</option>
+                <option value="1">No DQ issues</option>
+                <option value="2">Noise mitigation required</option>
+              </select>
+              <br>
+              <label for="conclusion_v1">Validation conclusion for V1:</label>
+              <select class="form-control" name="conclusion_v1">
+                <option value="0">N/A</option>
+                <option value="1">No DQ issues</option>
+                <option value="2">Noise mitigation required</option>
+              </select>
+              <br>
+    	      <label for="comment">Comments:</label>
+    	        <input type="text" class="form-control" name="comment">
             <br>
-    
     	</div>
             <br>													   
             <center>

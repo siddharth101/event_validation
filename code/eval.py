@@ -12,7 +12,7 @@ from utils import *
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.2'
+__version__ = '0.3'
 __process_name__ = 'Event Validation'
 
 def init_event_validation(event_name,
@@ -28,8 +28,10 @@ def init_event_validation(event_name,
                           vol_file,
                           contact_file,
                           validator,
-                          rrt,
+                          expert,
                           mitigation,
+                          mitig_review,
+                          review,
                           dqr_url,
                           eval_url,
                           gitlab_url,
@@ -87,6 +89,7 @@ def init_event_validation(event_name,
     logger.debug(f'Creating event dictionary for {event_name}')
     valid_status = 0  # i.e. not started
     eval_form_url = f'{eval_url}/forms/{event_name}'
+    eval_summary_url = f'{eval_url}/summaries/{event_name}'
     noise_mitig_dict = {'required': [],
                         'status': [],
                         'reviewed': 0,
@@ -103,12 +106,12 @@ def init_event_validation(event_name,
                   'reviewed': 0,
                   'dqr_url': dqr_url,
                   'eval_form_url': eval_form_url,
+                  'eval_summary_url': eval_summary_url,
                   'git_issue_url': gitlab_url,
                   'noise_mitigation': {'H1': noise_mitig_dict,
                                        'L1': noise_mitig_dict,
                                        'V1': noise_mitig_dict},
                   'comments': {'validator': [],
-                               'rrt': [],
                                'mitigation': [],
                                'mitigation_review': [],
                                'review': [],
@@ -116,24 +119,28 @@ def init_event_validation(event_name,
                                },
                   'contacts': {'validator_name': [],
                                'validator_email': [],
-                               'rrt_name': [],
-                               'rrt_email': [],
+                               'expert_name': [],
+                               'expert_email': [],
                                'mitigation_name': [],
                                'mitigation_email': [],
+                               'mitig_review_name': [],
+                               'mitig_review_email': [],
+                               'review_name': [],
+                               'review_email': [],
                                'lead1_name': [],
                                'lead1_email': [],
                                'lead2_name': [],
                                'lead2_email': []
                                },
                   'other': [],
+                  'cmd': cmd
                   }
 
     #--------------------------------------------------------------------------
 
     # assign people
     logger.debug('Assigning volunteers')
-    event_data = assign_people(event_data, time, git_dir, vol_file,
-                               contact_file, validator, rrt, mitigation, logger)
+    event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, expert, mitigation, mitig_review, review, logger)
 
     #--------------------------------------------------------------------------
 
@@ -202,8 +209,10 @@ def main():
     parser.add_argument('--vol_file', type=str, required=True, help="csv file containing volunteer information in 'data' folder")
     parser.add_argument('--contact_file', type=str, required=True, help="csv file containing volunteer contact information in 'data' folder")
     parser.add_argument('--validator', type=str, help="Validator name and surname")
-    parser.add_argument('--rrt', type=str, help="RRT name and surname")
+    parser.add_argument('--expert', type=str, help="Expert name and surname")
     parser.add_argument('--mitigation', type=str, help="Noise mitigation contact name and surname")
+    parser.add_argument('--mitig_review', type=str, help="Noise mitigation review contact name and surname")
+    parser.add_argument('--review', type=str, help="Event validation review contact name and surname")
     parser.add_argument('--dqr_url', type=str,  required=True,help='Data quality report URL')
     parser.add_argument('--eval_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/eval', help='Event validation form URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/eval/')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
@@ -243,8 +252,10 @@ def main():
                           vol_file=args.vol_file,
                           contact_file=args.contact_file,
                           validator=args.validator,
-                          rrt=args.rrt,
+                          expert=args.expert,
                           mitigation=args.mitigation,
+                          mitig_review=args.mitig_review,
+                          review=args.review,
                           dqr_url=args.dqr_url,
                           eval_url=args.eval_url,
                           gitlab_url=args.gitlab_url,

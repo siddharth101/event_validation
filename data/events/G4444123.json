@@ -1,14 +1,17 @@
 {
-    "event_name": "G33333",
+    "event_name": "G4444123",
     "valid_status": 0,
     "valid_conclusion": [],
+    "reviewed": 0,
     "dqr_url": "https://dqr.updateMe.com",
-    "eval_form_url": "https://dqr.updateMe.com/G33333",
+    "eval_form_url": "https://dqr.updateMe.com/forms/G4444123",
+    "eval_summary_url": "https://dqr.updateMe.com/summaries/G4444123",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
     "noise_mitigation": {
         "H1": {
             "required": [],
-            "reviewed": [],
+            "status": [],
+            "reviewed": 0,
             "method": [],
             "flow": [],
             "fhigh": [],
@@ -18,7 +21,8 @@
         },
         "L1": {
             "required": [],
-            "reviewed": [],
+            "status": [],
+            "reviewed": 0,
             "method": [],
             "flow": [],
             "fhigh": [],
@@ -28,7 +32,8 @@
         },
         "V1": {
             "required": [],
-            "reviewed": [],
+            "status": [],
+            "reviewed": 0,
             "method": [],
             "flow": [],
             "fhigh": [],
@@ -39,22 +44,27 @@
     },
     "comments": {
         "validator": [],
-        "rrt": [],
         "mitigation": [],
-        "lead": [],
-        "final": []
+        "mitigation_review": [],
+        "review": [],
+        "other": []
     },
     "contacts": {
         "validator_name": "Tony Blair",
         "validator_email": "tony.blair@ligo.org",
-        "rrt_name": "Tony Blair",
-        "rrt_email": "tony.blair@ligo.org",
-        "mitigation_name": "John Major",
-        "mitigation_email": "john.major@ligo.org",
+        "expert_name": "Rishi Sunak",
+        "expert_email": "Rishi.Sunak@ligo.org",
+        "mitigation_name": "Gordon Brown",
+        "mitigation_email": "gordon.brown@ligo.org",
+        "mitig_review_name": "David Cameron",
+        "mitig_review_email": "david.cameron@ligo.org",
+        "review_name": "Tony Blair",
+        "review_email": "tony.blair@ligo.org",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Ronaldas Macas",
         "lead2_email": "ronaldas.macas@ligo.org"
     },
-    "other": []
+    "other": [],
+    "cmd": "eval.py --verbose --git_dir /home/jdo86av3c/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --validator Tony Blair --far 0.5 --ignore_far 1 --event_name G4444123"
 }

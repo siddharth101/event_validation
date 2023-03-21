@@ -1,11 +1,11 @@
 {
-    "event_name": "G1111",
+    "event_name": "G555124",
     "valid_status": 0,
     "valid_conclusion": [],
     "reviewed": 0,
     "dqr_url": "https://dqr.updateMe.com",
-    "eval_form_url": "https://dqr.updateMe.com/forms/G1111",
-    "eval_summary_url": "https://dqr.updateMe.com/summaries/G1111",
+    "eval_form_url": "https://dqr.updateMe.com/forms/G555124",
+    "eval_summary_url": "https://dqr.updateMe.com/summaries/G555124",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
     "noise_mitigation": {
         "H1": {
@@ -50,8 +50,8 @@
         "other": []
     },
     "contacts": {
-        "validator_name": "David Cameron",
-        "validator_email": "david.cameron@ligo.org",
+        "validator_name": "Gordon Brown",
+        "validator_email": "gordon.brown@ligo.org",
         "expert_name": "Rishi Sunak",
         "expert_email": "Rishi.Sunak@ligo.org",
         "mitigation_name": "Gordon Brown",
@@ -66,5 +66,5 @@
         "lead2_email": "ronaldas.macas@ligo.org"
     },
     "other": [],
-    "cmd": "eval.py --verbose --git_dir /home/jdo86av3c/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --validator David Cameron --far 0.5 --ignore_far 1 --event_name G1111"
+    "cmd": "eval.py --verbose --git_dir /home/jdo86av3c/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --validator Gordon Brown --far 0.5 --ignore_far 1 --send_email 1 --create_issue 1 --event_name G555124"
 }

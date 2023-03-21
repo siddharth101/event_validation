@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+
+<h1>{% block title %}
+    O4 event validation: {{ gid }} 
+    {% endblock %}</h1>
+ 
+{% block content %}
+    <html>
+      <head>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    	   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+      </head>
+      <body>
+        <div class="container"><br>
+          <center>
+              <h2>{{ gid }} noise mitigation review </h2>
+          </center>
+        </div>
+    
+        <div class=container><br>
+        <div class="row align-items-center justify-content-center">
+        <div class="col-md-5">
+          <form  action="" method="post" role="form">
+            {{ form.csrf }}
+            <div class="form-group">
+              <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name">
+              <br>
+    	      <label for="email">Email:</label>
+    	        <input type="text" class="form-control" name="email">
+              <br>
+              <label for="mitig_review_H1">Reviewed noise mitigation for H1:</label>
+              <select class="form-control" name="mitig_review_H1">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+                <option value="2">N/A</option>
+              </select>
+              <br>
+              <label for="mitig_review_L1">Reviewed noise mitigation for L1:</label>
+              <select class="form-control" name="mitig_review_L1">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+                <option value="2">N/A</option>
+              </select>
+              <br>
+              <label for="mitig_review_V1">Reviewed noise mitigation for V1:</label>
+              <select class="form-control" name="mitig_review_V1">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+                <option value="2">N/A</option>
+              </select>
+              <br>
+    	      <label for="comment">Comments:</label>
+    	        <input type="text" class="form-control" name="comment">
+            <br>
+    	</div>
+            <br>													   
+            <center>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </center>
+          </form>
+          <br>
+    
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+    
+            {% for category, message in messages %}
+                    <div class="alert alert-{{category}}" role="alert">
+                    {{ message }}
+                    </div>
+            {% endfor %}
+                {% endif %}
+            {% endwith %}
+    
+        </div>
+        <br>
+        </div>
+        </div>
+      </body>
+    </html>
+{% endblock %}

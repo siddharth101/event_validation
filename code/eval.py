@@ -113,7 +113,7 @@ def init_event_validation(event_name,
                                        'V1': noise_mitig_dict},
                   'comments': {'validator': [],
                                'mitigation': [],
-                               'mitigation_review': [],
+                               'mitig_review': [],
                                'review': [],
                                'other': []
                                },

@@ -161,7 +161,7 @@ def init_event_validation(event_name,
     #--------------------------------------------------------------------------
 
     # create a git issue by sending an email
-    if create_issue == 1:
+    if create_issue:
         logger.debug('Making a git issue')
         issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
         git_issue(event_data, git_dir, issue_email, logger)
@@ -169,7 +169,7 @@ def init_event_validation(event_name,
     #--------------------------------------------------------------------------
 
     # send emails
-    if send_email == 1:
+    if send_email:
         logger.debug('Sending emails')
         emails(event_data, git_dir, docs_url, logger)
 
@@ -202,8 +202,8 @@ def main():
     parser.add_argument('--time', type=float, help='GPS time for which a validation team will be selected. Default: current GPS time')
     parser.add_argument('--far', type=float, help='event FAR. If given, it will be compared to threshold FAR. If above threshold FAR, there will be no event validation.')
     parser.add_argument('--far_threshold', type=float, default=0.000000193, help='Threshold FAR. Event validation is performed only if event FAR is smaller than threshold FAR.')
-    parser.add_argument('--ignore_far', type=int, default=0, help='Perform event validation independent on event FAR. Default: 0 (False).')
-    parser.add_argument('--git_dir', type=os.path.abspath, default='TBD', help='Event validation infrastructure git directory, default: TBD')
+    parser.add_argument('--ignore_far', action=argparse.BooleanOptionalAction, help='Perform event validation independent on event FAR.')
+    parser.add_argument('--git_dir', type=os.path.abspath, required=True, help='Event validation infrastructure git directory')
     parser.add_argument('--events_file', type=str, required=True, help="csv file containing events in 'data' folder")
     parser.add_argument('--md_file', type=str, required=True, help="MD table to be edited with new event in 'data' folder")
     parser.add_argument('--vol_file', type=str, required=True, help="csv file containing volunteer information in 'data' folder")
@@ -213,15 +213,16 @@ def main():
     parser.add_argument('--mitigation', type=str, help="Noise mitigation contact name and surname")
     parser.add_argument('--mitig_review', type=str, help="Noise mitigation review contact name and surname")
     parser.add_argument('--review', type=str, help="Event validation review contact name and surname")
-    parser.add_argument('--dqr_url', type=str,  required=True,help='Data quality report URL')
+    parser.add_argument('--dqr_url', type=str, required=True, help='Data quality report URL')
     parser.add_argument('--eval_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/eval', help='Event validation form URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/eval/')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
     parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/')
-    parser.add_argument('--send_email', type=int, default=0, help='Send notification emails. Default: 0 (False).')
-    parser.add_argument('--create_issue', type=int, default=0, help='Create a git issue for the candidate event. Default: 0 (False).')
+    parser.add_argument('--send_email', action=argparse.BooleanOptionalAction, help='Send notification emails. No emails sent if no flag present.')
+    parser.add_argument('--create_issue', action=argparse.BooleanOptionalAction, help='Create a git issue for the candidate event')
     args = parser.parse_args()
 
 #------------------------------------------------------------------------------
+
 
     # command line used to run this script
     cmd_line = ' '.join(sys.argv)

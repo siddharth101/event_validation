@@ -87,15 +87,15 @@ def init_event_validation(event_name,
 
     # make event dict
     logger.debug(f'Creating event dictionary for {event_name}')
-    valid_status = 0  # i.e. not started
-    eval_form_url = f'{eval_url}/forms/{event_name}'
+    valid_status = 0  # i.e. validation not started
+    review_status = 0  # i.e. not reviewed
     eval_summary_url = f'{eval_url}/summaries/{event_name}'
     noise_mitig_dict = {'required': [],
                         'status': [],
-                        'reviewed': 0,
+                        'reviewed': review_status,
                         'method': [],
-                        'flow': [],
-                        'fhigh': [],
+                        'fstart': [],
+                        'fend': [],
                         'tstart': [],
                         'tend': [],
                         'frame': []
@@ -103,9 +103,8 @@ def init_event_validation(event_name,
     event_data = {'event_name': event_name,
                   'valid_status': valid_status,
                   'valid_conclusion': [],
-                  'reviewed': 0,
+                  'reviewed': review_status,
                   'dqr_url': dqr_url,
-                  'eval_form_url': eval_form_url,
                   'eval_summary_url': eval_summary_url,
                   'git_issue_url': gitlab_url,
                   'noise_mitigation': {'H1': noise_mitig_dict,
@@ -217,7 +216,7 @@ def main():
     parser.add_argument('--eval_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/eval', help='Event validation form URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/eval/')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
     parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/')
-    parser.add_argument('--send_email', action=argparse.BooleanOptionalAction, help='Send notification emails. No emails sent if no flag present.')
+    parser.add_argument('--send_email', action=argparse.BooleanOptionalAction, help='Send notification emails.')
     parser.add_argument('--create_issue', action=argparse.BooleanOptionalAction, help='Create a git issue for the candidate event')
     args = parser.parse_args()
 

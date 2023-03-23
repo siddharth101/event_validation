@@ -4,7 +4,6 @@
     "valid_conclusion": [],
     "reviewed": 0,
     "dqr_url": "https://dqr.updateMe.com",
-    "eval_form_url": "https://dqr.updateMe.com/forms/G361581",
     "eval_summary_url": "https://dqr.updateMe.com/summaries/G361581",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
     "noise_mitigation": {
@@ -13,8 +12,8 @@
             "status": [],
             "reviewed": 0,
             "method": [],
-            "flow": [],
-            "fhigh": [],
+            "fstart": [],
+            "fend": [],
             "tstart": [],
             "tend": [],
             "frame": []
@@ -24,8 +23,8 @@
             "status": [],
             "reviewed": 0,
             "method": [],
-            "flow": [],
-            "fhigh": [],
+            "fstart": [],
+            "fend": [],
             "tstart": [],
             "tend": [],
             "frame": []
@@ -35,8 +34,8 @@
             "status": [],
             "reviewed": 0,
             "method": [],
-            "flow": [],
-            "fhigh": [],
+            "fstart": [],
+            "fend": [],
             "tstart": [],
             "tend": [],
             "frame": []
@@ -45,7 +44,7 @@
     "comments": {
         "validator": [],
         "mitigation": [],
-        "mitigation_review": [],
+        "mitig_review": [],
         "review": [],
         "other": []
     },
@@ -66,5 +65,5 @@
         "lead2_email": "ronaldas.macas@ligo.org"
     },
     "other": [],
-    "cmd": "eval.py --verbose --git_dir /home/jdo86av3c/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --validator Liz Truss --far 0.5 --ignore_far 0 --json G361581.json"
+    "cmd": "eval.py --verbose --git_dir /home/jdo86av3c/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --validator Liz Truss --far 0.5 --json G361581.json"
 }

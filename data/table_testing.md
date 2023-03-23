@@ -1,7 +1,3 @@
-| Event     | Status      | Conclusion   | Noise mitigation   | Reviewed   | Summary                                              | Contact person                                         |
-|:----------|:------------|:-------------|:-------------------|:-----------|:-----------------------------------------------------|:-------------------------------------------------------|
-| G361581   | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summaries/G361581)   | Liz Truss ([email](mailto:liz.truss@ligo.org))         |
-| G1111     | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summaries/G1111)     | David Cameron ([email](mailto:david.cameron@ligo.org)) |
-| G22222222 | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summaries/G22222222) | John Major ([email](mailto:john.major@ligo.org))       |
-| G4444123  | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summaries/G4444123)  | Tony Blair ([email](mailto:tony.blair@ligo.org))       |
-| G555124   | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summaries/G555124)   | Gordon Brown ([email](mailto:gordon.brown@ligo.org))   |
+| Event   | Status      | Conclusion   | Noise mitigation   | Reviewed   | Summary                                            | Contact person                                 |
+|:--------|:------------|:-------------|:-------------------|:-----------|:---------------------------------------------------|:-----------------------------------------------|
+| G361581 | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summaries/G361581) | Liz Truss ([email](mailto:liz.truss@ligo.org)) |

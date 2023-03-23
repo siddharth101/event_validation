@@ -7,7 +7,7 @@ FLASK website for event validation
 Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 """
 
-import json, argparse, os
+import json, argparse, os, subprocess
 import pandas as pd
 
 from wtforms import Form, TextAreaField, validators, SubmitField, SelectField, IntegerField
@@ -44,22 +44,28 @@ def get_events_dict(list_fname, git_dir):
 
     return events
 
+
 def first_upper(string):
     final_string = f'{string[0].upper()}{string[1:]}'
     return final_string
 
+def send_email(git_dir, email, subject, body):
+
+    subprocess.check_call([f'{git_dir}/code/send_email.sh', email, subject, body])
+
+    return
 #------------------------------------------------------------------------------
 
 
-def create_app(port, git_dir, event_list, website_md):
+def create_app(port, git_dir, event_list, website_md, notify):
     app = Flask(__name__)
 
-    #TODO: remove the secret
-    app.config['SECRET_KEY'] = 'gw150914'
-    app.config['DEBUG'] = True
+    # app.config['SECRET_KEY'] = 'gw150914'
+    # app.config['DEBUG'] = True
 
     flask_base_url = f'http://127.0.0.1:{port}/'
 
+    md_fname = f'{git_dir}/data/{website_md}'
     event_list_fname = f'{git_dir}/data/{event_list}'
     events = get_events_dict(event_list_fname, git_dir)
 
@@ -71,17 +77,30 @@ def create_app(port, git_dir, event_list, website_md):
 
     messages = []
     for key, item in sorted(list(events.items()), key=lambda x:x[0].lower(), reverse=True):
+
+        # add a warning if one wants to overwrite event validation form
         if item["valid_status"] == 0:
-            title = f'{key}: {val_flags[item["valid_status"]]}'
             form_url = f'{flask_base_url}forms/{key}'
         else:
-            title = f'{key}: {val_flags[item["valid_status"]]}; {dq_flags[item["valid_conclusion"]]}.'
-            form_url = f'{flask_base_url}warning/{key}'
+            form_url = f'{flask_base_url}warning_eval_form/{key}'
+
+        # add a warning if one wants to overwrite noise mitigation form
+        for ifo in ifos:
+            if item['noise_mitigation'][ifo]['status'] == 2:
+                mitig_url = f'{flask_base_url}warning_mitig_form/{key}'
+            else:
+                mitig_url = f'{flask_base_url}mitigation/{key}'
+
+        # add a warning if one wants to fill in the noise mitigation form even though it is not required because there are no data quality issues
+        if item['noise_mitigation']['H1']['required'] == 0 and item['noise_mitigation']['L1']['required'] == 0 and item['noise_mitigation']['V1']['required'] == 0:
+            mitig_url = f'{flask_base_url}warning_mitig_form2/{key}'
 
         summary_url = f'{flask_base_url}summaries/{key}'
         dqr_url = events[key]['dqr_url']
+        docs_url = dqr_url
 
-        message = {'title': title, 'content': f'', 'form_url': form_url, 'gitlab_issue_url': item['git_issue_url'], 'dqr_url':dqr_url, 'summary_url':summary_url}
+        title = f'{key}: {val_flags[item["valid_status"]]}'
+        message = {'title':title, 'content':f'', 'form_url':form_url, 'mitig_url':mitig_url, 'docs_url':docs_url, 'gitlab_issue_url':item['git_issue_url'], 'dqr_url':dqr_url, 'summary_url':summary_url}
         messages.append(message)
 
 
@@ -151,6 +170,9 @@ def create_app(port, git_dir, event_list, website_md):
 
         review = SelectField('final_review:', coerce=int, choices=review_status, validators=[validators.InputRequired()])
 
+    class Questionnaire_comment(Form):
+
+        comment = TextAreaField('comment:')
 
     @app.route('/')
     def index():
@@ -166,48 +188,84 @@ def create_app(port, git_dir, event_list, website_md):
             return render_template('val_summary_404.html', args=args)
 
         else:
-            summary = [gid]
-            summary.append(val_flags[events[gid]['valid_status']])
-            summary.append(dq_flags[events[gid]['valid_conclusion']])
-            summary.append(events[gid]['comments']['validator'])
-            for ifo in ifos:
-                if events[gid]['noise_mitigation'][ifo]['required'] == 1:
-                    summary.append('required')
-                else:
-                    summary.append('not required')
-                summary.append(f"{mitigation_flags[events[gid]['noise_mitigation'][ifo]['status']]}")
 
-            summary.append(events[gid]['eval_form_url'])
-            summary.append(events[gid]['dqr_url'])
-            summary.append(events[gid]['git_issue_url'])
-            summary.append(events[gid]['contacts']['validator_name'])
-            summary.append(events[gid]['contacts']['validator_email'])
-            summary.append(events[gid]['contacts']['expert_name'])
-            summary.append(events[gid]['contacts']['expert_email'])
-            summary.append(events[gid]['contacts']['mitigation_name'])
-            summary.append(events[gid]['contacts']['mitigation_email'])
-            summary.append(events[gid]['contacts']['mitig_review_name'])
-            summary.append(events[gid]['contacts']['mitig_review_email'])
-            summary.append(events[gid]['contacts']['review_name'])
-            summary.append(events[gid]['contacts']['review_email'])
-            summary.append(events[gid]['contacts']['lead1_name'])
-            summary.append(events[gid]['contacts']['lead1_email'])
-            summary.append(events[gid]['contacts']['lead2_name'])
-            summary.append(events[gid]['contacts']['lead2_email'])
-            summary.append(review_flags[events[gid]['reviewed']])
+            summary = [first_upper(review_flags[events[gid]['reviewed']]), first_upper(val_flags[events[gid]['valid_status']]), dq_flags[events[gid]['valid_conclusion']]]
+            comments = list(events[gid]['comments'].values())
+            contacts = list(events[gid]['contacts'].values())
+            urls = [events[gid]['dqr_url'], events[gid]['git_issue_url']]
 
-            return render_template('val_summary.html', summary=summary)
+            noise_mitig = []
+            review_flags_summary = ['In progress', 'Completed', 'N/A']
+
+            if events[gid]['noise_mitigation']['H1']['status'] == 2 or events[gid]['noise_mitigation']['L1']['status'] == 2 or events[gid]['noise_mitigation']['V1']['status'] == 2:
+
+                nm_summ_h1 = list(events[gid]['noise_mitigation']['H1'].values())
+                nm_summ_h1[0] = bool(nm_summ_h1[0])
+                nm_summ_h1[1] = first_upper(val_flags[nm_summ_h1[1]])
+                nm_summ_h1[2] = review_flags_summary[nm_summ_h1[2]]
+                nm_summ_l1 = list(events[gid]['noise_mitigation']['L1'].values())
+                nm_summ_l1[0] = bool(nm_summ_l1[0])
+                nm_summ_l1[1] = first_upper(val_flags[nm_summ_l1[1]])
+                nm_summ_l1[2] = review_flags_summary[nm_summ_l1[2]]
+                nm_summ_v1 = list(events[gid]['noise_mitigation']['V1'].values())
+                nm_summ_v1[0] = bool(nm_summ_v1[0])
+                nm_summ_v1[1] = first_upper(val_flags[nm_summ_v1[1]])
+                nm_summ_v1[2] = review_flags_summary[nm_summ_v1[2]]
+
+                print(bool(events[gid]['noise_mitigation']['H1']['required']))
+
+                return render_template('mitig_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmh1=nm_summ_h1, nml1=nm_summ_l1, nmv1=nm_summ_v1)
 
 
-    @app.route('/warning/<gid>', methods=('GET', 'POST'))
-    def form_warning(gid):
+            else:
+                noise_mitig_summary = []
+                for ifo in ifos:
+                    if events[gid]['noise_mitigation'][ifo]['required'] == 1:
+                        noise_mitig_summary.append('required')
+                    else:
+                        noise_mitig_summary.append('not required')
+                    noise_mitig_summary.append(f"{mitigation_flags[events[gid]['noise_mitigation'][ifo]['status']]}")
+
+                return render_template('val_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmsummary=noise_mitig_summary)
+
+
+    @app.route('/warning_eval_form/<gid>', methods=('GET', 'POST'))
+    def warning_eval_form(gid):
 
         fname = events[gid]['contacts']['validator_name']
         args = [gid, fname, events[gid]['contacts']['validator_email'],
                 f'{flask_base_url}summaries/{gid}',
                 f'{flask_base_url}forms/{gid}']
 
-        return render_template('form_warning.html', args=args)
+        return render_template('warning_eval_form.html', args=args)
+
+
+    @app.route('/warning_mitig_form/<gid>', methods=('GET', 'POST'))
+    def warning_mitig_form(gid):
+        fname = events[gid]['contacts']['mitigation_name']
+        args = [gid, fname, events[gid]['contacts']['mitigation_email'],
+                f'{flask_base_url}summaries/{gid}',
+                f'{flask_base_url}mitigation/{gid}']
+
+        return render_template('warning_mitig_form.html', args=args)
+
+
+    @app.route('/warning_mitig_form2/<gid>', methods=('GET', 'POST'))
+    def warning_mitig_form2(gid):
+        args = [gid, f'{flask_base_url}summaries/{gid}', f'{flask_base_url}mitigation/{gid}']
+
+        return render_template('warning_mitig_form2.html', args=args)
+
+
+    @app.route('/json/<gid>', methods=('GET', 'POST'))
+    def event_json(gid):
+
+        # read event json
+        with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+            event_json = json.load(fp)
+
+        return event_json
+
 
     @app.route('/mitigation/<gid>', methods=('GET', 'POST'))
     def gen_mitigation_form(gid):
@@ -267,16 +325,25 @@ def create_app(port, git_dir, event_list, website_md):
 
                 # update the events list
                 event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[2])
-                event_list_df.at[gid_idx,'Contact person'] = f'{form.name.data} ([email](mailto:{form.email.data}))'
+                event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitig_review_name']} ([email](mailto:{event_data['contacts']['mitig_review_email']}))"
                 event_list_df.to_csv(event_list_fname, index=False)
 
                 # update website's .md table
-                md_fname = f'{git_dir}/data/{website_md}'
                 with open(md_fname, 'w') as md:
                     event_list_df.to_markdown(buf=md, numalign="center", index=False)
                 os.system(f'cd {git_dir}; mkdocs -q build')
 
-                # TODO: send emails, including the mitigation review person
+                subject = f'Noise mitigation report complete for {gid}'
+                body_mitig = f'{subject}. See summary at {summary_url} .'
+                body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit mitigation review form at {flask_base_url}/mitigation_review/{gid} .'
+
+                if notify:
+                    # send an email to mitigator
+                    send_email(git_dir, form.email.data, subject, body_mitig)
+                    # send an email to the lead
+                    send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_mitig)
+                    # send an email to the mitigation review
+                    send_email(git_dir, event_data['contacts']['mitig_review_email'], subject, body_review)
 
                 return render_template('form_mitigation_success.html', gid=gid, name=form.name.data, h1=form.H1_method.data, l1=form.L1_method.data, v1=form.V1_method.data)
 
@@ -310,7 +377,31 @@ def create_app(port, git_dir, event_list, website_md):
                 with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-                # TODO: send emails, including the final review person
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                # update the events list
+                event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
+                event_list_df.to_csv(event_list_fname, index=False)
+
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {git_dir}; mkdocs -q build')
+
+                subject = f'Noise mitigation report review complete for {gid}'
+                body_review = f'{subject}. See summary at {summary_url} .'
+                body_final_review = f'Please review event validation report for {gid}. Report summary can be found at {summary_url} .'
+
+                if notify:
+                    # send an email to noise mitigation reviewer
+                    send_email(git_dir, form.email.data, subject, body_review)
+                    # send an email to the lead
+                    send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_review)
+                    # send an email to the final reviewer
+                    send_email(git_dir, event_data['contacts']['reviw_email'], subject, body_final_review)
+
 
                 return render_template('form_mitigation_review_success.html', gid=gid, name=form.name.data, h1=review_flags[form.mitig_review_H1.data], l1=review_flags[form.mitig_review_L1.data], v1=review_flags[form.mitig_review_V1.data])
 
@@ -321,6 +412,31 @@ def create_app(port, git_dir, event_list, website_md):
         return render_template('form_mitigation_review.html', form=form, gid=gid)
 
 
+    @app.route('/comment/<gid>', methods=('GET', 'POST'))
+    def add_comment(gid):
+
+        form = Questionnaire_comment(request.form)
+        if request.method == 'POST':
+            if form.validate():
+
+                # update event json
+                with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+                    event_data = json.load(fp)
+
+                event_data['comments']['other'] = form.comment.data
+
+                with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
+                    json.dump(event_data, fp, indent=4)
+
+                return render_template('comment_success.html', gid=gid)
+
+            else:
+                flash('Error:'+str(form.errors),'danger')
+
+
+        return render_template('comment.html', form=form, gid=gid)
+
+
     @app.route('/review/<gid>', methods=('GET', 'POST'))
     def gen_final_review_form(gid):
 
@@ -329,26 +445,47 @@ def create_app(port, git_dir, event_list, website_md):
         if request.method == 'POST':
             if form.validate():
 
-                # read event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
-                    event_data = json.load(fp)
+                if form.review.data == 1:
 
-                event_data['contacts']['review_name'] = form.name.data
-                event_data['contacts']['review_email'] = form.email.data
-                event_data['comments']['review'] = form.comment.data
-                event_data['reviewed'] = 0 if form.review.data == 0 else 1
+                    # read event json
+                    with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+                        event_data = json.load(fp)
 
-                # update event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
-                    json.dump(event_data, fp, indent=4)
+                    event_data['contacts']['review_name'] = form.name.data
+                    event_data['contacts']['review_email'] = form.email.data
+                    event_data['comments']['review'] = form.comment.data
+                    event_data['reviewed'] = 1
+                    event_data['valid_status'] = 2
 
-                #TODO update buttons
-                # TODO update md table + the webpage
-                # TODO update messages
-                # TODO add a page to add other comments
-                # TODO update summary pages after each stuff, e.g. reviewed etc
-                # TODO: send emails about completing
-                # TODO send email to cbc schema
+                    # update event json
+                    with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
+                        json.dump(event_data, fp, indent=4)
+
+                    # read event list and find idx
+                    event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                    gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                    # update the events list
+                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['lead1_name']} ([email](mailto:{event_data['contacts']['lead1_email']}))"
+                    event_list_df.at[gid_idx,'Reviewed'] = 'Yes'
+                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[2])
+                    event_list_df.to_csv(event_list_fname, index=False)
+
+                    # update website's .md table
+                    with open(md_fname, 'w') as md:
+                        event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                    os.system(f'cd {git_dir}; mkdocs -q build')
+
+                    subject = f'Final review completed for {gid}'
+                    body_review = f'{subject}. See the summary at {summary_url}.'
+                    if notify:
+                        # send an email to the reviewer
+                        send_email(git_dir, form.email.data, subject, body_review)
+                        # send an email to the lead
+                        send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_review)
+
+                    # TODO CBC SCHEMA STUFF HERE
+
 
                 return render_template('form_review_success.html', gid=gid, name=form.name.data)
 
@@ -379,7 +516,7 @@ def create_app(port, git_dir, event_list, website_md):
                 if (form.conclusion_h1.data == 1 or form.conclusion_h1.data == 0) and (form.conclusion_l1.data == 1 or form.conclusion_l1.data == 0) and (form.conclusion_v1.data == 1 or form.conclusion_v1.data == 0):
 
                     # update the event json
-                    event_data['valid_status'] = 2
+                    event_data['valid_status'] = 1
                     event_data['valid_conclusion'] = 1
                     event_data['noise_mitigation']['H1']['required'] = 0
                     event_data['noise_mitigation']['H1']['status'] = 0
@@ -392,21 +529,25 @@ def create_app(port, git_dir, event_list, website_md):
                     event_data['contacts']['validator_email'] = form.email.data
 
                     # update the events list
-                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[2])
+                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
                     event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[1])
                     event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[0])
-                    event_list_df.at[gid_idx,'Contact person'] = f'{form.name.data} ([email](mailto:{form.email.data}))'
+                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
                     event_list_df.to_csv(event_list_fname, index=False)
 
-                    # TODO: send email to relevant parties, i.e. leads, validator, rrt
-                    # TODO update cbc schema
+                    subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[1])}'
+                    body_valid = f'{subject}. See summary at {summary_url} .'
+                    body_review = f'Please review event validation report for {gid}. Report summary can be found at {summary_url} .'
+                    if notify:
+                        # send an email to validator
+                        send_email(git_dir, form.email.data, subject, body_valid)
+                        # send an email to the lead
+                        send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_valid)
+                        # send an email to reviewer
+                        send_email(git_dir, event_data['contacts']['review_email'], subject, body_review)
 
 
                 else: # if h/l/v have issues
-
-                    # val_flags = ['not started', 'in progress', 'completed']
-                    # dq_flags = ['N/A', 'no DQ issues', 'noise mitigation required']
-                    # mitigation_flag = ['N/A', 'in progress', 'completed']
 
                     # update the event json
                     event_data['valid_status'] = 1
@@ -428,10 +569,18 @@ def create_app(port, git_dir, event_list, website_md):
                     event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitigation_name']} ([email](mailto:{event_data['contacts']['mitigation_email']}))"
                     event_list_df.to_csv(event_list_fname, index=False)
 
-                    # TODO: send emails to relevant parties, i.e. leads, validator, rrt, glitch mitigation team
+                    subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[2])}'
+                    body_valid = f'{subject}. See summary at {summary_url} .'
+                    body_mitig = f'{gid} requires noise mitigation, see the event validation report summary at {summary_url} .\n\nPlease submit your noise mitigation report at {flask_base_url}/mitigation/{gid} .'
+                    if notify:
+                        # send an email to validator
+                        send_email(git_dir, form.email.data, subject, body_valid)
+                        # send an email to the lead
+                        send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_valid)
+                        # send an email to noise mitigation
+                        send_email(git_dir, event_data['contacts']['mitigation_email'], subject, body_mitig)
 
                 # update website's .md table
-                md_fname = f'{git_dir}/data/{website_md}'
                 with open(md_fname, 'w') as md:
                     event_list_df.to_markdown(buf=md, numalign="center", index=False)
                 os.system(f'cd {git_dir}; mkdocs -q build')
@@ -446,11 +595,6 @@ def create_app(port, git_dir, event_list, website_md):
                 flash('Error:'+str(form.errors),'danger')
 
         return render_template('form.html', form=form, gid=gid)
-
-
-    @app.route('/faq/')
-    def faq():
-        return render_template('faq.html')
 
 
     @app.route('/about/')
@@ -469,12 +613,14 @@ def main():
     parser.add_argument('--events', type=str, help='event list .csv file in /data directory')
     parser.add_argument('--table', type=str, help='website table .md file in /data directory')
     parser.add_argument('--git', type=str, help='git directory of this app')
+    parser.add_argument('--notify', action=argparse.BooleanOptionalAction, help='Send notification emails.')
     args = parser.parse_args()
 
     app = create_app(port=args.port,
                      git_dir=args.git,
                      event_list=args.events,
-                     website_md=args.table)
+                     website_md=args.table,
+                     notify=args.notify)
     app.run()
 
 #------------------------------------------------------------------------------

@@ -3,54 +3,53 @@
 {% block content %}
     <h1>
         {% block title %}
-        {{ summary[0] }} validation summary
+        {{ gid }} validation summary
         {% endblock %}
     </h1>
     {% block main %}
+    <hr color="purple" align="left" width="40%" size="1">
     Validation status: {{ summary[1] }}
     <br>
-    Reviewed: {{ summary[27] }}
+    Reviewed: {{ summary[0] }}
     <br>
-    <br>
+    <hr color="purple" align="left" width="40%" size="1">
     Volunteer's conclusion: {{ summary[2] }}
     <br>
-    Volunteer's comment: {{ summary[3] }}
+    Volunteer's comment: {{ comments[0] }}
+    <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    Noise mitigation for H1: {{ nmsummary[0] }}
+    <br>
+    Noise mitigation status for H1: {{ nmsummary[1] }}
     <br>
     <br>
-    Noise mitigation for H1: {{ summary[4] }}
+    Noise mitigation for L1: {{ nmsummary[2] }}
     <br>
-    Noise mitigation status for H1: {{ summary[5] }}
-    <br>
-    <br>
-    Noise mitigation for L1: {{ summary[6] }}
-    <br>
-    Noise mitigation status for L1: {{ summary[7] }}
+    Noise mitigation status for L1: {{ nmsummary[3] }}
     <br>
     <br>
-    Noise mitigation for V1: {{ summary[8] }}
+    Noise mitigation for V1: {{ nmsummary[4] }}
     <br>
-    Noise mitigation status for V1: {{ summary[9] }}
+    Noise mitigation status for V1: {{ nmsummary[5] }}
     <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    DQR: <a href="{{ urls[0] }}">{{ urls[0] }}</a>
     <br>
-    Volunteer's validation form: <a href="{{ summary[10] }}">{{ summary[10] }}</a>
+    Git issue: <a href="{{ urls[1] }}">{{ urls[1] }}</a>
     <br>
-    DQR: <a href="{{ summary[11] }}">{{ summary[11] }}</a>
+    <hr color="purple" align="left" width="40%" size="1">
+    Validator: {{ contacts[0] }} (<a href="mailto:{{ contacts[1] }}">{{ contacts[1] }}</a>)
     <br>
-    Git issue: <a href="{{ summary[12] }}">{{ summary[12] }}</a>
+    DetChar expert: {{ contacts[2] }} (<a href="mailto:{{ contacts[3] }}">{{ contacts[3] }}</a>)
     <br>
+    Noise mitigation: {{ contacts[4] }} (<a href="mailto:{{ contacts[5] }}">{{ contacts[5] }}</a>)
     <br>
-    Validator: {{ summary[13] }} (<a href="mailto:{{ summary[14] }}">{{ summary[14] }}</a>)
+    Noise mitigation review: {{ contacts[6] }} (<a href="mailto:{{ contacts[7] }}">{{ contacts[7] }}</a>)
     <br>
-    DetChar expert: {{ summary[15] }} (<a href="mailto:{{ summary[16] }}">{{ summary[16] }}</a>)
+    Review: {{ contacts[8] }} (<a href="mailto:{{ contacts[9] }}">{{ contacts[9] }}</a>)
     <br>
-    Noise mitigation: {{ summary[17] }} (<a href="mailto:{{ summary[18] }}">{{ summary[18] }}</a>)
+    Lead: {{ contacts[10] }} (<a href="mailto:{{ contacts[11] }}">{{ contacts[11] }}</a>)
     <br>
-    Noise mitigation review: {{ summary[19] }} (<a href="mailto:{{ summary[20] }}">{{ summary[20] }}</a>)
-    <br>
-    Review: {{ summary[21] }} (<a href="mailto:{{ summary[22] }}">{{ summary[22] }}</a>)
-    <br>
-    Lead: {{ summary[23] }} (<a href="mailto:{{ summary[24] }}">{{ summary[24] }}</a>)
-    <br>
-    Lead: {{ summary[25] }} (<a href="mailto:{{ summary[26] }}">{{ summary[26] }}</a>)
+    Lead: {{ contacts[12] }} (<a href="mailto:{{ contacts[13] }}">{{ contacts[13] }}</a>)
     {% endblock %}
 {% endblock %}

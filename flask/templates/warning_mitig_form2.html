@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <h1>{% block title %}
+        {{ args[0] }} does not require noise mitigation, see the summary <a href="{{ args[1] }}">here</a>.  
+    {% endblock %}</h1>
+    
+    {% block main %}
+    If you still want to fill in the noise mitigation form, <a href="{{ args[2] }}">click here</a>. Note that the noise mitigation form results will be appended to the summary.
+    {% endblock %}
+
+{% endblock %}

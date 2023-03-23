@@ -6,14 +6,16 @@
         <div class='message'>
             <h3>{{ message['title'] }}</h3>
             <p> <a href="{{ message['summary_url'] }}"><button> VALIDATED EVENT SUMMARY </button></a> </p>
-            <a href="{{ message['form_url'] }}"><button>Event validation form</button></a>
-            <a href="{{ message['gitlab_issue_url'] }}"><button>Event GitLab issue</button></a>
+            <p> <a href="{{ message['form_url'] }}"><button>Event validation form</button></a> 
+            <a href="{{ message['mitig_url'] }}"><button>Noise mitigation form</button></a></p>
             <a href="{{ message['dqr_url'] }}"><button>Event DQR</button></a>
+            <a href="{{ message['gitlab_issue_url'] }}"><button>Event GitLab issue</button></a>
+            <a href="{{ message['docs_url'] }}"><button>Documentation</button></a>
             <p>{{ message['content'] }}</p>
         </div>
     {% endfor %}
 {{super()}}
 {%- block footer %}
-<footer><p>&copy;Copyright 2022 Ronaldas Macas, University of Portsmouth</p></footer>
+<footer><p>&copy;Copyright 2023 Ronaldas Macas, University of Portsmouth</p></footer>
 {%- endblock footer %}
 {% endblock %}

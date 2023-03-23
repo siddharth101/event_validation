@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>
+        {% block title %}
+        {{ gid }} validation summary
+        {% endblock %}
+    </h1>
+    {% block main %}
+    <hr color="purple" align="left" width="40%" size="1">
+    Validation status: {{ summary[1] }}
+    <br>
+    Reviewed: {{ summary[0] }}
+    <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    Volunteer's conclusion: {{ summary[2] }}
+    <br>
+    Volunteer's comment: {{ comments[0] }}
+    <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    Noise mitigation comment: {{ comments[1] }}
+    <br>
+    Noise mitigation review comment: {{ comments[2] }}
+    <br>
+    Review comment: {{ comments[3] }}
+    <br>
+    Other comment: {{ comments[4] }}
+    <hr color="purple" align="left" width="40%" size="1">
+    <h4> H1 noise mitigation </h4>
+    Required: {{ nmh1[0] }}
+    <br>
+    Review status: {{ nmh1[2] }}
+    <br>
+    Mitigation status: {{ nmh1[1] }}
+    <br>
+    Mitigation method: {{ nmh1[3] }}
+    <br>
+    Lowest analysis frequency (Hz): {{ nmh1[4] }}
+    <br>
+    Highest analysis frequency (Hz): {{ nmh1[5] }}
+    <br>
+    Start time for analysis (GPS seconds): {{ nmh1[6] }}
+    <br>
+    End time for analysis (GPS seconds): {{ nmh1[7] }}
+    <br>
+    Cleaned frame location: {{ nmh1[8] }}
+
+    <hr color="purple" align="left" width="40%" size="1">
+    <h4> L1 noise mitigation </h4>
+    Required: {{ nml1[0] }}
+    <br>
+    Review status: {{ nml1[2] }}
+    <br>
+    Mitigation status: {{ nml1[1] }}
+    <br>
+    Mitigation method: {{ nml1[3] }}
+    <br>
+    Lowest analysis frequency (Hz): {{ nml1[4] }}
+    <br>
+    Highest analysis frequency (Hz): {{ nml1[5] }}
+    <br>
+    Start time for analysis (GPS seconds): {{ nml1[6] }}
+    <br>
+    End time for analysis (GPS seconds): {{ nml1[7] }}
+    <br>
+    Cleaned frame location: {{ nml1[8] }}
+
+    <hr color="purple" align="left" width="40%" size="1">
+    <h4> V1 noise mitigation </h4>
+    Required: {{ nmv1[0] }}
+    <br>
+    Review status: {{ nmv1[2] }}
+    <br>
+    Mitigation status: {{ nmv1[1] }}
+    <br>
+    Mitigation method: {{ nmv1[3] }}
+    <br>
+    Lowest analysis frequency (Hz): {{ nmv1[4] }}
+    <br>
+    Highest analysis frequency (Hz): {{ nmv1[5] }}
+    <br>
+    Start time for analysis (GPS seconds): {{ nmv1[6] }}
+    <br>
+    End time for analysis (GPS seconds): {{ nmv1[7] }}
+    <br>
+    Cleaned frame location: {{ nmv1[8] }}
+
+    <hr color="purple" align="left" width="40%" size="1">
+    DQR: <a href="{{ urls[0] }}">{{ urls[0] }}</a>
+    <br>
+    Git issue: <a href="{{ urls[1] }}">{{ urls[1] }}</a>
+    <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    Validator: {{ contacts[0] }} (<a href="mailto:{{ contacts[1] }}">{{ contacts[1] }}</a>)
+    <br>
+    DetChar expert: {{ contacts[2] }} (<a href="mailto:{{ contacts[3] }}">{{ contacts[3] }}</a>)
+    <br>
+    Noise mitigation: {{ contacts[4] }} (<a href="mailto:{{ contacts[5] }}">{{ contacts[5] }}</a>)
+    <br>
+    Noise mitigation review: {{ contacts[6] }} (<a href="mailto:{{ contacts[7] }}">{{ contacts[7] }}</a>)
+    <br>
+    Review: {{ contacts[8] }} (<a href="mailto:{{ contacts[9] }}">{{ contacts[9] }}</a>)
+    <br>
+    Lead: {{ contacts[10] }} (<a href="mailto:{{ contacts[11] }}">{{ contacts[11] }}</a>)
+    {% endblock %}
+{% endblock %}

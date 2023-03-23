@@ -49,8 +49,8 @@
         "other": []
     },
     "contacts": {
-        "validator_name": "Liz Truss",
-        "validator_email": "liz.truss@ligo.org",
+        "validator_name": "Boris Johnson",
+        "validator_email": "boris.johnson@ligo.org",
         "expert_name": "Rishi Sunak",
         "expert_email": "Rishi.Sunak@ligo.org",
         "mitigation_name": "Gordon Brown",
@@ -65,5 +65,5 @@
         "lead2_email": "ronaldas.macas@ligo.org"
     },
     "other": [],
-    "cmd": "eval.py --verbose --git_dir /home/jdo86av3c/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --validator Liz Truss --far 0.5 --json G361581.json"
+    "cmd": "eval.py --git_dir /home/ronaldas.macas/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --ignore_far --json G361581.json"
 }

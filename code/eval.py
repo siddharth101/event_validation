@@ -30,7 +30,6 @@ def init_event_validation(event_name,
                           validator,
                           expert,
                           mitigation,
-                          mitig_review,
                           review,
                           dqr_url,
                           eval_url,
@@ -92,7 +91,6 @@ def init_event_validation(event_name,
     eval_summary_url = f'{eval_url}/summaries/{event_name}'
     noise_mitig_dict = {'required': [],
                         'status': [],
-                        'reviewed': review_status,
                         'method': [],
                         'fstart': [],
                         'fend': [],
@@ -112,7 +110,6 @@ def init_event_validation(event_name,
                                        'V1': noise_mitig_dict},
                   'comments': {'validator': [],
                                'mitigation': [],
-                               'mitig_review': [],
                                'review': [],
                                'other': []
                                },
@@ -122,8 +119,6 @@ def init_event_validation(event_name,
                                'expert_email': [],
                                'mitigation_name': [],
                                'mitigation_email': [],
-                               'mitig_review_name': [],
-                               'mitig_review_email': [],
                                'review_name': [],
                                'review_email': [],
                                'lead1_name': [],
@@ -139,7 +134,7 @@ def init_event_validation(event_name,
 
     # assign people
     logger.debug('Assigning volunteers')
-    event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, expert, mitigation, mitig_review, review, logger)
+    event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, expert, mitigation, review, logger)
 
     #--------------------------------------------------------------------------
 
@@ -210,7 +205,6 @@ def main():
     parser.add_argument('--validator', type=str, help="Validator name and surname")
     parser.add_argument('--expert', type=str, help="Expert name and surname")
     parser.add_argument('--mitigation', type=str, help="Noise mitigation contact name and surname")
-    parser.add_argument('--mitig_review', type=str, help="Noise mitigation review contact name and surname")
     parser.add_argument('--review', type=str, help="Event validation review contact name and surname")
     parser.add_argument('--dqr_url', type=str, required=True, help='Data quality report URL')
     parser.add_argument('--eval_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/eval', help='Event validation form URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/eval/')
@@ -254,7 +248,6 @@ def main():
                           validator=args.validator,
                           expert=args.expert,
                           mitigation=args.mitigation,
-                          mitig_review=args.mitig_review,
                           review=args.review,
                           dqr_url=args.dqr_url,
                           eval_url=args.eval_url,

@@ -10,7 +10,6 @@
         "H1": {
             "required": [],
             "status": [],
-            "reviewed": 0,
             "method": [],
             "fstart": [],
             "fend": [],
@@ -21,7 +20,6 @@
         "L1": {
             "required": [],
             "status": [],
-            "reviewed": 0,
             "method": [],
             "fstart": [],
             "fend": [],
@@ -32,7 +30,6 @@
         "V1": {
             "required": [],
             "status": [],
-            "reviewed": 0,
             "method": [],
             "fstart": [],
             "fend": [],
@@ -44,19 +41,16 @@
     "comments": {
         "validator": [],
         "mitigation": [],
-        "mitig_review": [],
         "review": [],
         "other": []
     },
     "contacts": {
-        "validator_name": "Boris Johnson",
-        "validator_email": "boris.johnson@ligo.org",
+        "validator_name": "Liz Truss",
+        "validator_email": "liz.truss@ligo.org",
         "expert_name": "Rishi Sunak",
         "expert_email": "Rishi.Sunak@ligo.org",
         "mitigation_name": "Gordon Brown",
         "mitigation_email": "gordon.brown@ligo.org",
-        "mitig_review_name": "David Cameron",
-        "mitig_review_email": "david.cameron@ligo.org",
         "review_name": "Tony Blair",
         "review_email": "tony.blair@ligo.org",
         "lead1_name": "Ronaldas Macas",
@@ -65,5 +59,5 @@
         "lead2_email": "ronaldas.macas@ligo.org"
     },
     "other": [],
-    "cmd": "eval.py --git_dir /home/ronaldas.macas/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --ignore_far --json G361581.json"
+    "cmd": "eval.py --verbose --git_dir /home/jdo86av3c/projects/eval --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --validator Liz Truss --far 0.5 --json G361581.json"
 }

@@ -147,19 +147,6 @@ def create_app(port, git_dir, event_list, website_md, notify):
         V1_frame = TextAreaField('V1_frame:')
 
 
-    class Questionnaire_mitigation_review(Form):
-
-        name = TextAreaField('name', [validators.InputRequired()])
-        email = TextAreaField('email:', [validators.InputRequired()])
-        comment = TextAreaField('comment:')
-
-        mitig_review_status = [(0, first_upper(review_flags[0])), (1, first_upper(review_flags[1])), (2, review_flags[2])]
-
-        mitig_review_H1 = SelectField('mitig_review_H1:', coerce=int, choices=mitig_review_status, validators=[validators.InputRequired()])
-        mitig_review_L1 = SelectField('mitig_review_L1:', coerce=int, choices=mitig_review_status, validators=[validators.InputRequired()])
-        mitig_review_V1 = SelectField('mitig_review_V1:', coerce=int, choices=mitig_review_status, validators=[validators.InputRequired()])
-
-
     class Questionnaire_review(Form):
 
         name = TextAreaField('name', [validators.InputRequired()])
@@ -169,6 +156,7 @@ def create_app(port, git_dir, event_list, website_md, notify):
         review_status = [(0, 'No'), (1, 'Yes')]
 
         review = SelectField('final_review:', coerce=int, choices=review_status, validators=[validators.InputRequired()])
+
 
     class Questionnaire_comment(Form):
 
@@ -325,7 +313,7 @@ def create_app(port, git_dir, event_list, website_md, notify):
 
                 # update the events list
                 event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[2])
-                event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitig_review_name']} ([email](mailto:{event_data['contacts']['mitig_review_email']}))"
+                event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
                 event_list_df.to_csv(event_list_fname, index=False)
 
                 # update website's .md table
@@ -335,7 +323,7 @@ def create_app(port, git_dir, event_list, website_md, notify):
 
                 subject = f'Noise mitigation report complete for {gid}'
                 body_mitig = f'{subject}. See summary at {summary_url} .'
-                body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit mitigation review form at {flask_base_url}/mitigation_review/{gid} .'
+                body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
 
                 if notify:
                     # send an email to mitigator
@@ -343,7 +331,7 @@ def create_app(port, git_dir, event_list, website_md, notify):
                     # send an email to the lead
                     send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_mitig)
                     # send an email to the mitigation review
-                    send_email(git_dir, event_data['contacts']['mitig_review_email'], subject, body_review)
+                    send_email(git_dir, event_data['contacts']['review_email'], subject, body_review)
 
                 return render_template('form_mitigation_success.html', gid=gid, name=form.name.data, h1=form.H1_method.data, l1=form.L1_method.data, v1=form.V1_method.data)
 
@@ -352,64 +340,6 @@ def create_app(port, git_dir, event_list, website_md, notify):
 
 
         return render_template('form_mitigation.html', form=form, gid=gid)
-
-
-    @app.route('/mitigation_review/<gid>', methods=('GET', 'POST'))
-    def gen_mitigation_review_form(gid):
-
-        form = Questionnaire_mitigation_review(request.form)
-
-        if request.method == 'POST':
-            if form.validate():
-
-                # read event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
-                    event_data = json.load(fp)
-
-                event_data['contacts']['mitig_review_name'] = form.name.data
-                event_data['contacts']['mitig_review_email'] = form.email.data
-                event_data['comments']['mitig_review'] = form.comment.data
-                event_data['noise_mitigation']['H1']['reviewed'] = 0 if form.mitig_review_H1.data == 0 else 1
-                event_data['noise_mitigation']['L1']['reviewed'] = 0 if form.mitig_review_L1.data == 0 else 1
-                event_data['noise_mitigation']['V1']['reviewed'] = 0 if form.mitig_review_V1.data == 0 else 1
-
-                # update event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
-                    json.dump(event_data, fp, indent=4)
-
-                # read event list and find idx
-                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
-
-                # update the events list
-                event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
-                event_list_df.to_csv(event_list_fname, index=False)
-
-                # update website's .md table
-                with open(md_fname, 'w') as md:
-                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                os.system(f'cd {git_dir}; mkdocs -q build')
-
-                subject = f'Noise mitigation report review complete for {gid}'
-                body_review = f'{subject}. See summary at {summary_url} .'
-                body_final_review = f'Please review event validation report for {gid}. Report summary can be found at {summary_url} .'
-
-                if notify:
-                    # send an email to noise mitigation reviewer
-                    send_email(git_dir, form.email.data, subject, body_review)
-                    # send an email to the lead
-                    send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_review)
-                    # send an email to the final reviewer
-                    send_email(git_dir, event_data['contacts']['reviw_email'], subject, body_final_review)
-
-
-                return render_template('form_mitigation_review_success.html', gid=gid, name=form.name.data, h1=review_flags[form.mitig_review_H1.data], l1=review_flags[form.mitig_review_L1.data], v1=review_flags[form.mitig_review_V1.data])
-
-            else:
-                flash('Error:'+str(form.errors),'danger')
-
-
-        return render_template('form_mitigation_review.html', form=form, gid=gid)
 
 
     @app.route('/comment/<gid>', methods=('GET', 'POST'))
@@ -423,6 +353,7 @@ def create_app(port, git_dir, event_list, website_md, notify):
                 with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
 
+                #TODO: append form data, not overwrite
                 event_data['comments']['other'] = form.comment.data
 
                 with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
@@ -537,7 +468,7 @@ def create_app(port, git_dir, event_list, website_md, notify):
 
                     subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[1])}'
                     body_valid = f'{subject}. See summary at {summary_url} .'
-                    body_review = f'Please review event validation report for {gid}. Report summary can be found at {summary_url} .'
+                    body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
                     if notify:
                         # send an email to validator
                         send_email(git_dir, form.email.data, subject, body_valid)

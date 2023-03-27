@@ -58,13 +58,12 @@ def send_email(git_dir, email, subject, body):
 
 #------------------------------------------------------------------------------
 
-def create_app(port, git_dir, event_list, website_md, notify):
+def create_app(url, git_dir, event_list, website_md, notify):
     app = Flask(__name__)
 
     # app.config['SECRET_KEY'] = 'gw150914'
     # app.config['DEBUG'] = True
-    # TODO: change port variable to base url
-    flask_base_url = f'http://127.0.0.1:{port}/'
+    flask_base_url = f'{url}/'
 
     md_fname = f'{git_dir}/data/{website_md}'
     event_list_fname = f'{git_dir}/data/{event_list}'
@@ -542,14 +541,14 @@ def main():
 
     # parse args
     parser = argparse.ArgumentParser(description=__doc__, prog=__process_name__)
-    parser.add_argument('--port', type=int, help='port to host the website')
+    parser.add_argument('--url', type=str, help='flask website url')
     parser.add_argument('--events', type=str, help='event list .csv file in /data directory')
     parser.add_argument('--table', type=str, help='website table .md file in /data directory')
     parser.add_argument('--git', type=str, help='git directory of this app')
     parser.add_argument('--notify', action=argparse.BooleanOptionalAction, help='Send notification emails.')
     args = parser.parse_args()
 
-    app = create_app(port=args.port,
+    app = create_app(url=args.url,
                      git_dir=args.git,
                      event_list=args.events,
                      website_md=args.table,

@@ -88,7 +88,7 @@ def init_event_validation(event_name,
     logger.debug(f'Creating event dictionary for {event_name}')
     valid_status = 0  # i.e. validation not started
     review_status = 0  # i.e. not reviewed
-    eval_summary_url = f'{eval_url}/summaries/{event_name}'
+    eval_summary_url = f'{eval_url}/summary/{event_name}'
     noise_mitig_dict = {'required': [],
                         'status': [],
                         'method': [],

@@ -158,14 +158,14 @@ def init_event_validation(event_name,
     if create_issue:
         logger.debug('Making a git issue')
         issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
-        git_issue(event_data, git_dir, issue_email, logger)
+        git_issue(event_data, issue_email, logger)
 
     #--------------------------------------------------------------------------
 
     # send emails
     if send_email:
         logger.debug('Sending emails')
-        emails(event_data, git_dir, docs_url, logger)
+        emails(event_data, docs_url, logger)
 
      #--------------------------------------------------------------------------
 

@@ -1,3 +1,3 @@
-| Event   | Status      | Conclusion   | Noise mitigation   | Reviewed   | Summary                                            | Contact person                                 |
-|:--------|:------------|:-------------|:-------------------|:-----------|:---------------------------------------------------|:-----------------------------------------------|
-| G361581 | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summaries/G361581) | Liz Truss ([email](mailto:liz.truss@ligo.org)) |
+| Event   | Status      | Conclusion   | Noise mitigation   | Reviewed   | Summary                                          | Contact person                                         |
+|:--------|:------------|:-------------|:-------------------|:-----------|:-------------------------------------------------|:-------------------------------------------------------|
+| G361581 | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summary/G361581) | Boris Johnson ([email](mailto:boris.johnson@ligo.org)) |

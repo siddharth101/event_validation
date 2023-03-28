@@ -1,4 +1,4 @@
-python eval.py \
+python create_event.py \
     --verbose \
     --git_dir /home/ronaldas.macas/projects/eval \
     --events_file events_testing.csv \
@@ -8,4 +8,4 @@ python eval.py \
     --dqr_url https://dqr.updateMe.com \
     --eval_url https://dqr.updateMe.com \
     --ignore_far \
-    --json G361581.json
+    --event_name G361581 

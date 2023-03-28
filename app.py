@@ -7,67 +7,32 @@ FLASK website for event validation
 Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 """
 
-import json, argparse, os, subprocess
+import json, argparse, os
 import pandas as pd
 
-from wtforms import Form, TextAreaField, validators, SubmitField, SelectField, IntegerField
-from flask import Flask, render_template, request, url_for, flash
+from utils import get_events_dict, first_upper, send_email
+
+from wtforms import Form, TextAreaField, validators, SelectField
+from flask import Flask, render_template, request, flash
 
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.3'
+__version__ = '0.4'
 __process_name__ = 'eval-website'
 
 #------------------------------------------------------------------------------
 
-# read events file and update the events dict
-def get_events_dict(list_fname, git_dir):
-
-    list_content = pd.read_csv(list_fname)
-    list_events = list_content['Event']
-
-    events = {}
-    for event in list_events:
-
-        fname = f'{git_dir}/data/events/{event}.json'
-        with open(fname, 'r') as event_json:
-            event_data = json.load(event_json)
-
-
-        event_dict = {}
-        for key in event_data:
-            if key != 'event_name':
-                event_dict.update({f'{key}':event_data[key]})
-
-        events.update({event_data['event_name']:event_dict})
-
-    return events
-
-
-def first_upper(string):
-    final_string = f'{string[0].upper()}{string[1:]}'
-    return final_string
-
-
-def send_email(git_dir, email, subject, body):
-
-    subprocess.check_call([f'{git_dir}/code/send_email.sh', email, subject, body])
-
-    return
-
-#------------------------------------------------------------------------------
-
-def create_app(url, git_dir, event_list, website_md, notify):
+def create_app(url, wdir, event_list, website_md, notify):
     app = Flask(__name__)
 
     # app.config['SECRET_KEY'] = 'gw150914'
     # app.config['DEBUG'] = True
     flask_base_url = f'{url}/'
 
-    md_fname = f'{git_dir}/data/{website_md}'
-    event_list_fname = f'{git_dir}/data/{event_list}'
-    events = get_events_dict(event_list_fname, git_dir)
+    md_fname = f'{wdir}/data/{website_md}'
+    event_list_fname = f'{wdir}/data/{event_list}'
+    events = get_events_dict(event_list_fname, wdir)
 
     ifos = ['H1', 'L1', 'V1']
     val_flags = ['not started', 'in progress', 'completed']
@@ -184,7 +149,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
                 gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                 # read event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+                with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
 
                 # if h/l/v have no DQ issues
@@ -216,11 +181,11 @@ def create_app(url, git_dir, event_list, website_md, notify):
                         body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
 
                         # send an email to validator
-                        send_email(git_dir, form.email.data, subject, body_valid)
+                        send_email(form.email.data, subject, body_valid)
                         # send an email to the lead
-                        send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_valid)
+                        send_email(event_data['contacts']['lead1_email'], subject, body_valid)
                         # send an email to reviewer
-                        send_email(git_dir, event_data['contacts']['review_email'], subject, body_review)
+                        send_email(event_data['contacts']['review_email'], subject, body_review)
 
 
                 else: # if h/l/v have issues
@@ -251,19 +216,19 @@ def create_app(url, git_dir, event_list, website_md, notify):
                         body_mitig = f'{gid} requires noise mitigation, see the event validation report summary at {summary_url} .\n\nPlease submit your noise mitigation report at {flask_base_url}/mitigation/{gid} .'
 
                         # send an email to validator
-                        send_email(git_dir, form.email.data, subject, body_valid)
+                        send_email(form.email.data, subject, body_valid)
                         # send an email to the lead
-                        send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_valid)
+                        send_email(event_data['contacts']['lead1_email'], subject, body_valid)
                         # send an email to noise mitigation
-                        send_email(git_dir, event_data['contacts']['mitigation_email'], subject, body_mitig)
+                        send_email(event_data['contacts']['mitigation_email'], subject, body_mitig)
 
                 # update website's .md table
                 with open(md_fname, 'w') as md:
                     event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                os.system(f'cd {git_dir}; mkdocs -q build')
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 # update event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
+                with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
                 return render_template('form_success.html', gid=gid, name=form.name.data, h1=dq_flags[form.conclusion_h1.data], l1=dq_flags[form.conclusion_l1.data], v1=dq_flags[form.conclusion_v1.data])
@@ -305,7 +270,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
             if form.validate():
 
                 # read event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+                with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
 
                 # update the event json
@@ -323,7 +288,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
                 event_data['contacts']['mitigation_email'] = form.email.data
 
                 # update event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
+                with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
                 # read event list and find idx
@@ -338,7 +303,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
                 # update website's .md table
                 with open(md_fname, 'w') as md:
                     event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                os.system(f'cd {git_dir}; mkdocs -q build')
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Noise mitigation report complete for {gid}'
@@ -346,11 +311,11 @@ def create_app(url, git_dir, event_list, website_md, notify):
                     body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
 
                     # send an email to mitigator
-                    send_email(git_dir, form.email.data, subject, body_mitig)
+                    send_email(form.email.data, subject, body_mitig)
                     # send an email to the lead
-                    send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_mitig)
+                    send_email(event_data['contacts']['lead1_email'], subject, body_mitig)
                     # send an email to the mitigation review
-                    send_email(git_dir, event_data['contacts']['review_email'], subject, body_review)
+                    send_email(event_data['contacts']['review_email'], subject, body_review)
 
                 return render_template('form_mitigation_success.html', gid=gid, name=form.name.data, h1=form.H1_method.data, l1=form.L1_method.data, v1=form.V1_method.data)
 
@@ -372,7 +337,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
                 if form.review.data == 1:
 
                     # read event json
-                    with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+                    with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
                         event_data = json.load(fp)
 
                     event_data['contacts']['review_name'] = form.name.data
@@ -382,7 +347,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
                     event_data['valid_status'] = 2
 
                     # update event json
-                    with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
+                    with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                         json.dump(event_data, fp, indent=4)
 
                     # read event list and find idx
@@ -398,16 +363,16 @@ def create_app(url, git_dir, event_list, website_md, notify):
                     # update website's .md table
                     with open(md_fname, 'w') as md:
                         event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                    os.system(f'cd {git_dir}; mkdocs -q build')
+                    os.system(f'cd {wdir}; mkdocs -q build')
 
                     if notify:
                         subject = f'Final review completed for {gid}'
                         body_review = f'{subject}. See the summary at {summary_url}.'
 
                         # send an email to the reviewer
-                        send_email(git_dir, form.email.data, subject, body_review)
+                        send_email(form.email.data, subject, body_review)
                         # send an email to the lead
-                        send_email(git_dir, event_data['contacts']['lead1_email'], subject, body_review)
+                        send_email(event_data['contacts']['lead1_email'], subject, body_review)
 
                     # TODO CBC SCHEMA STUFF HERE
 
@@ -504,7 +469,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
             if form.validate():
 
                 # update event json
-                with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+                with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
 
                 if len(event_data['comments']['other']) == 0:
@@ -512,7 +477,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
                 else:
                     event_data['comments']['other'] = event_data['comments']['other'] + ' ' + form.comment.data
 
-                with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
+                with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
                 return render_template('comment_success.html', gid=gid)
@@ -527,7 +492,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
     @app.route('/json/<gid>', methods=('GET', 'POST'))
     def event_json(gid):
 
-        with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
+        with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
             event_json = json.load(fp)
 
         return event_json
@@ -548,12 +513,12 @@ def main():
     parser.add_argument('--url', type=str, help='flask website url')
     parser.add_argument('--events', type=str, help='event list .csv file in /data directory')
     parser.add_argument('--table', type=str, help='website table .md file in /data directory')
-    parser.add_argument('--git', type=str, help='git directory of this app')
+    parser.add_argument('--wdir', type=os.path.abspath, help='directory of this app')
     parser.add_argument('--notify', action=argparse.BooleanOptionalAction, help='Send notification emails.')
     args = parser.parse_args()
 
     app = create_app(url=args.url,
-                     git_dir=args.git,
+                     wdir=args.wdir,
                      event_list=args.events,
                      website_md=args.table,
                      notify=args.notify)

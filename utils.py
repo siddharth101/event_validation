@@ -1,6 +1,6 @@
 # DetChar Event Validation - Ronaldas Macas
 
-import pdb, json, subprocess, datetime
+import os, json, datetime
 import pandas as pd
 import numpy as np
 
@@ -129,7 +129,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
     return
 
 
-def git_issue(event_data, git_dir, issue_email, logger):
+def git_issue(event_data, issue_email, logger):
 
     lead1_name = event_data['contacts']['lead1_name'].split(' ')
     lead1_handle = f'{lead1_name[0].lower()}.{lead1_name[1].lower()}'
@@ -140,12 +140,13 @@ def git_issue(event_data, git_dir, issue_email, logger):
             f"Assigned volunteer {event_data['contacts']['validator_name']} ({event_data['contacts']['validator_email']}), expert {event_data['contacts']['expert_name']} ({event_data['contacts']['expert_email']}), noise mitigation {event_data['contacts']['mitigation_name']} ({event_data['contacts']['mitigation_email']}), and reviewer {event_data['contacts']['review_name']} ({event_data['contacts']['review_email']}).\n\n"
             f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']}).")
 
-    subprocess.check_call([f'{git_dir}/code/send_email.sh', issue_email, event_data['event_name'], text])
+    send_email(issue_email, event_data['event_name'], text)
+
     logger.info('Created a git issue')
 
     return
 
-def emails(event_data, git_dir, docs_url, logger):
+def emails(event_data, docs_url, logger):
 
     valid_email = event_data['contacts']['validator_email']
     expert_email = event_data['contacts']['expert_email']
@@ -177,12 +178,49 @@ def emails(event_data, git_dir, docs_url, logger):
             f"Review: {review_name} ({review_email})\n\n")
     post_body = f"For any questions, contact {lead1_name} ({lead1_email}) and {lead2_name} ({lead2_name})."
 
-
-    subprocess.check_call([f'{git_dir}/code/send_email.sh', valid_email, subject, pre_body_valid+body+post_body])
-    subprocess.check_call([f'{git_dir}/code/send_email.sh', expert_email, subject, pre_body_expert+body+post_body])
-    subprocess.check_call([f'{git_dir}/code/send_email.sh', lead1_email, subject, body])
-    subprocess.check_call([f'{git_dir}/code/send_email.sh', lead2_email, subject, body])
+    send_email(valid_email, subject, pre_body_valid+body+post_body)
+    send_email(expert_email, subject, pre_body_expert+body+post_body)
+    send_email(lead1_email, subject, body)
+    send_email(lead2_email, subject, body)
 
     logger.info('Sent emails')
+
+    return
+
+
+def get_events_dict(list_fname, wdir):
+
+    list_content = pd.read_csv(list_fname)
+    list_events = list_content['Event']
+
+    events = {}
+    for event in list_events:
+
+        fname = f'{wdir}/data/events/{event}.json'
+        with open(fname, 'r') as event_json:
+            event_data = json.load(event_json)
+
+
+        event_dict = {}
+        for key in event_data:
+            if key != 'event_name':
+                event_dict.update({f'{key}':event_data[key]})
+
+        events.update({event_data['event_name']:event_dict})
+
+    return events
+
+
+def first_upper(string):
+    final_string = f'{string[0].upper()}{string[1:]}'
+    return final_string
+
+
+def send_email(email, subject, body):
+
+    sender = os.environ.get('USER')
+    sender = f'{sender}@ligo.org'
+
+    os.system(f'Mail -v -s "{subject}" -r {sender} {email} <<< {body}')
 
     return

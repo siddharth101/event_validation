@@ -1,4 +1,5 @@
 python eval.py \
+    --verbose \
     --git_dir /home/ronaldas.macas/projects/eval \
     --events_file events_testing.csv \
     --contact_file contacts_testing.csv \

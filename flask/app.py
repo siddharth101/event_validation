@@ -21,7 +21,7 @@ __process_name__ = 'eval-website'
 
 #------------------------------------------------------------------------------
 
-# read events file and update the messages list
+# read events file and update the events dict
 def get_events_dict(list_fname, git_dir):
 
     list_content = pd.read_csv(list_fname)
@@ -75,6 +75,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
     mitigation_flags = ['N/A', 'in progress', 'completed']
     review_flags = ['no', 'yes', 'N/A']
 
+#-------------------------------
 
     class form_validation(Form):
 
@@ -134,6 +135,7 @@ def create_app(url, git_dir, event_list, website_md, notify):
 
         comment = TextAreaField('comment:')
 
+#-------------------------------
 
     @app.route('/')
     def index():
@@ -208,10 +210,11 @@ def create_app(url, git_dir, event_list, website_md, notify):
                     event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
                     event_list_df.to_csv(event_list_fname, index=False)
 
-                    subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[1])}'
-                    body_valid = f'{subject}. See summary at {summary_url} .'
-                    body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
                     if notify:
+                        subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[1])}'
+                        body_valid = f'{subject}. See summary at {summary_url} .'
+                        body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
+
                         # send an email to validator
                         send_email(git_dir, form.email.data, subject, body_valid)
                         # send an email to the lead
@@ -242,10 +245,11 @@ def create_app(url, git_dir, event_list, website_md, notify):
                     event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitigation_name']} ([email](mailto:{event_data['contacts']['mitigation_email']}))"
                     event_list_df.to_csv(event_list_fname, index=False)
 
-                    subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[2])}'
-                    body_valid = f'{subject}. See summary at {summary_url} .'
-                    body_mitig = f'{gid} requires noise mitigation, see the event validation report summary at {summary_url} .\n\nPlease submit your noise mitigation report at {flask_base_url}/mitigation/{gid} .'
                     if notify:
+                        subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[2])}'
+                        body_valid = f'{subject}. See summary at {summary_url} .'
+                        body_mitig = f'{gid} requires noise mitigation, see the event validation report summary at {summary_url} .\n\nPlease submit your noise mitigation report at {flask_base_url}/mitigation/{gid} .'
+
                         # send an email to validator
                         send_email(git_dir, form.email.data, subject, body_valid)
                         # send an email to the lead
@@ -336,11 +340,11 @@ def create_app(url, git_dir, event_list, website_md, notify):
                     event_list_df.to_markdown(buf=md, numalign="center", index=False)
                 os.system(f'cd {git_dir}; mkdocs -q build')
 
-                subject = f'Noise mitigation report complete for {gid}'
-                body_mitig = f'{subject}. See summary at {summary_url} .'
-                body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
-
                 if notify:
+                    subject = f'Noise mitigation report complete for {gid}'
+                    body_mitig = f'{subject}. See summary at {summary_url} .'
+                    body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
+
                     # send an email to mitigator
                     send_email(git_dir, form.email.data, subject, body_mitig)
                     # send an email to the lead
@@ -396,9 +400,10 @@ def create_app(url, git_dir, event_list, website_md, notify):
                         event_list_df.to_markdown(buf=md, numalign="center", index=False)
                     os.system(f'cd {git_dir}; mkdocs -q build')
 
-                    subject = f'Final review completed for {gid}'
-                    body_review = f'{subject}. See the summary at {summary_url}.'
                     if notify:
+                        subject = f'Final review completed for {gid}'
+                        body_review = f'{subject}. See the summary at {summary_url}.'
+
                         # send an email to the reviewer
                         send_email(git_dir, form.email.data, subject, body_review)
                         # send an email to the lead
@@ -447,8 +452,6 @@ def create_app(url, git_dir, event_list, website_md, notify):
                 nm_summ_v1[0] = bool(nm_summ_v1[0])
                 nm_summ_v1[1] = first_upper(val_flags[nm_summ_v1[1]])
                 nm_summ_v1[2] = review_flags_summary[nm_summ_v1[2]]
-
-                print(bool(events[gid]['noise_mitigation']['H1']['required']))
 
                 return render_template('mitig_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmh1=nm_summ_h1, nml1=nm_summ_l1, nmv1=nm_summ_v1)
 
@@ -504,8 +507,10 @@ def create_app(url, git_dir, event_list, website_md, notify):
                 with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
 
-                #TODO: append form data, not overwrite
-                event_data['comments']['other'] = form.comment.data
+                if len(event_data['comments']['other']) == 0:
+                    event_data['comments']['other'] = form.comment.data
+                else:
+                    event_data['comments']['other'] = event_data['comments']['other'] + ' ' + form.comment.data
 
                 with open(f'{git_dir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
@@ -522,7 +527,6 @@ def create_app(url, git_dir, event_list, website_md, notify):
     @app.route('/json/<gid>', methods=('GET', 'POST'))
     def event_json(gid):
 
-        # read event json
         with open(f'{git_dir}/data/events/{gid}.json', 'r') as fp:
             event_json = json.load(fp)
 

@@ -8,16 +8,16 @@
 
 ## Installation
 
-Pre-requisites: 
-`numpy scipy gwpy matplotlib astropy pandas mdutils markdown-include mkdocs-material-igwn tabulate flask Flask-WTF Flask-Bootstrap4 Flask-Table gunicorn`
+The repo can be installed with pip, i.e. `pip install .`.
 
-Alternatively, use conda environment `/home/ronaldas.macas/.conda/envs/devil`
-
-
+Alternatively, use conda environment `/home/ronaldas.macas/.conda/envs/eval`
 
 ## Usage
 
-Add instructions.
+To create an event, an example command is given in `event_example.sh` script.
+
+To launch Flask website containing event validation webforms, use gunicorn in /code folder to run `app.py`. Example command:
+`gunicorn --reload-extra-file /home/ronaldas.macas/projects/eval/data/events_testing.csv --reload -w 4 -b 127.0.0.1:5000 'app:create_app(url="", wdir="/home/ronaldas.macas/projects/eval", event_list="events_testing.csv", website_md="table_testing.md", notify=0)`
 
 ## Contact
 

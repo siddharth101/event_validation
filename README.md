@@ -8,9 +8,9 @@
 
 ## Installation
 
-The repo can be installed with pip, i.e. `pip install .`.
+The repo can be installed with pip, i.e. `pip install .`
 
-Alternatively, use conda environment `/home/ronaldas.macas/.conda/envs/eval`
+Alternatively, use conda environment (on CIT) `/home/ronaldas.macas/.conda/envs/eval`
 
 ## Usage
 

@@ -11,6 +11,6 @@ setuptools.setup(
         "Bug Tracker": "https://git.ligo.org/detchar/event-validation/issues"
     },
     license='MIT',
-    packages=['eval'],
+    packages=['code'],
     install_requires=['numpy', 'scipy', 'gwpy', 'matplotlib', 'astropy', 'pandas', 'mdutils', 'markdown-include', 'mkdocs-material-igwn', 'tabulate', 'flask', 'Flask-WTF', 'Flask-Bootstrap4', 'Flask-Table', 'gunicorn'],
 )

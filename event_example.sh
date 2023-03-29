@@ -1,6 +1,6 @@
-python create_event.py \
+python code/create_event.py \
     --verbose \
-    --git_dir /home/ronaldas.macas/projects/eval \
+    --git_dir . \
     --events_file events_testing.csv \
     --contact_file contacts_testing.csv \
     --md_file table_testing.md \

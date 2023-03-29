@@ -221,6 +221,6 @@ def send_email(email, subject, body):
     sender = os.environ.get('USER')
     sender = f'{sender}@ligo.org'
 
-    os.system(f'Mail -v -s "{subject}" -r {sender} {email} <<< {body}')
+    os.system(f'Mail -v -s "{subject}" -r {sender} {email} <<< "{body}"')
 
     return

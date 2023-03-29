@@ -40,6 +40,34 @@ def create_app(url, wdir, event_list, website_md, notify):
     mitigation_flags = ['N/A', 'in progress', 'completed']
     review_flags = ['no', 'yes', 'N/A']
 
+    messages = []
+    for key, item in sorted(list(events.items()), key=lambda x:x[0].lower(), reverse=True):
+
+        # add a warning if one wants to overwrite event validation form
+        if item["valid_status"] == 0:
+            form_url = f'{flask_base_url}validation/{key}'
+        else:
+            form_url = f'{flask_base_url}warning_eval_form/{key}'
+
+        # add a warning if one wants to overwrite noise mitigation form
+        for ifo in ifos:
+            if item['noise_mitigation'][ifo]['status'] == 2:
+                mitig_url = f'{flask_base_url}warning_mitig_form/{key}'
+            else:
+                mitig_url = f'{flask_base_url}mitigation/{key}'
+
+        # add a warning if one wants to fill in the noise mitigation form even though it is not required because there are no data quality issues
+        if item['noise_mitigation']['H1']['required'] == 0 and item['noise_mitigation']['L1']['required'] == 0 and item['noise_mitigation']['V1']['required'] == 0:
+            mitig_url = f'{flask_base_url}warning_mitig_form2/{key}'
+
+        summary_url = f'{flask_base_url}summary/{key}'
+        dqr_url = events[key]['dqr_url']
+        docs_url = dqr_url
+
+        title = f'{key}: {val_flags[item["valid_status"]]}'
+        message = {'title':title, 'content':f'', 'form_url':form_url, 'mitig_url':mitig_url, 'docs_url':docs_url, 'gitlab_issue_url':item['git_issue_url'], 'dqr_url':dqr_url, 'summary_url':summary_url}
+        messages.append(message)
+
 #-------------------------------
 
     class form_validation(Form):
@@ -104,35 +132,6 @@ def create_app(url, wdir, event_list, website_md, notify):
 
     @app.route('/')
     def index():
-
-        messages = []
-        for key, item in sorted(list(events.items()), key=lambda x:x[0].lower(), reverse=True):
-
-            # add a warning if one wants to overwrite event validation form
-            if item["valid_status"] == 0:
-                form_url = f'{flask_base_url}validation/{key}'
-            else:
-                form_url = f'{flask_base_url}warning_eval_form/{key}'
-
-            # add a warning if one wants to overwrite noise mitigation form
-            for ifo in ifos:
-                if item['noise_mitigation'][ifo]['status'] == 2:
-                    mitig_url = f'{flask_base_url}warning_mitig_form/{key}'
-                else:
-                    mitig_url = f'{flask_base_url}mitigation/{key}'
-
-            # add a warning if one wants to fill in the noise mitigation form even though it is not required because there are no data quality issues
-            if item['noise_mitigation']['H1']['required'] == 0 and item['noise_mitigation']['L1']['required'] == 0 and item['noise_mitigation']['V1']['required'] == 0:
-                mitig_url = f'{flask_base_url}warning_mitig_form2/{key}'
-
-            summary_url = f'{flask_base_url}summary/{key}'
-            dqr_url = events[key]['dqr_url']
-            docs_url = dqr_url
-
-            title = f'{key}: {val_flags[item["valid_status"]]}'
-            message = {'title':title, 'content':f'', 'form_url':form_url, 'mitig_url':mitig_url, 'docs_url':docs_url, 'gitlab_issue_url':item['git_issue_url'], 'dqr_url':dqr_url, 'summary_url':summary_url}
-            messages.append(message)
-
         return render_template('index.html', messages=messages)
 
 
@@ -401,22 +400,18 @@ def create_app(url, wdir, event_list, website_md, notify):
             urls = [events[gid]['dqr_url'], events[gid]['git_issue_url']]
 
             noise_mitig = []
-            review_flags_summary = ['In progress', 'Completed', 'N/A']
 
             if events[gid]['noise_mitigation']['H1']['status'] == 2 or events[gid]['noise_mitigation']['L1']['status'] == 2 or events[gid]['noise_mitigation']['V1']['status'] == 2:
 
                 nm_summ_h1 = list(events[gid]['noise_mitigation']['H1'].values())
                 nm_summ_h1[0] = bool(nm_summ_h1[0])
                 nm_summ_h1[1] = first_upper(val_flags[nm_summ_h1[1]])
-                nm_summ_h1[2] = review_flags_summary[nm_summ_h1[2]]
                 nm_summ_l1 = list(events[gid]['noise_mitigation']['L1'].values())
                 nm_summ_l1[0] = bool(nm_summ_l1[0])
                 nm_summ_l1[1] = first_upper(val_flags[nm_summ_l1[1]])
-                nm_summ_l1[2] = review_flags_summary[nm_summ_l1[2]]
                 nm_summ_v1 = list(events[gid]['noise_mitigation']['V1'].values())
                 nm_summ_v1[0] = bool(nm_summ_v1[0])
                 nm_summ_v1[1] = first_upper(val_flags[nm_summ_v1[1]])
-                nm_summ_v1[2] = review_flags_summary[nm_summ_v1[2]]
 
                 return render_template('mitig_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmh1=nm_summ_h1, nml1=nm_summ_l1, nmv1=nm_summ_v1)
 
@@ -514,14 +509,14 @@ def main():
     parser.add_argument('--events', type=str, help='event list .csv file in /data directory')
     parser.add_argument('--table', type=str, help='website table .md file in /data directory')
     parser.add_argument('--wdir', type=os.path.abspath, help='directory of this app')
-    parser.add_argument('--notify', action=argparse.BooleanOptionalAction, help='Send notification emails.')
+    parser.add_argument('--send_email', type=int, default=0, help='Send notification emails, default = 0 (False).')
     args = parser.parse_args()
 
     app = create_app(url=args.url,
                      wdir=args.wdir,
                      event_list=args.events,
                      website_md=args.table,
-                     notify=args.notify)
+                     notify=args.send_email)
     app.run()
 
 #------------------------------------------------------------------------------

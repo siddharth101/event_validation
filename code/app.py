@@ -10,7 +10,7 @@ Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 import json, argparse, os
 import pandas as pd
 
-from utils import get_events_dict, first_upper, send_email
+from utils import get_events_dict, first_upper, send_email, get_dets
 
 from wtforms import Form, TextAreaField, validators, SelectField
 from flask import Flask, render_template, request, flash
@@ -76,10 +76,14 @@ def create_app(url, wdir, event_list, website_md, notify):
         email = TextAreaField('email:', [validators.InputRequired()])
 
         validation_status = [(0, dq_flags[0]), (1, dq_flags[1]), (2, dq_flags[2])]
+        detector_status = [(0, 'No'), (1, 'Yes')]
 
-        conclusion_h1 = SelectField('conclusion_h1:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
-        conclusion_l1 = SelectField('conclusion_l1:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
-        conclusion_v1 = SelectField('conclusion_v1:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
+        h1_val = SelectField('h1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
+        h1_det = SelectField('h1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
+        l1_val = SelectField('l1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
+        l1_det = SelectField('l1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
+        v1_val = SelectField('v1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
+        v1_det = SelectField('v1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
 
         comment = TextAreaField('comment:')
 
@@ -90,6 +94,9 @@ def create_app(url, wdir, event_list, website_md, notify):
         email = TextAreaField('email:', [validators.InputRequired()])
         comment = TextAreaField('comment:')
 
+        detector_status = [(0, 'No'), (1, 'Yes')]
+
+        H1_det = SelectField('H1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
         H1_method = TextAreaField('H1_method:')
         H1_tstart = TextAreaField('H1_tstart:')
         H1_tend = TextAreaField('H1_tend:')
@@ -97,6 +104,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         H1_fend = TextAreaField('H1_fend:')
         H1_frame = TextAreaField('H1_frame:')
 
+        L1_det = SelectField('L1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
         L1_method = TextAreaField('L1_method:')
         L1_tstart = TextAreaField('L1_tstart:')
         L1_tend = TextAreaField('L1_tend:')
@@ -104,7 +112,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         L1_fend = TextAreaField('L1_fend:')
         L1_frame = TextAreaField('L1_frame:')
 
-
+        V1_det = SelectField('V1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
         V1_method = TextAreaField('V1_method:')
         V1_tstart = TextAreaField('V1_tstart:')
         V1_tend = TextAreaField('V1_tend:')
@@ -152,7 +160,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data = json.load(fp)
 
                 # if h/l/v have no DQ issues
-                if (form.conclusion_h1.data == 1 or form.conclusion_h1.data == 0) and (form.conclusion_l1.data == 1 or form.conclusion_l1.data == 0) and (form.conclusion_v1.data == 1 or form.conclusion_v1.data == 0):
+                if (form.h1_val.data == 1 or form.h1_val.data == 0) and (form.l1_val.data == 1 or form.l1_val.data == 0) and (form.v1_val.data == 1 or form.v1_val.data == 0):
 
                     # update the event json
                     event_data['valid_status'] = 1
@@ -163,9 +171,11 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data['noise_mitigation']['L1']['status'] = 0
                     event_data['noise_mitigation']['V1']['required'] = 0
                     event_data['noise_mitigation']['V1']['status'] = 0
+                    event_data['detectors'] = get_dets(form.h1_det.data, form.l1_det.data, form.v1_det.data)
                     event_data['comments']['validator'] = form.comment.data
                     event_data['contacts']['validator_name'] = form.name.data
                     event_data['contacts']['validator_email'] = form.email.data
+
 
                     # update the events list
                     event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
@@ -192,12 +202,12 @@ def create_app(url, wdir, event_list, website_md, notify):
                     # update the event json
                     event_data['valid_status'] = 1
                     event_data['valid_conclusion'] = 2
-                    event_data['noise_mitigation']['H1']['required'] = 1 if form.conclusion_h1.data == 2 else 0
-                    event_data['noise_mitigation']['H1']['status'] = 1 if form.conclusion_h1.data == 2 else 0
-                    event_data['noise_mitigation']['L1']['required'] = 1 if form.conclusion_l1.data == 2 else 0
-                    event_data['noise_mitigation']['L1']['status'] = 1 if form.conclusion_l1.data == 2 else 0
-                    event_data['noise_mitigation']['V1']['required'] = 1 if form.conclusion_v1.data == 2 else 0
-                    event_data['noise_mitigation']['V1']['status'] = 1 if form.conclusion_v1.data == 2 else 0
+                    event_data['noise_mitigation']['H1']['required'] = 1 if form.h1_val.data == 2 else 0
+                    event_data['noise_mitigation']['H1']['status'] = 1 if form.h1_val.data == 2 else 0
+                    event_data['noise_mitigation']['L1']['required'] = 1 if form.l1_val.data == 2 else 0
+                    event_data['noise_mitigation']['L1']['status'] = 1 if form.l1_val.data == 2 else 0
+                    event_data['noise_mitigation']['V1']['required'] = 1 if form.v1_val.data == 2 else 0
+                    event_data['noise_mitigation']['V1']['status'] = 1 if form.v1_val.data == 2 else 0
                     event_data['comments']['validator'] = form.comment.data
                     event_data['contacts']['validator_name'] = form.name.data
                     event_data['contacts']['validator_email'] = form.email.data
@@ -230,7 +240,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-                return render_template('form_success.html', gid=gid, name=form.name.data, h1=dq_flags[form.conclusion_h1.data], l1=dq_flags[form.conclusion_l1.data], v1=dq_flags[form.conclusion_v1.data])
+                return render_template('form_success.html', gid=gid, name=form.name.data, h1=dq_flags[form.h1_val.data], l1=dq_flags[form.l1_val.data], v1=dq_flags[form.v1_val.data])
 
             else:
                 flash('Error:'+str(form.errors),'danger')
@@ -282,6 +292,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data['noise_mitigation'][ifo]['fend'] = form_output[f'{ifo}_fend']
                     event_data['noise_mitigation'][ifo]['frame'] = form_output[f'{ifo}_frame']
 
+                event_data['detectors'] = get_dets(form.H1_det.data, form.L1_det.data, form.V1_det.data)
                 event_data['comments']['mitigation'] = form.comment.data
                 event_data['contacts']['mitigation_name'] = form.name.data
                 event_data['contacts']['mitigation_email'] = form.email.data
@@ -394,7 +405,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         else:
 
-            summary = [first_upper(review_flags[events[gid]['reviewed']]), first_upper(val_flags[events[gid]['valid_status']]), dq_flags[events[gid]['valid_conclusion']]]
+            summary = [first_upper(review_flags[events[gid]['reviewed']]), first_upper(val_flags[events[gid]['valid_status']]), dq_flags[events[gid]['valid_conclusion']], str(events[gid]['detectors']).replace("'", "")[1:-1]]
             comments = list(events[gid]['comments'].values())
             contacts = list(events[gid]['contacts'].values())
             urls = [events[gid]['dqr_url'], events[gid]['git_issue_url']]

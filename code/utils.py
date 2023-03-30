@@ -224,3 +224,15 @@ def send_email(email, subject, body):
     os.system(f'Mail -v -s "{subject}" -r {sender} {email} <<< "{body}"')
 
     return
+
+def get_dets(h1, l1, v1):
+
+    dets = []
+    if h1:
+        dets.append('H1')
+    if l1:
+        dets.append('L1')
+    if v1:
+        dets.append('V1')
+
+    return dets

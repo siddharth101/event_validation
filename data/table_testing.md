@@ -1,3 +1,4 @@
-| Event   | Status      | Conclusion   | Noise mitigation   | Reviewed   | Summary                                          | Contact person                                         |
-|:--------|:------------|:-------------|:-------------------|:-----------|:-------------------------------------------------|:-------------------------------------------------------|
-| G361581 | Not started | N/A          | N/A                | No         | [link](https://dqr.updateMe.com/summary/G361581) | Boris Johnson ([email](mailto:boris.johnson@ligo.org)) |
+| Event   | Status      | Conclusion                | Noise mitigation   | Reviewed   | Summary                                          | Contact person                                           |
+|:--------|:------------|:--------------------------|:-------------------|:-----------|:-------------------------------------------------|:---------------------------------------------------------|
+| G361581 | Completed   | Noise mitigation required | Completed          | Yes        | [link](https://dqr.updateMe.com/summary/G361581) | Ronaldas Macas ([email](mailto:ronaldas.macas@ligo.org)) |
+| G451214 | Not started | N/A                       | N/A                | No         | [link](https://dqr.updateMe.com/summary/G451214) | Boris Johnson ([email](mailto:boris.johnson@ligo.org))   |

@@ -13,4 +13,11 @@ setuptools.setup(
     license='MIT',
     packages=['event_validation'],
     install_requires=['numpy', 'scipy', 'gwpy', 'matplotlib', 'astropy', 'pandas', 'mdutils', 'markdown-include', 'mkdocs-material-igwn', 'tabulate', 'flask', 'Flask-WTF', 'Flask-Bootstrap4', 'Flask-Table', 'gunicorn'],
+    entry_points = {
+        "console_scripts": [
+        'event-validation-app = event_validation.app:main',
+        'event-validation-create-event = event_validation.create_event:main',
+    ],
+    },
+
 )

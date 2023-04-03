@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name='eval',
+    name='event_validation',
     version='0.1',
     author='Ronaldas Macas',
     author_email='ronaldas.macas@ligo.org',
@@ -11,6 +11,6 @@ setuptools.setup(
         "Bug Tracker": "https://git.ligo.org/detchar/event-validation/issues"
     },
     license='MIT',
-    packages=['code'],
+    packages=['event_validation'],
     install_requires=['numpy', 'scipy', 'gwpy', 'matplotlib', 'astropy', 'pandas', 'mdutils', 'markdown-include', 'mkdocs-material-igwn', 'tabulate', 'flask', 'Flask-WTF', 'Flask-Bootstrap4', 'Flask-Table', 'gunicorn'],
 )

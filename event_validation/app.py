@@ -10,7 +10,7 @@ Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 import json, argparse, os
 import pandas as pd
 
-from utils import get_events_dict, first_upper, send_email, get_dets
+from .utils import get_events_dict, first_upper, send_email, get_dets
 
 from wtforms import Form, TextAreaField, validators, SelectField
 from flask import Flask, render_template, request, flash

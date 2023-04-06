@@ -15,6 +15,7 @@ from .utils import get_events_dict, first_upper, send_email, get_dets
 from wtforms import Form, TextAreaField, validators, SelectField
 from flask import Flask, render_template, request, flash
 
+#TODO: fix flask email links/other links once the website is set up
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
@@ -221,7 +222,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     if notify:
                         subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[2])}'
-                        body_valid = f'{subject}. See summary at {summary_url} .'
+                        body_valid = f'{subject}. See summary at {summary_url}.'
                         body_mitig = f'{gid} requires noise mitigation, see the event validation report summary at {summary_url} .\n\nPlease submit your noise mitigation report at {flask_base_url}/mitigation/{gid} .'
 
                         # send an email to validator

@@ -1,4 +1,4 @@
-python code/create_event.py \
+python event_validation/create_event.py \
     --verbose \
     --git_dir . \
     --events_file events_testing.csv \

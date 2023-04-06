@@ -137,7 +137,7 @@ def git_issue(event_data, issue_email, logger):
     lead2_handle = f'{lead2_name[0].lower()}.{lead2_name[1].lower()}'
 
     text = (f"A place to discuss event validation for {event_data['event_name']}.\n\n"
-            f"Assigned volunteer {event_data['contacts']['validator_name']} ({event_data['contacts']['validator_email']}), expert {event_data['contacts']['expert_name']} ({event_data['contacts']['expert_email']}), noise mitigation {event_data['contacts']['mitigation_name']} ({event_data['contacts']['mitigation_email']}), and reviewer {event_data['contacts']['review_name']} ({event_data['contacts']['review_email']}).\n\n"
+            f"Assigned volunteer {event_data['contacts']['validator_name']} ({event_data['contacts']['validator_email']}), DetChar expert {event_data['contacts']['expert_name']} ({event_data['contacts']['expert_email']}), noise mitigation {event_data['contacts']['mitigation_name']} ({event_data['contacts']['mitigation_email']}), and reviewer {event_data['contacts']['review_name']} ({event_data['contacts']['review_email']}).\n\n"
             f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']}).")
 
     send_email(issue_email, event_data['event_name'], text)
@@ -174,14 +174,14 @@ def emails(event_data, docs_url, logger):
             f"Event validation documentation: {docs_url}\n"
             f"Validator: {valid_name} ({valid_email})\n"
             f"DetChar expert: {expert_name} ({expert_email})\n"
-            f"Noise mitigation: {mitigation_name} ({mitigation_name})\n\n"
+            f"Noise mitigation: {mitigation_name} ({mitigation_email})\n"
             f"Review: {review_name} ({review_email})\n\n")
-    post_body = f"For any questions, contact {lead1_name} ({lead1_email}) and {lead2_name} ({lead2_name})."
+    post_body = f"For any questions, contact {lead1_name} ({lead1_email}) and {lead2_name} ({lead2_email})."
 
     send_email(valid_email, subject, pre_body_valid+body+post_body)
     send_email(expert_email, subject, pre_body_expert+body+post_body)
-    send_email(lead1_email, subject, body)
-    send_email(lead2_email, subject, body)
+    send_email(lead1_email, subject, pre_body_lead+body)
+    send_email(lead2_email, subject, pre_body_lead+body)
 
     logger.info('Sent emails')
 

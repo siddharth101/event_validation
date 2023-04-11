@@ -12,6 +12,10 @@ setuptools.setup(
     },
     license='MIT',
     packages=['event_validation'],
+    package_data={
+          'event_validation': ['templates/*'],
+    },
+    include_package_data=True,
     install_requires=['numpy', 'scipy', 'gwpy', 'matplotlib', 'astropy', 'pandas', 'mdutils', 'markdown-include', 'mkdocs-material-igwn', 'tabulate', 'flask', 'Flask-WTF', 'Flask-Bootstrap4', 'Flask-Table', 'gunicorn'],
     entry_points = {
         "console_scripts": [

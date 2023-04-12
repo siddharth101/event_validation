@@ -2,7 +2,7 @@
 
 ## Websites
 
-[Main event validation website](https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation/)
+[Event validation docs and info](https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation/)
 
 [Event validation website containing event validation forms](404) (TO BE ADDED)
 

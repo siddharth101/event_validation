@@ -89,50 +89,50 @@ def init_event_validation(event_name,
     valid_status = 0  # i.e. validation not started
     review_status = 0  # i.e. not reviewed
     eval_summary_url = f'{eval_url}/summary/{event_name}'
-    valid_dict = {'fstart': [],
-                  'fend': [],
-                  'tstart': [],
-                  'tend': [],
-                  'duration': []
+    valid_dict = {'fstart': "",
+                  'fend': "",
+                  'tstart': "",
+                  'tend': "",
+                  'duration': ""
                   }
-    noise_mitig_dict = {'required': [],
-                        'status': [],
-                        'frame_type': [],
-                        'channel': []
+    noise_mitig_dict = {'required': "",
+                        'status': "",
+                        'frame_type': "",
+                        'channel': ""
                         }
     event_data = {'event_name': event_name,
                   'valid_status': valid_status,
-                  'valid_conclusion': [],
+                  'valid_conclusion': "",
                   'reviewed': review_status,
                   'dqr_url': dqr_url,
                   'eval_summary_url': eval_summary_url,
                   'git_issue_url': gitlab_url,
-                  'detectors': [],
+                  'detectors': "",
                   'validation': {'H1': valid_dict,
                                  'L1': valid_dict,
                                  'V1': valid_dict},
                   'noise_mitigation': {'H1': noise_mitig_dict,
                                        'L1': noise_mitig_dict,
                                        'V1': noise_mitig_dict},
-                  'comments': {'validator': [],
-                               'mitigation': [],
-                               'review': [],
-                               'other': []
+                  'comments': {'validator': "",
+                               'mitigation': "",
+                               'review': "",
+                               'other': ""
                                },
-                  'contacts': {'validator_name': [],
-                               'validator_email': [],
-                               'expert_name': [],
-                               'expert_email': [],
-                               'mitigation_name': [],
-                               'mitigation_email': [],
-                               'review_name': [],
-                               'review_email': [],
-                               'lead1_name': [],
-                               'lead1_email': [],
-                               'lead2_name': [],
-                               'lead2_email': []
+                  'contacts': {'validator_name': "",
+                               'validator_email': "",
+                               'expert_name': "",
+                               'expert_email': "",
+                               'mitigation_name': "",
+                               'mitigation_email': "",
+                               'review_name': "",
+                               'review_email': "",
+                               'lead1_name': "",
+                               'lead1_email': "",
+                               'lead2_name': "",
+                               'lead2_email': ""
                                },
-                  'other': [],
+                  'other': "",
                   'cmd': cmd
                   }
 

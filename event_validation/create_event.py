@@ -89,14 +89,16 @@ def init_event_validation(event_name,
     valid_status = 0  # i.e. validation not started
     review_status = 0  # i.e. not reviewed
     eval_summary_url = f'{eval_url}/summary/{event_name}'
+    valid_dict = {'fstart': [],
+                  'fend': [],
+                  'tstart': [],
+                  'tend': [],
+                  'duration': []
+                  }
     noise_mitig_dict = {'required': [],
                         'status': [],
-                        'method': [],
-                        'fstart': [],
-                        'fend': [],
-                        'tstart': [],
-                        'tend': [],
-                        'frame': []
+                        'frame_type': [],
+                        'channel': []
                         }
     event_data = {'event_name': event_name,
                   'valid_status': valid_status,
@@ -106,6 +108,9 @@ def init_event_validation(event_name,
                   'eval_summary_url': eval_summary_url,
                   'git_issue_url': gitlab_url,
                   'detectors': [],
+                  'validation': {'H1': valid_dict,
+                                 'L1': valid_dict,
+                                 'V1': valid_dict},
                   'noise_mitigation': {'H1': noise_mitig_dict,
                                        'L1': noise_mitig_dict,
                                        'V1': noise_mitig_dict},

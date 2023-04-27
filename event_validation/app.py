@@ -113,34 +113,34 @@ def create_app(url, wdir, event_list, website_md, notify):
         email = TextAreaField('email:', [validators.InputRequired()])
         comment = TextAreaField('comment:')
 
-        # TODO: say that if empty, previous values will be left
-        # TODO: make that previous values are left if empty fields in this form
-
         detector_status = [(0, 'No'), (1, 'Yes')]
 
-        H1_det = SelectField('H1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        H1_method = TextAreaField('H1_method:')
-        H1_tstart = TextAreaField('H1_tstart:')
-        H1_tend = TextAreaField('H1_tend:')
-        H1_fstart = TextAreaField('H1_fstart:')
-        H1_fend = TextAreaField('H1_fend:')
-        H1_frame = TextAreaField('H1_frame:')
+        h1_det = SelectField('h1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
+        h1_fstart = TextAreaField('h1_fstart:')
+        h1_fend = TextAreaField('h1_fend:')
+        h1_tstart = TextAreaField('h1_tstart:')
+        h1_tend = TextAreaField('h1_tend:')
+        h1_duration = TextAreaField('h1_duration:')
+        h1_frame = TextAreaField('h1_frame:')
+        h1_channel = TextAreaField('h1_channel:')
 
-        L1_det = SelectField('L1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        L1_method = TextAreaField('L1_method:')
-        L1_tstart = TextAreaField('L1_tstart:')
-        L1_tend = TextAreaField('L1_tend:')
-        L1_fstart = TextAreaField('L1_fstart:')
-        L1_fend = TextAreaField('L1_fend:')
-        L1_frame = TextAreaField('L1_frame:')
+        l1_det = SelectField('l1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
+        l1_fstart = TextAreaField('l1_fstart:')
+        l1_fend = TextAreaField('l1_fend:')
+        l1_tstart = TextAreaField('l1_tstart:')
+        l1_tend = TextAreaField('l1_tend:')
+        l1_duration = TextAreaField('l1_duration:')
+        l1_frame = TextAreaField('l1_frame:')
+        l1_channel = TextAreaField('l1_channel:')
 
-        V1_det = SelectField('V1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        V1_method = TextAreaField('V1_method:')
-        V1_tstart = TextAreaField('V1_tstart:')
-        V1_tend = TextAreaField('V1_tend:')
-        V1_fstart = TextAreaField('V1_fstart:')
-        V1_fend = TextAreaField('V1_fend:')
-        V1_frame = TextAreaField('V1_frame:')
+        v1_det = SelectField('v1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
+        v1_fstart = TextAreaField('v1_fstart:')
+        v1_fend = TextAreaField('v1_fend:')
+        v1_tstart = TextAreaField('v1_tstart:')
+        v1_tend = TextAreaField('v1_tend:')
+        v1_duration = TextAreaField('v1_duration:')
+        v1_frame = TextAreaField('v1_frame:')
+        v1_channel = TextAreaField('v1_channel:')
 
 
     class form_review(Form):
@@ -322,24 +322,27 @@ def create_app(url, wdir, event_list, website_md, notify):
         form_output = {"fname":form.name.data,
                        "email":form.email.data,
                        "comment": form.comment.data,
-                       "H1_method": form.H1_method.data,
-                       "H1_tstart": form.H1_tstart.data,
-                       "H1_tend": form.H1_tend.data,
-                       "H1_fstart": form.H1_fstart.data,
-                       "H1_fend": form.H1_fend.data,
-                       "H1_frame": form.H1_frame.data,
-                       "L1_method": form.L1_method.data,
-                       "L1_tstart": form.L1_tstart.data,
-                       "L1_tend": form.L1_tend.data,
-                       "L1_fstart": form.L1_fstart.data,
-                       "L1_fend": form.L1_fend.data,
-                       "L1_frame": form.L1_frame.data,
-                       "V1_method": form.V1_method.data,
-                       "V1_tstart": form.V1_tstart.data,
-                       "V1_tend": form.V1_tend.data,
-                       "V1_fstart": form.V1_fstart.data,
-                       "V1_fend": form.V1_fend.data,
-                       "V1_frame": form.V1_frame.data
+                       "H1_fstart": form.h1_fstart.data,
+                       "H1_fend": form.h1_fend.data,
+                       "H1_tstart": form.h1_tstart.data,
+                       "H1_tend": form.h1_tend.data,
+                       "H1_duration": form.h1_duration.data,
+                       "H1_frame": form.h1_frame.data,
+                       "H1_channel": form.h1_channel.data,
+                       "L1_fstart": form.l1_fstart.data,
+                       "L1_fend": form.l1_fend.data,
+                       "L1_tstart": form.l1_tstart.data,
+                       "L1_tend": form.l1_tend.data,
+                       "L1_duration": form.l1_duration.data,
+                       "L1_frame": form.l1_frame.data,
+                       "L1_channel": form.l1_channel.data,
+                       "V1_fstart": form.v1_fstart.data,
+                       "V1_fend": form.v1_fend.data,
+                       "V1_tstart": form.v1_tstart.data,
+                       "V1_tend": form.v1_tend.data,
+                       "V1_duration": form.v1_duration.data,
+                       "V1_frame": form.v1_frame.data,
+                       "V1_channel": form.v1_channel.data
                        }
 
         if request.method == 'POST':
@@ -352,14 +355,15 @@ def create_app(url, wdir, event_list, website_md, notify):
                 # update the event json
                 for ifo in ifos:
                     event_data['noise_mitigation'][ifo]['status'] = 2
-                    event_data['noise_mitigation'][ifo]['method'] = form_output[f'{ifo}_method']
-                    event_data['noise_mitigation'][ifo]['tstart'] = form_output[f'{ifo}_tstart']
-                    event_data['noise_mitigation'][ifo]['tend'] = form_output[f'{ifo}_tend']
-                    event_data['noise_mitigation'][ifo]['fstart'] = form_output[f'{ifo}_fstart']
-                    event_data['noise_mitigation'][ifo]['fend'] = form_output[f'{ifo}_fend']
-                    event_data['noise_mitigation'][ifo]['frame'] = form_output[f'{ifo}_frame']
+                    event_data['noise_mitigation'][ifo]['frame_type'] = form_output[f'{ifo}_frame']
+                    event_data['noise_mitigation'][ifo]['channel'] = form_output[f'{ifo}_frame']
+                    event_data['validation'][ifo]['fstart'] = form_output[f'{ifo}_fstart']
+                    event_data['validation'][ifo]['fend'] = form_output[f'{ifo}_fend']
+                    event_data['validation'][ifo]['tstart'] = form_output[f'{ifo}_tstart']
+                    event_data['validation'][ifo]['tend'] = form_output[f'{ifo}_tend']
+                    event_data['validation'][ifo]['duration'] = form_output[f'{ifo}_duration']
 
-                event_data['detectors'] = get_dets(form.H1_det.data, form.L1_det.data, form.V1_det.data)
+                event_data['detectors'] = get_dets(form.h1_det.data, form.l1_det.data, form.v1_det.data)
                 event_data['comments']['mitigation'] = form.comment.data
                 event_data['contacts']['mitigation_name'] = form.name.data
                 event_data['contacts']['mitigation_email'] = form.email.data
@@ -384,17 +388,20 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                 if notify:
                     subject = f'Noise mitigation report complete for {gid}'
-                    body_mitig = f'{subject}. See summary at {summary_url} .'
-                    body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
+                    body_mitig = f'{subject}. See the summary at {summary_url}.'
+                    body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid}.'
 
                     # send an email to mitigator
                     send_email(form.email.data, subject, body_mitig)
-                    # send an email to the lead
+                    # send an email to validator
+                    send_email(event_data['contacts']['validator_email'], subject, body_mitig)
+                    # send an email to leads
                     send_email(event_data['contacts']['lead1_email'], subject, body_mitig)
-                    # send an email to the mitigation review
+                    send_email(event_data['contacts']['lead2_email'], subject, body_mitig)
+                    # send an email to the review
                     send_email(event_data['contacts']['review_email'], subject, body_review)
 
-                return render_template('form_mitigation_success.html', gid=gid, name=form.name.data, h1=form.H1_method.data, l1=form.L1_method.data, v1=form.V1_method.data)
+                return render_template('form_mitigation_success.html', gid=gid, name=form.name.data)
 
             else:
                 flash('Error:'+str(form.errors),'danger')
@@ -448,8 +455,9 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                         # send an email to the reviewer
                         send_email(form.email.data, subject, body_review)
-                        # send an email to the lead
+                        # send an email to leads
                         send_email(event_data['contacts']['lead1_email'], subject, body_review)
+                        send_email(event_data['contacts']['lead2_email'], subject, body_review)
 
                     # TODO CBC SCHEMA STUFF HERE
 

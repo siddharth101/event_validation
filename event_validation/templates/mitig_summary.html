@@ -26,58 +26,64 @@
     <br>
     Other comment: {{ comments[3] }}
     <hr color="purple" align="left" width="40%" size="1">
-    <h4> H1 noise mitigation </h4>
-    Required: {{ nmh1[0] }}
+    <b> Hanford </b>
     <br>
-    Mitigation status: {{ nmh1[1] }}
     <br>
-    Mitigation method: {{ nmh1[2] }}
+    Noise mitigation required: {{ nmh1[0] }}
     <br>
-    Lowest analysis frequency (Hz): {{ nmh1[3] }}
+    Frame type: {{ nmh1[2] }}
     <br>
-    Highest analysis frequency (Hz): {{ nmh1[4] }}
+    Channel: {{ nmh1[3] }}
     <br>
-    Start time for analysis (GPS seconds): {{ nmh1[5] }}
+    Lowest analysis frequency (Hz): {{ vh1[0] }}
     <br>
-    End time for analysis (GPS seconds): {{ nmh1[6] }}
+    Highest analysis frequency (Hz): {{ vh1[1] }}
     <br>
-    Cleaned frame location: {{ nmh1[7] }}
+    Start time for analysis (GPS time): {{ vh1[2] }}
+    <br>
+    End time for analysis (GPS time): {{ vh1[3] }}
+    <br>
+    Duration (seconds): {{ vh1[4] }}
 
     <hr color="purple" align="left" width="40%" size="1">
-    <h4> L1 noise mitigation </h4>
-    Required: {{ nml1[0] }}
+    <b> Livingston </b>
     <br>
-    Mitigation status: {{ nml1[1] }}
     <br>
-    Mitigation method: {{ nml1[2] }}
+    Noise mitigation required: {{ nml1[0] }}
     <br>
-    Lowest analysis frequency (Hz): {{ nml1[3] }}
+    Frame type: {{ nml1[2] }}
     <br>
-    Highest analysis frequency (Hz): {{ nml1[4] }}
+    Channel: {{ nml1[3] }}
     <br>
-    Start time for analysis (GPS seconds): {{ nml1[5] }}
+    Lowest analysis frequency (Hz): {{ vl1[0] }}
     <br>
-    End time for analysis (GPS seconds): {{ nml1[6] }}
+    Highest analysis frequency (Hz): {{ vl1[1] }}
     <br>
-    Cleaned frame location: {{ nml1[7] }}
+    Start time for analysis (GPS time): {{ vl1[2] }}
+    <br>
+    End time for analysis (GPS time): {{ vl1[3] }}
+    <br>
+    Duration (seconds): {{ vl1[4] }}
 
     <hr color="purple" align="left" width="40%" size="1">
-    <h4> V1 noise mitigation </h4>
-    Required: {{ nmv1[0] }}
+    <b> Virgo </b>
     <br>
-    Mitigation status: {{ nmv1[1] }}
     <br>
-    Mitigation method: {{ nmv1[2] }}
+    Noise mitigation required: {{ nmv1[0] }}
     <br>
-    Lowest analysis frequency (Hz): {{ nmv1[3] }}
+    Frame type: {{ nmv1[2] }}
     <br>
-    Highest analysis frequency (Hz): {{ nmv1[4] }}
+    Channel: {{ nmv1[3] }}
     <br>
-    Start time for analysis (GPS seconds): {{ nmv1[5] }}
+    Lowest analysis frequency (Hz): {{ vv1[0] }}
     <br>
-    End time for analysis (GPS seconds): {{ nmv1[6] }}
+    Highest analysis frequency (Hz): {{ vv1[1] }}
     <br>
-    Cleaned frame location: {{ nmv1[7] }}
+    Start time for analysis (GPS time): {{ vv1[2] }}
+    <br>
+    End time for analysis (GPS time): {{ vv1[3] }}
+    <br>
+    Duration (seconds): {{ vv1[4] }}
 
     <hr color="purple" align="left" width="40%" size="1">
     DQR: <a href="{{ urls[0] }}">{{ urls[0] }}</a>

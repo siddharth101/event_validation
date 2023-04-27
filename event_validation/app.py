@@ -499,7 +499,11 @@ def create_app(url, wdir, event_list, website_md, notify):
                 nm_summ_v1[0] = bool(nm_summ_v1[0])
                 nm_summ_v1[1] = first_upper(val_flags[nm_summ_v1[1]])
 
-                return render_template('mitig_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmh1=nm_summ_h1, nml1=nm_summ_l1, nmv1=nm_summ_v1)
+                valid_summ_h1 = list(events[gid]['validation']['H1'].values())
+                valid_summ_l1 = list(events[gid]['validation']['L1'].values())
+                valid_summ_v1 = list(events[gid]['validation']['V1'].values())
+
+                return render_template('mitig_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmh1=nm_summ_h1, nml1=nm_summ_l1, nmv1=nm_summ_v1, vh1=valid_summ_h1, vl1=valid_summ_l1, vv1=valid_summ_v1)
 
 
             else:

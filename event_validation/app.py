@@ -37,7 +37,8 @@ def create_app(url, wdir, event_list, website_md, notify):
 
     ifos = ['H1', 'L1', 'V1']
     val_flags = ['not started', 'in progress', 'completed']
-    dq_flags = ['N/A', 'no DQ issues', 'noise mitigation required']
+    # TODO: added additional dq flag, check everywhere where it is used and see if it works correctly
+    dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
     mitigation_flags = ['N/A', 'in progress', 'completed']
     review_flags = ['no', 'yes', 'N/A']
 
@@ -76,15 +77,32 @@ def create_app(url, wdir, event_list, website_md, notify):
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
 
-        validation_status = [(0, dq_flags[0]), (1, dq_flags[1]), (2, dq_flags[2])]
+        validation_status = [(0, dq_flags[0]), (1, dq_flags[1]), (2, dq_flags[2]), (3, dq_flags[3])]
         detector_status = [(0, 'No'), (1, 'Yes')]
 
         h1_val = SelectField('h1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
         h1_det = SelectField('h1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
+        h1_fstart = TextAreaField('h1_fstart:')
+        h1_fend = TextAreaField('h1_fend:')
+        h1_tstart = TextAreaField('h1_tstart:')
+        h1_tend = TextAreaField('h1_tend:')
+        h1_duration = TextAreaField('h1_duration:')
+
         l1_val = SelectField('l1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
         l1_det = SelectField('l1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
+        l1_fstart = TextAreaField('l1_fstart:')
+        l1_fend = TextAreaField('l1_fend:')
+        l1_tstart = TextAreaField('l1_tstart:')
+        l1_tend = TextAreaField('l1_tend:')
+        l1_duration = TextAreaField('l1_duration:')
+
         v1_val = SelectField('v1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
         v1_det = SelectField('v1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
+        v1_fstart = TextAreaField('v1_fstart:')
+        v1_fend = TextAreaField('v1_fend:')
+        v1_tstart = TextAreaField('v1_tstart:')
+        v1_tend = TextAreaField('v1_tend:')
+        v1_duration = TextAreaField('v1_duration:')
 
         comment = TextAreaField('comment:')
 
@@ -94,6 +112,9 @@ def create_app(url, wdir, event_list, website_md, notify):
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
         comment = TextAreaField('comment:')
+
+        # TODO: say that if empty, previous values will be left
+        # TODO: make that previous values are left if empty fields in this form
 
         detector_status = [(0, 'No'), (1, 'Yes')]
 
@@ -160,27 +181,105 @@ def create_app(url, wdir, event_list, website_md, notify):
                 with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
 
-                # if h/l/v have no DQ issues
-                if (form.h1_val.data == 1 or form.h1_val.data == 0) and (form.l1_val.data == 1 or form.l1_val.data == 0) and (form.v1_val.data == 1 or form.v1_val.data == 0):
+                # if (form.h1_val.data == 1 or form.h1_val.data == 0) and (form.l1_val.data == 1 or form.l1_val.data == 0) and (form.v1_val.data == 1 or form.v1_val.data == 0):
+                # if needs mitigation
+                if form.h1_val.data == 3 or form.l1_val.data == 3 or form.v1_val.data == 3:
 
                     # update the event json
                     event_data['valid_status'] = 1
-                    event_data['valid_conclusion'] = 1
+                    event_data['valid_conclusion'] = 3
+                    event_data['noise_mitigation']['H1']['required'] = 1 if form.h1_val.data == 3 else 0
+                    event_data['noise_mitigation']['H1']['status'] = 1 if form.h1_val.data == 3 else 0
+                    event_data['noise_mitigation']['L1']['required'] = 1 if form.l1_val.data == 3 else 0
+                    event_data['noise_mitigation']['L1']['status'] = 1 if form.l1_val.data == 3 else 0
+                    event_data['noise_mitigation']['V1']['required'] = 1 if form.v1_val.data == 3 else 0
+                    event_data['noise_mitigation']['V1']['status'] = 1 if form.v1_val.data == 3 else 0
+
+                    event_data['detectors'] = get_dets(form.h1_det.data, form.l1_det.data, form.v1_det.data)
+
+                    event_data['validation']['H1']['fstart'] = form.h1_fstart.data
+                    event_data['validation']['H1']['fend'] = form.h1_fend.data
+                    event_data['validation']['H1']['tstart'] = form.h1_tstart.data
+                    event_data['validation']['H1']['tend'] = form.h1_tend.data
+                    event_data['validation']['H1']['duration'] = form.h1_duration.data
+                    event_data['validation']['L1']['fstart'] = form.l1_fstart.data
+                    event_data['validation']['L1']['fend'] = form.l1_fend.data
+                    event_data['validation']['L1']['tstart'] = form.l1_tstart.data
+                    event_data['validation']['L1']['tend'] = form.l1_tend.data
+                    event_data['validation']['L1']['duration'] = form.l1_duration.data
+                    event_data['validation']['V1']['fstart'] = form.v1_fstart.data
+                    event_data['validation']['V1']['fend'] = form.v1_fend.data
+                    event_data['validation']['V1']['tstart'] = form.v1_tstart.data
+                    event_data['validation']['V1']['tend'] = form.v1_tend.data
+                    event_data['validation']['V1']['duration'] = form.v1_duration.data
+
+                    event_data['comments']['validator'] = form.comment.data
+                    event_data['contacts']['validator_name'] = form.name.data
+                    event_data['contacts']['validator_email'] = form.email.data
+
+                    # update the events list
+                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
+                    event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[3])
+                    event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[1])
+                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitigation_name']} ([email](mailto:{event_data['contacts']['mitigation_email']}))"
+                    event_list_df.to_csv(event_list_fname, index=False)
+
+                    if notify:
+                        subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[3])}'
+                        body_valid = f'{subject}. See the summary at {summary_url}.'
+                        body_mitig = f'{gid} requires noise mitigation, see the event validation report summary at {summary_url} .\n\nPlease submit your noise mitigation report at {flask_base_url}/mitigation/{gid} .'
+
+                        # send an email to validator
+                        send_email(form.email.data, subject, body_valid)
+                        # send an email to leads
+                        send_email(event_data['contacts']['lead1_email'], subject, body_valid)
+                        send_email(event_data['contacts']['lead2_email'], subject, body_valid)
+                        # send an email to noise mitigation
+                        send_email(event_data['contacts']['mitigation_email'], subject, body_mitig)
+
+                else: # l/h/v no need for noise mitigation
+
+                    # update the event json
+                    event_data['valid_status'] = 1
+                    if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
+                        event_data['valid_conclusion'] = 2
+                    else:
+                        event_data['valid_conclusion'] = 1
                     event_data['noise_mitigation']['H1']['required'] = 0
                     event_data['noise_mitigation']['H1']['status'] = 0
                     event_data['noise_mitigation']['L1']['required'] = 0
                     event_data['noise_mitigation']['L1']['status'] = 0
                     event_data['noise_mitigation']['V1']['required'] = 0
                     event_data['noise_mitigation']['V1']['status'] = 0
+
                     event_data['detectors'] = get_dets(form.h1_det.data, form.l1_det.data, form.v1_det.data)
+
+                    event_data['validation']['H1']['fstart'] = form.h1_fstart.data
+                    event_data['validation']['H1']['fend'] = form.h1_fend.data
+                    event_data['validation']['H1']['tstart'] = form.h1_tstart.data
+                    event_data['validation']['H1']['tend'] = form.h1_tend.data
+                    event_data['validation']['H1']['duration'] = form.h1_duration.data
+                    event_data['validation']['L1']['fstart'] = form.l1_fstart.data
+                    event_data['validation']['L1']['fend'] = form.l1_fend.data
+                    event_data['validation']['L1']['tstart'] = form.l1_tstart.data
+                    event_data['validation']['L1']['tend'] = form.l1_tend.data
+                    event_data['validation']['L1']['duration'] = form.l1_duration.data
+                    event_data['validation']['V1']['fstart'] = form.v1_fstart.data
+                    event_data['validation']['V1']['fend'] = form.v1_fend.data
+                    event_data['validation']['V1']['tstart'] = form.v1_tstart.data
+                    event_data['validation']['V1']['tend'] = form.v1_tend.data
+                    event_data['validation']['V1']['duration'] = form.v1_duration.data
+
                     event_data['comments']['validator'] = form.comment.data
                     event_data['contacts']['validator_name'] = form.name.data
                     event_data['contacts']['validator_email'] = form.email.data
 
-
                     # update the events list
                     event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
-                    event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[1])
+                    if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
+                        event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[2])
+                    else:
+                        event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[1])
                     event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[0])
                     event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
                     event_list_df.to_csv(event_list_fname, index=False)
@@ -192,45 +291,12 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                         # send an email to validator
                         send_email(form.email.data, subject, body_valid)
-                        # send an email to the lead
+                        # send an email to leads
                         send_email(event_data['contacts']['lead1_email'], subject, body_valid)
+                        send_email(event_data['contacts']['lead2_email'], subject, body_valid)
                         # send an email to reviewer
                         send_email(event_data['contacts']['review_email'], subject, body_review)
 
-
-                else: # if h/l/v have issues
-
-                    # update the event json
-                    event_data['valid_status'] = 1
-                    event_data['valid_conclusion'] = 2
-                    event_data['noise_mitigation']['H1']['required'] = 1 if form.h1_val.data == 2 else 0
-                    event_data['noise_mitigation']['H1']['status'] = 1 if form.h1_val.data == 2 else 0
-                    event_data['noise_mitigation']['L1']['required'] = 1 if form.l1_val.data == 2 else 0
-                    event_data['noise_mitigation']['L1']['status'] = 1 if form.l1_val.data == 2 else 0
-                    event_data['noise_mitigation']['V1']['required'] = 1 if form.v1_val.data == 2 else 0
-                    event_data['noise_mitigation']['V1']['status'] = 1 if form.v1_val.data == 2 else 0
-                    event_data['comments']['validator'] = form.comment.data
-                    event_data['contacts']['validator_name'] = form.name.data
-                    event_data['contacts']['validator_email'] = form.email.data
-
-                    # update the events list
-                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
-                    event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[2])
-                    event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[1])
-                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitigation_name']} ([email](mailto:{event_data['contacts']['mitigation_email']}))"
-                    event_list_df.to_csv(event_list_fname, index=False)
-
-                    if notify:
-                        subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[2])}'
-                        body_valid = f'{subject}. See summary at {summary_url}.'
-                        body_mitig = f'{gid} requires noise mitigation, see the event validation report summary at {summary_url} .\n\nPlease submit your noise mitigation report at {flask_base_url}/mitigation/{gid} .'
-
-                        # send an email to validator
-                        send_email(form.email.data, subject, body_valid)
-                        # send an email to the lead
-                        send_email(event_data['contacts']['lead1_email'], subject, body_valid)
-                        # send an email to noise mitigation
-                        send_email(event_data['contacts']['mitigation_email'], subject, body_mitig)
 
                 # update website's .md table
                 with open(md_fname, 'w') as md:

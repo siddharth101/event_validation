@@ -503,15 +503,12 @@ def create_app(url, wdir, event_list, website_md, notify):
 
 
             else:
-                noise_mitig_summary = []
-                for ifo in ifos:
-                    if events[gid]['noise_mitigation'][ifo]['required'] == 1:
-                        noise_mitig_summary.append('required')
-                    else:
-                        noise_mitig_summary.append('not required')
-                    noise_mitig_summary.append(f"{mitigation_flags[events[gid]['noise_mitigation'][ifo]['status']]}")
 
-                return render_template('val_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmsummary=noise_mitig_summary)
+                valid_summ_h1 = list(events[gid]['validation']['H1'].values())
+                valid_summ_l1 = list(events[gid]['validation']['L1'].values())
+                valid_summ_v1 = list(events[gid]['validation']['V1'].values())
+
+                return render_template('val_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, vh1=valid_summ_h1, vl1=valid_summ_l1, vv1=valid_summ_v1)
 
 
     @app.route('/warning_eval_form/<gid>', methods=('GET', 'POST'))

@@ -23,13 +23,49 @@
     Review comment: {{ comments[2] }}
     <br>
     Other comment: {{ comments[3] }}
+    <br>
     <hr color="purple" align="left" width="40%" size="1">
-    Noise mitigation for H1: {{ nmsummary[0] }}
+    <b> H1 </b>
     <br>
-    Noise mitigation for L1: {{ nmsummary[2] }}
     <br>
-    Noise mitigation for V1: {{ nmsummary[4] }}
+    Lowest analysis frequency (Hz): {{ vh1[0] }}
     <br>
+    Highest analysis frequency (Hz): {{ vh1[1] }}
+    <br>
+    Start time for analysis (GPS time): {{ vh1[2] }}
+    <br>
+    End time for analysis (GPS time): {{ vh1[3] }}
+    <br>
+    Duration (seconds): {{ vh1[4] }}
+
+    <hr color="purple" align="left" width="40%" size="1">
+    <b> L1 </b>
+    <br>
+    <br>
+    Lowest analysis frequency (Hz): {{ vl1[0] }}
+    <br>
+    Highest analysis frequency (Hz): {{ vl1[1] }}
+    <br>
+    Start time for analysis (GPS time): {{ vl1[2] }}
+    <br>
+    End time for analysis (GPS time): {{ vl1[3] }}
+    <br>
+    Duration (seconds): {{ vl1[4] }}
+
+    <hr color="purple" align="left" width="40%" size="1">
+    <b>V1</b>
+    <br>
+    <br>
+    Lowest analysis frequency (Hz): {{ vv1[0] }}
+    <br>
+    Highest analysis frequency (Hz): {{ vv1[1] }}
+    <br>
+    Start time for analysis (GPS time): {{ vv1[2] }}
+    <br>
+    End time for analysis (GPS time): {{ vv1[3] }}
+    <br>
+    Duration (seconds): {{ vv1[4] }}
+
     <hr color="purple" align="left" width="40%" size="1">
     DQR: <a href="{{ urls[0] }}">{{ urls[0] }}</a>
     <br>

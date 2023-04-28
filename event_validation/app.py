@@ -19,7 +19,7 @@ from flask import Flask, render_template, request, flash
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.4'
+__version__ = '0.5'
 __process_name__ = 'eval-website'
 
 #------------------------------------------------------------------------------
@@ -37,7 +37,6 @@ def create_app(url, wdir, event_list, website_md, notify):
 
     ifos = ['H1', 'L1', 'V1']
     val_flags = ['not started', 'in progress', 'completed']
-    # TODO: added additional dq flag, check everywhere where it is used and see if it works correctly
     dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
     mitigation_flags = ['N/A', 'in progress', 'completed']
     review_flags = ['no', 'yes', 'N/A']
@@ -64,7 +63,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         summary_url = f'{flask_base_url}summary/{key}'
         dqr_url = events[key]['dqr_url']
-        docs_url = dqr_url
+        docs_url = 'https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation/'
 
         title = f'{key}: {val_flags[item["valid_status"]]}'
         message = {'title':title, 'content':f'', 'form_url':form_url, 'mitig_url':mitig_url, 'docs_url':docs_url, 'gitlab_issue_url':item['git_issue_url'], 'dqr_url':dqr_url, 'summary_url':summary_url}
@@ -356,7 +355,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                 for ifo in ifos:
                     event_data['noise_mitigation'][ifo]['status'] = 2
                     event_data['noise_mitigation'][ifo]['frame_type'] = form_output[f'{ifo}_frame']
-                    event_data['noise_mitigation'][ifo]['channel'] = form_output[f'{ifo}_frame']
+                    event_data['noise_mitigation'][ifo]['channel'] = form_output[f'{ifo}_channel']
                     event_data['validation'][ifo]['fstart'] = form_output[f'{ifo}_fstart']
                     event_data['validation'][ifo]['fend'] = form_output[f'{ifo}_fend']
                     event_data['validation'][ifo]['tstart'] = form_output[f'{ifo}_tstart']

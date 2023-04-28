@@ -93,6 +93,7 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
 def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
 
     eval_url_md = f"[link]({event_data['eval_summary_url']})"
+    dqr_url_md = f"[link]({event_data['dqr_url']})"
     contact_md = f"{event_data['contacts']['validator_name']} ([email](mailto:{event_data['contacts']['validator_email']}))"
 
     # create new event dict
@@ -101,6 +102,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
                  'Conclusion': 'N/A',
                  'Noise mitigation': 'N/A',
                  'Reviewed': 'No',
+                 'DQR': [dqr_url_md],
                  'Summary': [eval_url_md],
                  'Contact person': [contact_md]}
 

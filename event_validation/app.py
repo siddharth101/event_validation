@@ -19,7 +19,7 @@ from flask import Flask, render_template, request, flash
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.4'
+__version__ = '0.5'
 __process_name__ = 'eval-website'
 
 #------------------------------------------------------------------------------

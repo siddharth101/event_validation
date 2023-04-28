@@ -12,7 +12,7 @@ from .utils import *
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.3'
+__version__ = '0.4'
 __process_name__ = 'Event Validation'
 
 def init_event_validation(event_name,

@@ -207,7 +207,7 @@ def main():
     parser.add_argument('--events_file', type=str, required=True, help="csv file containing events in 'data' folder")
     parser.add_argument('--md_file', type=str, required=True, help="MD table to be edited with new event in 'data' folder")
     parser.add_argument('--vol_file', type=str, required=True, help="csv file containing volunteer information in 'data' folder")
-    parser.add_argument('--contact_file', type=str, required=True, help="csv file containing volunteer contact information in 'data' folder")
+    parser.add_argument('--contact_file', type=str, default='contacts.csv', help="csv file containing volunteer contact information in 'data' folder")
     parser.add_argument('--validator', type=str, help="Validator name and surname")
     parser.add_argument('--expert', type=str, help="Expert name and surname")
     parser.add_argument('--mitigation', type=str, help="Noise mitigation contact name and surname")

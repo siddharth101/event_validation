@@ -1,67 +1,79 @@
 {
     "event_name": "G361581",
     "valid_status": 2,
-    "valid_conclusion": 2,
+    "valid_conclusion": 3,
     "reviewed": 1,
     "dqr_url": "https://dqr.updateMe.com",
     "eval_summary_url": "https://dqr.updateMe.com/summary/G361581",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
     "detectors": [
         "H1",
-        "L1"
+        "L1",
+        "V1"
     ],
-    "noise_mitigation": {
+    "validation": {
         "H1": {
-            "required": 1,
-            "status": 2,
-            "method": "bayeswave",
             "fstart": "",
             "fend": "",
             "tstart": "",
             "tend": "",
-            "frame": "/home/rishi.sunak/bayeswave/cleaned_frame1"
+            "duration": ""
+        },
+        "L1": {
+            "fstart": "10",
+            "fend": "20",
+            "tstart": "30",
+            "tend": "40",
+            "duration": "50"
+        },
+        "V1": {
+            "fstart": "",
+            "fend": "",
+            "tstart": "",
+            "tend": "",
+            "duration": ""
+        }
+    },
+    "noise_mitigation": {
+        "H1": {
+            "required": 0,
+            "status": 2,
+            "frame_type": "",
+            "channel": ""
         },
         "L1": {
             "required": 0,
             "status": 2,
-            "method": "",
-            "fstart": "",
-            "fend": "",
-            "tstart": "",
-            "tend": "",
-            "frame": ""
+            "frame_type": "",
+            "channel": ""
         },
         "V1": {
-            "required": 0,
+            "required": 1,
             "status": 2,
-            "method": "",
-            "fstart": "",
-            "fend": "",
-            "tstart": "",
-            "tend": "",
-            "frame": ""
+            "frame_type": "Frame_Type_here",
+            "channel": "Frame_Type_here"
         }
     },
     "comments": {
-        "validator": "needs noise mitigation for H1, L1 good, V1 not observing",
-        "mitigation": "noise mitigation comment here",
-        "review": "final reviewer comment",
-        "other": []
+        "validator": "validator comment",
+        "mitigation": "noise mitigation comment",
+        "review": "Reviewer comment here",
+        "other": ""
     },
     "contacts": {
-        "validator_name": "John Major",
-        "validator_email": "john.major@ligo.org",
+        "validator_name": "event validator",
+        "validator_email": "event.validator@ligo.org",
         "expert_name": "Rishi Sunak",
-        "expert_email": "Rishi.Sunak@ligo.org",
-        "mitigation_name": "Rishi Sunak",
-        "mitigation_email": "rishi.sunak@ligo.org",
-        "review_name": "Final_review Name",
-        "review_email": "final.review@ligo.org",
+        "expert_email": "rishi.sunak@ligo.org",
+        "mitigation_name": "noise mitigator",
+        "mitigation_email": "noise.mitigation@ligo.org",
+        "review_name": "Reviewer",
+        "review_email": "reviewer@ligo.org",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Ronaldas Macas",
         "lead2_email": "ronaldas.macas@ligo.org"
     },
-    "other": [],
-    "cmd": "code/create_event.py --verbose --git_dir . --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --ignore_far --event_name G361581"
+    "other": "",
+    "cmd": "event_validation/create_event.py --verbose --git_dir . --events_file events_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --ignore_far --event_name G361581"
 }

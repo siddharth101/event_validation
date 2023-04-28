@@ -1,55 +1,66 @@
 {
     "event_name": "G451214",
     "valid_status": 0,
-    "valid_conclusion": [],
+    "valid_conclusion": "",
     "reviewed": 0,
     "dqr_url": "https://dqr.updateMe.com",
     "eval_summary_url": "https://dqr.updateMe.com/summary/G451214",
     "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues",
-    "detectors": [],
-    "noise_mitigation": {
+    "detectors": "",
+    "validation": {
         "H1": {
-            "required": [],
-            "status": [],
-            "method": [],
-            "fstart": [],
-            "fend": [],
-            "tstart": [],
-            "tend": [],
-            "frame": []
+            "fstart": "",
+            "fend": "",
+            "tstart": "",
+            "tend": "",
+            "duration": ""
         },
         "L1": {
-            "required": [],
-            "status": [],
-            "method": [],
-            "fstart": [],
-            "fend": [],
-            "tstart": [],
-            "tend": [],
-            "frame": []
+            "fstart": "",
+            "fend": "",
+            "tstart": "",
+            "tend": "",
+            "duration": ""
         },
         "V1": {
-            "required": [],
-            "status": [],
-            "method": [],
-            "fstart": [],
-            "fend": [],
-            "tstart": [],
-            "tend": [],
-            "frame": []
+            "fstart": "",
+            "fend": "",
+            "tstart": "",
+            "tend": "",
+            "duration": ""
+        }
+    },
+    "noise_mitigation": {
+        "H1": {
+            "required": "",
+            "status": "",
+            "frame_type": "",
+            "channel": ""
+        },
+        "L1": {
+            "required": "",
+            "status": "",
+            "frame_type": "",
+            "channel": ""
+        },
+        "V1": {
+            "required": "",
+            "status": "",
+            "frame_type": "",
+            "channel": ""
         }
     },
     "comments": {
-        "validator": [],
-        "mitigation": [],
-        "review": [],
-        "other": []
+        "validator": "",
+        "mitigation": "",
+        "review": "",
+        "other": ""
     },
     "contacts": {
-        "validator_name": "Boris Johnson",
-        "validator_email": "boris.johnson@ligo.org",
+        "validator_name": "Ronaldas Macas",
+        "validator_email": "ronaldas.macas@ligo.org",
         "expert_name": "Rishi Sunak",
-        "expert_email": "Rishi.Sunak@ligo.org",
+        "expert_email": "rishi.sunak@ligo.org",
         "mitigation_name": "Gordon Brown",
         "mitigation_email": "gordon.brown@ligo.org",
         "review_name": "Tony Blair",
@@ -59,6 +70,6 @@
         "lead2_name": "Ronaldas Macas",
         "lead2_email": "ronaldas.macas@ligo.org"
     },
-    "other": [],
-    "cmd": "code/create_event.py --verbose --git_dir . --events_file events_testing.csv --contact_file contacts_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --ignore_far --event_name G451214"
+    "other": "",
+    "cmd": "event_validation/create_event.py --verbose --git_dir . --events_file events_testing.csv --md_file table_testing.md --vol_file rota_testing.csv --dqr_url https://dqr.updateMe.com --eval_url https://dqr.updateMe.com --ignore_far --validator Ronaldas Macas --event_name G451214"
 }

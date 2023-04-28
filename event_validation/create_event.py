@@ -164,9 +164,7 @@ def init_event_validation(event_name,
     if create_issue:
         logger.debug('Making a git issue')
         issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
-        issue_label1 = '/label ~"event validation"'
-        issue_label2 = '/label ~"ER15"'
-        issue_label = issue_label1 + ' ' + issue_label2
+        issue_label = '/label ~validation /label ~ER15'
         git_issue(event_data, issue_email, issue_label, logger)
 
     #--------------------------------------------------------------------------

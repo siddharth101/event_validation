@@ -32,53 +32,39 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
     contact_data = pd.read_csv(contact_file)
 
     if validator:
-        try:
-            contact_idx = contact_data.index[contact_data['name'] == validator][0]
-            event_data['contacts']['validator_name'] = contact_data.iloc[contact_idx,:]['name']
-            event_data['contacts']['validator_email'] = contact_data.iloc[contact_idx,:]['email']
-        except:
-            raise ValueError(f'Unable to find {validator} in {contact_file}')
+        contact_idx = contact_data.index[contact_data['name'] == validator][0]
     else:
-        event_data['contacts']['validator_name'] = vol_data.iloc[vol_idx,:]['validator_name']
-        event_data['contacts']['validator_email'] = vol_data.iloc[vol_idx,:]['validator_email']
+        contact_idx = contact_data.index[contact_data['name'] == vol_data.iloc[vol_idx,:]['validator']][0]
+    event_data['contacts']['validator_name'] = contact_data.iloc[contact_idx,:]['name']
+    event_data['contacts']['validator_email'] = contact_data.iloc[contact_idx,:]['email']
 
     if expert:
-        try:
-            contact_idx = contact_data.index[contact_data['name'] == expert][0]
-            event_data['contacts']['expert_name'] = contact_data.iloc[contact_idx,:]['name']
-            event_data['contacts']['expert_email'] = contact_data.iloc[contact_idx,:]['email']
-        except:
-            raise ValueError(f'Unable to find {expert} in {contact_file}')
+        contact_idx = contact_data.index[contact_data['name'] == expert][0]
     else:
-        event_data['contacts']['expert_name'] = vol_data.iloc[vol_idx,:]['expert_name']
-        event_data['contacts']['expert_email'] = vol_data.iloc[vol_idx,:]['expert_email']
+        contact_idx = contact_data.index[contact_data['name'] == vol_data.iloc[vol_idx,:]['expert']][0]
+    event_data['contacts']['expert_name'] = contact_data.iloc[contact_idx,:]['name']
+    event_data['contacts']['expert_email'] = contact_data.iloc[contact_idx,:]['email']
 
     if mitigation:
-        try:
-            contact_idx = contact_data.index[contact_data['name'] == mitigation][0]
-            event_data['contacts']['mitigation_name'] = contact_data.iloc[contact_idx,:]['name']
-            event_data['contacts']['mitigation_email'] = contact_data.iloc[contact_idx,:]['email']
-        except:
-            raise ValueError(f'Unable to find {mitigation} in {contact_file}')
+        contact_idx = contact_data.index[contact_data['name'] == mitigation][0]
     else:
-        event_data['contacts']['mitigation_name'] = vol_data.iloc[vol_idx,:]['mitigation_name']
-        event_data['contacts']['mitigation_email'] = vol_data.iloc[vol_idx,:]['mitigation_email']
+        contact_idx = contact_data.index[contact_data['name'] == vol_data.iloc[vol_idx,:]['mitigation']][0]
+    event_data['contacts']['mitigation_name'] = contact_data.iloc[contact_idx,:]['name']
+    event_data['contacts']['mitigation_email'] = contact_data.iloc[contact_idx,:]['email']
 
     if review:
-        try:
-            contact_idx = contact_data.index[contact_data['name'] == review][0]
-            event_data['contacts']['review_name'] = contact_data.iloc[contact_idx,:]['name']
-            event_data['contacts']['review_email'] = contact_data.iloc[contact_idx,:]['email']
-        except:
-            raise ValueError(f'Unable to find {review} in {contact_file}')
+        contact_idx = contact_data.index[contact_data['name'] == review][0]
     else:
-        event_data['contacts']['review_name'] = vol_data.iloc[vol_idx,:]['review_name']
-        event_data['contacts']['review_email'] = vol_data.iloc[vol_idx,:]['review_email']
+        contact_idx = contact_data.index[contact_data['name'] == vol_data.iloc[vol_idx,:]['review']][0]
+    event_data['contacts']['review_name'] = contact_data.iloc[contact_idx,:]['name']
+    event_data['contacts']['review_email'] = contact_data.iloc[contact_idx,:]['email']
 
-    event_data['contacts']['lead1_name'] = vol_data.iloc[vol_idx,:]['lead1_name']
-    event_data['contacts']['lead1_email'] = vol_data.iloc[vol_idx,:]['lead1_email']
-    event_data['contacts']['lead2_name'] = vol_data.iloc[vol_idx,:]['lead2_name']
-    event_data['contacts']['lead2_email'] = vol_data.iloc[vol_idx,:]['lead2_email']
+    contact_idx = contact_data.index[contact_data['name'] == vol_data.iloc[vol_idx,:]['lead1']][0]
+    event_data['contacts']['lead1_name'] = contact_data.iloc[contact_idx,:]['name']
+    event_data['contacts']['lead1_email'] = contact_data.iloc[contact_idx,:]['email']
+    contact_idx = contact_data.index[contact_data['name'] == vol_data.iloc[vol_idx,:]['lead2']][0]
+    event_data['contacts']['lead2_name'] = contact_data.iloc[contact_idx,:]['name']
+    event_data['contacts']['lead2_email'] = contact_data.iloc[contact_idx,:]['email']
 
     logger.info(f"Assigned event validation team: validator {event_data['contacts']['validator_name']}, "
                 f"expert {event_data['contacts']['expert_name']}, "

@@ -118,7 +118,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
     return
 
 
-def git_issue(event_data, issue_email, logger):
+def git_issue(event_data, issue_email, issue_label, logger):
 
     lead1_name = event_data['contacts']['lead1_name'].split(' ')
     lead1_handle = f'{lead1_name[0].lower()}.{lead1_name[1].lower()}'
@@ -127,7 +127,15 @@ def git_issue(event_data, issue_email, logger):
 
     text = (f"A place to discuss event validation for {event_data['event_name']}.\n\n"
             f"Assigned volunteer {event_data['contacts']['validator_name']} ({event_data['contacts']['validator_email']}), DetChar expert {event_data['contacts']['expert_name']} ({event_data['contacts']['expert_email']}), noise mitigation {event_data['contacts']['mitigation_name']} ({event_data['contacts']['mitigation_email']}), and reviewer {event_data['contacts']['review_name']} ({event_data['contacts']['review_email']}).\n\n"
-            f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']}).")
+            f"Checklist for the volunteer:\n"
+            f"1. [ ] View the Data Quality Report\n"
+            f"  - [ ] Make extensive notes for each detector\n"
+            f"  - [ ] Decide if there are DQ issues in data; if there are DQ issues, decide if noise mitigation is needed\n"
+            f"2. [ ] Fill in the event validation form\n"
+            f"3. [ ] [If needed] Wait until the noise mitigation is completed\n"
+            f"4. [ ] Report event validation findings at a DetChar call\n\n"
+            f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']}).\n\n"+issue_label
+            )
 
     send_email(issue_email, event_data['event_name'], text)
 

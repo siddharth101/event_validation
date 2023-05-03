@@ -17,6 +17,7 @@ nav:
   - training.md
   - ER15.md
   - O4a.md
+  - links.md
 
 markdown_extensions:
   - markdown.extensions.codehilite

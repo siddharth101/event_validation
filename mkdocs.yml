@@ -1,10 +1,10 @@
-site_name: 'O4 DetChar Event Validation' 
+site_name: 'DetChar Event Validation' 
 site_description: 'Pages containing info about O4 DetChar event validation.'
 site_author: 'Ronaldas Macas'
 site_url: 'https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/'
 site_dir: 'website'
 repo_url: 'https://git.ligo.org/detchar/event-validation'
-repo_name: 'EVAL repo'
+repo_name: 'EV repo'
 edit_uri: 'edit/main/mkdocs/docs'
 copyright: 'Copyright &copy; 2022 University of Portsmouth'
 

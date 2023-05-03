@@ -3,7 +3,7 @@ title: Home
 author: Ronaldas Macas <ronaldas.macas@ligo.org>
 ---
 
-# O4 DetChar Event Validation 
+# DetChar Event Validation 
 
 This is the main page for O4 DetChar event validation. The webpage is still in progress but we plan to finalize its content within the next several weeks.
 

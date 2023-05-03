@@ -9,3 +9,6 @@ We will use ER15 to train event validation volunteers. We highly recommend signi
 
 We also did the event validation training before ER15, see the slides and the recording [here](https://dcc.ligo.org/LIGO-G2300839). We plan to re-do the training before O4 starts with the event validation infrastructure finalized and real events from ER15. We will share the recording after the training.
 
+## Training status
+
+Add a table with volunteer training status.

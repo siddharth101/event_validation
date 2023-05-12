@@ -23,6 +23,7 @@ def init_event_validation(event_name,
                           far_threshold,
                           ignore_far,
                           git_dir,
+                          label,
                           events_file,
                           md_file,
                           vol_file,
@@ -82,6 +83,18 @@ def init_event_validation(event_name,
             else:
                 logger.warning(f'Event FAR ({far}) is bigger than FAR threshold ({far_threshold}). No need for event validation, exiting.')
                 exit()
+
+    #--------------------------------------------------------------------------
+
+    # apply label to events/md table/vol files if no files given
+    if events_file is None:
+        events_file = f'events_{label}.csv'
+
+    if md_file is None:
+        md_file = f'table_{label}.md'
+
+    if vol_file is None:
+        vol_file = f'rota_{label}.csv'
 
     #--------------------------------------------------------------------------
 
@@ -165,7 +178,7 @@ def init_event_validation(event_name,
     if create_issue:
         logger.debug('Making a git issue')
         issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
-        issue_label = '/label ~validation /label ~ER15'
+        issue_label = f'/label ~validation /label ~{label}'
         git_issue(event_data, issue_email, issue_label, logger)
 
     #--------------------------------------------------------------------------
@@ -206,9 +219,10 @@ def main():
     parser.add_argument('--far_threshold', type=float, default=0.000000193, help='Threshold FAR. Event validation is performed only if event FAR is smaller than threshold FAR.')
     parser.add_argument('--ignore_far', action=argparse.BooleanOptionalAction, help='Perform event validation independent on event FAR.')
     parser.add_argument('--git_dir', type=os.path.abspath, required=True, help='Event validation infrastructure git directory')
-    parser.add_argument('--events_file', type=str, required=True, help="csv file containing events in 'data' folder")
-    parser.add_argument('--md_file', type=str, required=True, help="MD table to be edited with new event in 'data' folder")
-    parser.add_argument('--vol_file', type=str, required=True, help="csv file containing volunteer information in 'data' folder")
+    parser.add_argument('--label', type=str, required=True, help="label to apply to git issues; can also be used for events_LABEL.csv, table_LABEL.md, rota_LABEL.csv files")
+    parser.add_argument('--events_file', type=str, help="csv file containing events in 'data' folder; if empty, uses label as suffix")
+    parser.add_argument('--md_file', type=str, help="MD table to be edited with new event in 'data' folder; if empty, uses label as suffix")
+    parser.add_argument('--vol_file', type=str, help="csv file containing volunteer information in 'data' folder; if empty, uses label as suffix")
     parser.add_argument('--contact_file', type=str, default='contacts.csv', help="csv file containing volunteer contact information in 'data' folder")
     parser.add_argument('--validator', type=str, help="Validator name and surname")
     parser.add_argument('--expert', type=str, help="Expert name and surname")
@@ -250,6 +264,7 @@ def main():
                           far_threshold=args.far_threshold,
                           ignore_far=args.ignore_far,
                           git_dir=args.git_dir,
+                          label=args.label,
                           events_file=args.events_file,
                           md_file=args.md_file,
                           vol_file=args.vol_file,

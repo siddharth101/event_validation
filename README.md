@@ -2,15 +2,15 @@
 
 ## Websites
 
-[Event validation docs and info](https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation/)
+[Event validation home page](https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation/)
 
-[Event validation website containing event validation forms](404) (TO BE ADDED)
+[EVforms](https://dqr.ligo.caltech.edu/ev_forms)
 
 ## Installation
 
 The repo can be installed with pip, i.e. `pip install .`
 
-Alternatively, use conda environment (on CIT) `/home/ronaldas.macas/.conda/envs/eval`
+Alternatively, use conda environment (on CIT) `/home/dqr/.conda/envs/event_valid`
 
 ## Usage
 

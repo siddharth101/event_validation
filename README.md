@@ -1,4 +1,4 @@
-# Event validation infrastructure
+# DetChar event validation
 
 ## Websites
 

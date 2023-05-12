@@ -60,7 +60,7 @@ People that are currently under training:
 | Week           | Person        | Notes |
 |----------------|---------------|-------|
 | May 24, 2023   | Derek Davis   |       |
-| May 31, 2023   |               |       |
+| May 31, 2023   | Andy Lundgren |       |
 | June 7, 2023   |               |       |
 | June 14, 2023  |               |       |
 | June 21, 2023  |               |       |

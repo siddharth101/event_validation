@@ -128,10 +128,12 @@ def git_issue(event_data, issue_email, issue_label, logger):
     text = (f"A place to discuss event validation for {event_data['event_name']}.\n\n"
             f"Assigned volunteer {event_data['contacts']['validator_name']} ({event_data['contacts']['validator_email']}), DetChar expert {event_data['contacts']['expert_name']} ({event_data['contacts']['expert_email']}), noise mitigation {event_data['contacts']['mitigation_name']} ({event_data['contacts']['mitigation_email']}), and reviewer {event_data['contacts']['review_name']} ({event_data['contacts']['review_email']}).\n\n"
             f"Checklist for the volunteer:\n"
-            f"1. [ ] View the Data Quality Report\n"
-            f"2. [ ] Fill in the event validation form\n"
-            f"3. [ ] [If needed] Wait until the noise mitigation is completed\n"
-            f"4. [ ] Report event validation findings at a DetChar call\n\n"
+            f"1. [ ] View the GraceDB SuperEvent and preferred event pages\n"
+            f"2. [ ] View the Detector Status Summary pages\n"
+            f"3. [ ] View the Data Quality Report\n"
+            f"4. [ ] Fill in the event validation form\n"
+            f"5. [ ] [If needed] Wait until the noise mitigation is completed\n"
+            f"6. [ ] Report event validation findings at a DetChar call\n\n"
             f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']}).\n\n{issue_label}"
             )
 

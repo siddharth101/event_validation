@@ -32,6 +32,7 @@ def init_event_validation(event_name,
                           mitigation,
                           review,
                           dqr_url,
+                          gracedb_url,
                           eval_url,
                           gitlab_url,
                           docs_url,
@@ -214,6 +215,7 @@ def main():
     parser.add_argument('--mitigation', type=str, help="Noise mitigation contact name and surname")
     parser.add_argument('--review', type=str, help="Event validation review contact name and surname")
     parser.add_argument('--dqr_url', type=str, required=True, help='Data quality report URL')
+    parser.add_argument('--gracedb_url', type=str, default='https://gracedb.ligo.org/superevents', help='GraceDB super event URL, default: https://gracedb.ligo.org/superevents')
     parser.add_argument('--eval_url', type=str, default='https://dqr.ligo.caltech.edu/ev_forms', help='Event validation form URL, default: https://dqr.ligo.caltech.edu/ev_forms')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
     parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation')
@@ -257,6 +259,7 @@ def main():
                           mitigation=args.mitigation,
                           review=args.review,
                           dqr_url=args.dqr_url,
+                          gracedb_url=args.gracedb_url,
                           eval_url=args.eval_url,
                           gitlab_url=args.gitlab_url,
                           docs_url=args.docs_url,

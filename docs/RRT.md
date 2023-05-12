@@ -28,6 +28,7 @@ Write the current training status here later.
 People able to serve as DetChar RRT expert:
 
 - Laura Nuttall 
+- Jess McIver
 - Marissa Walker
 - Derek Davis
 - Andy Lundgren
@@ -52,6 +53,17 @@ People that are currently under training:
 | April 26, 2023 | Derek Davis   |       |
 | May 3, 2023    | Laura Nuttall |       |
 | May 10, 2023   | Laura Nuttall |       |
-| May 17, 2023   |               |       |
+| May 17, 2023   | Andy Lundgren |       |
 
 ## O4a rota
+
+| Week           | Person        | Notes |
+|----------------|---------------|-------|
+| May 24, 2023   | Derek Davis   |       |
+| May 31, 2023   |               |       |
+| June 7, 2023   |               |       |
+| June 14, 2023  |               |       |
+| June 21, 2023  |               |       |
+| June 28, 2023  |               |       |
+
+

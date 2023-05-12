@@ -15,8 +15,6 @@ from .utils import get_events_dict, first_upper, send_email, get_dets
 from wtforms import Form, TextAreaField, validators, SelectField
 from flask import Flask, render_template, request, flash
 
-#TODO: fix flask email links/other links once the website is set up
-
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
 __version__ = '0.5'

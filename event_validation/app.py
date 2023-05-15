@@ -64,7 +64,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         docs_url = 'https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation/'
 
         title = f'{key}: {val_flags[item["valid_status"]]}'
-        message = {'title':title, 'content':f'', 'form_url':form_url, 'mitig_url':mitig_url, 'docs_url':docs_url, 'gitlab_issue_url':item['git_issue_url'], 'dqr_url':dqr_url, 'summary_url':summary_url}
+        message = {'title':title, 'content':f'', 'superevent_url':item['superevent_url'], 'form_url':form_url, 'mitig_url':mitig_url, 'gitlab_issue_url':item['git_issue_url'], 'dqr_url':dqr_url, 'summary_url':summary_url}
         messages.append(message)
 
 #-------------------------------

@@ -143,7 +143,7 @@ def git_issue(event_data, issue_email, issue_label, logger):
 
     return
 
-def emails(event_data, docs_url, logger):
+def emails(event_data, logger):
 
     valid_email = event_data['contacts']['validator_email']
     expert_email = event_data['contacts']['expert_email']
@@ -165,10 +165,10 @@ def emails(event_data, docs_url, logger):
     pre_body_valid = f"You are assigned to validate candidate event {event_data['event_name']}. For more technical event validation questions, please refer to the DetChar expert {expert_name} ({expert_email}) or the Mattermost DetChar - Event Validation channel (https://chat.ligo.org/ligo/channels/detchar---event-validation); we advise to use the Mattermost channel instead of contacting a DetChar expert if possible. More information about the event is given below.\n\n"
     pre_body_expert = f"{valid_name} ({valid_email}) has been assigned to validate candidate event {event_data['event_name']}, while you are assigned to act a DetChar expert. More information about the event is given below.\n\n"
     body = (f"Candidate event: {event_data['event_name']}\n"
+            f"GraceDB Superevent: {event_data['superevent_url']}\n"
             f"DQR: {event_data['dqr_url']}\n"
             f"Event validation form: {event_data['dqr_url']}\n"
             f"GitLab issue: {event_data['git_issue_url']}\n"
-            f"Event validation documentation: {docs_url}\n"
             f"Validator: {valid_name} ({valid_email})\n"
             f"DetChar expert: {expert_name} ({expert_email})\n"
             f"Noise mitigation: {mitigation_name} ({mitigation_email})\n"

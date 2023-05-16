@@ -175,12 +175,12 @@ def init_event_validation(event_name,
 
     #--------------------------------------------------------------------------
 
-    # create a git issue by sending an email
+    # create a git issue using gitlab api
     if create_issue:
         logger.debug('Making a git issue')
-        issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
-        issue_label = f'/label ~validation /label ~{label}'
-        git_issue(event_data, issue_email, issue_label, logger)
+        token = 'glpat-CE-i6fzUxsUpUhcyRmFC'
+        project_id = 13628
+        git_issue(event_data, gitlab_url, token, project_id, label, logger)
 
     #--------------------------------------------------------------------------
 

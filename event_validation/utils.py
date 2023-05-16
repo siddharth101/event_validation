@@ -1,6 +1,6 @@
 # DetChar Event Validation - Ronaldas Macas
 
-import os, json, datetime
+import os, json, datetime, gitlab
 import pandas as pd
 import numpy as np
 
@@ -119,7 +119,7 @@ def update_data(event_data, git_dir, events_file, md_file, logger):
     return
 
 
-def git_issue(event_data, issue_email, issue_label, logger):
+def git_issue(event_data, gitlab_url, token, pid, label, logger):
 
     lead1_name = event_data['contacts']['lead1_name'].split(' ')
     lead1_handle = f'{lead1_name[0].lower()}.{lead1_name[1].lower()}'
@@ -135,14 +135,28 @@ def git_issue(event_data, issue_email, issue_label, logger):
             f"4. [ ] Fill in the event validation form\n"
             f"5. [ ] [If needed] Wait until the noise mitigation is completed\n"
             f"6. [ ] Report event validation findings at a DetChar call\n\n"
-            f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']}).\n\n{issue_label}"
+            f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']})."
             )
 
-    send_email(issue_email, event_data['event_name'], text)
+    gl = gitlab.Gitlab(url='https://git.ligo.org', private_token=token)
+    project = gl.projects.get(pid)
+
+    issue = project.issues.create({'title':event_data['event_name'], 'description': text})
+    issue.labels = ['validation', label]
+    issue.save()
+
+    # update git issue url since the issue was created
+    try:
+        issues = project.issues.list(get_all=False)
+        issue_dict = {issue.title: issue for issue in issues}
+        issue_iid = issue_dict[event_data['event_name']].iid
+        event_data['git_issue_url'] = f'{gitlab_url}/{issue_iid}'
+    except:
+        print(f"Issues assigning id to the gitlab issue url for {event_data['event_name']}, leaving default gitlab URL.")
 
     logger.info('Created a git issue')
 
-    return
+    return event_data
 
 def emails(event_data, logger):
 

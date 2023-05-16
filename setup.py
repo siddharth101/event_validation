@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='event_validation',
-    version='0.2',
+    version='0.3',
     author='Ronaldas Macas',
     author_email='ronaldas.macas@ligo.org',
     description='Event validation infrastructure',
@@ -16,7 +16,7 @@ setuptools.setup(
           'event_validation': ['templates/*'],
     },
     include_package_data=True,
-    install_requires=['numpy', 'scipy', 'gwpy', 'matplotlib', 'astropy', 'pandas', 'mdutils', 'markdown-include', 'mkdocs-material-igwn', 'tabulate', 'flask', 'Flask-WTF', 'Flask-Bootstrap4', 'Flask-Table', 'gunicorn'],
+    install_requires=['numpy', 'scipy', 'gwpy', 'matplotlib', 'astropy', 'pandas', 'mdutils', 'markdown-include', 'mkdocs-material-igwn', 'tabulate', 'flask', 'Flask-WTF', 'Flask-Bootstrap4', 'Flask-Table', 'gunicorn', 'python-gitlab'],
     entry_points = {
         "console_scripts": [
         'event-validation-app = event_validation.app:main',

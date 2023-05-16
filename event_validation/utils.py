@@ -77,10 +77,12 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
     return event_data
 
 
-def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
+def update_data(event_data, git_dir, events_file, md_file, logger):
 
-    eval_url_md = f"[link]({event_data['eval_summary_url']})"
-    dqr_url_md = f"[link]({event_data['dqr_url']})"
+    superevent_url_md = f"[GraceDB]({event_data['superevent_url']})"
+    dqr_url_md = f"[DQR]({event_data['dqr_url']})"
+    eval_url_md = f"[EV]({event_data['eval_summary_url']})"
+    url_string = superevent_url_md + ', ' + dqr_url_md + ', ' + eval_url_md
     contact_md = f"{event_data['contacts']['validator_name']} ([email](mailto:{event_data['contacts']['validator_email']}))"
 
     # create new event dict
@@ -89,8 +91,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
                  'Conclusion': 'N/A',
                  'Noise mitigation': 'N/A',
                  'Reviewed': 'No',
-                 'DQR': [dqr_url_md],
-                 'Summary': [eval_url_md],
+                 'Links': [url_string],
                  'Contact person': [contact_md]}
 
     # list_fname = f'{git_dir}/data/event_list.csv'

@@ -171,7 +171,7 @@ def init_event_validation(event_name,
 
     # update data files
     logger.debug('Updating data files')
-    update_data(event_data, git_dir, events_file, md_file, eval_url, logger)
+    update_data(event_data, git_dir, events_file, md_file, logger)
 
     #--------------------------------------------------------------------------
 

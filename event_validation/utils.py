@@ -1,6 +1,6 @@
 # DetChar Event Validation - Ronaldas Macas
 
-import os, json, datetime
+import os, json, datetime, gitlab
 import pandas as pd
 import numpy as np
 
@@ -77,10 +77,12 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
     return event_data
 
 
-def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
+def update_data(event_data, git_dir, events_file, md_file, logger):
 
-    eval_url_md = f"[link]({event_data['eval_summary_url']})"
-    dqr_url_md = f"[link]({event_data['dqr_url']})"
+    superevent_url_md = f"[GraceDB]({event_data['superevent_url']})"
+    dqr_url_md = f"[DQR]({event_data['dqr_url']})"
+    eval_url_md = f"[EV]({event_data['eval_summary_url']})"
+    url_string = superevent_url_md + ', ' + dqr_url_md + ', ' + eval_url_md
     contact_md = f"{event_data['contacts']['validator_name']} ([email](mailto:{event_data['contacts']['validator_email']}))"
 
     # create new event dict
@@ -89,8 +91,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
                  'Conclusion': 'N/A',
                  'Noise mitigation': 'N/A',
                  'Reviewed': 'No',
-                 'DQR': [dqr_url_md],
-                 'Summary': [eval_url_md],
+                 'Links': [url_string],
                  'Contact person': [contact_md]}
 
     # list_fname = f'{git_dir}/data/event_list.csv'
@@ -118,7 +119,7 @@ def update_data(event_data, git_dir, events_file, md_file, eval_url, logger):
     return
 
 
-def git_issue(event_data, issue_email, issue_label, logger):
+def git_issue(event_data, gitlab_url, token, pid, label, logger):
 
     lead1_name = event_data['contacts']['lead1_name'].split(' ')
     lead1_handle = f'{lead1_name[0].lower()}.{lead1_name[1].lower()}'
@@ -128,20 +129,36 @@ def git_issue(event_data, issue_email, issue_label, logger):
     text = (f"A place to discuss event validation for {event_data['event_name']}.\n\n"
             f"Assigned volunteer {event_data['contacts']['validator_name']} ({event_data['contacts']['validator_email']}), DetChar expert {event_data['contacts']['expert_name']} ({event_data['contacts']['expert_email']}), noise mitigation {event_data['contacts']['mitigation_name']} ({event_data['contacts']['mitigation_email']}), and reviewer {event_data['contacts']['review_name']} ({event_data['contacts']['review_email']}).\n\n"
             f"Checklist for the volunteer:\n"
-            f"1. [ ] View the Data Quality Report\n"
-            f"2. [ ] Fill in the event validation form\n"
-            f"3. [ ] [If needed] Wait until the noise mitigation is completed\n"
-            f"4. [ ] Report event validation findings at a DetChar call\n\n"
-            f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']}).\n\n{issue_label}"
+            f"1. [ ] View the GraceDB SuperEvent and preferred event pages\n"
+            f"2. [ ] View the Detector Status Summary pages\n"
+            f"3. [ ] View the Data Quality Report\n"
+            f"4. [ ] Fill in the event validation form\n"
+            f"5. [ ] [If needed] Wait until the noise mitigation is completed\n"
+            f"6. [ ] Report event validation findings at a DetChar call\n\n"
+            f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']})."
             )
 
-    send_email(issue_email, event_data['event_name'], text)
+    gl = gitlab.Gitlab(url='https://git.ligo.org', private_token=token)
+    project = gl.projects.get(pid)
+
+    issue = project.issues.create({'title':event_data['event_name'], 'description': text})
+    issue.labels = ['validation', label]
+    issue.save()
+
+    # update git issue url since the issue was created
+    try:
+        issues = project.issues.list(get_all=True)
+        issue_dict = {issue.title: issue for issue in issues}
+        issue_iid = issue_dict[event_data['event_name']].iid
+        event_data['git_issue_url'] = f'{gitlab_url}/{issue_iid}'
+    except:
+        print(f"Issues assigning id to the gitlab issue url for {event_data['event_name']}, leaving default gitlab URL.")
 
     logger.info('Created a git issue')
 
-    return
+    return event_data
 
-def emails(event_data, docs_url, logger):
+def emails(event_data, logger):
 
     valid_email = event_data['contacts']['validator_email']
     expert_email = event_data['contacts']['expert_email']
@@ -160,13 +177,13 @@ def emails(event_data, docs_url, logger):
     subject = f"A request to validate {event_data['event_name']}"
 
     pre_body_lead = f"Validator: {valid_email}, expert: {expert_email}, noise mitigation: {mitigation_email}, review: {review_email}.\n\n"
-    pre_body_valid = f"You are assigned to validate candidate event {event_data['event_name']}. For more technical event validation questions, please refer to the DetChar expert {expert_name} ({expert_email}). More information about the event is given below.\n\n"
+    pre_body_valid = f"You are assigned to validate candidate event {event_data['event_name']}. For more technical event validation questions, please refer to the DetChar expert {expert_name} ({expert_email}) or the Mattermost DetChar - Event Validation channel (https://chat.ligo.org/ligo/channels/detchar---event-validation); we advise to use the Mattermost channel instead of contacting a DetChar expert if possible. More information about the event is given below.\n\n"
     pre_body_expert = f"{valid_name} ({valid_email}) has been assigned to validate candidate event {event_data['event_name']}, while you are assigned to act a DetChar expert. More information about the event is given below.\n\n"
     body = (f"Candidate event: {event_data['event_name']}\n"
+            f"GraceDB Superevent: {event_data['superevent_url']}\n"
             f"DQR: {event_data['dqr_url']}\n"
             f"Event validation form: {event_data['dqr_url']}\n"
             f"GitLab issue: {event_data['git_issue_url']}\n"
-            f"Event validation documentation: {docs_url}\n"
             f"Validator: {valid_name} ({valid_email})\n"
             f"DetChar expert: {expert_name} ({expert_email})\n"
             f"Noise mitigation: {mitigation_name} ({mitigation_email})\n"

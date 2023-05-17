@@ -23,6 +23,7 @@ def init_event_validation(event_name,
                           far_threshold,
                           ignore_far,
                           git_dir,
+                          label,
                           events_file,
                           md_file,
                           vol_file,
@@ -32,6 +33,7 @@ def init_event_validation(event_name,
                           mitigation,
                           review,
                           dqr_url,
+                          superevent_url,
                           eval_url,
                           gitlab_url,
                           docs_url,
@@ -84,6 +86,18 @@ def init_event_validation(event_name,
 
     #--------------------------------------------------------------------------
 
+    # apply label to events/md table/vol files if no files given
+    if events_file is None:
+        events_file = f'events_{label}.csv'
+
+    if md_file is None:
+        md_file = f'table_{label}.md'
+
+    if vol_file is None:
+        vol_file = f'rota_{label}.csv'
+
+    #--------------------------------------------------------------------------
+
     # make event dict
     logger.debug(f'Creating event dictionary for {event_name}')
     valid_status = 0  # i.e. validation not started
@@ -104,6 +118,7 @@ def init_event_validation(event_name,
                   'valid_status': valid_status,
                   'valid_conclusion': "",
                   'reviewed': review_status,
+                  'superevent_url': superevent_url,
                   'dqr_url': dqr_url,
                   'eval_summary_url': eval_summary_url,
                   'git_issue_url': gitlab_url,
@@ -156,23 +171,23 @@ def init_event_validation(event_name,
 
     # update data files
     logger.debug('Updating data files')
-    update_data(event_data, git_dir, events_file, md_file, eval_url, logger)
+    update_data(event_data, git_dir, events_file, md_file, logger)
 
     #--------------------------------------------------------------------------
 
-    # create a git issue by sending an email
+    # create a git issue using gitlab api
     if create_issue:
         logger.debug('Making a git issue')
-        issue_email = 'contact+detchar-event-validation-13628-iczve9w98b94opzztj2puptg-issue@support.ligo.org'
-        issue_label = '/label ~validation /label ~ER15'
-        git_issue(event_data, issue_email, issue_label, logger)
+        token = 'glpat-CE-i6fzUxsUpUhcyRmFC'
+        project_id = 13628
+        git_issue(event_data, gitlab_url, token, project_id, label, logger)
 
     #--------------------------------------------------------------------------
 
     # send emails
     if send_email:
         logger.debug('Sending emails')
-        emails(event_data, docs_url, logger)
+        emails(event_data, logger)
 
      #--------------------------------------------------------------------------
 
@@ -205,18 +220,20 @@ def main():
     parser.add_argument('--far_threshold', type=float, default=0.000000193, help='Threshold FAR. Event validation is performed only if event FAR is smaller than threshold FAR.')
     parser.add_argument('--ignore_far', action=argparse.BooleanOptionalAction, help='Perform event validation independent on event FAR.')
     parser.add_argument('--git_dir', type=os.path.abspath, required=True, help='Event validation infrastructure git directory')
-    parser.add_argument('--events_file', type=str, required=True, help="csv file containing events in 'data' folder")
-    parser.add_argument('--md_file', type=str, required=True, help="MD table to be edited with new event in 'data' folder")
-    parser.add_argument('--vol_file', type=str, required=True, help="csv file containing volunteer information in 'data' folder")
+    parser.add_argument('--label', type=str, required=True, help="label to apply to git issues; can also be used for events_LABEL.csv, table_LABEL.md, rota_LABEL.csv files")
+    parser.add_argument('--events_file', type=str, help="csv file containing events in 'data' folder; if empty, uses label as suffix")
+    parser.add_argument('--md_file', type=str, help="MD table to be edited with new event in 'data' folder; if empty, uses label as suffix")
+    parser.add_argument('--vol_file', type=str, help="csv file containing volunteer information in 'data' folder; if empty, uses label as suffix")
     parser.add_argument('--contact_file', type=str, default='contacts.csv', help="csv file containing volunteer contact information in 'data' folder")
     parser.add_argument('--validator', type=str, help="Validator name and surname")
     parser.add_argument('--expert', type=str, help="Expert name and surname")
     parser.add_argument('--mitigation', type=str, help="Noise mitigation contact name and surname")
     parser.add_argument('--review', type=str, help="Event validation review contact name and surname")
     parser.add_argument('--dqr_url', type=str, required=True, help='Data quality report URL')
+    parser.add_argument('--superevent_url', type=str, required=True, help='GraceDB super event URL')
     parser.add_argument('--eval_url', type=str, default='https://dqr.ligo.caltech.edu/ev_forms', help='Event validation form URL, default: https://dqr.ligo.caltech.edu/ev_forms')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
-    parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~ronaldas.macas/eval_website/')
+    parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation')
     parser.add_argument('--send_email', action=argparse.BooleanOptionalAction, help='Send notification emails.')
     parser.add_argument('--create_issue', action=argparse.BooleanOptionalAction, help='Create a git issue for the candidate event')
     args = parser.parse_args()
@@ -248,6 +265,7 @@ def main():
                           far_threshold=args.far_threshold,
                           ignore_far=args.ignore_far,
                           git_dir=args.git_dir,
+                          label=args.label,
                           events_file=args.events_file,
                           md_file=args.md_file,
                           vol_file=args.vol_file,
@@ -257,6 +275,7 @@ def main():
                           mitigation=args.mitigation,
                           review=args.review,
                           dqr_url=args.dqr_url,
+                          superevent_url=args.superevent_url,
                           eval_url=args.eval_url,
                           gitlab_url=args.gitlab_url,
                           docs_url=args.docs_url,

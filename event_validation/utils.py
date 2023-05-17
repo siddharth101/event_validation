@@ -87,7 +87,7 @@ def update_data(event_data, git_dir, events_file, md_file, logger):
 
     # create new event dict
     new_event = {'Event': [event_data['event_name']],
-                 'Status': 'Not started',
+                 'Validation status': 'Not started',
                  'Conclusion': 'N/A',
                  'Noise mitigation': 'N/A',
                  'Reviewed': 'No',

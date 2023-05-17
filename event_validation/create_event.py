@@ -158,17 +158,7 @@ def init_event_validation(event_name,
     event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, expert, mitigation, review, logger)
 
     #--------------------------------------------------------------------------
-
-    # create a json for the event
-    logger.debug('Creating event file')
-    event_fname = f'{git_dir}/data/events/{event_name}.json'
-    with open(event_fname, 'w', encoding='utf-8') as f:
-        json.dump(event_data, f, ensure_ascii=False, indent=4)
-
-    logger.info(f'Created event file: {git_dir}/data/events/{event_name}.json')
-
-    #--------------------------------------------------------------------------
-
+    
     # update data files
     logger.debug('Updating data files')
     update_data(event_data, git_dir, events_file, md_file, logger)
@@ -181,6 +171,16 @@ def init_event_validation(event_name,
         token = 'glpat-CE-i6fzUxsUpUhcyRmFC'
         project_id = 13628
         git_issue(event_data, gitlab_url, token, project_id, label, logger)
+
+    #--------------------------------------------------------------------------
+
+    # create a json for the event
+    logger.debug('Creating event file')
+    event_fname = f'{git_dir}/data/events/{event_name}.json'
+    with open(event_fname, 'w', encoding='utf-8') as f:
+        json.dump(event_data, f, ensure_ascii=False, indent=4)
+
+    logger.info(f'Created event file: {git_dir}/data/events/{event_name}.json')
 
     #--------------------------------------------------------------------------
 

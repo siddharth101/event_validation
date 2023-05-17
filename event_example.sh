@@ -5,4 +5,4 @@ python event_validation/create_event.py \
     --dqr_url https://dqr.com \
     --superevent_url https://superevent.com \
     --ignore_far \
-    --event_name G361581 
+    --event_name G00001

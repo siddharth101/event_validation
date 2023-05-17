@@ -10,13 +10,13 @@
 
 The repo can be installed with pip, i.e. `pip install .`
 
-Alternatively, use conda environment (on CIT) `/home/dqr/.conda/envs/event_valid`
+Alternatively, use conda environment (on CIT) `/home/dqr/mambaforge/envs/event_valid/`
 
 ## Usage
 
 To create an event, an example command is given in `event_example.sh` script.
 
-EV forms website is created using Flask. The script to run the website is `home/dqr/bin/start-gunicorn`.
+Event validation forms website is created using Flask. The script to run the website is `/home/dqr/bin/start-gunicorn`.
 
 ## Contact
 

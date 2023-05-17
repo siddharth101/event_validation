@@ -147,7 +147,7 @@ def git_issue(event_data, gitlab_url, token, pid, label, logger):
 
     # update git issue url since the issue was created
     try:
-        issues = project.issues.list(get_all=False)
+        issues = project.issues.list(get_all=True)
         issue_dict = {issue.title: issue for issue in issues}
         issue_iid = issue_dict[event_data['event_name']].iid
         event_data['git_issue_url'] = f'{gitlab_url}/{issue_iid}'

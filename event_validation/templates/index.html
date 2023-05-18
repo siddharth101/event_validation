@@ -5,12 +5,14 @@
     {% for message in messages %}
         <div class='message'>
             <h3>{{ message['title'] }}</h3>
-            <p> <a href="{{ message['summary_url'] }}"><button> VALIDATED EVENT SUMMARY </button></a> </p>
-            <p> <a href="{{ message['form_url'] }}"><button>Event validation form</button></a> 
-            <a href="{{ message['mitig_url'] }}"><button>Noise mitigation form</button></a></p>
-            <a href="{{ message['superevent_url'] }}"><button>GraceDB Superevent</button></a>
-            <a href="{{ message['dqr_url'] }}"><button>DQR</button></a>
-            <a href="{{ message['gitlab_issue_url'] }}"><button>GitLab issue</button></a>
+            <p> <a href="{{ message['summary'] }}"><button> SUMMARY </button></a> </p>
+            <p> <a href="{{ message['validation'] }}"><button>Event validation form</button></a> 
+            <a href="{{ message['review'] }}"><button>Review form </button></a>
+            <a href="{{ message['mitig_request'] }}"><button>Glitch subtraction request form </button></a>
+            <a href="{{ message['mitig_results'] }}"><button>Glitch subtraction results form </button></a></p>
+            <a href="{{ message['gracedb'] }}"><button>GraceDB</button></a>
+            <a href="{{ message['dqr'] }}"><button>DQR</button></a>
+            <a href="{{ message['issue'] }}"><button>GitLab issue</button></a>
             <p>{{ message['content'] }}</p>
         </div>
     {% endfor %}

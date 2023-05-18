@@ -101,7 +101,8 @@ def init_event_validation(event_name,
     # make event dict
     logger.debug(f'Creating event dictionary for {event_name}')
     init_status = 0  # initial status, nothing started
-    eval_summary_url = f'{eval_url}/summary/{event_name}'
+    ev_summary_url = f'{eval_url}/summary/{event_name}'
+    ev_form_url = f'{eval_url}/validation/{event_name}'
     valid_dict = {'conclusion': "",
                   'low_noise': "",
                   'noise_tstart': "",
@@ -134,7 +135,7 @@ def init_event_validation(event_name,
                   'links': {'gracedb': superevent_url,
                             'dqr': dqr_url,
                             'issue': gitlab_url,
-                            'summary': eval_summary_url
+                            'summary': ev_summary_url
                             },
                   'forms': {'validation': {'t0': "",
                                            'H1': valid_dict,
@@ -212,7 +213,7 @@ def init_event_validation(event_name,
     # send emails
     if send_email:
         logger.debug('Sending emails')
-        emails(event_data, logger)
+        emails(event_data, ev_forms_url, logger)
 
      #--------------------------------------------------------------------------
 

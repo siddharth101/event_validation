@@ -12,7 +12,7 @@ from .utils import *
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.4'
+__version__ = '0.5'
 __process_name__ = 'Event Validation'
 
 def init_event_validation(event_name,
@@ -100,38 +100,63 @@ def init_event_validation(event_name,
 
     # make event dict
     logger.debug(f'Creating event dictionary for {event_name}')
-    valid_status = 0  # i.e. validation not started
-    review_status = 0  # i.e. not reviewed
+    init_status = 0  # initial status, nothing started
     eval_summary_url = f'{eval_url}/summary/{event_name}'
-    valid_dict = {'fstart': "",
-                  'fend': "",
-                  'tstart': "",
-                  'tend': "",
-                  'duration': ""
+    valid_dict = {'conclusion': "",
+                  'low_noise': "",
+                  'noise_tstart': "",
+                  'noise_tend': "",
+                  'noise_flow': "",
+                  'noise_fhigh': ""
                   }
-    noise_mitig_dict = {'required': "",
-                        'status': "",
-                        'frame_type': "",
-                        'channel': ""
-                        }
+    review_dict = {'conclusion': "",
+                  'recommend_ifo': "",
+                  'analysis_tstart': "",
+                  'analysis_tend': "",
+                  'analysis_flow': "",
+                  'analysis_fhigh': "",
+                  'frame_type': "",
+                  'channel': "",
+                  'noise_left': ""
+                  }
+    mitig_request_dict = {'required': "",
+                          'noise_tstart': "",
+                          'noise_tend': "",
+                          'noise_flow': "",
+                          'noise_fhigh': ""
+                          }
+    mitig_result_dict = {'frame_type': "",
+                          'channel': ""
+                          }
     event_data = {'event_name': event_name,
-                  'valid_status': valid_status,
-                  'valid_conclusion': "",
-                  'reviewed': review_status,
-                  'superevent_url': superevent_url,
-                  'dqr_url': dqr_url,
-                  'eval_summary_url': eval_summary_url,
-                  'git_issue_url': gitlab_url,
-                  'detectors': "",
-                  'validation': {'H1': valid_dict,
-                                 'L1': valid_dict,
-                                 'V1': valid_dict},
-                  'noise_mitigation': {'H1': noise_mitig_dict,
-                                       'L1': noise_mitig_dict,
-                                       'V1': noise_mitig_dict},
-                  'comments': {'validator': "",
-                               'mitigation': "",
+                  'status': init_status,
+                  'reviewed': init_status,
+                  'links': {'gracedb': superevent_url,
+                            'dqr': dqr_url,
+                            'issue': gitlab_url,
+                            'summary': eval_summary_url
+                            },
+                  'forms': {'validation': {'t0': "",
+                                           'H1': valid_dict,
+                                           'L1': valid_dict,
+                                           'V1': valid_dict},
+                            'review': {'t0': "",
+                                       'duration': "",
+                                       'H1': review_dict,
+                                       'L1': review_dict,
+                                       'V1': review_dict},
+                            'mitigation_request': {'t0':"",
+                                                   'H1': mitig_request_dict,
+                                                   'L1': mitig_request_dict,
+                                                   'V1': mitig_request_dict},
+                            'mitigation_result': {'H1': mitig_result_dict,
+                                                  'L1': mitig_result_dict,
+                                                  'V1': mitig_result_dict}
+                             },
+                  'comments': {'validation': "",
                                'review': "",
+                               'mitigation_request': "",
+                               'mitigation_result': "",
                                'other': ""
                                },
                   'contacts': {'validator_name': "",
@@ -158,7 +183,7 @@ def init_event_validation(event_name,
     event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, expert, mitigation, review, logger)
 
     #--------------------------------------------------------------------------
-    
+
     # update data files
     logger.debug('Updating data files')
     update_data(event_data, git_dir, events_file, md_file, logger)

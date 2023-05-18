@@ -26,7 +26,8 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
     for t in vol_data['date_start']:
         t_starts.append(Time(t, format='iso', scale='utc').gps)
     t_starts = np.array(t_starts)
-    vol_idx = np.where(t_starts - valid_time > 0)[0][0] - 1
+    dt = t_starts - valid_time
+    vol_idx = np.where(dt <= 0)[0][-1]
 
     # read in contact list
     contact_file = f'{git_dir}/data/{contact_file}'
@@ -79,9 +80,9 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
 
 def update_data(event_data, git_dir, events_file, md_file, logger):
 
-    superevent_url_md = f"[GraceDB]({event_data['superevent_url']})"
-    dqr_url_md = f"[DQR]({event_data['dqr_url']})"
-    eval_url_md = f"[EV]({event_data['eval_summary_url']})"
+    superevent_url_md = f"[GraceDB]({event_data['links']['gracedb']})"
+    dqr_url_md = f"[DQR]({event_data['links']['dqr']})"
+    eval_url_md = f"[EV]({event_data['links']['summary']})"
     url_string = superevent_url_md + ', ' + dqr_url_md + ', ' + eval_url_md
     contact_md = f"{event_data['contacts']['validator_name']} ([email](mailto:{event_data['contacts']['validator_email']}))"
 

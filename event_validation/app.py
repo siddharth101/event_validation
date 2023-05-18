@@ -17,8 +17,8 @@ from flask import Flask, render_template, request, flash
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.5'
-__process_name__ = 'eval-website'
+__version__ = '0.6'
+__process_name__ = 'ev-forms-website'
 
 #------------------------------------------------------------------------------
 
@@ -34,37 +34,33 @@ def create_app(url, wdir, event_list, website_md, notify):
     events = get_events_dict(event_list_fname, wdir)
 
     ifos = ['H1', 'L1', 'V1']
-    val_flags = ['not started', 'in progress', 'completed']
+    status_flags = ['not started', 'in progress', 'completed']
+    # val_flags = ['not started', 'in progress', 'completed']
     dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
-    mitigation_flags = ['N/A', 'in progress', 'completed']
-    review_flags = ['no', 'yes', 'N/A']
+    # mitigation_flags = ['N/A', 'in progress', 'completed']
+    # review_flags = ['no', 'yes', 'N/A']
 
     messages = []
     for key, item in sorted(list(events.items()), key=lambda x:x[0].lower(), reverse=True):
 
         # add a warning if one wants to overwrite event validation form
-        if item["valid_status"] == 0:
-            form_url = f'{flask_base_url}validation/{key}'
+        if item["status"] == 0:
+            validation_url = f'{flask_base_url}validation/{key}'
         else:
-            form_url = f'{flask_base_url}warning_eval_form/{key}'
+            validation_url = f'{flask_base_url}warning_eval_form/{key}'
 
+        #TODO: add more warnings since there are more forms
         # add a warning if one wants to overwrite noise mitigation form
-        for ifo in ifos:
-            if item['noise_mitigation'][ifo]['status'] == 2:
-                mitig_url = f'{flask_base_url}warning_mitig_form/{key}'
-            else:
-                mitig_url = f'{flask_base_url}mitigation/{key}'
-
         # add a warning if one wants to fill in the noise mitigation form even though it is not required because there are no data quality issues
-        if item['noise_mitigation']['H1']['required'] == 0 and item['noise_mitigation']['L1']['required'] == 0 and item['noise_mitigation']['V1']['required'] == 0:
-            mitig_url = f'{flask_base_url}warning_mitig_form2/{key}'
+        # if item['noise_mitigation']['H1']['required'] == 0 and item['noise_mitigation']['L1']['required'] == 0 and item['noise_mitigation']['V1']['required'] == 0:
+            # mitig_url = f'{flask_base_url}warning_mitig_form2/{key}'
 
         summary_url = f'{flask_base_url}summary/{key}'
-        dqr_url = events[key]['dqr_url']
-        docs_url = 'https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation/'
 
-        title = f'{key}: {val_flags[item["valid_status"]]}'
-        message = {'title':title, 'content':f'', 'superevent_url':item['superevent_url'], 'form_url':form_url, 'mitig_url':mitig_url, 'gitlab_issue_url':item['git_issue_url'], 'dqr_url':dqr_url, 'summary_url':summary_url}
+        fixme_url = 'none'
+
+        title = f'{key}: {status_flags[item["status"]]}'
+        message = {'title':title, 'content':f'', 'summary':summary_url, 'validation':validation_url, 'review':fixme_url, 'mitig_request':fixme_url, 'mitig_results':fixme_url, 'gracedb':item['links']['gracedb'], 'dqr_url':item['links']['dqr'], 'issue':item['links']['issue']}
         messages.append(message)
 
 #-------------------------------

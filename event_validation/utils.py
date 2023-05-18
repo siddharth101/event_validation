@@ -133,9 +133,7 @@ def git_issue(event_data, gitlab_url, token, pid, label, logger):
             f"1. [ ] View the GraceDB SuperEvent and preferred event pages\n"
             f"2. [ ] View the Detector Status Summary pages\n"
             f"3. [ ] View the Data Quality Report\n"
-            f"4. [ ] Fill in the event validation form\n"
-            f"5. [ ] [If needed] Wait until the noise mitigation is completed\n"
-            f"6. [ ] Report event validation findings at a DetChar call\n\n"
+            f"4. [ ] Fill in the event validation form\n\n"
             f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']})."
             )
 
@@ -151,7 +149,7 @@ def git_issue(event_data, gitlab_url, token, pid, label, logger):
         issues = project.issues.list(get_all=True)
         issue_dict = {issue.title: issue for issue in issues}
         issue_iid = issue_dict[event_data['event_name']].iid
-        event_data['git_issue_url'] = f'{gitlab_url}/{issue_iid}'
+        event_data['links']['issue'] = f'{gitlab_url}/{issue_iid}'
     except:
         print(f"Issues assigning id to the gitlab issue url for {event_data['event_name']}, leaving default gitlab URL.")
 

@@ -1,67 +1,129 @@
 {
     "event_name": "G00001",
-    "valid_status": 0,
-    "valid_conclusion": "",
+    "status": 0,
     "reviewed": 0,
-    "superevent_url": "https://superevent.com",
-    "dqr_url": "https://dqr.com",
-    "eval_summary_url": "https://dqr.ligo.caltech.edu/ev_forms/summary/G00001",
-    "git_issue_url": "https://git.ligo.org/detchar/event-validation/-/issues/125",
-    "detectors": "",
-    "validation": {
-        "H1": {
-            "fstart": "",
-            "fend": "",
-            "tstart": "",
-            "tend": "",
-            "duration": ""
-        },
-        "L1": {
-            "fstart": "",
-            "fend": "",
-            "tstart": "",
-            "tend": "",
-            "duration": ""
-        },
-        "V1": {
-            "fstart": "",
-            "fend": "",
-            "tstart": "",
-            "tend": "",
-            "duration": ""
-        }
+    "links": {
+        "gracedb": "https://superevent.com",
+        "dqr": "https://dqr.com",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/G00001"
     },
-    "noise_mitigation": {
-        "H1": {
-            "required": "",
-            "status": "",
-            "frame_type": "",
-            "channel": ""
+    "forms": {
+        "validation": {
+            "t0": "",
+            "H1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            }
         },
-        "L1": {
-            "required": "",
-            "status": "",
-            "frame_type": "",
-            "channel": ""
+        "review": {
+            "t0": "",
+            "duration": "",
+            "H1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            }
         },
-        "V1": {
-            "required": "",
-            "status": "",
-            "frame_type": "",
-            "channel": ""
+        "glitch_request": {
+            "t0": "",
+            "H1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "L1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "V1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            }
+        },
+        "glitch_result": {
+            "H1": {
+                "frame_type": "",
+                "channel": ""
+            },
+            "L1": {
+                "frame_type": "",
+                "channel": ""
+            },
+            "V1": {
+                "frame_type": "",
+                "channel": ""
+            }
         }
     },
     "comments": {
-        "validator": "",
-        "mitigation": "",
+        "validation": "",
         "review": "",
+        "glitch_request": "",
+        "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Derek Davis",
-        "validator_email": "derek.davis@ligo.org",
-        "expert_name": "Laura Nuttall",
-        "expert_email": "laura.nuttall@port.ac.uk",
+        "validator_name": "Siddharth Soni",
+        "validator_email": "siddharth.soni@ligo.org",
+        "expert_name": "Andrew Lundgren",
+        "expert_email": "andrew.lundgren@port.ac.uk",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
         "review_name": "Ronaldas Macas",
@@ -72,5 +134,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "event_validation/create_event.py --verbose --git_dir . --label ER15 --dqr_url https://dqr.com --superevent_url https://superevent.com --ignore_far --create_issue --event_name G00001"
+    "cmd": "event_validation/create_event.py --verbose --git_dir . --label ER15 --dqr_url https://dqr.com --superevent_url https://superevent.com --ignore_far --event_name G00001"
 }

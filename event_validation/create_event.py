@@ -12,8 +12,8 @@ from .utils import *
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.5'
-__process_name__ = 'Event Validation'
+__version__ = '0.6'
+__process_name__ = 'ev-create-event'
 
 def init_event_validation(event_name,
                           graceid,
@@ -120,13 +120,13 @@ def init_event_validation(event_name,
                   'channel': "",
                   'noise_left': ""
                   }
-    mitig_request_dict = {'required': "",
+    glitch_request_dict = {'required': "",
                           'noise_tstart': "",
                           'noise_tend': "",
                           'noise_flow': "",
                           'noise_fhigh': ""
                           }
-    mitig_result_dict = {'frame_type': "",
+    glitch_result_dict = {'frame_type': "",
                           'channel': ""
                           }
     event_data = {'event_name': event_name,
@@ -146,18 +146,18 @@ def init_event_validation(event_name,
                                        'H1': review_dict,
                                        'L1': review_dict,
                                        'V1': review_dict},
-                            'mitigation_request': {'t0':"",
-                                                   'H1': mitig_request_dict,
-                                                   'L1': mitig_request_dict,
-                                                   'V1': mitig_request_dict},
-                            'mitigation_result': {'H1': mitig_result_dict,
-                                                  'L1': mitig_result_dict,
-                                                  'V1': mitig_result_dict}
+                            'glitch_request': {'t0':"",
+                                               'H1': glitch_request_dict,
+                                               'L1': glitch_request_dict,
+                                               'V1': glitch_request_dict},
+                            'glitch_result': {'H1': glitch_result_dict,
+                                              'L1': glitch_result_dict,
+                                              'V1': glitch_result_dict}
                              },
                   'comments': {'validation': "",
                                'review': "",
-                               'mitigation_request': "",
-                               'mitigation_result': "",
+                               'glitch_request': "",
+                               'glitch_result': "",
                                'other': ""
                                },
                   'contacts': {'validator_name': "",

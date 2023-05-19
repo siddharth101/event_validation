@@ -58,10 +58,11 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         summary_url = f'{flask_base_url}summary/{key}'
         review_url = f'{flask_base_url}review/{key}'
-        fixme_url = 'none'
+        glitch_request_url = f'{flask_base_url}glitch_request/{key}'
+        glitch_results_url = f'{flask_base_url}glitch_results/{key}'
 
         title = f'{key}: {status_flags[item["status"]]}'
-        message = {'title':title, 'content':f'', 'summary':summary_url, 'validation':validation_url, 'review':review_url, 'glitch_request':fixme_url, 'glitch_results':fixme_url, 'gracedb':item['links']['gracedb'], 'dqr_url':item['links']['dqr'], 'issue':item['links']['issue']}
+        message = {'title':title, 'content':f'', 'summary':summary_url, 'validation':validation_url, 'review':review_url, 'glitch_request':glitch_request_url, 'glitch_results':glitch_results_url, 'gracedb':item['links']['gracedb'], 'dqr_url':item['links']['dqr'], 'issue':item['links']['issue']}
         messages.append(message)
 
 #-------------------------------
@@ -138,6 +139,49 @@ def create_app(url, wdir, event_list, website_md, notify):
         v1_frame = TextAreaField('v1_frame:')
         v1_channel = TextAreaField('v1_channel:')
         v1_left_noise = SelectField('v1_left_noise:', coerce=int, choices=left_noise, validators=[validators.InputRequired()])
+
+
+    class form_glitch_request(Form):
+
+        name = TextAreaField('name', [validators.InputRequired()])
+        email = TextAreaField('email:', [validators.InputRequired()])
+        notes = TextAreaField('notes:')
+
+        glitch_request_status = [(0, 'No'), (1, 'Yes')]
+
+        h1_glitch_request = SelectField('h1_glitch_request:', coerce=int, choices=glitch_request_status, validators=[validators.InputRequired()])
+        h1_noise_tstart = TextAreaField('h1_noise_tstart:')
+        h1_noise_tend = TextAreaField('h1_noise_tend:')
+        h1_noise_flow = TextAreaField('h1_noise_flow:')
+        h1_noise_fhigh = TextAreaField('h1_noise_fhigh:')
+
+        l1_glitch_request = SelectField('l1_glitch_request:', coerce=int, choices=glitch_request_status, validators=[validators.InputRequired()])
+        l1_noise_tstart = TextAreaField('l1_noise_tstart:')
+        l1_noise_tend = TextAreaField('l1_noise_tend:')
+        l1_noise_flow = TextAreaField('l1_noise_flow:')
+        l1_noise_fhigh = TextAreaField('l1_noise_fhigh:')
+
+        v1_glitch_request = SelectField('v1_glitch_request:', coerce=int, choices=glitch_request_status, validators=[validators.InputRequired()])
+        v1_noise_tstart = TextAreaField('v1_noise_tstart:')
+        v1_noise_tend = TextAreaField('v1_noise_tend:')
+        v1_noise_flow = TextAreaField('v1_noise_flow:')
+        v1_noise_fhigh = TextAreaField('v1_noise_fhigh:')
+
+
+    class form_glitch_results(Form):
+
+        name = TextAreaField('name', [validators.InputRequired()])
+        email = TextAreaField('email:', [validators.InputRequired()])
+        notes = TextAreaField('notes:')
+
+        h1_frame = TextAreaField('h1_frame:')
+        h1_channel = TextAreaField('h1_channel:')
+
+        l1_frame = TextAreaField('l1_frame:')
+        l1_channel = TextAreaField('l1_channel:')
+
+        v1_frame = TextAreaField('v1_frame:')
+        v1_channel = TextAreaField('v1_channel:')
 
 
     class form_review2(Form):
@@ -412,6 +456,25 @@ def create_app(url, wdir, event_list, website_md, notify):
 
 
         return render_template('form_review.html', form=form, gid=gid)
+
+    @app.route('/glitch_request/<gid>', methods=('GET', 'POST'))
+    def gen_glitch_request_form(gid):
+
+        form = form_glitch_request(request.form)
+
+        # TODO: add the logic after form submission
+
+        return render_template('form_glitch_request.html', form=form, gid=gid)
+
+
+    @app.route('/glitch_results/<gid>', methods=('GET', 'POST'))
+    def gen_glitch_results_form(gid):
+
+        form = form_glitch_results(request.form)
+
+        # TODO: add the logic after form submission
+
+        return render_template('form_glitch_results.html', form=form, gid=gid)
 
 
     @app.route('/review2/<gid>', methods=('GET', 'POST'))

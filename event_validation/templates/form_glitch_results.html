@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+<h1>{% block title %}
+    O4 event validation: {{ gid }}
+    {% endblock %}</h1>
+
+{% block content %}
+    <html>
+      <head>
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+      </head>
+      <body>
+        <div class="container"><br>
+          <center>
+              <h2>{{ gid }} glitch subtraction results form</h2>
+          </center>
+        </div>
+
+        <div class=container><br>
+        <div class="row align-items-center justify-content-center">
+        <div class="col-md-5">
+          <form  action="" method="post" role="form">
+            {{ form.csrf }}
+            <div class="form-group">
+              <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name">
+              <br>
+              <label for="email">Email:</label>
+                <input type="text" class="form-control" name="email">
+              <br>
+              <label for="notes">Notes:</label>
+                <input type="text" class="form-control" name="notes">
+              <br>
+              <br>
+              <h4> Hanford </h4>
+              <br>
+              <label for="h1_frame">Frame type:</label>
+                <input type="text" class="form-control" name="h1_frame">
+              <br>
+              <label for="h1_channel">Channel:</label>
+                <input type="text" class="form-control" name="h1_channel">
+              <br>
+              <br>
+              <h4> Livingston </h4>
+              <br>
+              <label for="l1_frame">Frame type:</label>
+                <input type="text" class="form-control" name="l1_frame">
+              <br>
+              <label for="l1_channel">Channel:</label>
+                <input type="text" class="form-control" name="l1_channel">
+              <br>
+              <br>
+              <h4> Virgo </h4>
+              <br>
+              <label for="v1_frame">Frame type:</label>
+                <input type="text" class="form-control" name="v1_frame">
+              <br>
+              <label for="v1_channel">Channel:</label>
+                <input type="text" class="form-control" name="v1_channel">
+        </div>
+            <br>
+            <center>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </center>
+          </form>
+          <br>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+
+            {% for category, message in messages %}
+                    <div class="alert alert-{{category}}" role="alert">
+                    {{ message }}
+                    </div>
+            {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+        </div>
+        <br>
+        </div>
+        </div>
+      </body>
+    </html>
+{% endblock %}

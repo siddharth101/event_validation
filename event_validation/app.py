@@ -35,7 +35,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
     ifos = ['H1', 'L1', 'V1']
     status_flags = ['not started', 'in progress', 'completed']
-    # val_flags = ['not started', 'in progress', 'completed']
+    val_flags = ['Not observing', 'No DQ issues', 'DQ issues']
     dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
     # mitigation_flags = ['N/A', 'in progress', 'completed']
     # review_flags = ['no', 'yes', 'N/A']
@@ -69,35 +69,31 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
-
-        validation_status = [(0, dq_flags[0]), (1, dq_flags[1]), (2, dq_flags[2]), (3, dq_flags[3])]
-        detector_status = [(0, 'No'), (1, 'Yes')]
+        notes = TextAreaField('notes:')
+    
+        validation_status = [(0, val_flags[0]), (1, val_flags[1]), (2, val_flags[2])]
+        low_noise = [(0, 'No'), (1, 'Yes')]
 
         h1_val = SelectField('h1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
-        h1_det = SelectField('h1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        h1_fstart = TextAreaField('h1_fstart:')
-        h1_fend = TextAreaField('h1_fend:')
-        h1_tstart = TextAreaField('h1_tstart:')
-        h1_tend = TextAreaField('h1_tend:')
-        h1_duration = TextAreaField('h1_duration:')
+        h1_low_noise = SelectField('h1_low_noise:', coerce=int, choices=low_noise, validators=[validators.InputRequired()])
+        h1_noise_tstart = TextAreaField('h1_noise_tstart:')
+        h1_noise_tend = TextAreaField('h1_noise_tend:')
+        h1_noise_flow = TextAreaField('h1_noise_flow:')
+        h1_noise_fhigh = TextAreaField('h1_noise_fhigh:')
 
         l1_val = SelectField('l1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
-        l1_det = SelectField('l1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        l1_fstart = TextAreaField('l1_fstart:')
-        l1_fend = TextAreaField('l1_fend:')
-        l1_tstart = TextAreaField('l1_tstart:')
-        l1_tend = TextAreaField('l1_tend:')
-        l1_duration = TextAreaField('l1_duration:')
+        l1_low_noise = SelectField('l1_low_noise:', coerce=int, choices=low_noise, validators=[validators.InputRequired()])
+        l1_noise_tstart = TextAreaField('l1_noise_tstart:')
+        l1_noise_tend = TextAreaField('l1_noise_tend:')
+        l1_noise_flow = TextAreaField('l1_noise_flow:')
+        l1_noise_fhigh = TextAreaField('l1_noise_fhigh:')
 
         v1_val = SelectField('v1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
-        v1_det = SelectField('v1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        v1_fstart = TextAreaField('v1_fstart:')
-        v1_fend = TextAreaField('v1_fend:')
-        v1_tstart = TextAreaField('v1_tstart:')
-        v1_tend = TextAreaField('v1_tend:')
-        v1_duration = TextAreaField('v1_duration:')
-
-        comment = TextAreaField('comment:')
+        v1_low_noise = SelectField('v1_low_noise:', coerce=int, choices=low_noise, validators=[validators.InputRequired()])
+        v1_noise_tstart = TextAreaField('v1_noise_tstart:')
+        v1_noise_tend = TextAreaField('v1_noise_tend:')
+        v1_noise_flow = TextAreaField('v1_noise_flow:')
+        v1_noise_fhigh = TextAreaField('v1_noise_fhigh:')
 
 
     class form_mitigation(Form):
@@ -305,7 +301,7 @@ def create_app(url, wdir, event_list, website_md, notify):
             else:
                 flash('Error:'+str(form.errors),'danger')
 
-        return render_template('form.html', form=form, gid=gid)
+        return render_template('form_validation.html', form=form, gid=gid)
 
 
     @app.route('/mitigation/<gid>', methods=('GET', 'POST'))

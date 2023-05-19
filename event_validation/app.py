@@ -36,6 +36,7 @@ def create_app(url, wdir, event_list, website_md, notify):
     ifos = ['H1', 'L1', 'V1']
     status_flags = ['not started', 'in progress', 'completed']
     val_flags = ['Not observing', 'No DQ issues', 'DQ issues']
+    val_team_flags = ['Not observing', 'no DQ issues', 'DQ issues but no noise mitigation required', 'Noise mitigation required']
     dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
     # mitigation_flags = ['N/A', 'in progress', 'completed']
     # review_flags = ['no', 'yes', 'N/A']
@@ -56,11 +57,11 @@ def create_app(url, wdir, event_list, website_md, notify):
             # mitig_url = f'{flask_base_url}warning_mitig_form2/{key}'
 
         summary_url = f'{flask_base_url}summary/{key}'
-
+        review_url = f'{flask_base_url}review/{key}'
         fixme_url = 'none'
 
         title = f'{key}: {status_flags[item["status"]]}'
-        message = {'title':title, 'content':f'', 'summary':summary_url, 'validation':validation_url, 'review':fixme_url, 'mitig_request':fixme_url, 'mitig_results':fixme_url, 'gracedb':item['links']['gracedb'], 'dqr_url':item['links']['dqr'], 'issue':item['links']['issue']}
+        message = {'title':title, 'content':f'', 'summary':summary_url, 'validation':validation_url, 'review':review_url, 'glitch_request':fixme_url, 'glitch_results':fixme_url, 'gracedb':item['links']['gracedb'], 'dqr_url':item['links']['dqr'], 'issue':item['links']['issue']}
         messages.append(message)
 
 #-------------------------------
@@ -70,7 +71,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
         notes = TextAreaField('notes:')
-    
+
         validation_status = [(0, val_flags[0]), (1, val_flags[1]), (2, val_flags[2])]
         low_noise = [(0, 'No'), (1, 'Yes')]
 
@@ -96,43 +97,50 @@ def create_app(url, wdir, event_list, website_md, notify):
         v1_noise_fhigh = TextAreaField('v1_noise_fhigh:')
 
 
-    class form_mitigation(Form):
+    class form_review(Form):
 
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
-        comment = TextAreaField('comment:')
+        notes = TextAreaField('notes:')
 
-        detector_status = [(0, 'No'), (1, 'Yes')]
+        duration = TextAreaField('duration:', validators=[validators.InputRequired()])
 
-        h1_det = SelectField('h1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        h1_fstart = TextAreaField('h1_fstart:')
-        h1_fend = TextAreaField('h1_fend:')
+        validation_team_status = [(0, val_team_flags[0]), (1, val_team_flags[1]), (2, val_team_flags[2]), (3, val_team_flags[3])]
+        recommend_detector = [(0, 'No'), (1, 'Yes')]
+        left_noise = [(0, 'No'), (1, 'Yes')]
+
+        h1_team_val = SelectField('h1_team_val:', coerce=int, choices=validation_team_status, validators=[validators.InputRequired()])
+        h1_det = SelectField('h1_det:', coerce=int, choices=recommend_detector, validators=[validators.InputRequired()])
         h1_tstart = TextAreaField('h1_tstart:')
         h1_tend = TextAreaField('h1_tend:')
-        h1_duration = TextAreaField('h1_duration:')
+        h1_flow = TextAreaField('h1_flow:')
+        h1_fhigh = TextAreaField('h1_fhigh:')
         h1_frame = TextAreaField('h1_frame:')
         h1_channel = TextAreaField('h1_channel:')
+        h1_left_noise = SelectField('h1_left_noise:', coerce=int, choices=left_noise, validators=[validators.InputRequired()])
 
-        l1_det = SelectField('l1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        l1_fstart = TextAreaField('l1_fstart:')
-        l1_fend = TextAreaField('l1_fend:')
+        l1_team_val = SelectField('l1_team_val:', coerce=int, choices=validation_team_status, validators=[validators.InputRequired()])
+        l1_det = SelectField('l1_det:', coerce=int, choices=recommend_detector, validators=[validators.InputRequired()])
         l1_tstart = TextAreaField('l1_tstart:')
         l1_tend = TextAreaField('l1_tend:')
-        l1_duration = TextAreaField('l1_duration:')
+        l1_flow = TextAreaField('l1_flow:')
+        l1_fhigh = TextAreaField('l1_fhigh:')
         l1_frame = TextAreaField('l1_frame:')
         l1_channel = TextAreaField('l1_channel:')
+        l1_left_noise = SelectField('l1_left_noise:', coerce=int, choices=left_noise, validators=[validators.InputRequired()])
 
-        v1_det = SelectField('v1_det:', coerce=int, choices=detector_status, validators=[validators.InputRequired()])
-        v1_fstart = TextAreaField('v1_fstart:')
-        v1_fend = TextAreaField('v1_fend:')
+        v1_team_val = SelectField('v1_team_val:', coerce=int, choices=validation_team_status, validators=[validators.InputRequired()])
+        v1_det = SelectField('v1_det:', coerce=int, choices=recommend_detector, validators=[validators.InputRequired()])
         v1_tstart = TextAreaField('v1_tstart:')
         v1_tend = TextAreaField('v1_tend:')
-        v1_duration = TextAreaField('v1_duration:')
+        v1_flow = TextAreaField('v1_flow:')
+        v1_fhigh = TextAreaField('v1_fhigh:')
         v1_frame = TextAreaField('v1_frame:')
         v1_channel = TextAreaField('v1_channel:')
+        v1_left_noise = SelectField('v1_left_noise:', coerce=int, choices=left_noise, validators=[validators.InputRequired()])
 
 
-    class form_review(Form):
+    class form_review2(Form):
 
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
@@ -155,7 +163,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
 
     @app.route('/validation/<gid>', methods=('GET', 'POST'))
-    def gen_event_form(gid):
+    def gen_valid_form(gid):
 
         form = form_validation(request.form)
 
@@ -304,34 +312,41 @@ def create_app(url, wdir, event_list, website_md, notify):
         return render_template('form_validation.html', form=form, gid=gid)
 
 
-    @app.route('/mitigation/<gid>', methods=('GET', 'POST'))
-    def gen_mitigation_form(gid):
+    @app.route('/review/<gid>', methods=('GET', 'POST'))
+    def gen_review_form(gid):
 
-        form = form_mitigation(request.form)
+        form = form_review(request.form)
         form_output = {"fname":form.name.data,
                        "email":form.email.data,
-                       "comment": form.comment.data,
-                       "H1_fstart": form.h1_fstart.data,
-                       "H1_fend": form.h1_fend.data,
+                       "notes": form.notes.data,
+                       "duration": form.duration.data,
+                       "H1_team_val": form.h1_team_val.data,
+                       "H1_det": form.h1_det.data,
                        "H1_tstart": form.h1_tstart.data,
                        "H1_tend": form.h1_tend.data,
-                       "H1_duration": form.h1_duration.data,
+                       "H1_flow": form.h1_flow.data,
+                       "H1_fhigh": form.h1_fhigh.data,
                        "H1_frame": form.h1_frame.data,
                        "H1_channel": form.h1_channel.data,
-                       "L1_fstart": form.l1_fstart.data,
-                       "L1_fend": form.l1_fend.data,
+                       "H1_left_noise": form.h1_left_noise.data,
+                       "L1_team_val": form.l1_team_val.data,
+                       "L1_det": form.l1_det.data,
                        "L1_tstart": form.l1_tstart.data,
                        "L1_tend": form.l1_tend.data,
-                       "L1_duration": form.l1_duration.data,
+                       "L1_flow": form.l1_flow.data,
+                       "L1_fhigh": form.l1_fhigh.data,
                        "L1_frame": form.l1_frame.data,
                        "L1_channel": form.l1_channel.data,
-                       "V1_fstart": form.v1_fstart.data,
-                       "V1_fend": form.v1_fend.data,
+                       "L1_left_noise": form.l1_left_noise.data,
+                       "V1_team_val": form.v1_team_val.data,
+                       "V1_det": form.v1_det.data,
                        "V1_tstart": form.v1_tstart.data,
                        "V1_tend": form.v1_tend.data,
-                       "V1_duration": form.v1_duration.data,
+                       "V1_flow": form.v1_flow.data,
+                       "V1_fhigh": form.v1_fhigh.data,
                        "V1_frame": form.v1_frame.data,
-                       "V1_channel": form.v1_channel.data
+                       "V1_channel": form.v1_channel.data,
+                       "V1_left_noise": form.v1_left_noise.data
                        }
 
         if request.method == 'POST':
@@ -396,10 +411,10 @@ def create_app(url, wdir, event_list, website_md, notify):
                 flash('Error:'+str(form.errors),'danger')
 
 
-        return render_template('form_mitigation.html', form=form, gid=gid)
+        return render_template('form_review.html', form=form, gid=gid)
 
 
-    @app.route('/review/<gid>', methods=('GET', 'POST'))
+    @app.route('/review2/<gid>', methods=('GET', 'POST'))
     def gen_final_review_form(gid):
 
         form = form_review(request.form)
@@ -456,7 +471,7 @@ def create_app(url, wdir, event_list, website_md, notify):
             else:
                 flash('Error:'+str(form.errors),'danger')
 
-        return render_template('form_review.html', form=form, gid=gid)
+        return render_template('form_review2.html', form=form, gid=gid)
 
 
     @app.route('/summary/<gid>', methods=('GET', 'POST'))

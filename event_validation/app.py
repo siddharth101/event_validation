@@ -184,15 +184,15 @@ def create_app(url, wdir, event_list, website_md, notify):
         v1_channel = TextAreaField('v1_channel:')
 
 
-    class form_review2(Form):
+    class form_finalize(Form):
 
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
-        comment = TextAreaField('comment:')
+        notes = TextAreaField('notes:')
 
-        review_status = [(0, 'No'), (1, 'Yes')]
+        finalize_status = [(0, 'No'), (1, 'Yes')]
 
-        review = SelectField('final_review:', coerce=int, choices=review_status, validators=[validators.InputRequired()])
+        finalize = SelectField('finalize:', coerce=int, choices=finalize_status, validators=[validators.InputRequired()])
 
 
     class form_comment(Form):
@@ -477,10 +477,10 @@ def create_app(url, wdir, event_list, website_md, notify):
         return render_template('form_glitch_results.html', form=form, gid=gid)
 
 
-    @app.route('/review2/<gid>', methods=('GET', 'POST'))
-    def gen_final_review_form(gid):
+    @app.route('/finalize/<gid>', methods=('GET', 'POST'))
+    def gen_finalize_form(gid):
 
-        form = form_review(request.form)
+        form = form_finalize(request.form)
 
         if request.method == 'POST':
             if form.validate():
@@ -534,7 +534,7 @@ def create_app(url, wdir, event_list, website_md, notify):
             else:
                 flash('Error:'+str(form.errors),'danger')
 
-        return render_template('form_review2.html', form=form, gid=gid)
+        return render_template('form_finalize.html', form=form, gid=gid)
 
 
     @app.route('/summary/<gid>', methods=('GET', 'POST'))

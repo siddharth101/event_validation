@@ -223,133 +223,64 @@ def create_app(url, wdir, event_list, website_md, notify):
                 with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
 
-                # if (form.h1_val.data == 1 or form.h1_val.data == 0) and (form.l1_val.data == 1 or form.l1_val.data == 0) and (form.v1_val.data == 1 or form.v1_val.data == 0):
-                # if needs mitigation
-                if form.h1_val.data == 3 or form.l1_val.data == 3 or form.v1_val.data == 3:
+                # update the event json
+                event_data['status'] = 1
+                event_data['comments']['validation'] = form.notes.data
+                event_data['contacts']['validator_name'] = form.name.data
+                event_data['contacts']['validator_email'] = form.email.data
 
-                    # update the event json
-                    event_data['valid_status'] = 1
-                    event_data['valid_conclusion'] = 3
-                    event_data['noise_mitigation']['H1']['required'] = 1 if form.h1_val.data == 3 else 0
-                    event_data['noise_mitigation']['H1']['status'] = 1 if form.h1_val.data == 3 else 0
-                    event_data['noise_mitigation']['L1']['required'] = 1 if form.l1_val.data == 3 else 0
-                    event_data['noise_mitigation']['L1']['status'] = 1 if form.l1_val.data == 3 else 0
-                    event_data['noise_mitigation']['V1']['required'] = 1 if form.v1_val.data == 3 else 0
-                    event_data['noise_mitigation']['V1']['status'] = 1 if form.v1_val.data == 3 else 0
+                event_data['forms']['validation']['H1']['conclusion'] = form.h1_val.data
+                event_data['forms']['validation']['H1']['low_noise'] = form.h1_low_noise.data
+                event_data['forms']['validation']['H1']['noise_tstart'] = form.h1_noise_tstart.data
+                event_data['forms']['validation']['H1']['noise_tend'] = form.h1_noise_tend.data
+                event_data['forms']['validation']['H1']['noise_flow'] = form.h1_noise_flow.data
+                event_data['forms']['validation']['H1']['noise_fhigh'] = form.h1_noise_fhigh.data
 
-                    event_data['detectors'] = get_dets(form.h1_det.data, form.l1_det.data, form.v1_det.data)
+                event_data['forms']['validation']['L1']['conclusion'] = form.l1_val.data
+                event_data['forms']['validation']['L1']['low_noise'] = form.l1_low_noise.data
+                event_data['forms']['validation']['L1']['noise_tstart'] = form.l1_noise_tstart.data
+                event_data['forms']['validation']['L1']['noise_tend'] = form.l1_noise_tend.data
+                event_data['forms']['validation']['L1']['noise_flow'] = form.l1_noise_flow.data
+                event_data['forms']['validation']['L1']['noise_fhigh'] = form.l1_noise_fhigh.data
 
-                    event_data['validation']['H1']['fstart'] = form.h1_fstart.data
-                    event_data['validation']['H1']['fend'] = form.h1_fend.data
-                    event_data['validation']['H1']['tstart'] = form.h1_tstart.data
-                    event_data['validation']['H1']['tend'] = form.h1_tend.data
-                    event_data['validation']['H1']['duration'] = form.h1_duration.data
-                    event_data['validation']['L1']['fstart'] = form.l1_fstart.data
-                    event_data['validation']['L1']['fend'] = form.l1_fend.data
-                    event_data['validation']['L1']['tstart'] = form.l1_tstart.data
-                    event_data['validation']['L1']['tend'] = form.l1_tend.data
-                    event_data['validation']['L1']['duration'] = form.l1_duration.data
-                    event_data['validation']['V1']['fstart'] = form.v1_fstart.data
-                    event_data['validation']['V1']['fend'] = form.v1_fend.data
-                    event_data['validation']['V1']['tstart'] = form.v1_tstart.data
-                    event_data['validation']['V1']['tend'] = form.v1_tend.data
-                    event_data['validation']['V1']['duration'] = form.v1_duration.data
+                event_data['forms']['validation']['V1']['conclusion'] = form.v1_val.data
+                event_data['forms']['validation']['V1']['low_noise'] = form.v1_low_noise.data
+                event_data['forms']['validation']['V1']['noise_tstart'] = form.v1_noise_tstart.data
+                event_data['forms']['validation']['V1']['noise_tend'] = form.v1_noise_tend.data
+                event_data['forms']['validation']['V1']['noise_flow'] = form.v1_noise_flow.data
+                event_data['forms']['validation']['V1']['noise_fhigh'] = form.v1_noise_fhigh.data
 
-                    event_data['comments']['validator'] = form.comment.data
-                    event_data['contacts']['validator_name'] = form.name.data
-                    event_data['contacts']['validator_email'] = form.email.data
+                #TODO: fix mkdocs stuff here
+                # update the events list
+                # event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
+                # event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[3])
+                # event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[1])
+                # event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitigation_name']} ([email](mailto:{event_data['contacts']['mitigation_email']}))"
+                # event_list_df.to_csv(event_list_fname, index=False)
 
-                    # update the events list
-                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
-                    event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[3])
-                    event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[1])
-                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitigation_name']} ([email](mailto:{event_data['contacts']['mitigation_email']}))"
-                    event_list_df.to_csv(event_list_fname, index=False)
-
-                    if notify:
-                        subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[3])}'
-                        body_valid = f'{subject}. See the summary at {summary_url}.'
-                        body_mitig = f'{gid} requires noise mitigation, see the event validation report summary at {summary_url} .\n\nPlease submit your noise mitigation report at {flask_base_url}/mitigation/{gid} .'
-
-                        # send an email to validator
-                        send_email(form.email.data, subject, body_valid)
-                        # send an email to leads
-                        send_email(event_data['contacts']['lead1_email'], subject, body_valid)
-                        send_email(event_data['contacts']['lead2_email'], subject, body_valid)
-                        # send an email to noise mitigation
-                        send_email(event_data['contacts']['mitigation_email'], subject, body_mitig)
-
-                else: # l/h/v no need for noise mitigation
-
-                    # update the event json
-                    event_data['valid_status'] = 1
-                    if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
-                        event_data['valid_conclusion'] = 2
-                    else:
-                        event_data['valid_conclusion'] = 1
-                    event_data['noise_mitigation']['H1']['required'] = 0
-                    event_data['noise_mitigation']['H1']['status'] = 0
-                    event_data['noise_mitigation']['L1']['required'] = 0
-                    event_data['noise_mitigation']['L1']['status'] = 0
-                    event_data['noise_mitigation']['V1']['required'] = 0
-                    event_data['noise_mitigation']['V1']['status'] = 0
-
-                    event_data['detectors'] = get_dets(form.h1_det.data, form.l1_det.data, form.v1_det.data)
-
-                    event_data['validation']['H1']['fstart'] = form.h1_fstart.data
-                    event_data['validation']['H1']['fend'] = form.h1_fend.data
-                    event_data['validation']['H1']['tstart'] = form.h1_tstart.data
-                    event_data['validation']['H1']['tend'] = form.h1_tend.data
-                    event_data['validation']['H1']['duration'] = form.h1_duration.data
-                    event_data['validation']['L1']['fstart'] = form.l1_fstart.data
-                    event_data['validation']['L1']['fend'] = form.l1_fend.data
-                    event_data['validation']['L1']['tstart'] = form.l1_tstart.data
-                    event_data['validation']['L1']['tend'] = form.l1_tend.data
-                    event_data['validation']['L1']['duration'] = form.l1_duration.data
-                    event_data['validation']['V1']['fstart'] = form.v1_fstart.data
-                    event_data['validation']['V1']['fend'] = form.v1_fend.data
-                    event_data['validation']['V1']['tstart'] = form.v1_tstart.data
-                    event_data['validation']['V1']['tend'] = form.v1_tend.data
-                    event_data['validation']['V1']['duration'] = form.v1_duration.data
-
-                    event_data['comments']['validator'] = form.comment.data
-                    event_data['contacts']['validator_name'] = form.name.data
-                    event_data['contacts']['validator_email'] = form.email.data
-
-                    # update the events list
-                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
-                    if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
-                        event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[2])
-                    else:
-                        event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[1])
-                    event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[0])
-                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
-                    event_list_df.to_csv(event_list_fname, index=False)
-
-                    if notify:
-                        subject = f'Event validation report complete for {gid}: {first_upper(dq_flags[1])}'
-                        body_valid = f'{subject}. See summary at {summary_url} .'
-                        body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid} .'
-
-                        # send an email to validator
-                        send_email(form.email.data, subject, body_valid)
-                        # send an email to leads
-                        send_email(event_data['contacts']['lead1_email'], subject, body_valid)
-                        send_email(event_data['contacts']['lead2_email'], subject, body_valid)
-                        # send an email to reviewer
-                        send_email(event_data['contacts']['review_email'], subject, body_review)
-
-
-                # update website's .md table
-                with open(md_fname, 'w') as md:
-                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                os.system(f'cd {wdir}; mkdocs -q build')
+                # # update website's .md table
+                # with open(md_fname, 'w') as md:
+                #     event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                # os.system(f'cd {wdir}; mkdocs -q build')
 
                 # update event json
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-                return render_template('form_success.html', gid=gid, name=form.name.data, h1=dq_flags[form.h1_val.data], l1=dq_flags[form.l1_val.data], v1=dq_flags[form.v1_val.data])
+                if notify:
+                    subject = f'Event validation report complete for {gid}.'
+                    body_valid = f'{subject}. See the summary at {summary_url}.'
+                    body_review = f'{body_valid}\n\nPlease submit your event validation review report at {flask_base_url}/review/{gid}.'
+
+                    # send an email to the validator
+                    send_email(form.email.data, subject, body_valid)
+                    # send an email to leads
+                    send_email(event_data['contacts']['lead1_email'], subject, body_valid)
+                    send_email(event_data['contacts']['lead2_email'], subject, body_valid)
+                    # send an email to the reviewer
+                    send_email(event_data['contacts']['review_email'], subject, body_review)
+
+                return render_template('form_validation_success.html', gid=gid, name=form.name.data, h1=val_flags[form.h1_val.data], l1=val_flags[form.l1_val.data], v1=val_flags[form.v1_val.data])
 
             else:
                 flash('Error:'+str(form.errors),'danger')

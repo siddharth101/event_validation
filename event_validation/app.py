@@ -6,10 +6,9 @@
 FLASK website for event validation
 Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 """
-
+#TODO: check the review form, submit it, check if works, then work on finalize
 import json, argparse, os
 import pandas as pd
-import numpy as np
 
 from .utils import get_events_dict, first_upper, send_email, get_dets
 
@@ -22,6 +21,10 @@ __version__ = '0.6'
 __process_name__ = 'ev-forms-website'
 
 #------------------------------------------------------------------------------
+
+# TODO: add option to add comments
+# TODO:remove from the finalizing review form option ot add comments bc there are no comments
+# TODO: check which htmls are used and remove others
 
 def create_app(url, wdir, event_list, website_md, notify):
     app = Flask(__name__)
@@ -38,6 +41,7 @@ def create_app(url, wdir, event_list, website_md, notify):
     status_flags = ['not started', 'in progress', 'completed']
     val_flags = ['Not observing', 'No DQ issues', 'DQ issues']
     val_team_flags = ['Not observing', 'no DQ issues', 'DQ issues but no noise mitigation required', 'Noise mitigation required']
+    glitch_flags = ['not required', 'required']
     # dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
     # mitigation_flags = ['N/A', 'in progress', 'completed']
     # review_flags = ['no', 'yes', 'N/A']
@@ -292,38 +296,6 @@ def create_app(url, wdir, event_list, website_md, notify):
     def gen_review_form(gid):
 
         form = form_review(request.form)
-        form_output = {"fname":form.name.data,
-                       "email":form.email.data,
-                       "notes": form.notes.data,
-                       "duration": form.duration.data,
-                       "H1_team_val": form.h1_team_val.data,
-                       "H1_det": form.h1_det.data,
-                       "H1_tstart": form.h1_tstart.data,
-                       "H1_tend": form.h1_tend.data,
-                       "H1_flow": form.h1_flow.data,
-                       "H1_fhigh": form.h1_fhigh.data,
-                       "H1_frame": form.h1_frame.data,
-                       "H1_channel": form.h1_channel.data,
-                       "H1_left_noise": form.h1_left_noise.data,
-                       "L1_team_val": form.l1_team_val.data,
-                       "L1_det": form.l1_det.data,
-                       "L1_tstart": form.l1_tstart.data,
-                       "L1_tend": form.l1_tend.data,
-                       "L1_flow": form.l1_flow.data,
-                       "L1_fhigh": form.l1_fhigh.data,
-                       "L1_frame": form.l1_frame.data,
-                       "L1_channel": form.l1_channel.data,
-                       "L1_left_noise": form.l1_left_noise.data,
-                       "V1_team_val": form.v1_team_val.data,
-                       "V1_det": form.v1_det.data,
-                       "V1_tstart": form.v1_tstart.data,
-                       "V1_tend": form.v1_tend.data,
-                       "V1_flow": form.v1_flow.data,
-                       "V1_fhigh": form.v1_fhigh.data,
-                       "V1_frame": form.v1_frame.data,
-                       "V1_channel": form.v1_channel.data,
-                       "V1_left_noise": form.v1_left_noise.data
-                       }
 
         if request.method == 'POST':
             if form.validate():
@@ -333,55 +305,73 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data = json.load(fp)
 
                 # update the event json
-                for ifo in ifos:
-                    event_data['noise_mitigation'][ifo]['status'] = 2
-                    event_data['noise_mitigation'][ifo]['frame_type'] = form_output[f'{ifo}_frame']
-                    event_data['noise_mitigation'][ifo]['channel'] = form_output[f'{ifo}_channel']
-                    event_data['validation'][ifo]['fstart'] = form_output[f'{ifo}_fstart']
-                    event_data['validation'][ifo]['fend'] = form_output[f'{ifo}_fend']
-                    event_data['validation'][ifo]['tstart'] = form_output[f'{ifo}_tstart']
-                    event_data['validation'][ifo]['tend'] = form_output[f'{ifo}_tend']
-                    event_data['validation'][ifo]['duration'] = form_output[f'{ifo}_duration']
+                event_data['contacts']['review_name'] = form.name.data
+                event_data['contacts']['review_email'] = form.email.data
+                event_data['comments']['review'] = form.notes.data
 
-                event_data['detectors'] = get_dets(form.h1_det.data, form.l1_det.data, form.v1_det.data)
-                event_data['comments']['mitigation'] = form.comment.data
-                event_data['contacts']['mitigation_name'] = form.name.data
-                event_data['contacts']['mitigation_email'] = form.email.data
+                event_data['forms']['review']['duration'] = form.duration.data
+
+                event_data['forms']['review']['H1']['conclusion'] = form.h1_team_val.data
+                event_data['forms']['review']['H1']['recommend_ifo'] = form.h1_det.data
+                event_data['forms']['review']['H1']['analysis_tstart'] = form.h1_tstart.data
+                event_data['forms']['review']['H1']['analysis_tend'] = form.h1_tend.data
+                event_data['forms']['review']['H1']['analysis_flow'] = form.h1_flow.data
+                event_data['forms']['review']['H1']['analysis_fhigh'] = form.h1_fhigh.data
+                event_data['forms']['review']['H1']['frame_type'] = form.h1_frame.data
+                event_data['forms']['review']['H1']['channel'] = form.h1_channel.data
+                event_data['forms']['review']['H1']['noise_left'] = form.h1_noise_left.data
+
+                event_data['forms']['review']['L1']['conclusion'] = form.l1_team_val.data
+                event_data['forms']['review']['L1']['recommend_ifo'] = form.l1_det.data
+                event_data['forms']['review']['L1']['analysis_tstart'] = form.l1_tstart.data
+                event_data['forms']['review']['L1']['analysis_tend'] = form.l1_tend.data
+                event_data['forms']['review']['L1']['analysis_flow'] = form.l1_flow.data
+                event_data['forms']['review']['L1']['analysis_fhigh'] = form.l1_fhigh.data
+                event_data['forms']['review']['L1']['frame_type'] = form.l1_frame.data
+                event_data['forms']['review']['L1']['channel'] = form.l1_channel.data
+                event_data['forms']['review']['L1']['noise_left'] = form.l1_noise_left.data
+
+                event_data['forms']['review']['V1']['conclusion'] = form.v1_team_val.data
+                event_data['forms']['review']['V1']['recommend_ifo'] = form.v1_det.data
+                event_data['forms']['review']['V1']['analysis_tstart'] = form.v1_tstart.data
+                event_data['forms']['review']['V1']['analysis_tend'] = form.v1_tend.data
+                event_data['forms']['review']['V1']['analysis_flow'] = form.v1_flow.data
+                event_data['forms']['review']['V1']['analysis_fhigh'] = form.v1_fhigh.data
+                event_data['forms']['review']['V1']['frame_type'] = form.v1_frame.data
+                event_data['forms']['review']['V1']['channel'] = form.v1_channel.data
+                event_data['forms']['review']['V1']['noise_left'] = form.v1_noise_left.data
 
                 # update event json
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
                 # read event list and find idx
-                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+                # event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                # gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
-                # update the events list
-                event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[2])
-                event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
-                event_list_df.to_csv(event_list_fname, index=False)
+                # # update the events list
+                # event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[2])
+                # event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
+                # event_list_df.to_csv(event_list_fname, index=False)
 
-                # update website's .md table
-                with open(md_fname, 'w') as md:
-                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                os.system(f'cd {wdir}; mkdocs -q build')
+                # # update website's .md table
+                # with open(md_fname, 'w') as md:
+                #     event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                # os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
-                    subject = f'Noise mitigation report complete for {gid}'
-                    body_mitig = f'{subject}. See the summary at {summary_url}.'
-                    body_review = f'{subject}, see the mitigation report summary at {summary_url}.\n\nPlease submit review form at {flask_base_url}/review/{gid}.'
+                    subject = f'Event validation review report complete for {gid}'
+                    body = f'{subject}. See the summary at {summary_url}.'
 
-                    # send an email to mitigator
-                    send_email(form.email.data, subject, body_mitig)
-                    # send an email to validator
-                    send_email(event_data['contacts']['validator_email'], subject, body_mitig)
+                    # send an email to the reviewer
+                    send_email(form.email.data, subject, body)
+                    # send an email to the validator
+                    send_email(event_data['contacts']['validator_email'], subject, body)
                     # send an email to leads
-                    send_email(event_data['contacts']['lead1_email'], subject, body_mitig)
-                    send_email(event_data['contacts']['lead2_email'], subject, body_mitig)
-                    # send an email to the review
-                    send_email(event_data['contacts']['review_email'], subject, body_review)
+                    send_email(event_data['contacts']['lead1_email'], subject, body)
+                    send_email(event_data['contacts']['lead2_email'], subject, body)
 
-                return render_template('form_mitigation_success.html', gid=gid, name=form.name.data)
+                return render_template('form_review_success.html', gid=gid, name=form.name.data, h1=val_team_flags[form.h1_team_val.data], l1=val_team_flags[form.l1_team_val.data], v1=val_team_flags[form.v1_team_val.data])
 
             else:
                 flash('Error:'+str(form.errors),'danger')
@@ -394,7 +384,58 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         form = form_glitch_request(request.form)
 
-        # TODO: add the logic after form submission
+        if request.method == 'POST':
+            if form.validate():
+
+                # read event json
+                with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
+                    event_data = json.load(fp)
+
+                # update the event json
+                event_data['contacts']['review_name'] = form.name.data
+                event_data['contacts']['review_email'] = form.email.data
+                event_data['comments']['glitch_request'] = form.notes.data
+
+                event_data['forms']['glitch_request']['H1']['required'] = form.h1_glitch_request.data
+                event_data['forms']['glitch_request']['H1']['noise_tstart'] = form.h1_noise_tstart.data
+                event_data['forms']['glitch_request']['H1']['noise_tend'] = form.h1_noise_tend.data
+                event_data['forms']['glitch_request']['H1']['noise_flow'] = form.h1_noise_flow.data
+                event_data['forms']['glitch_request']['H1']['noise_fhigh'] = form.h1_noise_fhigh.data
+
+                event_data['forms']['glitch_request']['L1']['required'] = form.l1_glitch_request.data
+                event_data['forms']['glitch_request']['L1']['noise_tstart'] = form.l1_noise_tstart.data
+                event_data['forms']['glitch_request']['L1']['noise_tend'] = form.l1_noise_tend.data
+                event_data['forms']['glitch_request']['L1']['noise_flow'] = form.l1_noise_flow.data
+                event_data['forms']['glitch_request']['L1']['noise_fhigh'] = form.l1_noise_fhigh.data
+
+                event_data['forms']['glitch_request']['V1']['required'] = form.v1_glitch_request.data
+                event_data['forms']['glitch_request']['V1']['noise_tstart'] = form.v1_noise_tstart.data
+                event_data['forms']['glitch_request']['V1']['noise_tend'] = form.v1_noise_tend.data
+                event_data['forms']['glitch_request']['V1']['noise_flow'] = form.v1_noise_flow.data
+                event_data['forms']['glitch_request']['V1']['noise_fhigh'] = form.v1_noise_fhigh.data
+
+                # update event json
+                with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
+                    json.dump(event_data, fp, indent=4)
+
+                # TODO: update md tables
+
+                if notify:
+                    subject = f'Glitch subtraction requested for {gid}'
+                    body = f'{subject}. See the summary at {summary_url}.'
+
+                    # send an email to the reviewer
+                    send_email(form.email.data, subject, body)
+                    # send an email to the glitch mitigation
+                    send_email(event_data['contacts']['mitigation_email'], subject, body)
+                    # send an email to leads
+                    send_email(event_data['contacts']['lead1_email'], subject, body)
+                    send_email(event_data['contacts']['lead2_email'], subject, body)
+
+                return render_template('form_glitch_request_success.html', gid=gid, name=form.name.data, h1=glitch_flags[form.h1_glitch_request.data], l1=glitch_flags[form.l1_glitch_request.data], v1=glitch_flags[form.v1_glitch_request.data])
+
+            else:
+                flash('Error:'+str(form.errors),'danger')
 
         return render_template('form_glitch_request.html', form=form, gid=gid)
 
@@ -404,7 +445,49 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         form = form_glitch_results(request.form)
 
-        # TODO: add the logic after form submission
+        if request.method == 'POST':
+            if form.validate():
+
+                # read event json
+                with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
+                    event_data = json.load(fp)
+
+                # update the event json
+                event_data['contacts']['mitigation_name'] = form.name.data
+                event_data['contacts']['mitigation_email'] = form.email.data
+                event_data['comments']['glitch_result'] = form.notes.data
+
+                event_data['forms']['glitch_result']['H1']['frame_type'] = form.h1_frame.data
+                event_data['forms']['glitch_result']['H1']['channel'] = form.h1_channel.data
+
+                event_data['forms']['glitch_result']['L1']['frame_type'] = form.l1_frame.data
+                event_data['forms']['glitch_result']['L1']['channel'] = form.l1_channel.data
+
+                event_data['forms']['glitch_result']['V1']['frame_type'] = form.v1_frame.data
+                event_data['forms']['glitch_result']['V1']['channel'] = form.v1_channel.data
+
+                # update event json
+                with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
+                    json.dump(event_data, fp, indent=4)
+
+                # TODO: update md tables
+
+                if notify:
+                    subject = f'Glitch subtraction completed for {gid}'
+                    body = f'{subject}. See the summary at {summary_url}.'
+
+                    # send an email to the glitch mitigation
+                    send_email(form.email.data, subject, body)
+                    # send an email to the reviewer
+                    send_email(event_data['contacts']['mitigation_email'], subject, body)
+                    # send an email to leads
+                    send_email(event_data['contacts']['lead1_email'], subject, body)
+                    send_email(event_data['contacts']['lead2_email'], subject, body)
+
+                return render_template('form_glitch_results_success.html', gid=gid, name=form.name.data)
+
+            else:
+                flash('Error:'+str(form.errors),'danger')
 
         return render_template('form_glitch_results.html', form=form, gid=gid)
 
@@ -474,13 +557,15 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         # find if validation or review forms were filled
         flags = ['validation', 'review']
-        flag_len = []
+        conclusions = []
         for ifo in ifos:
             for flag in flags:
-                flag_len.append(len(events[gid]['forms'][flag][ifo]['conclusion']))
+                print((events[gid]['forms'][flag][ifo]['conclusion']))
+                conclusions.append(events[gid]['forms'][flag][ifo]['conclusion'])
 
         # if not filled, show 404 page
-        if np.sum(flag_len) == 0:
+        # TODO: reverse logic bc if true, then show summary
+        if any(str(var).isnumeric() for var in conclusions):
             args = [gid, events[gid]['contacts']['lead1_name'], events[gid]['contacts']['lead1_email']]
             return render_template('summary_404.html', args=args)
 

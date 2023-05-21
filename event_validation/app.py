@@ -9,6 +9,7 @@ Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 
 import json, argparse, os
 import pandas as pd
+import numpy as np
 
 from .utils import get_events_dict, first_upper, send_email, get_dets
 
@@ -37,7 +38,7 @@ def create_app(url, wdir, event_list, website_md, notify):
     status_flags = ['not started', 'in progress', 'completed']
     val_flags = ['Not observing', 'No DQ issues', 'DQ issues']
     val_team_flags = ['Not observing', 'no DQ issues', 'DQ issues but no noise mitigation required', 'Noise mitigation required']
-    dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
+    # dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
     # mitigation_flags = ['N/A', 'in progress', 'completed']
     # review_flags = ['no', 'yes', 'N/A']
 
@@ -540,10 +541,17 @@ def create_app(url, wdir, event_list, website_md, notify):
     @app.route('/summary/<gid>', methods=('GET', 'POST'))
     def get_summary(gid):
 
-        if events[gid]['valid_status'] == 0:
+        # find if validation or review forms were filled
+        flags = ['validation', 'review']
+        flag_len = []
+        for ifo in ifos:
+            for flag in flags:
+                flag_len.append(len(events[gid]['forms'][flag][ifo]['conclusion']))
 
+        # if not filled, show 404 page
+        if np.sum(flag_len) == 0:
             args = [gid, events[gid]['contacts']['lead1_name'], events[gid]['contacts']['lead1_email']]
-            return render_template('val_summary_404.html', args=args)
+            return render_template('summary_404.html', args=args)
 
         else:
 

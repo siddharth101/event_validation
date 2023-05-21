@@ -18,6 +18,7 @@ __process_name__ = 'ev-create-event'
 def init_event_validation(event_name,
                           graceid,
                           jsonid,
+                          t0,
                           time,
                           far,
                           far_threshold,
@@ -103,14 +104,16 @@ def init_event_validation(event_name,
     init_status = 0  # initial status, nothing started
     ev_summary_url = f'{eval_url}/summary/{event_name}'
     ev_form_url = f'{eval_url}/validation/{event_name}'
-    valid_dict = {'conclusion': "",
+    valid_dict = {
+                  'conclusion': "",
                   'low_noise': "",
                   'noise_tstart': "",
                   'noise_tend': "",
                   'noise_flow': "",
                   'noise_fhigh': ""
                   }
-    review_dict = {'conclusion': "",
+    review_dict = {
+                  'conclusion': "",
                   'recommend_ifo': "",
                   'analysis_tstart': "",
                   'analysis_tend': "",
@@ -120,47 +123,56 @@ def init_event_validation(event_name,
                   'channel': "",
                   'noise_left': ""
                   }
-    glitch_request_dict = {'required': "",
+    glitch_request_dict = {
+                          'required': "",
                           'noise_tstart': "",
                           'noise_tend': "",
                           'noise_flow': "",
                           'noise_fhigh': ""
                           }
-    glitch_result_dict = {'frame_type': "",
+    glitch_result_dict = {
+                          'frame_type': "",
                           'channel': ""
                           }
-    event_data = {'event_name': event_name,
+    event_data = {
+                  'event_name': event_name,
                   'status': init_status,
                   'reviewed': init_status,
-                  'links': {'gracedb': superevent_url,
+                  'links': {
+                            'gracedb': superevent_url,
                             'dqr': dqr_url,
                             'issue': gitlab_url,
                             'summary': ev_summary_url
                             },
-                  'forms': {'validation': {'t0': "",
+                  'forms': {
+                            'validation': {
                                            'H1': valid_dict,
                                            'L1': valid_dict,
                                            'V1': valid_dict},
-                            'review': {'t0': "",
+                            'review': {
                                        'duration': "",
                                        'H1': review_dict,
                                        'L1': review_dict,
                                        'V1': review_dict},
-                            'glitch_request': {'t0':"",
+                            'glitch_request': {
+                                               't0':t0,
                                                'H1': glitch_request_dict,
                                                'L1': glitch_request_dict,
                                                'V1': glitch_request_dict},
-                            'glitch_result': {'H1': glitch_result_dict,
+                            'glitch_result': {
+                                              'H1': glitch_result_dict,
                                               'L1': glitch_result_dict,
                                               'V1': glitch_result_dict}
                              },
-                  'comments': {'validation': "",
+                  'comments': {
+                               'validation': "",
                                'review': "",
                                'glitch_request': "",
                                'glitch_result': "",
                                'other': ""
                                },
-                  'contacts': {'validator_name': "",
+                  'contacts': {
+                               'validator_name': "",
                                'validator_email': "",
                                'expert_name': "",
                                'expert_email': "",
@@ -241,6 +253,7 @@ def main():
     parser.add_argument('--event_name', type=str, help='event name')
     parser.add_argument('--graceid', type=str, help='event GraceDB ID')
     parser.add_argument('--jsonid', type=str, help='event GraceDB json file')
+    parser.add_argument('--t0', type=float, required=True, help='merger time for a CBC event, central time for a Burst event.')
     parser.add_argument('--time', type=float, help='GPS time for which a validation team will be selected. Default: current GPS time')
     parser.add_argument('--far', type=float, help='event FAR. If given, it will be compared to threshold FAR. If above threshold FAR, there will be no event validation.')
     parser.add_argument('--far_threshold', type=float, default=0.000000193, help='Threshold FAR. Event validation is performed only if event FAR is smaller than threshold FAR.')
@@ -286,6 +299,7 @@ def main():
     init_event_validation(event_name=args.event_name,
                           graceid=args.graceid,
                           jsonid=args.jsonid,
+                          t0=args.t0,
                           time=args.time,
                           far=args.far,
                           far_threshold=args.far_threshold,

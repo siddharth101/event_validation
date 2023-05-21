@@ -49,7 +49,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         if item["status"] == 0:
             validation_url = f'{flask_base_url}validation/{key}'
         else:
-            validation_url = f'{flask_base_url}warning_eval_form/{key}'
+            validation_url = f'{flask_base_url}validation_warning/{key}'
 
         #TODO: add more warnings since there are more forms
         # add a warning if one wants to overwrite noise mitigation form
@@ -590,15 +590,15 @@ def create_app(url, wdir, event_list, website_md, notify):
                 return render_template('val_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, vh1=valid_summ_h1, vl1=valid_summ_l1, vv1=valid_summ_v1)
 
 
-    @app.route('/warning_eval_form/<gid>', methods=('GET', 'POST'))
-    def warning_eval_form(gid):
+    @app.route('/validation_warning/<gid>', methods=('GET', 'POST'))
+    def gen_validation_warning(gid):
 
         fname = events[gid]['contacts']['validator_name']
         args = [gid, fname, events[gid]['contacts']['validator_email'],
                 f'{flask_base_url}summary/{gid}',
                 f'{flask_base_url}validation/{gid}']
 
-        return render_template('warning_eval_form.html', args=args)
+        return render_template('warning_validation.html', args=args)
 
 
     @app.route('/warning_mitig_form/<gid>', methods=('GET', 'POST'))

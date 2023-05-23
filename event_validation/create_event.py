@@ -8,7 +8,7 @@ notify people related to the event validation. Based on LIGO-T2200265
 """
 
 import argparse, os, sys, logging
-from utils import *
+from .utils import *
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'

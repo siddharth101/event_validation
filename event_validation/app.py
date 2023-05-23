@@ -67,7 +67,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         glitch_results_url = f'{flask_base_url}glitch_results/{key}'
 
         title = f'{key}: {status_flags[item["status"]]}'
-        message = {'title':title, 'content':f'', 'summary':summary_url, 'validation':validation_url, 'review':review_url, 'glitch_request':glitch_request_url, 'glitch_results':glitch_results_url, 'gracedb':item['links']['gracedb'], 'dqr_url':item['links']['dqr'], 'issue':item['links']['issue']}
+        message = {'title':title, 'content':f'', 'summary':summary_url, 'validation':validation_url, 'review':review_url, 'glitch_request':glitch_request_url, 'glitch_results':glitch_results_url, 'gracedb':item['links']['gracedb'], 'detectors':item['links']['detector'], 'dqr':item['links']['dqr'], 'issue':item['links']['issue']}
         messages.append(message)
 
 #-------------------------------

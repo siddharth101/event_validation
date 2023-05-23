@@ -12,7 +12,7 @@ import pandas as pd
 
 from .utils import get_events_dict, first_upper, send_email, get_dets
 
-from wtforms import Form, TextAreaField, validators, SelectField
+from wtforms import Form, validators, SelectField, TextAreaField, FloatField, IntegerField
 from flask import Flask, render_template, request, flash
 
 __author__ = 'Ronaldas Macas'
@@ -29,7 +29,7 @@ __process_name__ = 'ev-forms-website'
 def create_app(url, wdir, event_list, website_md, notify):
     app = Flask(__name__)
 
-    # app.config['SECRET_KEY'] = 'gw150914'
+    app.config['SECRET_KEY'] = 'gw150914'
     # app.config['DEBUG'] = True
     flask_base_url = f'{url}/'
 
@@ -83,24 +83,24 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         h1_val = SelectField('h1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
         h1_low_noise = SelectField('h1_low_noise:', coerce=int, choices=low_noise, validators=[validators.InputRequired()])
-        h1_noise_tstart = TextAreaField('h1_noise_tstart:')
-        h1_noise_tend = TextAreaField('h1_noise_tend:')
-        h1_noise_flow = TextAreaField('h1_noise_flow:')
-        h1_noise_fhigh = TextAreaField('h1_noise_fhigh:')
+        h1_noise_tstart = FloatField('h1_noise_tstart:')
+        h1_noise_tend = FloatField('h1_noise_tend:')
+        h1_noise_flow = IntegerField('h1_noise_flow:')
+        h1_noise_fhigh = IntegerField('h1_noise_fhigh:')
 
         l1_val = SelectField('l1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
         l1_low_noise = SelectField('l1_low_noise:', coerce=int, choices=low_noise, validators=[validators.InputRequired()])
-        l1_noise_tstart = TextAreaField('l1_noise_tstart:')
-        l1_noise_tend = TextAreaField('l1_noise_tend:')
-        l1_noise_flow = TextAreaField('l1_noise_flow:')
-        l1_noise_fhigh = TextAreaField('l1_noise_fhigh:')
+        l1_noise_tstart = FloatField('l1_noise_tstart:')
+        l1_noise_tend = FloatField('l1_noise_tend:')
+        l1_noise_flow = IntegerField('l1_noise_flow:')
+        l1_noise_fhigh = IntegerField('l1_noise_fhigh:')
 
         v1_val = SelectField('v1_val:', coerce=int, choices=validation_status, validators=[validators.InputRequired()])
         v1_low_noise = SelectField('v1_low_noise:', coerce=int, choices=low_noise, validators=[validators.InputRequired()])
-        v1_noise_tstart = TextAreaField('v1_noise_tstart:')
-        v1_noise_tend = TextAreaField('v1_noise_tend:')
-        v1_noise_flow = TextAreaField('v1_noise_flow:')
-        v1_noise_fhigh = TextAreaField('v1_noise_fhigh:')
+        v1_noise_tstart = FloatField('v1_noise_tstart:')
+        v1_noise_tend = FloatField('v1_noise_tend:')
+        v1_noise_flow = IntegerField('v1_noise_flow:')
+        v1_noise_fhigh = IntegerField('v1_noise_fhigh:')
 
 
     class form_review(Form):
@@ -109,41 +109,41 @@ def create_app(url, wdir, event_list, website_md, notify):
         email = TextAreaField('email:', [validators.InputRequired()])
         notes = TextAreaField('notes:')
 
-        duration = TextAreaField('duration:', validators=[validators.InputRequired()])
+        duration = FloatField('duration:', validators=[validators.InputRequired()])
 
         validation_team_status = [(0, val_team_flags[0]), (1, val_team_flags[1]), (2, val_team_flags[2]), (3, val_team_flags[3])]
         recommend_detector = [(0, 'No'), (1, 'Yes')]
-        left_noise = [(0, 'No'), (1, 'Yes')]
+        noise_left = [(0, 'No'), (1, 'Yes')]
 
         h1_team_val = SelectField('h1_team_val:', coerce=int, choices=validation_team_status, validators=[validators.InputRequired()])
         h1_det = SelectField('h1_det:', coerce=int, choices=recommend_detector, validators=[validators.InputRequired()])
-        h1_tstart = TextAreaField('h1_tstart:')
-        h1_tend = TextAreaField('h1_tend:')
-        h1_flow = TextAreaField('h1_flow:')
-        h1_fhigh = TextAreaField('h1_fhigh:')
+        h1_tstart = FloatField('h1_tstart:')
+        h1_tend = FloatField('h1_tend:')
+        h1_flow = IntegerField('h1_flow:')
+        h1_fhigh = IntegerField('h1_fhigh:')
         h1_frame = TextAreaField('h1_frame:')
         h1_channel = TextAreaField('h1_channel:')
-        h1_left_noise = SelectField('h1_left_noise:', coerce=int, choices=left_noise, validators=[validators.InputRequired()])
+        h1_noise_left = SelectField('h1_noise_left:', coerce=int, choices=noise_left, validators=[validators.InputRequired()])
 
         l1_team_val = SelectField('l1_team_val:', coerce=int, choices=validation_team_status, validators=[validators.InputRequired()])
         l1_det = SelectField('l1_det:', coerce=int, choices=recommend_detector, validators=[validators.InputRequired()])
-        l1_tstart = TextAreaField('l1_tstart:')
-        l1_tend = TextAreaField('l1_tend:')
-        l1_flow = TextAreaField('l1_flow:')
-        l1_fhigh = TextAreaField('l1_fhigh:')
+        l1_tstart = FloatField('l1_tstart:')
+        l1_tend = FloatField('l1_tend:')
+        l1_flow = IntegerField('l1_flow:')
+        l1_fhigh = IntegerField('l1_fhigh:')
         l1_frame = TextAreaField('l1_frame:')
         l1_channel = TextAreaField('l1_channel:')
-        l1_left_noise = SelectField('l1_left_noise:', coerce=int, choices=left_noise, validators=[validators.InputRequired()])
+        l1_noise_left = SelectField('l1_noise_left:', coerce=int, choices=noise_left, validators=[validators.InputRequired()])
 
         v1_team_val = SelectField('v1_team_val:', coerce=int, choices=validation_team_status, validators=[validators.InputRequired()])
         v1_det = SelectField('v1_det:', coerce=int, choices=recommend_detector, validators=[validators.InputRequired()])
-        v1_tstart = TextAreaField('v1_tstart:')
-        v1_tend = TextAreaField('v1_tend:')
-        v1_flow = TextAreaField('v1_flow:')
-        v1_fhigh = TextAreaField('v1_fhigh:')
+        v1_tstart = FloatField('v1_tstart:')
+        v1_tend = FloatField('v1_tend:')
+        v1_flow = IntegerField('v1_flow:')
+        v1_fhigh = IntegerField('v1_fhigh:')
         v1_frame = TextAreaField('v1_frame:')
         v1_channel = TextAreaField('v1_channel:')
-        v1_left_noise = SelectField('v1_left_noise:', coerce=int, choices=left_noise, validators=[validators.InputRequired()])
+        v1_noise_left = SelectField('v1_noise_left:', coerce=int, choices=noise_left, validators=[validators.InputRequired()])
 
 
     class form_glitch_request(Form):
@@ -155,22 +155,22 @@ def create_app(url, wdir, event_list, website_md, notify):
         glitch_request_status = [(0, 'No'), (1, 'Yes')]
 
         h1_glitch_request = SelectField('h1_glitch_request:', coerce=int, choices=glitch_request_status, validators=[validators.InputRequired()])
-        h1_noise_tstart = TextAreaField('h1_noise_tstart:')
-        h1_noise_tend = TextAreaField('h1_noise_tend:')
-        h1_noise_flow = TextAreaField('h1_noise_flow:')
-        h1_noise_fhigh = TextAreaField('h1_noise_fhigh:')
+        h1_noise_tstart = FloatField('h1_noise_tstart:')
+        h1_noise_tend = FloatField('h1_noise_tend:')
+        h1_noise_flow = IntegerField('h1_noise_flow:')
+        h1_noise_fhigh = IntegerField('h1_noise_fhigh:')
 
         l1_glitch_request = SelectField('l1_glitch_request:', coerce=int, choices=glitch_request_status, validators=[validators.InputRequired()])
-        l1_noise_tstart = TextAreaField('l1_noise_tstart:')
-        l1_noise_tend = TextAreaField('l1_noise_tend:')
-        l1_noise_flow = TextAreaField('l1_noise_flow:')
-        l1_noise_fhigh = TextAreaField('l1_noise_fhigh:')
+        l1_noise_tstart = FloatField('l1_noise_tstart:')
+        l1_noise_tend = FloatField('l1_noise_tend:')
+        l1_noise_flow = IntegerField('l1_noise_flow:')
+        l1_noise_fhigh = IntegerField('l1_noise_fhigh:')
 
         v1_glitch_request = SelectField('v1_glitch_request:', coerce=int, choices=glitch_request_status, validators=[validators.InputRequired()])
-        v1_noise_tstart = TextAreaField('v1_noise_tstart:')
-        v1_noise_tend = TextAreaField('v1_noise_tend:')
-        v1_noise_flow = TextAreaField('v1_noise_flow:')
-        v1_noise_fhigh = TextAreaField('v1_noise_fhigh:')
+        v1_noise_tstart = FloatField('v1_noise_tstart:')
+        v1_noise_tend = FloatField('v1_noise_tend:')
+        v1_noise_flow = IntegerField('v1_noise_flow:')
+        v1_noise_fhigh = IntegerField('v1_noise_fhigh:')
 
 
     class form_glitch_results(Form):
@@ -375,7 +375,6 @@ def create_app(url, wdir, event_list, website_md, notify):
 
             else:
                 flash('Error:'+str(form.errors),'danger')
-
 
         return render_template('form_review.html', form=form, gid=gid)
 

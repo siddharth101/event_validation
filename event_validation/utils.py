@@ -25,7 +25,6 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
     t_starts = []
     for t in vol_data['date_start']:
         t_starts.append(Time(t, format='iso', scale='utc').gps)
-    t_starts = np.array(t_starts)
     dt = t_starts - valid_time
     vol_idx = np.where(dt <= 0)[0][-1]
 

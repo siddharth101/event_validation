@@ -81,19 +81,24 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
 def update_data(event_data, git_dir, events_file, md_file, logger):
 
     superevent_url_md = f"[GraceDB]({event_data['links']['gracedb']})"
+    detector_url_md = f"[Detectors]({event_data['links']['detector']})"
     dqr_url_md = f"[DQR]({event_data['links']['dqr']})"
     eval_url_md = f"[EV]({event_data['links']['summary']})"
-    url_string = superevent_url_md + ', ' + dqr_url_md + ', ' + eval_url_md
-    contact_md = f"{event_data['contacts']['validator_name']} ([email](mailto:{event_data['contacts']['validator_email']}))"
+    url_string = superevent_url_md + ', ' + detector_url_md + ', ' + dqr_url_md + ', ' + eval_url_md
+    contact_md = f'([{event_data["contacts"]["validator_name"]}](mailto:{event_data["contacts"]["validator_email"]}))'
+    contact_md = f'([contact](mailto:{event_data["contacts"]["validator_email"]}))'
 
     # create new event dict
-    new_event = {'Event': [event_data['event_name']],
-                 'Validation status': 'Not started',
-                 'Conclusion': 'N/A',
-                 'Noise mitigation': 'N/A',
-                 'Reviewed': 'No',
-                 'Links': [url_string],
-                 'Contact person': [contact_md]}
+    new_event = {
+                 'Event': [event_data['event_name']],
+                 'Status': 'Not started',
+                 'Next step': f'Event validation {contact_md}',
+                 'Validation conclusion': 'Not ready',
+                 'Review conclusion': 'Not ready',
+                 'Glitch subtraction': 'N/A',
+                 'Finalized': 'No',
+                 'Links': [url_string]
+                 }
 
     # list_fname = f'{git_dir}/data/event_list.csv'
     # new_event_df = pd.DataFrame.from_dict(new_event)

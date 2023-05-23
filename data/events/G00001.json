@@ -4,13 +4,13 @@
     "reviewed": 0,
     "links": {
         "gracedb": "https://superevent.com",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230521",
         "dqr": "https://dqr.com",
         "issue": "https://git.ligo.org/detchar/event-validation/-/issues",
         "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/G00001"
     },
     "forms": {
         "validation": {
-            "t0": "",
             "H1": {
                 "conclusion": "",
                 "low_noise": "",
@@ -37,7 +37,6 @@
             }
         },
         "review": {
-            "t0": "",
             "duration": "",
             "H1": {
                 "conclusion": "",
@@ -74,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": "",
+            "t0": 1368662418.0,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -134,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "event_validation/create_event.py --verbose --git_dir . --label ER15 --dqr_url https://dqr.com --superevent_url https://superevent.com --ignore_far --event_name G00001"
+    "cmd": "event_validation/create_event.py --verbose --git_dir . --label ER15 --dqr_url https://dqr.com --superevent_url https://superevent.com --ignore_far --t0 1368662418 --event_name G00001"
 }

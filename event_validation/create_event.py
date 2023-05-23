@@ -12,12 +12,13 @@ from .utils import *
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.4'
-__process_name__ = 'Event Validation'
+__version__ = '0.6'
+__process_name__ = 'ev-create-event'
 
 def init_event_validation(event_name,
                           graceid,
                           jsonid,
+                          t0,
                           time,
                           far,
                           far_threshold,
@@ -34,6 +35,7 @@ def init_event_validation(event_name,
                           review,
                           dqr_url,
                           superevent_url,
+                          detector_url,
                           eval_url,
                           gitlab_url,
                           docs_url,
@@ -98,43 +100,87 @@ def init_event_validation(event_name,
 
     #--------------------------------------------------------------------------
 
+    # make urls
+    t0_date = Time(t0, format='gps').iso[0:10].replace("-","")
+    detector_url = f'{detector_url}/day/{t0_date}'
+    ev_summary_url = f'{eval_url}/summary/{event_name}'
+    ev_form_url = f'{eval_url}/validation/{event_name}'
+
+    #--------------------------------------------------------------------------
+
     # make event dict
     logger.debug(f'Creating event dictionary for {event_name}')
-    valid_status = 0  # i.e. validation not started
-    review_status = 0  # i.e. not reviewed
-    eval_summary_url = f'{eval_url}/summary/{event_name}'
-    valid_dict = {'fstart': "",
-                  'fend': "",
-                  'tstart': "",
-                  'tend': "",
-                  'duration': ""
+    init_status = 0  # initial status, nothing started
+    valid_dict = {
+                  'conclusion': "",
+                  'low_noise': "",
+                  'noise_tstart': "",
+                  'noise_tend': "",
+                  'noise_flow': "",
+                  'noise_fhigh': ""
                   }
-    noise_mitig_dict = {'required': "",
-                        'status': "",
-                        'frame_type': "",
-                        'channel': ""
-                        }
-    event_data = {'event_name': event_name,
-                  'valid_status': valid_status,
-                  'valid_conclusion': "",
-                  'reviewed': review_status,
-                  'superevent_url': superevent_url,
-                  'dqr_url': dqr_url,
-                  'eval_summary_url': eval_summary_url,
-                  'git_issue_url': gitlab_url,
-                  'detectors': "",
-                  'validation': {'H1': valid_dict,
-                                 'L1': valid_dict,
-                                 'V1': valid_dict},
-                  'noise_mitigation': {'H1': noise_mitig_dict,
-                                       'L1': noise_mitig_dict,
-                                       'V1': noise_mitig_dict},
-                  'comments': {'validator': "",
-                               'mitigation': "",
+    review_dict = {
+                  'conclusion': "",
+                  'recommend_ifo': "",
+                  'analysis_tstart': "",
+                  'analysis_tend': "",
+                  'analysis_flow': "",
+                  'analysis_fhigh': "",
+                  'frame_type': "",
+                  'channel': "",
+                  'noise_left': ""
+                  }
+    glitch_request_dict = {
+                          'required': "",
+                          'noise_tstart': "",
+                          'noise_tend': "",
+                          'noise_flow': "",
+                          'noise_fhigh': ""
+                          }
+    glitch_result_dict = {
+                          'frame_type': "",
+                          'channel': ""
+                          }
+    event_data = {
+                  'event_name': event_name,
+                  'status': init_status,
+                  'reviewed': init_status,
+                  'links': {
+                            'gracedb': superevent_url,
+                            'detector': detector_url,
+                            'dqr': dqr_url,
+                            'issue': gitlab_url,
+                            'summary': ev_summary_url
+                            },
+                  'forms': {
+                            'validation': {
+                                           'H1': valid_dict,
+                                           'L1': valid_dict,
+                                           'V1': valid_dict},
+                            'review': {
+                                       'duration': "",
+                                       'H1': review_dict,
+                                       'L1': review_dict,
+                                       'V1': review_dict},
+                            'glitch_request': {
+                                               't0':t0,
+                                               'H1': glitch_request_dict,
+                                               'L1': glitch_request_dict,
+                                               'V1': glitch_request_dict},
+                            'glitch_result': {
+                                              'H1': glitch_result_dict,
+                                              'L1': glitch_result_dict,
+                                              'V1': glitch_result_dict}
+                             },
+                  'comments': {
+                               'validation': "",
                                'review': "",
+                               'glitch_request': "",
+                               'glitch_result': "",
                                'other': ""
                                },
-                  'contacts': {'validator_name': "",
+                  'contacts': {
+                               'validator_name': "",
                                'validator_email': "",
                                'expert_name': "",
                                'expert_email': "",
@@ -158,7 +204,7 @@ def init_event_validation(event_name,
     event_data = assign_people(event_data, time, git_dir, vol_file, contact_file, validator, expert, mitigation, review, logger)
 
     #--------------------------------------------------------------------------
-    
+
     # update data files
     logger.debug('Updating data files')
     update_data(event_data, git_dir, events_file, md_file, logger)
@@ -187,7 +233,7 @@ def init_event_validation(event_name,
     # send emails
     if send_email:
         logger.debug('Sending emails')
-        emails(event_data, logger)
+        emails(event_data, ev_forms_url, logger)
 
      #--------------------------------------------------------------------------
 
@@ -215,6 +261,7 @@ def main():
     parser.add_argument('--event_name', type=str, help='event name')
     parser.add_argument('--graceid', type=str, help='event GraceDB ID')
     parser.add_argument('--jsonid', type=str, help='event GraceDB json file')
+    parser.add_argument('--t0', type=float, required=True, help='merger time for a CBC event, central time for a Burst event.')
     parser.add_argument('--time', type=float, help='GPS time for which a validation team will be selected. Default: current GPS time')
     parser.add_argument('--far', type=float, help='event FAR. If given, it will be compared to threshold FAR. If above threshold FAR, there will be no event validation.')
     parser.add_argument('--far_threshold', type=float, default=0.000000193, help='Threshold FAR. Event validation is performed only if event FAR is smaller than threshold FAR.')
@@ -232,6 +279,7 @@ def main():
     parser.add_argument('--dqr_url', type=str, required=True, help='Data quality report URL')
     parser.add_argument('--superevent_url', type=str, required=True, help='GraceDB super event URL')
     parser.add_argument('--eval_url', type=str, default='https://dqr.ligo.caltech.edu/ev_forms', help='Event validation form URL, default: https://dqr.ligo.caltech.edu/ev_forms')
+    parser.add_argument('--detector_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/summary', help='DetChar summary URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/summary')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
     parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation')
     parser.add_argument('--send_email', action=argparse.BooleanOptionalAction, help='Send notification emails.')
@@ -260,6 +308,7 @@ def main():
     init_event_validation(event_name=args.event_name,
                           graceid=args.graceid,
                           jsonid=args.jsonid,
+                          t0=args.t0,
                           time=args.time,
                           far=args.far,
                           far_threshold=args.far_threshold,
@@ -276,6 +325,7 @@ def main():
                           review=args.review,
                           dqr_url=args.dqr_url,
                           superevent_url=args.superevent_url,
+                          detector_url=args.detector_url,
                           eval_url=args.eval_url,
                           gitlab_url=args.gitlab_url,
                           docs_url=args.docs_url,

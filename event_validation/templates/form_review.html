@@ -2,23 +2,23 @@
 
 
 <h1>{% block title %}
-    O4 event validation: {{ gid }} 
+    O4 event validation: {{ gid }}
     {% endblock %}</h1>
- 
+
 {% block content %}
     <html>
       <head>
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-    	   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
       </head>
       <body>
         <div class="container"><br>
           <center>
-              <h2>{{ gid }} review </h2>
+              <h2>{{ gid }} review form</h2>
           </center>
         </div>
-    
+
         <div class=container><br>
         <div class="row align-items-center justify-content-center">
         <div class="col-md-5">
@@ -28,29 +28,152 @@
               <label for="name">Name:</label>
                 <input type="text" class="form-control" name="name">
               <br>
-    	      <label for="email">Email:</label>
-    	        <input type="text" class="form-control" name="email">
+              <label for="email">Email:</label>
+                <input type="text" class="form-control" name="email">
               <br>
-              <label for="review">I finalize {{ gid }} review:</label>
-              <select class="form-control" name="review">
+              <label for="notes">Notes:</label>
+                <input type="text" class="form-control" name="notes">
+              <br>
+              <br>
+              <label for="notes">Duration:</label>
+                <input type="duration" class="form-control" name="duration">
+              <br>
+              <br>
+              <h4> Hanford </h4>
+              <label for="h1_team_val">Validation conclusion:</label>
+              <select class="form-control" name="h1_team_val">
+                <option value="0">Not observing</option>
+                <option value="1">No DQ issues</option>
+                <option value="2">DQ issues but no noise mitigation required</option>
+                <option value="3">Noise mitigation required</option>
+              </select>
+              <br>
+              <label for="h1_det">Recommend the detector for analysis:</label>
+              <select class="form-control" name="h1_det">
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
               <br>
-    	      <label for="comment">Comments:</label>
-    	        <input type="text" class="form-control" name="comment">
+              <br>
+              <label for="h1_tstart">Recommended analysis start GPS time:</label>
+                <input type="text" class="form-control" name="h1_tstart">
+              <br>
+              <label for="h1_tend">Recommended analysis end GPS time:</label>
+                <input type="text" class="form-control" name="h1_tend">
+              <br>
+              <label for="h1_flow">Recommended analysis f_low (min=10) in Hz:</label>
+                <input type="text" class="form-control" name="h1_flow">
+              <br>
+              <label for="h1_fhigh">Recommended analysis f_high (max=2048) in Hz:</label>
+                <input type="text" class="form-control" name="h1_fhigh">
+              <br>
+              <br>
+              <label for="h1_frame">Recommended frame type:</label>
+               <input type="text" class="form-control" name="h1_frame">
+              <br>
+              <label for="h1_channel">Recommended channel name:</label>
+               <input type="text" class="form-control" name="h1_channel">
+              <br>
+              <label for="h1_noise_left">Unmitigated noise left:</label>
+              <select class="form-control" name="h1_noise_left">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+              <br>
+              <br>
+              <h4> Livingston </h4>
+              <label for="l1_team_val">Validation conclusion:</label>
+              <select class="form-control" name="l1_team_val">
+                <option value="0">Not observing</option>
+                <option value="1">No DQ issues</option>
+                <option value="2">DQ issues but no noise mitigation required</option>
+                <option value="3">Noise mitigation required</option>
+              </select>
+              <br>
+              <label for="l1_det">Recommend the detector for analysis:</label>
+              <select class="form-control" name="l1_det">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+              <br>
+              <br>
+              <label for="l1_tstart">Recommended analysis start GPS time:</label>
+                <input type="text" class="form-control" name="l1_tstart">
+              <br>
+              <label for="l1_tend">Recommended analysis end GPS time:</label>
+                <input type="text" class="form-control" name="l1_tend">
+              <br>
+              <label for="l1_flow">Recommended analysis f_low (min=10) in Hz:</label>
+                <input type="text" class="form-control" name="l1_flow">
+              <br>
+              <label for="l1_fhigh">Recommended analysis f_high (max=2048) in Hz:</label>
+                <input type="text" class="form-control" name="l1_fhigh">
+              <br>
+              <br>
+              <label for="l1_frame">Recommended frame type:</label>
+               <input type="text" class="form-control" name="l1_frame">
+              <br>
+              <label for="l1_channel">Recommended channel name:</label>
+               <input type="text" class="form-control" name="l1_channel">
+              <br>
+              <label for="l1_noise_left">Unmitigated noise left:</label>
+              <select class="form-control" name="l1_noise_left">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+              <br>
+              <br>
+              <h4> Virgo </h4>
+              <label for="v1_team_val">Validation conclusion:</label>
+              <select class="form-control" name="v1_team_val">
+                <option value="0">Not observing</option>
+                <option value="1">No DQ issues</option>
+                <option value="2">DQ issues but no noise mitigation required</option>
+                <option value="3">Noise mitigation required</option>
+              </select>
+              <br>
+              <label for="v1_det">Recommend the detector for analysis:</label>
+              <select class="form-control" name="v1_det">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+              <br>
+              <br>
+              <label for="v1_tstart">Recommended analysis start GPS time:</label>
+                <input type="text" class="form-control" name="v1_tstart">
+              <br>
+              <label for="v1_tend">Recommended analysis end GPS time:</label>
+                <input type="text" class="form-control" name="v1_tend">
+              <br>
+              <label for="v1_flow">Recommended analysis f_low (min=10) in Hz:</label>
+                <input type="text" class="form-control" name="v1_flow">
+              <br>
+              <label for="v1_fhigh">Recommended analysis f_high (max=2048) in Hz:</label>
+                <input type="text" class="form-control" name="v1_fhigh">
+              <br>
+              <br>
+              <label for="v1_frame">Recommended frame type:</label>
+               <input type="text" class="form-control" name="v1_frame">
+              <br>
+              <label for="v1_channel">Recommended channel name:</label>
+               <input type="text" class="form-control" name="v1_channel">
+              <br>
+              <label for="v1_noise_left">Unmitigated noise left:</label>
+              <select class="form-control" name="v1_noise_left">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+        </div>
             <br>
-    	</div>
-            <br>													   
             <center>
               <button type="submit" class="btn btn-success">Submit</button>
             </center>
           </form>
           <br>
-    
+
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
-    
+
             {% for category, message in messages %}
                     <div class="alert alert-{{category}}" role="alert">
                     {{ message }}
@@ -58,7 +181,7 @@
             {% endfor %}
                 {% endif %}
             {% endwith %}
-    
+
         </div>
         <br>
         </div>

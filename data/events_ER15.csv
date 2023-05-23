@@ -1,2 +1,2 @@
-Event,Validation status,Conclusion,Noise mitigation,Reviewed,Links,Contact person
-G00001,Not started,N/A,N/A,No,"[GraceDB](https://superevent.com), [DQR](https://dqr.com), [EV](https://dqr.ligo.caltech.edu/ev_forms/summary/G00001)",Derek Davis ([email](mailto:derek.davis@ligo.org))
+Event,Status,Next step,Validation conclusion,Review conclusion,Glitch subtraction,Finalized,Links
+G00001,Not started,Event validation ([contact](mailto:siddharth.soni@ligo.org)),Not ready,Not ready,N/A,No,"[GraceDB](https://superevent.com), [Detectors](https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230521), [DQR](https://dqr.com), [EV](https://dqr.ligo.caltech.edu/ev_forms/summary/G00001)"

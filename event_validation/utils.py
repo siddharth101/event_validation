@@ -79,20 +79,25 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
 
 def update_data(event_data, git_dir, events_file, md_file, logger):
 
-    superevent_url_md = f"[GraceDB]({event_data['superevent_url']})"
-    dqr_url_md = f"[DQR]({event_data['dqr_url']})"
-    eval_url_md = f"[EV]({event_data['eval_summary_url']})"
-    url_string = superevent_url_md + ', ' + dqr_url_md + ', ' + eval_url_md
-    contact_md = f"{event_data['contacts']['validator_name']} ([email](mailto:{event_data['contacts']['validator_email']}))"
+    superevent_url_md = f"[GraceDB]({event_data['links']['gracedb']})"
+    detector_url_md = f"[Detectors]({event_data['links']['detector']})"
+    dqr_url_md = f"[DQR]({event_data['links']['dqr']})"
+    eval_url_md = f"[EV]({event_data['links']['summary']})"
+    url_string = superevent_url_md + ', ' + detector_url_md + ', ' + dqr_url_md + ', ' + eval_url_md
+    contact_md = f'([{event_data["contacts"]["validator_name"]}](mailto:{event_data["contacts"]["validator_email"]}))'
+    contact_md = f'([contact](mailto:{event_data["contacts"]["validator_email"]}))'
 
     # create new event dict
-    new_event = {'Event': [event_data['event_name']],
-                 'Validation status': 'Not started',
-                 'Conclusion': 'N/A',
-                 'Noise mitigation': 'N/A',
-                 'Reviewed': 'No',
-                 'Links': [url_string],
-                 'Contact person': [contact_md]}
+    new_event = {
+                 'Event': [event_data['event_name']],
+                 'Status': 'Not started',
+                 'Next step': f'Event validation {contact_md}',
+                 'Validation conclusion': 'Not ready',
+                 'Review conclusion': 'Not ready',
+                 'Glitch subtraction': 'N/A',
+                 'Finalized': 'No',
+                 'Links': [url_string]
+                 }
 
     # list_fname = f'{git_dir}/data/event_list.csv'
     # new_event_df = pd.DataFrame.from_dict(new_event)
@@ -132,9 +137,7 @@ def git_issue(event_data, gitlab_url, token, pid, label, logger):
             f"1. [ ] View the GraceDB SuperEvent and preferred event pages\n"
             f"2. [ ] View the Detector Status Summary pages\n"
             f"3. [ ] View the Data Quality Report\n"
-            f"4. [ ] Fill in the event validation form\n"
-            f"5. [ ] [If needed] Wait until the noise mitigation is completed\n"
-            f"6. [ ] Report event validation findings at a DetChar call\n\n"
+            f"4. [ ] Fill in the event validation form\n\n"
             f"For any questions, contact @{lead1_handle} ({event_data['contacts']['lead1_email']}) and @{lead2_handle} ({event_data['contacts']['lead2_email']})."
             )
 
@@ -150,7 +153,7 @@ def git_issue(event_data, gitlab_url, token, pid, label, logger):
         issues = project.issues.list(get_all=True)
         issue_dict = {issue.title: issue for issue in issues}
         issue_iid = issue_dict[event_data['event_name']].iid
-        event_data['git_issue_url'] = f'{gitlab_url}/{issue_iid}'
+        event_data['links']['issue'] = f'{gitlab_url}/{issue_iid}'
     except:
         print(f"Issues assigning id to the gitlab issue url for {event_data['event_name']}, leaving default gitlab URL.")
 
@@ -158,7 +161,7 @@ def git_issue(event_data, gitlab_url, token, pid, label, logger):
 
     return event_data
 
-def emails(event_data, logger):
+def emails(event_data, ev_forms_url, logger):
 
     valid_email = event_data['contacts']['validator_email']
     expert_email = event_data['contacts']['expert_email']
@@ -180,10 +183,10 @@ def emails(event_data, logger):
     pre_body_valid = f"You are assigned to validate candidate event {event_data['event_name']}. For more technical event validation questions, please refer to the DetChar expert {expert_name} ({expert_email}) or the Mattermost DetChar - Event Validation channel (https://chat.ligo.org/ligo/channels/detchar---event-validation); we advise to use the Mattermost channel instead of contacting a DetChar expert if possible. More information about the event is given below.\n\n"
     pre_body_expert = f"{valid_name} ({valid_email}) has been assigned to validate candidate event {event_data['event_name']}, while you are assigned to act a DetChar expert. More information about the event is given below.\n\n"
     body = (f"Candidate event: {event_data['event_name']}\n"
-            f"GraceDB Superevent: {event_data['superevent_url']}\n"
-            f"DQR: {event_data['dqr_url']}\n"
-            f"Event validation form: {event_data['dqr_url']}\n"
-            f"GitLab issue: {event_data['git_issue_url']}\n"
+            f"GraceDB Superevent: {event_data['links']['gracedb']}\n"
+            f"DQR: {event_data['links']['dqr']}\n"
+            f"Event validation form: {ev_forms_url}\n"
+            f"GitLab issue: {event_data['links']['issue']}\n\n"
             f"Validator: {valid_name} ({valid_email})\n"
             f"DetChar expert: {expert_name} ({expert_email})\n"
             f"Noise mitigation: {mitigation_name} ({mitigation_email})\n"

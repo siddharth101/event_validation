@@ -5,16 +5,20 @@ author: Ronaldas Macas <ronaldas.macas@ligo.org>
 
 # O4a event validation
 
-Basics about O4a.
+O4a starts on May 24, 2023 4pm UTC. All volunteers should have completed the training, see [the training page](training.md) for more details.
 
-## Volunteers
+## Rota
 
-Volunteer list w. number of events validated.
+The weekly event validation rota will consist of two volunteers and one DetChar expert. These two volunteers will be assigned 12-hour shifts for each day, i.e. they will be responsible for validating events that happened during their 12-hour shift for one week.
 
-## Rota schedule
+Currently we split the shifts at 4pm UTC time.
 
-Put the schedule here.
+| Week        | Volunteer (morning shift) | Volunteer (evening shift) | DetChar expert | Notes |
+|-------------|---------------------------|---------------------------|----------------|-------|
+| May 24      | Siddharth Soni            | Ronaldas Macas            | Derek Davis    |       |
+| May 31      | Shania Nichols            | Shivaraj Kandhasamy       | Andrew Lundgren|       |
+| June 6      | Alan Weinstein            | Anupreeta More            | Marissa Walker |       |
+ 
+## Events
 
-## Event assignments
-
-Put the full table here with all the links.
+{!data/table_O4a.md!}

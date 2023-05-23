@@ -38,6 +38,13 @@ People that are currently under training:
 - Brenann Hughey
 - Amber Stuver
 
+## Checklist for starting your RRT shift
+
+- Sign-up for GraceDB alerts: [link](https://emfollow.docs.ligo.org/followup-advocate-guide/preparation.html#a-sign-up-for-gracedb-alerts)
+- Make sure you are on the RRT roster sheet as a level-1 DetChar RRT expert: [link](https://drive.google.com/drive/u/0/folders/1LgncDpMSn7zDKq0Bu9TFMKBu7WKOddY3)
+- Once there is an alert, inform your back-up that you are taking care of this event 
+- Once the week ends, turn off your GraceDB alerts
+
 ## Useful links
 
 - DetChar RRT training slides and recording [LIGO-G2300983](https://dcc.ligo.org/G2300983)

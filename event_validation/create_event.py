@@ -8,7 +8,7 @@ notify people related to the event validation. Based on LIGO-T2200265
 """
 
 import argparse, os, sys, logging
-from .utils import *
+from utils import *
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
@@ -35,6 +35,7 @@ def init_event_validation(event_name,
                           review,
                           dqr_url,
                           superevent_url,
+                          detector_url,
                           eval_url,
                           gitlab_url,
                           docs_url,
@@ -99,11 +100,17 @@ def init_event_validation(event_name,
 
     #--------------------------------------------------------------------------
 
+    # make urls
+    t0_date = Time(t0, format='gps').iso[0:10].replace("-","")
+    detector_url = f'{detector_url}/day/{t0_date}'
+    ev_summary_url = f'{eval_url}/summary/{event_name}'
+    ev_form_url = f'{eval_url}/validation/{event_name}'
+
+    #--------------------------------------------------------------------------
+
     # make event dict
     logger.debug(f'Creating event dictionary for {event_name}')
     init_status = 0  # initial status, nothing started
-    ev_summary_url = f'{eval_url}/summary/{event_name}'
-    ev_form_url = f'{eval_url}/validation/{event_name}'
     valid_dict = {
                   'conclusion': "",
                   'low_noise': "",
@@ -140,6 +147,7 @@ def init_event_validation(event_name,
                   'reviewed': init_status,
                   'links': {
                             'gracedb': superevent_url,
+                            'detector': detector_url,
                             'dqr': dqr_url,
                             'issue': gitlab_url,
                             'summary': ev_summary_url
@@ -271,6 +279,7 @@ def main():
     parser.add_argument('--dqr_url', type=str, required=True, help='Data quality report URL')
     parser.add_argument('--superevent_url', type=str, required=True, help='GraceDB super event URL')
     parser.add_argument('--eval_url', type=str, default='https://dqr.ligo.caltech.edu/ev_forms', help='Event validation form URL, default: https://dqr.ligo.caltech.edu/ev_forms')
+    parser.add_argument('--detector_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~detchar/summary', help='DetChar summary URL, default: https://ldas-jobs.ligo.caltech.edu/~detchar/summary')
     parser.add_argument('--gitlab_url', type=str, default='https://git.ligo.org/detchar/event-validation/-/issues', help='GitLab issues URL, default: https://git.ligo.org/detchar/event-validation/-/issues')
     parser.add_argument('--docs_url', type=str, default='https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation', help='Documentation URL, default: https://ldas-jobs.ligo.caltech.edu/~dqr/event_validation')
     parser.add_argument('--send_email', action=argparse.BooleanOptionalAction, help='Send notification emails.')
@@ -316,6 +325,7 @@ def main():
                           review=args.review,
                           dqr_url=args.dqr_url,
                           superevent_url=args.superevent_url,
+                          detector_url=args.detector_url,
                           eval_url=args.eval_url,
                           gitlab_url=args.gitlab_url,
                           docs_url=args.docs_url,

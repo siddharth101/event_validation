@@ -598,21 +598,14 @@ def create_app(url, wdir, event_list, website_md, notify):
         return render_template('warning_validation.html', args=args)
 
 
-    @app.route('/warning_mitig_form/<gid>', methods=('GET', 'POST'))
-    def warning_mitig_form(gid):
-        fname = events[gid]['contacts']['mitigation_name']
-        args = [gid, fname, events[gid]['contacts']['mitigation_email'],
+    @app.route('/review_warning/<gid>', methods=('GET', 'POST'))
+    def gen_review_warning(gid):
+        fname = events[gid]['contacts']['review_name']
+        args = [gid, fname, events[gid]['contacts']['review_email'],
                 f'{flask_base_url}summary/{gid}',
-                f'{flask_base_url}mitigation/{gid}']
+                f'{flask_base_url}review/{gid}']
 
-        return render_template('warning_mitig_form.html', args=args)
-
-
-    @app.route('/warning_mitig_form2/<gid>', methods=('GET', 'POST'))
-    def warning_mitig_form2(gid):
-        args = [gid, f'{flask_base_url}summary/{gid}', f'{flask_base_url}mitigation/{gid}']
-
-        return render_template('warning_mitig_form2.html', args=args)
+        return render_template('warning_review.html', args=args)
 
 
     @app.route('/comment/<gid>', methods=('GET', 'POST'))

@@ -231,6 +231,18 @@ def first_upper(string):
     return final_string
 
 
+def first_lower(string):
+    final_string = f'{string[0].lower()}{string[1:]}'
+    return final_string
+
+def Nonestr(oldlist):
+    newlist = []
+    for ele in oldlist:
+        if ele is None:
+            ele = ''
+        newlist.append(ele)
+    return newlist
+
 def send_email(email, subject, body):
 
     sender = os.environ.get('USER')

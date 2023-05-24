@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+
     <h1>{% block title %}
-    Event validation summary page not available for {{ args[0] }}. Please fill out the event validation form or the event validation review form.
+    {{ args[0] }} EV summary not available. Please fill any of the forms.
     {% endblock %}</h1>
-    
+
     {% block main %}
     If you think this is a mistake, please contact {{ args[1] }} ({{ args[2] }}).
     {% endblock %}

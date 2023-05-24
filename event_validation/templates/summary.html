@@ -3,85 +3,230 @@
 {% block content %}
     <h1>
         {% block title %}
-        {{ gid }} validation summary
+        {{ gid }} EV summary
         {% endblock %}
     </h1>
     {% block main %}
     <hr color="purple" align="left" width="40%" size="1">
-    Validation status: {{ summary[1] }}
+    Overall EV status: {{ various[0] }}
     <br>
-    Recommended detectors: {{ summary[3] }}
-    <br>
-    Reviewed: {{ summary[0] }}
+    Final review completed: {{ various[1] }}
     <br>
     <hr color="purple" align="left" width="40%" size="1">
-    Volunteer's conclusion: {{ summary[2] }}
+    <h2> Event validation form </h2>
+    Notes: {{ comments[0] }}
+    <h4>
+    Hanford
+    </h4>
+    Validation conclusion: {{ val_h1[0] }}
     <br>
-    Volunteer's comment: {{ comments[0] }}
-    <br>
-    <hr color="purple" align="left" width="40%" size="1">
-    Review comment: {{ comments[2] }}
-    <br>
-    Other comment: {{ comments[3] }}
-    <br>
-    <hr color="purple" align="left" width="40%" size="1">
-    <b> Hanford </b>
+    Detector is in low noise: {{ val_h1[1] }}
     <br>
     <br>
-    Lowest analysis frequency (Hz): {{ vh1[0] }}
+    Noise box start GPS time: {{ val_h1[2] }}
     <br>
-    Highest analysis frequency (Hz): {{ vh1[1] }}
+    Noise box end GPS time: {{ val_h1[3] }}
     <br>
-    Start time for analysis (GPS time): {{ vh1[2] }}
+    Noise box f_low: {{ val_h1[4] }}
     <br>
-    End time for analysis (GPS time): {{ vh1[3] }}
+    Noise box f_high: {{ val_h1[5] }}
+    <h4>
+    Livingston
+    </h4>
+    Validation conclusion: {{ val_l1[0] }}
     <br>
-    Duration (seconds): {{ vh1[4] }}
-
-    <hr color="purple" align="left" width="40%" size="1">
-    <b> Livingston </b>
-    <br>
-    <br>
-    Lowest analysis frequency (Hz): {{ vl1[0] }}
-    <br>
-    Highest analysis frequency (Hz): {{ vl1[1] }}
-    <br>
-    Start time for analysis (GPS time): {{ vl1[2] }}
-    <br>
-    End time for analysis (GPS time): {{ vl1[3] }}
-    <br>
-    Duration (seconds): {{ vl1[4] }}
-
-    <hr color="purple" align="left" width="40%" size="1">
-    <b>Virgo</b>
+    Detector is in low noise: {{ val_l1[1] }}
     <br>
     <br>
-    Lowest analysis frequency (Hz): {{ vv1[0] }}
+    Noise box start GPS time: {{ val_l1[2] }}
     <br>
-    Highest analysis frequency (Hz): {{ vv1[1] }}
+    Noise box end GPS time: {{ val_l1[3] }}
     <br>
-    Start time for analysis (GPS time): {{ vv1[2] }}
+    Noise box f_low: {{ val_l1[4] }}
     <br>
-    End time for analysis (GPS time): {{ vv1[3] }}
+    Noise box f_high: {{ val_l1[5] }}
+    <h4>
+    Virgo
+    </h4>
+    Validation conclusion: {{ val_v1[0] }}
     <br>
-    Duration (seconds): {{ vv1[4] }}
-
-    <hr color="purple" align="left" width="40%" size="1">
-    DQR: <a href="{{ urls[0] }}">{{ urls[0] }}</a>
+    Detector is in low noise: {{ val_v1[1] }}
     <br>
-    Git issue: <a href="{{ urls[1] }}">{{ urls[1] }}</a>
+    <br>
+    Noise box start GPS time: {{ val_v1[2] }}
+    <br>
+    Noise box end GPS time: {{ val_v1[3] }}
+    <br>
+    Noise box f_low: {{ val_v1[4] }}
+    <br>
+    Noise box f_high: {{ val_v1[5] }}
+    <br>
     <br>
     <hr color="purple" align="left" width="40%" size="1">
-    Validator: {{ contacts[0] }} (<a href="mailto:{{ contacts[1] }}">{{ contacts[1] }}</a>)
+    <h2> Review form </h2>
+    Notes: {{ comments[1] }}
     <br>
-    DetChar expert: {{ contacts[2] }} (<a href="mailto:{{ contacts[3] }}">{{ contacts[3] }}</a>)
+    Duration: {{ various[2] }}
+    <h4>
+    Hanford
+    </h4>
+    Validation conclusion: {{ rev_h1[0] }}
     <br>
-    Noise mitigation: {{ contacts[4] }} (<a href="mailto:{{ contacts[5] }}">{{ contacts[5] }}</a>)
+    Recommend the detector for analysis: {{ rev_h1[1] }}
     <br>
-    Review: {{ contacts[6] }} (<a href="mailto:{{ contacts[7] }}">{{ contacts[7] }}</a>)
     <br>
-    Lead: {{ contacts[8] }} (<a href="mailto:{{ contacts[9] }}">{{ contacts[9] }}</a>)
+    Recommended analysis start GPS time: {{ rev_h1[2] }}
     <br>
-    Lead: {{ contacts[10] }} (<a href="mailto:{{ contacts[11] }}">{{ contacts[11] }}</a>)
+    Recommended analysis end GPS time: {{ rev_h1[3] }}
+    <br>
+    Recommended analysis f_low: {{ rev_h1[4] }}
+    <br>
+    Recommended analysis f_high: {{ rev_h1[5] }}
+    <br>
+    <br>
+    Recommended frame type: {{ rev_h1[6] }}
+    <br>
+    Recommended channel name: {{ rev_h1[7] }}
+    <br>
+    Unmitigated noise left: {{ rev_h1[8] }}
+    <h4>
+    Livingston
+    </h4>
+    Validation conclusion: {{ rev_l1[0] }}
+    <br>
+    Recommend the detector for analysis: {{ rev_l1[1] }}
+    <br>
+    <br>
+    Recommended analysis start GPS time: {{ rev_l1[2] }}
+    <br>
+    Recommended analysis end GPS time: {{ rev_l1[3] }}
+    <br>
+    Recommended analysis f_low: {{ rev_l1[4] }}
+    <br>
+    Recommended analysis f_high: {{ rev_l1[5] }}
+    <br>
+    <br>
+    Recommended frame type: {{ rev_l1[6] }}
+    <br>
+    Recommended channel name: {{ rev_l1[7] }}
+    <br>
+    Unmitigated noise left: {{ rev_l1[8] }}
+    <h4>
+    Hanford
+    </h4>
+    Validation conclusion: {{ rev_v1[0] }}
+    <br>
+    Recommend the detector for analysis: {{ rev_v1[1] }}
+    <br>
+    <br>
+    Recommended analysis start GPS time: {{ rev_v1[2] }}
+    <br>
+    Recommended analysis end GPS time: {{ rev_v1[3] }}
+    <br>
+    Recommended analysis f_low: {{ rev_v1[4] }}
+    <br>
+    Recommended analysis f_high: {{ rev_v1[5] }}
+    <br>
+    <br>
+    Recommended frame type: {{ rev_v1[6] }}
+    <br>
+    Recommended channel name: {{ rev_v1[7] }}
+    <br>
+    Unmitigated noise left: {{ rev_v1[8] }}
+    <br>
+    <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    <h2> Glitch subtraction request form </h2>
+    Notes: {{ comments[2] }}
+    <br>
+    Merger time t0: {{ various[3] }}
+    <h4>
+    Hanford
+    </h4>
+    Need to subtract a glitch: {{ req_h1[0] }}
+    <br>
+    <br>
+    Noise box start GPS time: {{ req_h1[1] }}
+    <br>
+    Noise box end GPS time: {{ req_h1[2] }}
+    <br>
+    Noise box f_low: {{ req_h1[3] }}
+    <br>
+    Noise box f_high: {{ req_h1[4] }}
+    <h4>
+    Livingston
+    </h4>
+    Need to subtract a glitch: {{ req_l1[0] }}
+    <br>
+    <br>
+    Noise box start GPS time: {{ req_l1[1] }}
+    <br>
+    Noise box end GPS time: {{ req_l1[2] }}
+    <br>
+    Noise box f_low: {{ req_l1[3] }}
+    <br>
+    Noise box f_high: {{ req_l1[4] }}
+    <h4>
+    Virgo
+    </h4>
+    Need to subtract a glitch: {{ req_v1[0] }}
+    <br>
+    <br>
+    Noise box start GPS time: {{ req_v1[1] }}
+    <br>
+    Noise box end GPS time: {{ req_v1[2] }}
+    <br>
+    Noise box f_low: {{ req_v1[3] }}
+    <br>
+    Noise box f_high: {{ req_v1[4] }}
+    <br>
+    <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    <h2> Glitch subtraction results form </h2>
+    Notes: {{ comments[3] }}
+    <h4>
+    Hanford
+    </h4>
+    Frame type: {{ res_h1[0] }}
+    <br>
+    Channel name: {{ res_h1[1] }}
+    <h4>
+    Livingston
+    </h4>
+    Frame type: {{ res_l1[0] }}
+    <br>
+    Channel name: {{ res_l1[1] }}
+    <h4>
+    Virgo
+    </h4>
+    Frame type: {{ res_v1[0] }}
+    <br>
+    Channel name: {{ res_v1[1] }}
+    <br>
+    <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    <h2> Useful links </h2>
+    GraceDB Superevent: <a href="{{ urls[0] }}">link</a>
+    <br>
+    Detector summary: <a href="{{ urls[1] }}">link</a>
+    <br>
+    DQR: <a href="{{ urls[2] }}">link</a>
+    <br>
+    GitLab issue: <a href="{{ urls[3] }}">link</a>
+    <br>
+    <br>
+    <hr color="purple" align="left" width="40%" size="1">
+    <h2> Contacts </h2>
+    Validator: <a href="mailto:{{ contacts[1] }}">{{ contacts[0] }}</a>
+    <br>
+    DetChar expert: <a href="mailto:{{ contacts[3] }}">{{ contacts[2] }}</a>
+    <br>
+    Glitch subtraction: <a href="mailto:{{ contacts[5] }}">{{ contacts[4] }}</a>
+    <br>
+    Review: <a href="mailto:{{ contacts[7] }}">{{ contacts[6] }}</a>
+    <br>
+    Lead: <a href="mailto:{{ contacts[9] }}">{{ contacts[8] }}</a>
+    <br>
+    Lead: <a href="mailto:{{ contacts[11] }}">{{ contacts[10] }}</a>
     {% endblock %}
 {% endblock %}

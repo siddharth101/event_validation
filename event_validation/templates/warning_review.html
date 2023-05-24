@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+
     <h1>{% block title %}
-        {{ args[0] }} noise mitigation form was completed by {{ args[1] }} ({{ args[2] }}), see the summary <a href="{{ args[3] }}">here</a>.  
+        {{ args[0] }} noise mitigation form was completed by {{ args[1] }} ({{ args[2] }}), see the summary <a href="{{ args[3] }}">here</a>.
     {% endblock %}</h1>
-    
+
     {% block main %}
-    If you want to overwrite the noise mitigation form, <a href="{{ args[4] }}">click here</a>. Note that the overwritten noise mitigation form results will be added to the summary. 
+    If you want to overwrite the noise mitigation form, <a href="{{ args[4] }}">click here</a>. Note that the overwritten noise mitigation form results will be added to the summary.
     {% endblock %}
 
 {% endblock %}

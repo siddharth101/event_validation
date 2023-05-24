@@ -6,7 +6,6 @@
 FLASK website for event validation
 Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 """
-#TODO: check the review form, submit it, check if works, then work on finalize
 import json, argparse, os
 import pandas as pd
 
@@ -23,13 +22,12 @@ __process_name__ = 'ev-forms-website'
 #------------------------------------------------------------------------------
 
 # TODO: add option to add comments
-# TODO:remove from the finalizing review form option ot add comments bc there are no comments
 # TODO: check which htmls are used and remove others
 
 def create_app(url, wdir, event_list, website_md, notify):
     app = Flask(__name__)
 
-    app.config['SECRET_KEY'] = 'gw150914'
+    # app.config['SECRET_KEY'] = 'gw150914'
     # app.config['DEBUG'] = True
     flask_base_url = f'{url}/'
 
@@ -193,7 +191,6 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
-        notes = TextAreaField('notes:')
 
         finalize_status = [(0, 'No'), (1, 'Yes')]
 
@@ -499,7 +496,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         if request.method == 'POST':
             if form.validate():
 
-                if form.review.data == 1:
+                if form.finalize.data == 1:
 
                     # read event json
                     with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
@@ -507,41 +504,26 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     event_data['contacts']['review_name'] = form.name.data
                     event_data['contacts']['review_email'] = form.email.data
-                    event_data['comments']['review'] = form.comment.data
+
                     event_data['reviewed'] = 1
-                    event_data['valid_status'] = 2
 
                     # update event json
                     with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                         json.dump(event_data, fp, indent=4)
 
-                    # read event list and find idx
-                    event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-                    gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
-
-                    # update the events list
-                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['lead1_name']} ([email](mailto:{event_data['contacts']['lead1_email']}))"
-                    event_list_df.at[gid_idx,'Reviewed'] = 'Yes'
-                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[2])
-                    event_list_df.to_csv(event_list_fname, index=False)
-
-                    # update website's .md table
-                    with open(md_fname, 'w') as md:
-                        event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                    os.system(f'cd {wdir}; mkdocs -q build')
+                    # TODO: update md tables
 
                     if notify:
                         subject = f'Final review completed for {gid}'
-                        body_review = f'{subject}. See the summary at {summary_url}.'
+                        body= f'{subject}. See the summary at {summary_url}.'
 
                         # send an email to the reviewer
-                        send_email(form.email.data, subject, body_review)
+                        send_email(form.email.data, subject, body)
                         # send an email to leads
-                        send_email(event_data['contacts']['lead1_email'], subject, body_review)
-                        send_email(event_data['contacts']['lead2_email'], subject, body_review)
+                        send_email(event_data['contacts']['lead1_email'], subject, body)
+                        send_email(event_data['contacts']['lead2_email'], subject, body)
 
                     # TODO CBC SCHEMA STUFF HERE
-
 
                 return render_template('form_review_success.html', gid=gid, name=form.name.data)
 

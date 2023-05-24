@@ -9,7 +9,7 @@ Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 import json, argparse, os
 import pandas as pd
 
-from .utils import get_events_dict, first_upper, send_email, get_dets
+from .utils import get_events_dict, first_upper, first_lower, Nonestr, send_email, get_dets
 
 from wtforms import Form, validators, SelectField, TextAreaField, FloatField, IntegerField
 from flask import Flask, render_template, request, flash
@@ -21,8 +21,7 @@ __process_name__ = 'ev-forms-website'
 
 #------------------------------------------------------------------------------
 
-# TODO: add option to add comments
-# TODO: check which htmls are used and remove others
+# TODO: check if warnings given after forms are filled
 
 def create_app(url, wdir, event_list, website_md, notify):
     app = Flask(__name__)
@@ -302,6 +301,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data = json.load(fp)
 
                 # update the event json
+                event_data['status'] = 1
                 event_data['contacts']['review_name'] = form.name.data
                 event_data['contacts']['review_email'] = form.email.data
                 event_data['comments']['review'] = form.notes.data
@@ -388,6 +388,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data = json.load(fp)
 
                 # update the event json
+                event_data['status'] = 1
                 event_data['contacts']['review_name'] = form.name.data
                 event_data['contacts']['review_email'] = form.email.data
                 event_data['comments']['glitch_request'] = form.notes.data
@@ -449,6 +450,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data = json.load(fp)
 
                 # update the event json
+                event_data['status'] = 1
                 event_data['contacts']['mitigation_name'] = form.name.data
                 event_data['contacts']['mitigation_email'] = form.email.data
                 event_data['comments']['glitch_result'] = form.notes.data
@@ -536,55 +538,57 @@ def create_app(url, wdir, event_list, website_md, notify):
     @app.route('/summary/<gid>', methods=('GET', 'POST'))
     def get_summary(gid):
 
-        # find if validation or review forms were filled
-        flags = ['validation', 'review']
-        conclusions = []
-        for ifo in ifos:
-            for flag in flags:
-                print((events[gid]['forms'][flag][ifo]['conclusion']))
-                conclusions.append(events[gid]['forms'][flag][ifo]['conclusion'])
+        if events[gid]['status'] == 0:
 
-        # if not filled, show 404 page
-        # TODO: reverse logic bc if true, then show summary
-        if any(str(var).isnumeric() for var in conclusions):
             args = [gid, events[gid]['contacts']['lead1_name'], events[gid]['contacts']['lead1_email']]
             return render_template('summary_404.html', args=args)
 
         else:
 
-            summary = [first_upper(review_flags[events[gid]['reviewed']]), first_upper(val_flags[events[gid]['valid_status']]), dq_flags[events[gid]['valid_conclusion']], str(events[gid]['detectors']).replace("'", "")[1:-1]]
+            various = [status_flags[events[gid]['status']], bool(events[gid]['reviewed']), events[gid]['forms']['review']['duration'], events[gid]['forms']['glitch_request']['t0']]
             comments = list(events[gid]['comments'].values())
             contacts = list(events[gid]['contacts'].values())
-            urls = [events[gid]['dqr_url'], events[gid]['git_issue_url']]
+            urls = list(events[gid]['links'].values())
 
-            noise_mitig = []
+            # validation form
+            val_h1 = Nonestr(list(events[gid]['forms']['validation']['H1'].values()))
+            if len(val_h1[0]) > 0: val_h1[0] = val_flags[val_h1[0]]
+            if val_h1[1]: val_h1[1] = bool(val_h1[1])
+            val_l1 = Nonestr(list(events[gid]['forms']['validation']['L1'].values()))
+            if len(val_l1[0]) > 0: val_l1[0] = val_flags[val_l1[0]]
+            if val_l1[1]: val_l1[1] = bool(val_l1[1])
+            val_v1 = Nonestr(list(events[gid]['forms']['validation']['V1'].values()))
+            if len(val_v1[0]) > 0: val_v1[0] = val_flags[val_v1[0]]
+            if val_v1[1]: val_v1[1] = bool(val_v1[1])
 
-            if events[gid]['noise_mitigation']['H1']['status'] == 2 or events[gid]['noise_mitigation']['L1']['status'] == 2 or events[gid]['noise_mitigation']['V1']['status'] == 2:
+            # review form
+            rev_h1 = Nonestr(list(events[gid]['forms']['review']['H1'].values()))
+            if len(rev_h1[0]) > 0: rev_h1[0] = val_team_flags[rev_h1[0]]
+            if rev_h1[1]: rev_h1[1] = bool(rev_h1[1])
+            if rev_h1[8]: rev_h1[8] = bool(rev_h1[8])
+            rev_l1 = Nonestr(list(events[gid]['forms']['review']['L1'].values()))
+            if len(rev_l1[0]) > 0: rev_l1[0] = val_team_flags[rev_l1[0]]
+            if rev_l1[1]: rev_l1[1] = bool(rev_l1[1])
+            if rev_l1[8]: rev_l1[8] = bool(rev_l1[8])
+            rev_v1 = Nonestr(list(events[gid]['forms']['review']['V1'].values()))
+            if len(rev_v1[0]) > 0: rev_v1[0] = val_team_flags[rev_v1[0]]
+            if rev_v1[1]: rev_v1[1] = bool(rev_v1[1])
+            if rev_v1[8]: rev_v1[8] = bool(rev_v1[8])
 
-                nm_summ_h1 = list(events[gid]['noise_mitigation']['H1'].values())
-                nm_summ_h1[0] = bool(nm_summ_h1[0])
-                nm_summ_h1[1] = first_upper(val_flags[nm_summ_h1[1]])
-                nm_summ_l1 = list(events[gid]['noise_mitigation']['L1'].values())
-                nm_summ_l1[0] = bool(nm_summ_l1[0])
-                nm_summ_l1[1] = first_upper(val_flags[nm_summ_l1[1]])
-                nm_summ_v1 = list(events[gid]['noise_mitigation']['V1'].values())
-                nm_summ_v1[0] = bool(nm_summ_v1[0])
-                nm_summ_v1[1] = first_upper(val_flags[nm_summ_v1[1]])
+            # glitch request form
+            req_h1 = Nonestr(list(events[gid]['forms']['glitch_request']['H1'].values()))
+            if req_h1[0]: req_h1[0] = bool(req_h1[0])
+            req_l1 = Nonestr(list(events[gid]['forms']['glitch_request']['L1'].values()))
+            if req_l1[0]: req_l1[0] = bool(req_l1[0])
+            req_v1 = Nonestr(list(events[gid]['forms']['glitch_request']['V1'].values()))
+            if req_v1[0]: req_v1[0] = bool(req_v1[0])
 
-                valid_summ_h1 = list(events[gid]['validation']['H1'].values())
-                valid_summ_l1 = list(events[gid]['validation']['L1'].values())
-                valid_summ_v1 = list(events[gid]['validation']['V1'].values())
+            # glitch results form
+            res_h1 = list(events[gid]['forms']['glitch_result']['H1'].values())
+            res_l1 = list(events[gid]['forms']['glitch_result']['L1'].values())
+            res_v1 = list(events[gid]['forms']['glitch_result']['V1'].values())
 
-                return render_template('mitig_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmh1=nm_summ_h1, nml1=nm_summ_l1, nmv1=nm_summ_v1, vh1=valid_summ_h1, vl1=valid_summ_l1, vv1=valid_summ_v1)
-
-
-            else:
-
-                valid_summ_h1 = list(events[gid]['validation']['H1'].values())
-                valid_summ_l1 = list(events[gid]['validation']['L1'].values())
-                valid_summ_v1 = list(events[gid]['validation']['V1'].values())
-
-                return render_template('val_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, vh1=valid_summ_h1, vl1=valid_summ_l1, vv1=valid_summ_v1)
+            return render_template('summary.html', gid=gid, various=various, comments=comments, contacts=contacts, urls=urls, val_h1=val_h1, val_l1=val_l1, val_v1=val_v1, rev_h1=rev_h1, rev_l1=rev_l1, rev_v1=rev_v1, req_h1=req_h1, req_l1=req_l1, req_v1=req_v1, res_h1=res_h1, res_l1=res_l1, res_v1=res_v1)
 
 
     @app.route('/validation_warning/<gid>', methods=('GET', 'POST'))

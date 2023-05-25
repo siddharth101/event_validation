@@ -84,13 +84,11 @@ def update_data(event_data, git_dir, events_file, md_file, logger):
     dqr_url_md = f"[DQR]({event_data['links']['dqr']})"
     eval_url_md = f"[EV]({event_data['links']['summary']})"
     url_string = superevent_url_md + ', ' + detector_url_md + ', ' + dqr_url_md + ', ' + eval_url_md
-    contact_md = f'([{event_data["contacts"]["validator_name"]}](mailto:{event_data["contacts"]["validator_email"]}))'
     contact_md = f'([contact](mailto:{event_data["contacts"]["validator_email"]}))'
 
     # create new event dict
     new_event = {
                  'Event': [event_data['event_name']],
-                 'Status': 'Not started',
                  'Next step': f'Event validation {contact_md}',
                  'Validation conclusion': 'Not ready',
                  'Review conclusion': 'Not ready',
@@ -230,6 +228,18 @@ def first_upper(string):
     final_string = f'{string[0].upper()}{string[1:]}'
     return final_string
 
+
+def first_lower(string):
+    final_string = f'{string[0].lower()}{string[1:]}'
+    return final_string
+
+def Nonestr(oldlist):
+    newlist = []
+    for ele in oldlist:
+        if ele is None:
+            ele = ''
+        newlist.append(ele)
+    return newlist
 
 def send_email(email, subject, body):
 

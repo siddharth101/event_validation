@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1368662418.0,
+            "t0": 1368662400.0,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "event_validation/create_event.py --verbose --git_dir . --label O4a --dqr_url https://dqr.com --superevent_url https://superevent.com --ignore_far --t0 1368662418 --event_name G00002"
+    "cmd": "event_validation/create_event.py --verbose --git_dir . --label O4a --dqr_url https://dqr.com --superevent_url https://superevent.com --ignore_far --t0 1368662400 --event_name G00002"
 }

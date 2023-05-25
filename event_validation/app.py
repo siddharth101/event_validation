@@ -6,11 +6,10 @@
 FLASK website for event validation
 Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 """
-#TODO: check the review form, submit it, check if works, then work on finalize
 import json, argparse, os
 import pandas as pd
 
-from .utils import get_events_dict, first_upper, send_email, get_dets
+from .utils import get_events_dict, first_upper, first_lower, Nonestr, send_email, get_dets
 
 from wtforms import Form, validators, SelectField, TextAreaField, FloatField, IntegerField
 from flask import Flask, render_template, request, flash
@@ -22,14 +21,10 @@ __process_name__ = 'ev-forms-website'
 
 #------------------------------------------------------------------------------
 
-# TODO: add option to add comments
-# TODO:remove from the finalizing review form option ot add comments bc there are no comments
-# TODO: check which htmls are used and remove others
-
 def create_app(url, wdir, event_list, website_md, notify):
     app = Flask(__name__)
 
-    app.config['SECRET_KEY'] = 'gw150914'
+    # app.config['SECRET_KEY'] = 'gw150914'
     # app.config['DEBUG'] = True
     flask_base_url = f'{url}/'
 
@@ -42,29 +37,47 @@ def create_app(url, wdir, event_list, website_md, notify):
     val_flags = ['Not observing', 'No DQ issues', 'DQ issues']
     val_team_flags = ['Not observing', 'no DQ issues', 'DQ issues but no noise mitigation required', 'Noise mitigation required']
     glitch_flags = ['not required', 'required']
-    # dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
-    # mitigation_flags = ['N/A', 'in progress', 'completed']
-    # review_flags = ['no', 'yes', 'N/A']
+    glitch_sub_flags = ['not required', 'required', 'in progress', 'completed']
 
     messages = []
     for key, item in sorted(list(events.items()), key=lambda x:x[0].lower(), reverse=True):
 
-        # add a warning if one wants to overwrite event validation form
-        if item["status"] == 0:
-            validation_url = f'{flask_base_url}validation/{key}'
-        else:
-            validation_url = f'{flask_base_url}validation_warning/{key}'
+        # add warnings if one wants to overwrite a form
+        val_conc = []
+        rev_conc = []
+        glitch_req = []
+        glitch_res = []
+        for ifo in ifos:
+            val_conc.append(item['forms']['validation'][ifo]['conclusion'])
+            rev_conc.append(item['forms']['review'][ifo]['conclusion'])
+            glitch_req.append(item['forms']['glitch_request'][ifo]['required'])
+            glitch_res.append(item['forms']['glitch_result'][ifo]['channel'])
 
-        #TODO: add more warnings since there are more forms
-        # add a warning if one wants to overwrite noise mitigation form
-        # add a warning if one wants to fill in the noise mitigation form even though it is not required because there are no data quality issues
-        # if item['noise_mitigation']['H1']['required'] == 0 and item['noise_mitigation']['L1']['required'] == 0 and item['noise_mitigation']['V1']['required'] == 0:
-            # mitig_url = f'{flask_base_url}warning_mitig_form2/{key}'
+        # warning for the event validation form
+        if val_conc[0] != "" or val_conc[1] != "" or val_conc[2] != "":
+            validation_url = f'{flask_base_url}validation_warning/{key}'
+        else:
+            validation_url = f'{flask_base_url}validation/{key}'
+
+        # warning for the review form
+        if rev_conc[0] != "" or rev_conc[1] != "" or rev_conc[2] != "":
+            review_url = f'{flask_base_url}review_warning/{key}'
+        else:
+            review_url = f'{flask_base_url}review/{key}'
+
+        # warning for the glitch request form
+        if glitch_req[0] != "" or glitch_req[1] != "" or glitch_req[2] != "":
+            glitch_request_url = f'{flask_base_url}glitch_request_warning/{key}'
+        else:
+            glitch_request_url = f'{flask_base_url}glitch_request/{key}'
+
+        # warning for the glitch results form
+        if glitch_res[0] != "" or glitch_res[1] != "" or glitch_res[2] != "":
+            glitch_results_url = f'{flask_base_url}glitch_results_warning/{key}'
+        else:
+            glitch_results_url = f'{flask_base_url}glitch_results/{key}'
 
         summary_url = f'{flask_base_url}summary/{key}'
-        review_url = f'{flask_base_url}review/{key}'
-        glitch_request_url = f'{flask_base_url}glitch_request/{key}'
-        glitch_results_url = f'{flask_base_url}glitch_results/{key}'
 
         title = f'{key}: {status_flags[item["status"]]}'
         message = {'title':title, 'content':f'', 'summary':summary_url, 'validation':validation_url, 'review':review_url, 'glitch_request':glitch_request_url, 'glitch_results':glitch_results_url, 'gracedb':item['links']['gracedb'], 'detectors':item['links']['detector'], 'dqr':item['links']['dqr'], 'issue':item['links']['issue']}
@@ -193,7 +206,6 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
-        notes = TextAreaField('notes:')
 
         finalize_status = [(0, 'No'), (1, 'Yes')]
 
@@ -218,10 +230,6 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         if request.method == 'POST':
             if form.validate():
-
-                # read event list and find idx
-                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                 # read event json
                 with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
@@ -254,22 +262,25 @@ def create_app(url, wdir, event_list, website_md, notify):
                 event_data['forms']['validation']['V1']['noise_flow'] = form.v1_noise_flow.data
                 event_data['forms']['validation']['V1']['noise_fhigh'] = form.v1_noise_fhigh.data
 
-                #TODO: fix mkdocs stuff here
-                # update the events list
-                # event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[1])
-                # event_list_df.at[gid_idx,'Conclusion'] = first_upper(dq_flags[3])
-                # event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[1])
-                # event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['mitigation_name']} ([email](mailto:{event_data['contacts']['mitigation_email']}))"
-                # event_list_df.to_csv(event_list_fname, index=False)
-
-                # # update website's .md table
-                # with open(md_fname, 'w') as md:
-                #     event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                # os.system(f'cd {wdir}; mkdocs -q build')
-
-                # update event json
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
+
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                # update the events list
+                event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
+                if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
+                    event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[2]
+                else:
+                    event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[1]
+                event_list_df.to_csv(event_list_fname, index=False)
+
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Event validation report complete for {gid}.'
@@ -305,6 +316,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data = json.load(fp)
 
                 # update the event json
+                event_data['status'] = 1
                 event_data['contacts']['review_name'] = form.name.data
                 event_data['contacts']['review_email'] = form.email.data
                 event_data['comments']['review'] = form.notes.data
@@ -346,18 +358,26 @@ def create_app(url, wdir, event_list, website_md, notify):
                     json.dump(event_data, fp, indent=4)
 
                 # read event list and find idx
-                # event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-                # gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
-                # # update the events list
-                # event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[2])
-                # event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
-                # event_list_df.to_csv(event_list_fname, index=False)
+                # update the events list
+                event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
+                if form.h1_team_val.data == 3 or form.l1_team_val.data == 3 or form.v1_team_val.data == 3:
+                    event_list_df.at[gid_idx,'Review conclusion'] = first_upper(val_team_flags[3])
+                    event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[1])
+                elif form.h1_team_val.data == 2 or form.l1_team_val.data == 2 or form.v1_team_val.data == 2:
+                    event_list_df.at[gid_idx,'Review conclusion'] = first_upper(val_team_flags[2])
+                    event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[0])
+                else:
+                    event_list_df.at[gid_idx,'Review conclusion'] = first_upper(val_team_flags[1])
+                    event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[0])
+                event_list_df.to_csv(event_list_fname, index=False)
 
-                # # update website's .md table
-                # with open(md_fname, 'w') as md:
-                #     event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                # os.system(f'cd {wdir}; mkdocs -q build')
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Event validation review report complete for {gid}'
@@ -391,6 +411,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data = json.load(fp)
 
                 # update the event json
+                event_data['status'] = 1
                 event_data['contacts']['review_name'] = form.name.data
                 event_data['contacts']['review_email'] = form.email.data
                 event_data['comments']['glitch_request'] = form.notes.data
@@ -417,7 +438,19 @@ def create_app(url, wdir, event_list, website_md, notify):
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-                # TODO: update md tables
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                # update the events list
+                event_list_df.at[gid_idx,'Next step'] = f"Glitch subtraction ([contact]([email](mailto:{event_data['contacts']['mitigation_email']})))"
+                event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[2])
+                event_list_df.to_csv(event_list_fname, index=False)
+
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Glitch subtraction requested for {gid}'
@@ -452,6 +485,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data = json.load(fp)
 
                 # update the event json
+                event_data['status'] = 1
                 event_data['contacts']['mitigation_name'] = form.name.data
                 event_data['contacts']['mitigation_email'] = form.email.data
                 event_data['comments']['glitch_result'] = form.notes.data
@@ -469,7 +503,19 @@ def create_app(url, wdir, event_list, website_md, notify):
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-                # TODO: update md tables
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                # update the events list
+                event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
+                event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[3])
+                event_list_df.to_csv(event_list_fname, index=False)
+
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Glitch subtraction completed for {gid}'
@@ -499,7 +545,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         if request.method == 'POST':
             if form.validate():
 
-                if form.review.data == 1:
+                if form.finalize.data == 1:
 
                     # read event json
                     with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
@@ -507,9 +553,8 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     event_data['contacts']['review_name'] = form.name.data
                     event_data['contacts']['review_email'] = form.email.data
-                    event_data['comments']['review'] = form.comment.data
+
                     event_data['reviewed'] = 1
-                    event_data['valid_status'] = 2
 
                     # update event json
                     with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
@@ -520,9 +565,8 @@ def create_app(url, wdir, event_list, website_md, notify):
                     gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                     # update the events list
-                    event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['lead1_name']} ([email](mailto:{event_data['contacts']['lead1_email']}))"
-                    event_list_df.at[gid_idx,'Reviewed'] = 'Yes'
-                    event_list_df.at[gid_idx,'Status'] = first_upper(val_flags[2])
+                    event_list_df.at[gid_idx,'Finalized'] = 'Yes'
+                    event_list_df.at[gid_idx,'Next step'] = f"None ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
                     event_list_df.to_csv(event_list_fname, index=False)
 
                     # update website's .md table
@@ -532,18 +576,17 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     if notify:
                         subject = f'Final review completed for {gid}'
-                        body_review = f'{subject}. See the summary at {summary_url}.'
+                        body= f'{subject}. See the summary at {summary_url}.'
 
                         # send an email to the reviewer
-                        send_email(form.email.data, subject, body_review)
+                        send_email(form.email.data, subject, body)
                         # send an email to leads
-                        send_email(event_data['contacts']['lead1_email'], subject, body_review)
-                        send_email(event_data['contacts']['lead2_email'], subject, body_review)
+                        send_email(event_data['contacts']['lead1_email'], subject, body)
+                        send_email(event_data['contacts']['lead2_email'], subject, body)
 
                     # TODO CBC SCHEMA STUFF HERE
 
-
-                return render_template('form_review_success.html', gid=gid, name=form.name.data)
+                return render_template('form_finalize_success.html', gid=gid, name=form.name.data)
 
             else:
                 flash('Error:'+str(form.errors),'danger')
@@ -554,55 +597,57 @@ def create_app(url, wdir, event_list, website_md, notify):
     @app.route('/summary/<gid>', methods=('GET', 'POST'))
     def get_summary(gid):
 
-        # find if validation or review forms were filled
-        flags = ['validation', 'review']
-        conclusions = []
-        for ifo in ifos:
-            for flag in flags:
-                print((events[gid]['forms'][flag][ifo]['conclusion']))
-                conclusions.append(events[gid]['forms'][flag][ifo]['conclusion'])
+        if events[gid]['status'] == 0:
 
-        # if not filled, show 404 page
-        # TODO: reverse logic bc if true, then show summary
-        if any(str(var).isnumeric() for var in conclusions):
             args = [gid, events[gid]['contacts']['lead1_name'], events[gid]['contacts']['lead1_email']]
             return render_template('summary_404.html', args=args)
 
         else:
 
-            summary = [first_upper(review_flags[events[gid]['reviewed']]), first_upper(val_flags[events[gid]['valid_status']]), dq_flags[events[gid]['valid_conclusion']], str(events[gid]['detectors']).replace("'", "")[1:-1]]
+            various = [status_flags[events[gid]['status']], bool(events[gid]['reviewed']), events[gid]['forms']['review']['duration'], events[gid]['forms']['glitch_request']['t0']]
             comments = list(events[gid]['comments'].values())
             contacts = list(events[gid]['contacts'].values())
-            urls = [events[gid]['dqr_url'], events[gid]['git_issue_url']]
+            urls = list(events[gid]['links'].values())
 
-            noise_mitig = []
+            # validation form
+            val_h1 = Nonestr(list(events[gid]['forms']['validation']['H1'].values()))
+            if val_h1[0]!="": val_h1[0] = val_flags[val_h1[0]]
+            if val_h1[1]!="": val_h1[1] = bool(val_h1[1])
+            val_l1 = Nonestr(list(events[gid]['forms']['validation']['L1'].values()))
+            if val_l1[0]!="": val_l1[0] = val_flags[val_l1[0]]
+            if val_l1[1]!="": val_l1[1] = bool(val_l1[1])
+            val_v1 = Nonestr(list(events[gid]['forms']['validation']['V1'].values()))
+            if val_v1[0]!="": val_v1[0] = val_flags[val_v1[0]]
+            if val_v1[1]!="": val_v1[1] = bool(val_v1[1])
 
-            if events[gid]['noise_mitigation']['H1']['status'] == 2 or events[gid]['noise_mitigation']['L1']['status'] == 2 or events[gid]['noise_mitigation']['V1']['status'] == 2:
+            # review form
+            rev_h1 = Nonestr(list(events[gid]['forms']['review']['H1'].values()))
+            if rev_h1[0]!="": rev_h1[0] = val_team_flags[rev_h1[0]]
+            if rev_h1[1]!="": rev_h1[1] = bool(rev_h1[1])
+            if rev_h1[8]!="": rev_h1[8] = bool(rev_h1[8])
+            rev_l1 = Nonestr(list(events[gid]['forms']['review']['L1'].values()))
+            if rev_l1[0]!="": rev_l1[0] = val_team_flags[rev_l1[0]]
+            if rev_l1[1]!="": rev_l1[1] = bool(rev_l1[1])
+            if rev_l1[8]!="": rev_l1[8] = bool(rev_l1[8])
+            rev_v1 = Nonestr(list(events[gid]['forms']['review']['V1'].values()))
+            if rev_v1[0]!="": rev_v1[0] = val_team_flags[rev_v1[0]]
+            if rev_v1[1]!="": rev_v1[1] = bool(rev_v1[1])
+            if rev_v1[8]!="": rev_v1[8] = bool(rev_v1[8])
 
-                nm_summ_h1 = list(events[gid]['noise_mitigation']['H1'].values())
-                nm_summ_h1[0] = bool(nm_summ_h1[0])
-                nm_summ_h1[1] = first_upper(val_flags[nm_summ_h1[1]])
-                nm_summ_l1 = list(events[gid]['noise_mitigation']['L1'].values())
-                nm_summ_l1[0] = bool(nm_summ_l1[0])
-                nm_summ_l1[1] = first_upper(val_flags[nm_summ_l1[1]])
-                nm_summ_v1 = list(events[gid]['noise_mitigation']['V1'].values())
-                nm_summ_v1[0] = bool(nm_summ_v1[0])
-                nm_summ_v1[1] = first_upper(val_flags[nm_summ_v1[1]])
+            # glitch request form
+            req_h1 = Nonestr(list(events[gid]['forms']['glitch_request']['H1'].values()))
+            if req_h1[0]!="": req_h1[0] = bool(req_h1[0])
+            req_l1 = Nonestr(list(events[gid]['forms']['glitch_request']['L1'].values()))
+            if req_l1[0]!="": req_l1[0] = bool(req_l1[0])
+            req_v1 = Nonestr(list(events[gid]['forms']['glitch_request']['V1'].values()))
+            if req_v1[0]!="": req_v1[0] = bool(req_v1[0])
 
-                valid_summ_h1 = list(events[gid]['validation']['H1'].values())
-                valid_summ_l1 = list(events[gid]['validation']['L1'].values())
-                valid_summ_v1 = list(events[gid]['validation']['V1'].values())
+            # glitch results form
+            res_h1 = list(events[gid]['forms']['glitch_result']['H1'].values())
+            res_l1 = list(events[gid]['forms']['glitch_result']['L1'].values())
+            res_v1 = list(events[gid]['forms']['glitch_result']['V1'].values())
 
-                return render_template('mitig_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, nmh1=nm_summ_h1, nml1=nm_summ_l1, nmv1=nm_summ_v1, vh1=valid_summ_h1, vl1=valid_summ_l1, vv1=valid_summ_v1)
-
-
-            else:
-
-                valid_summ_h1 = list(events[gid]['validation']['H1'].values())
-                valid_summ_l1 = list(events[gid]['validation']['L1'].values())
-                valid_summ_v1 = list(events[gid]['validation']['V1'].values())
-
-                return render_template('val_summary.html', gid=gid, summary=summary, comments=comments, contacts=contacts, urls=urls, vh1=valid_summ_h1, vl1=valid_summ_l1, vv1=valid_summ_v1)
+            return render_template('summary.html', gid=gid, various=various, comments=comments, contacts=contacts, urls=urls, val_h1=val_h1, val_l1=val_l1, val_v1=val_v1, rev_h1=rev_h1, rev_l1=rev_l1, rev_v1=rev_v1, req_h1=req_h1, req_l1=req_l1, req_v1=req_v1, res_h1=res_h1, res_l1=res_l1, res_v1=res_v1)
 
 
     @app.route('/validation_warning/<gid>', methods=('GET', 'POST'))
@@ -616,21 +661,34 @@ def create_app(url, wdir, event_list, website_md, notify):
         return render_template('warning_validation.html', args=args)
 
 
-    @app.route('/warning_mitig_form/<gid>', methods=('GET', 'POST'))
-    def warning_mitig_form(gid):
+    @app.route('/review_warning/<gid>', methods=('GET', 'POST'))
+    def gen_review_warning(gid):
+        fname = events[gid]['contacts']['review_name']
+        args = [gid, fname, events[gid]['contacts']['review_email'],
+                f'{flask_base_url}summary/{gid}',
+                f'{flask_base_url}review/{gid}']
+
+        return render_template('warning_review.html', args=args)
+
+
+    @app.route('/glitch_request_warning/<gid>', methods=('GET', 'POST'))
+    def gen_glitch_request_warning(gid):
+        fname = events[gid]['contacts']['review_name']
+        args = [gid, fname, events[gid]['contacts']['review_email'],
+                f'{flask_base_url}summary/{gid}',
+                f'{flask_base_url}glitch_request/{gid}']
+
+        return render_template('warning_glitch_request.html', args=args)
+
+
+    @app.route('/glitch_results_warning/<gid>', methods=('GET', 'POST'))
+    def gen_glitch_results_warning(gid):
         fname = events[gid]['contacts']['mitigation_name']
         args = [gid, fname, events[gid]['contacts']['mitigation_email'],
                 f'{flask_base_url}summary/{gid}',
-                f'{flask_base_url}mitigation/{gid}']
+                f'{flask_base_url}glitch_results/{gid}']
 
-        return render_template('warning_mitig_form.html', args=args)
-
-
-    @app.route('/warning_mitig_form2/<gid>', methods=('GET', 'POST'))
-    def warning_mitig_form2(gid):
-        args = [gid, f'{flask_base_url}summary/{gid}', f'{flask_base_url}mitigation/{gid}']
-
-        return render_template('warning_mitig_form2.html', args=args)
+        return render_template('warning_glitch_results.html', args=args)
 
 
     @app.route('/comment/<gid>', methods=('GET', 'POST'))

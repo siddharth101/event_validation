@@ -270,7 +270,6 @@ def create_app(url, wdir, event_list, website_md, notify):
                 gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                 # update the events list
-                event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
                 event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
                 if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
                     event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[2]
@@ -363,7 +362,6 @@ def create_app(url, wdir, event_list, website_md, notify):
                 gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                 # update the events list
-                event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
                 event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
                 if form.h1_team_val.data == 3 or form.l1_team_val.data == 3 or form.v1_team_val.data == 3:
                     event_list_df.at[gid_idx,'Review conclusion'] = first_upper(val_team_flags[3])
@@ -445,7 +443,6 @@ def create_app(url, wdir, event_list, website_md, notify):
                 gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                 # update the events list
-                event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
                 event_list_df.at[gid_idx,'Next step'] = f"Glitch subtraction ([contact]([email](mailto:{event_data['contacts']['mitigation_email']})))"
                 event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[2])
                 event_list_df.to_csv(event_list_fname, index=False)
@@ -511,7 +508,6 @@ def create_app(url, wdir, event_list, website_md, notify):
                 gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                 # update the events list
-                event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
                 event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
                 event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[3])
                 event_list_df.to_csv(event_list_fname, index=False)
@@ -569,7 +565,6 @@ def create_app(url, wdir, event_list, website_md, notify):
                     gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
                     # update the events list
-                    event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[2])
                     event_list_df.at[gid_idx,'Finalized'] = 'Yes'
                     event_list_df.at[gid_idx,'Next step'] = f"None ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
                     event_list_df.to_csv(event_list_fname, index=False)

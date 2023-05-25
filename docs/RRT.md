@@ -66,7 +66,7 @@ People that are currently under training:
 
 | Week           | Person        | Notes |
 |----------------|---------------|-------|
-| May 24, 2023   | Derek Davis   |       |
+| May 24, 2023   | Derek Davis   | Backup Andy Lundgren |
 | May 31, 2023   | Andy Lundgren |       |
 | June 7, 2023   | Marissa Walker|       |
 | June 14, 2023  | Jess McIver   | Need a backup for June 15, June 19, June 20 |

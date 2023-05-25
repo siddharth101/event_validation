@@ -283,7 +283,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                 os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
-                    subject = f'Event validation report complete for {gid}.'
+                    subject = f'Event validation report complete for {gid}'
                     body_valid = f'{subject}. See the summary at {summary_url}.'
                     body_review = f'{body_valid}\n\nPlease submit your event validation review report at {flask_base_url}/review/{gid}.'
 
@@ -555,6 +555,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_data['contacts']['review_email'] = form.email.data
 
                     event_data['reviewed'] = 1
+                    event_data['status'] = 2
 
                     # update event json
                     with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:

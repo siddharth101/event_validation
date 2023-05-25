@@ -20,7 +20,6 @@ __version__ = '0.6'
 __process_name__ = 'ev-forms-website'
 
 #------------------------------------------------------------------------------
-# TODO: remove status column
 
 def create_app(url, wdir, event_list, website_md, notify):
     app = Flask(__name__)
@@ -617,36 +616,36 @@ def create_app(url, wdir, event_list, website_md, notify):
 
             # validation form
             val_h1 = Nonestr(list(events[gid]['forms']['validation']['H1'].values()))
-            if val_h1[0]: val_h1[0] = val_flags[val_h1[0]]
-            if val_h1[1]: val_h1[1] = bool(val_h1[1])
+            if val_h1[0]!="": val_h1[0] = val_flags[val_h1[0]]
+            if val_h1[1]!="": val_h1[1] = bool(val_h1[1])
             val_l1 = Nonestr(list(events[gid]['forms']['validation']['L1'].values()))
-            if val_l1[0]: val_l1[0] = val_flags[val_l1[0]]
-            if val_l1[1]: val_l1[1] = bool(val_l1[1])
+            if val_l1[0]!="": val_l1[0] = val_flags[val_l1[0]]
+            if val_l1[1]!="": val_l1[1] = bool(val_l1[1])
             val_v1 = Nonestr(list(events[gid]['forms']['validation']['V1'].values()))
-            if val_v1[0]: val_v1[0] = val_flags[val_v1[0]]
-            if val_v1[1]: val_v1[1] = bool(val_v1[1])
+            if val_v1[0]!="": val_v1[0] = val_flags[val_v1[0]]
+            if val_v1[1]!="": val_v1[1] = bool(val_v1[1])
 
             # review form
             rev_h1 = Nonestr(list(events[gid]['forms']['review']['H1'].values()))
-            if rev_h1[0]: rev_h1[0] = val_team_flags[rev_h1[0]]
-            if rev_h1[1]: rev_h1[1] = bool(rev_h1[1])
-            if rev_h1[8]: rev_h1[8] = bool(rev_h1[8])
+            if rev_h1[0]!="": rev_h1[0] = val_team_flags[rev_h1[0]]
+            if rev_h1[1]!="": rev_h1[1] = bool(rev_h1[1])
+            if rev_h1[8]!="": rev_h1[8] = bool(rev_h1[8])
             rev_l1 = Nonestr(list(events[gid]['forms']['review']['L1'].values()))
-            if rev_l1[0]: rev_l1[0] = val_team_flags[rev_l1[0]]
-            if rev_l1[1]: rev_l1[1] = bool(rev_l1[1])
-            if rev_l1[8]: rev_l1[8] = bool(rev_l1[8])
+            if rev_l1[0]!="": rev_l1[0] = val_team_flags[rev_l1[0]]
+            if rev_l1[1]!="": rev_l1[1] = bool(rev_l1[1])
+            if rev_l1[8]!="": rev_l1[8] = bool(rev_l1[8])
             rev_v1 = Nonestr(list(events[gid]['forms']['review']['V1'].values()))
-            if rev_v1[0]: rev_v1[0] = val_team_flags[rev_v1[0]]
-            if rev_v1[1]: rev_v1[1] = bool(rev_v1[1])
-            if rev_v1[8]: rev_v1[8] = bool(rev_v1[8])
+            if rev_v1[0]!="": rev_v1[0] = val_team_flags[rev_v1[0]]
+            if rev_v1[1]!="": rev_v1[1] = bool(rev_v1[1])
+            if rev_v1[8]!="": rev_v1[8] = bool(rev_v1[8])
 
             # glitch request form
             req_h1 = Nonestr(list(events[gid]['forms']['glitch_request']['H1'].values()))
-            if req_h1[0]: req_h1[0] = bool(req_h1[0])
+            if req_h1[0]!="": req_h1[0] = bool(req_h1[0])
             req_l1 = Nonestr(list(events[gid]['forms']['glitch_request']['L1'].values()))
-            if req_l1[0]: req_l1[0] = bool(req_l1[0])
+            if req_l1[0]!="": req_l1[0] = bool(req_l1[0])
             req_v1 = Nonestr(list(events[gid]['forms']['glitch_request']['V1'].values()))
-            if req_v1[0]: req_v1[0] = bool(req_v1[0])
+            if req_v1[0]!="": req_v1[0] = bool(req_v1[0])
 
             # glitch results form
             res_h1 = list(events[gid]['forms']['glitch_result']['H1'].values())

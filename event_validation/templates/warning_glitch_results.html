@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{% block title %}
+        {{ args[0] }} glitch subtraction results form was completed by {{ args[1] }} ({{ args[2] }}), see the summary <a href="{{ args[3] }}">here</a>.
+    {% endblock %}</h1>
+
+    {% block main %}
+    If you want to re-submit the glitch subtraction results form, <a href="{{ args[4] }}">click here</a>.
+    {% endblock %}
+
+{% endblock %}

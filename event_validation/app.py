@@ -20,6 +20,7 @@ __version__ = '0.6'
 __process_name__ = 'ev-forms-website'
 
 #------------------------------------------------------------------------------
+# TODO: remove status column
 
 def create_app(url, wdir, event_list, website_md, notify):
     app = Flask(__name__)
@@ -37,9 +38,7 @@ def create_app(url, wdir, event_list, website_md, notify):
     val_flags = ['Not observing', 'No DQ issues', 'DQ issues']
     val_team_flags = ['Not observing', 'no DQ issues', 'DQ issues but no noise mitigation required', 'Noise mitigation required']
     glitch_flags = ['not required', 'required']
-    # dq_flags = ['N/A', 'no DQ issues', 'DQ issues but no noise mitigation required', 'noise mitigation required']
-    # mitigation_flags = ['N/A', 'in progress', 'completed']
-    # review_flags = ['no', 'yes', 'N/A']
+    glitch_sub_flags = ['not required', 'required', 'in progress', 'completed']
 
     messages = []
     for key, item in sorted(list(events.items()), key=lambda x:x[0].lower(), reverse=True):
@@ -233,10 +232,6 @@ def create_app(url, wdir, event_list, website_md, notify):
         if request.method == 'POST':
             if form.validate():
 
-                # read event list and find idx
-                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
-
                 # read event json
                 with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
                     event_data = json.load(fp)
@@ -271,19 +266,23 @@ def create_app(url, wdir, event_list, website_md, notify):
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-                # update the events list
-                # event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
-                # event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
-                # if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
-                #     event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[2]
-                # else:
-                #     event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[1]
-                # event_list_df.to_csv(event_list_fname, index=False)
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
-                # # update website's .md table
-                # with open(md_fname, 'w') as md:
-                #     event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                # os.system(f'cd {wdir}; mkdocs -q build')
+                # update the events list
+                event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
+                event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
+                if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
+                    event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[2]
+                else:
+                    event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[1]
+                event_list_df.to_csv(event_list_fname, index=False)
+
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Event validation report complete for {gid}.'
@@ -361,18 +360,27 @@ def create_app(url, wdir, event_list, website_md, notify):
                     json.dump(event_data, fp, indent=4)
 
                 # read event list and find idx
-                # event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-                # gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
-                # # update the events list
-                # event_list_df.at[gid_idx,'Noise mitigation'] = first_upper(mitigation_flags[2])
-                # event_list_df.at[gid_idx,'Contact person'] = f"{event_data['contacts']['review_name']} ([email](mailto:{event_data['contacts']['review_email']}))"
-                # event_list_df.to_csv(event_list_fname, index=False)
+                # update the events list
+                event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
+                event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
+                if form.h1_team_val.data == 3 or form.l1_team_val.data == 3 or form.v1_team_val.data == 3:
+                    event_list_df.at[gid_idx,'Review conclusion'] = first_upper(val_team_flags[3])
+                    event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[1])
+                elif form.h1_team_val.data == 2 or form.l1_team_val.data == 2 or form.v1_team_val.data == 2:
+                    event_list_df.at[gid_idx,'Review conclusion'] = first_upper(val_team_flags[2])
+                    event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[0])
+                else:
+                    event_list_df.at[gid_idx,'Review conclusion'] = first_upper(val_team_flags[1])
+                    event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[0])
+                event_list_df.to_csv(event_list_fname, index=False)
 
-                # # update website's .md table
-                # with open(md_fname, 'w') as md:
-                #     event_list_df.to_markdown(buf=md, numalign="center", index=False)
-                # os.system(f'cd {wdir}; mkdocs -q build')
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Event validation review report complete for {gid}'
@@ -433,7 +441,20 @@ def create_app(url, wdir, event_list, website_md, notify):
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-                # TODO: update md tables
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                # update the events list
+                event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
+                event_list_df.at[gid_idx,'Next step'] = f"Glitch subtraction ([contact]([email](mailto:{event_data['contacts']['mitigation_email']})))"
+                event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[2])
+                event_list_df.to_csv(event_list_fname, index=False)
+
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Glitch subtraction requested for {gid}'
@@ -486,7 +507,20 @@ def create_app(url, wdir, event_list, website_md, notify):
                 with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                     json.dump(event_data, fp, indent=4)
 
-                # TODO: update md tables
+                # read event list and find idx
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                # update the events list
+                event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[1])
+                event_list_df.at[gid_idx,'Next step'] = f"Review ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
+                event_list_df.at[gid_idx,'Glitch subtraction'] = first_upper(glitch_sub_flags[3])
+                event_list_df.to_csv(event_list_fname, index=False)
+
+                # update website's .md table
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Glitch subtraction completed for {gid}'
@@ -531,7 +565,20 @@ def create_app(url, wdir, event_list, website_md, notify):
                     with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
                         json.dump(event_data, fp, indent=4)
 
-                    # TODO: update md tables
+                    # read event list and find idx
+                    event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                    gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                    # update the events list
+                    event_list_df.at[gid_idx,'Status'] = first_upper(status_flags[2])
+                    event_list_df.at[gid_idx,'Finalized'] = 'Yes'
+                    event_list_df.at[gid_idx,'Next step'] = f"None ([contact]([email](mailto:{event_data['contacts']['review_email']})))"
+                    event_list_df.to_csv(event_list_fname, index=False)
+
+                    # update website's .md table
+                    with open(md_fname, 'w') as md:
+                        event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                    os.system(f'cd {wdir}; mkdocs -q build')
 
                     if notify:
                         subject = f'Final review completed for {gid}'
@@ -545,7 +592,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     # TODO CBC SCHEMA STUFF HERE
 
-                return render_template('form_review_success.html', gid=gid, name=form.name.data)
+                return render_template('form_finalize_success.html', gid=gid, name=form.name.data)
 
             else:
                 flash('Error:'+str(form.errors),'danger')

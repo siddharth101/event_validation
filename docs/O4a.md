@@ -13,11 +13,11 @@ The weekly event validation rota will consist of two volunteers and one DetChar 
 
 Currently we split the shifts at 4pm UTC time.
 
-| Week        | Volunteer (morning shift) | Volunteer (evening shift) | DetChar expert | Notes |
-|-------------|---------------------------|---------------------------|----------------|-------|
-| May 24      | Siddharth Soni            | Ronaldas Macas            | Derek Davis    |       |
-| May 31      | Shania Nichols            | Shivaraj Kandhasamy       | Andrew Lundgren|       |
-| June 6      | Alan Weinstein            | Anupreeta More            | Marissa Walker |       |
+| Week        | Volunteer (morning) | Volunteer (evening) | DetChar expert | Events | Notes |
+|-------------|---------------------|---------------------|----------------|--------|-------|
+| May 24      | Siddharth Soni      | Ronaldas Macas      | Derek Davis    |        |       |
+| May 31      | Shania Nichols      | Shivaraj Kandhasamy | Andrew Lundgren|        |       |
+| June 6      | Alan Weinstein      | Anupreeta More      | Marissa Walker |        |       |
  
 ## Events
 

@@ -66,4 +66,4 @@ Noise box properties:
 - Noise box f_low in Hz: 15
 - Noise box f_high in Hz: 350
 
-
+![L1 for S230520ae](img/S230520ae_L1_oscan.png)

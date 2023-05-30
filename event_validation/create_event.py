@@ -233,7 +233,7 @@ def init_event_validation(event_name,
     # send emails
     if send_email:
         logger.debug('Sending emails')
-        emails(event_data, ev_forms_url, logger)
+        emails(event_data, ev_form_url, logger)
 
      #--------------------------------------------------------------------------
 

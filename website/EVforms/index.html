@@ -290,16 +290,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#guidelines-on-how-to-fill-event-validation-form" class="md-nav__link">
-    Guidelines on how to fill event validation form
+  <a href="#event-validation-form" class="md-nav__link">
+    Event validation form
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#guidelines-on-how-to-fill-noise-mitigation-form" class="md-nav__link">
-    Guidelines on how to fill noise mitigation form
+  <a href="#guidelines-on-how-to-fill-an-event-validation-form" class="md-nav__link">
+    Guidelines on how to fill an event validation form
   </a>
+  
+    <nav class="md-nav" aria-label="Guidelines on how to fill an event validation form">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -413,16 +426,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#guidelines-on-how-to-fill-event-validation-form" class="md-nav__link">
-    Guidelines on how to fill event validation form
+  <a href="#event-validation-form" class="md-nav__link">
+    Event validation form
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#guidelines-on-how-to-fill-noise-mitigation-form" class="md-nav__link">
-    Guidelines on how to fill noise mitigation form
+  <a href="#guidelines-on-how-to-fill-an-event-validation-form" class="md-nav__link">
+    Guidelines on how to fill an event validation form
   </a>
+  
+    <nav class="md-nav" aria-label="Guidelines on how to fill an event validation form">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -447,12 +473,61 @@
 
 
 <h1 id="evforms">EVforms</h1>
-<p>EVforms is a website that automates the process of communicating DetChar event validation results between different groups. To do that, the website contains forms that event validation volunteers and noise mitigation team should fill out. </p>
+<p>EVforms is a website that automates the process of communicating DetChar event validation results between different groups. To do that, the website contains forms that event validation volunteers and the noise mitigation review team should fill out. </p>
 <p>The website can be found <a href="https://dqr.ligo.caltech.edu/ev_forms">here</a>.</p>
-<h2 id="guidelines-on-how-to-fill-event-validation-form">Guidelines on how to fill event validation form</h2>
-<p>Write guidelines here.</p>
-<h2 id="guidelines-on-how-to-fill-noise-mitigation-form">Guidelines on how to fill noise mitigation form</h2>
-<p>Write guidelines here.</p>
+<h2 id="event-validation-form">Event validation form</h2>
+<p>Volunteers will be asked to fill an online event validation form with the following fields:</p>
+<ul>
+<li>Name:</li>
+<li>Email:</li>
+<li>Notes:</li>
+</ul>
+<p><em>Hanford</em></p>
+<ul>
+<li>Validation conclusion:<ul>
+<li>not observing</li>
+<li>no DQ issues</li>
+<li>DQ issues</li>
+</ul>
+</li>
+<li>Detector is in low noise:<ul>
+<li>No</li>
+<li>Yes</li>
+</ul>
+</li>
+</ul>
+<!---->
+<!---->
+<!---->
+<ul>
+<li>Noise box start GPS time:</li>
+<li>Noise box end GPS time:</li>
+<li>Noise box f_low in Hz:</li>
+<li>Noise box f_high in Hz:</li>
+</ul>
+<p><em>Repeated for Livingston and Virgo</em></p>
+<h2 id="guidelines-on-how-to-fill-an-event-validation-form">Guidelines on how to fill an event validation form</h2>
+<p><strong>Validation conclusion</strong>:</p>
+<ul>
+<li>Not observing — if the detector is not observing</li>
+<li>No DQ issues — if there are no data quality (DQ) issues</li>
+<li>DQ issues — if there are DQ issues present in any of the interferometer</li>
+</ul>
+<p><strong>Detector is in low noise</strong>: this can be checked from the summary pages (e.g. <a href="https://ldas-jobs.ligo-la.caltech.edu/~detchar/summary/day/20230501/">link</a>) in the Lock Segments plot.</p>
+<p><strong>Noise box start GPS time</strong>: If there are glitches present in the longest OmegaScan plot from DQR, note the gpstime of the first occurrence of a glitch</p>
+<p><strong>Noise box end GPS time</strong> : If there are glitches present in the longest OmegaScan plot from DQR, note the gpstime of the last occurrence of a glitch</p>
+<p><strong>Noise box f_low</strong>: If there are glitches present in the longest OmegaScan plot from DQR, note the starting frequency of a glitch</p>
+<p><strong>Noise box f_high</strong>: If there are glitches present in the longest OmegaScan plot from DQR, note the highest frequency of a glitch</p>
+<h3 id="example">Example</h3>
+<p>Here is an OmegaScan for an event at 1368658140.57 with a glitch just after it. The glitch is from +1.6 to +1.9s after the event time 1368658140.57.</p>
+<p>Noise box properties:</p>
+<ul>
+<li>Noise box start GPS time: 1368658142.17</li>
+<li>Noise box end GPS time: 1368658142.47</li>
+<li>Noise box f_low in Hz: 15</li>
+<li>Noise box f_high in Hz: 350</li>
+</ul>
+<p><img alt="L1 for S230520ae" src="../img/S230520ae_L1_oscan.png" /></p>
 
 
 
@@ -569,7 +644,7 @@
 
   
   <div>
-    Last updated May 25, 2023.
+    Last updated May 26, 2023.
   </div>
   
 </div>

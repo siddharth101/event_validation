@@ -189,7 +189,7 @@ def emails(event_data, ev_forms_url, logger):
             f"GitLab issue: {event_data['links']['issue']}\n\n"
             f"Validator: {valid_name} ({valid_email})\n"
             f"DetChar expert: {expert_name} ({expert_email})\n"
-            f"Noise mitigation: {mitigation_name} ({mitigation_email})\n"
+            f"Glitch mitigation: {mitigation_name} ({mitigation_email})\n"
             f"Review: {review_name} ({review_email})\n\n")
     post_body = f"For any questions, contact {lead1_name} ({lead1_email}) and {lead2_name} ({lead2_email})."
 

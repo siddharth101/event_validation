@@ -173,8 +173,8 @@ def emails(event_data, ev_forms_url, logger):
     subject = f"A request to validate {event_data['event_name']}"
 
     pre_body_lead = f"Validator: {valid_email}, expert: {expert_email}, noise mitigation: {mitigation_email}, review: {review_email}.\n\n"
-    pre_body_valid = f"You are assigned to validate candidate event {event_data['event_name']}. For more technical event validation questions, please refer to the DetChar expert {expert_name} ({expert_email}) or the Mattermost DetChar - Event Validation channel (https://chat.ligo.org/ligo/channels/detchar---event-validation); we advise to use the Mattermost channel instead of contacting a DetChar expert if possible. More information about the event is given below.\n\n"
-    pre_body_valid2 = (f"Validation checklist:\n"
+    pre_body_valid = f"You are assigned to validate candidate event {event_data['event_name']}. For more technical event validation questions, please refer to the DetChar expert {expert_name} ({expert_email}) or the Mattermost DetChar - Event Validation channel (https://chat.ligo.org/ligo/channels/detchar---event-validation); we advise to use the Mattermost channel instead of contacting a DetChar expert if possible.\n\n"
+    post_body_valid = (f"Validation checklist:\n"
                        f"1. View the GraceDB SuperEvent and preferred event pages\n"
                        f"2. View the Detector Status Summary pages\n"
                        f"3. View the Data Quality Report\n"
@@ -184,6 +184,7 @@ def emails(event_data, ev_forms_url, logger):
     body = (f"Candidate event: {event_data['event_name']}\n"
             f"GraceDB Superevent: {event_data['links']['gracedb']}\n"
             f"DQR: {event_data['links']['dqr']}\n"
+            f"Detector status: {event_data['links']['detector']}\n"
             f"Event validation form: {ev_forms_url}\n"
             f"GitLab issue: {event_data['links']['issue']}\n\n"
             f"Validator: {valid_name} ({valid_email})\n"
@@ -192,7 +193,7 @@ def emails(event_data, ev_forms_url, logger):
             f"Review: {review_name} ({review_email})\n\n")
     post_body = f"For any questions, contact {lead1_name} ({lead1_email}) and {lead2_name} ({lead2_email})."
 
-    send_email(valid_email, subject, pre_body_valid+pre_body_valid2+body+post_body)
+    send_email(valid_email, subject, pre_body_valid+body+post_body_valid+post_body)
     send_email(expert_email, subject, pre_body_expert+body+post_body)
     send_email(lead1_email, subject, pre_body_lead+body)
     send_email(lead2_email, subject, pre_body_lead+body)

@@ -8,8 +8,9 @@ Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 """
 import json, argparse, os
 import pandas as pd
+import cbcflow
 
-from .utils import get_events_dict, first_upper, first_lower, Nonestr, send_email, get_dets
+from .utils import get_events_dict, first_upper, first_lower, Nonestr, send_email, get_dets, get_event_properties, gen_json_dict
 
 from wtforms import Form, validators, SelectField, TextAreaField, FloatField, IntegerField
 from flask import Flask, render_template, request, flash
@@ -586,6 +587,11 @@ def create_app(url, wdir, event_list, website_md, notify):
                         send_email(event_data['contacts']['lead2_email'], subject, body)
 
                     # TODO CBC SCHEMA STUFF HERE
+                    ev_info = get_event_properties(gid)
+                    dict_ev_info = gen_json_dict(ev_info)
+                    metadata = cbcflow.get_superevent(gid)
+                    metadata.update(dict_ev_info)
+                    metadata.write_to_library(message="Updating Detchar Schema for {}".format(gid))
 
                 return render_template('form_finalize_success.html', gid=gid, name=form.name.data)
 

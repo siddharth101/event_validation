@@ -263,3 +263,130 @@ def get_dets(h1, l1, v1):
         dets.append('V1')
 
     return dets
+
+def get_event_properties(event_id, filepath=None):
+    if filepath:
+        path = filepath
+    else:
+        path = "../data/events/"
+
+    event_file = os.path.join(path, "{}.json".format(event_id))
+
+    with open(event_file) as f:
+        event_f = f.read()
+
+    event_fd = json.loads(event_f)
+
+    return event_fd
+
+
+def gen_json_dict(event_info):
+
+    CBC_SCHEMA = 'cbc-meta-data-v2.schema'
+    with open(CBC_SCHEMA) as f:
+        schema_f = f.read()
+
+    schema_fd = json.loads(schema_f)
+    rec_dict_keys = schema_fd["$defs"]["DetcharDetector"]["properties"].keys()
+
+
+    val_flags = ["unstarted", "ongoing", "complete"]
+    review_status = ["unstarted", "ongoing", "pass", "fail"]
+    mitigation_flags = ["not yet reviewed", "not required", "required", "complete"]
+
+    Analysts = list(event_info["contacts"].values())
+    Reviewers = [event_info['contacts']['review_name'], event_info['contacts']['review_email']]
+    dqrfile = event_info['links']['dqr']
+    publichtml = os.path.join(dqrfile, 'index.html')
+    dqrfile = publichtml.replace('https://ldas-jobs.ligo.caltech.edu/~dqr/', '/home/dqr/public_html/')
+    ParticipatingDetectors = list(event_info['forms']['review'].keys())[1:]
+    val_status = val_flags[event_info['status']]
+
+
+    rec_dets = []
+    glitch_mit = event_info['forms']['glitch_request']
+    glitch_rev = event_info['forms']['review']
+    glitch_res = event_info['forms']['glitch_result']
+
+
+    for i in ParticipatingDetectors:
+        uid = i
+
+        if glitch_mit[i]['noise_flow']:
+            rec_min_freq = glitch_mit[i]['noise_flow']
+        else:
+            rec_min_freq = 20
+
+        if glitch_mit[i]['noise_fhigh']:
+            rec_max_freq = glitch_mit[i]['noise_fhigh']
+        else:
+            rec_max_freq = np.NaN
+
+        if glitch_mit[i]['noise_tstart']:
+            rec_t_start = glitch_mit[i]['noise_tstart']
+        else:
+            rec_t_start = np.NaN
+
+        if glitch_mit[i]['noise_tend']:
+            rec_t_end = glitch_mit[i]['noise_tend']
+        else:
+            rec_t_end = np.NaN
+
+        if glitch_res[i]['channel']:
+            rec_channel = glitch_res[i]['channel']
+        else:
+            rec_channel = i + ':'
+
+        if glitch_res[i]['frame_type']:
+            rec_frame = glitch_res[i]['frame_type']
+        else:
+            rec_frame = '/'
+
+        if glitch_rev[i]['conclusion']:
+            rec_conc = mitigation_flags[glitch_mit[i]['conclusion']]
+        else:
+            rec_conc = "not yet reviewed"
+
+        notes = [event_info['comments']['validation'], event_info['comments']['review'],
+                 event_info['comments']['glitch_request'], event_info['comments']['glitch_result'],
+                 event_info['comments']['other']]
+
+
+        rec_dets_values = [uid, rec_min_freq, rec_max_freq, rec_t_start, rec_t_end,
+                           rec_conc, rec_frame, rec_channel, notes]
+
+
+
+        rec_dets.append(dict(zip(rec_dict_keys, rec_dets_values)))
+
+    if event_info['forms']['review']['duration']:
+        RecommendedDuration = event_info['forms']['review']['duration']
+    else:
+        RecommendedDuration = 4.0
+
+
+
+    dqrresults = {
+                  "UID": " ",
+                  "DQRFile": {"Path": dqrfile, 'PublicHTML': publichtml},
+                  "ReviewStatus": review_status[event_info['reviewed']],
+                  "ValidationResult": ["pending", "pass", "fail"][1], #hardcoded
+                  "ValidationNotes": [event_info["comments"]["validation"]],
+                  "Notes": [event_info["comments"]["other"]]}
+
+    Notes = event_info["comments"]["other"]
+
+    update_add_json = {
+    "DetectorCharacterization":{
+        "Analysts": Analysts,
+        "Reviewers": Reviewers,
+        "ParticipatingDetectors": ParticipatingDetectors,
+        "Status": val_status,
+        "RecommendedDetectors" : rec_dets,
+        "RecommendedDuration":RecommendedDuration,
+        "DQRResults":[dqrresults],
+        "Notes":[Notes]
+    }
+    }
+
+    return update_add_json

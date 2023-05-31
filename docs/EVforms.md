@@ -55,6 +55,15 @@ Volunteers will be asked to fill an online event validation form with the follow
 
 **Noise box f_high**: If there are glitches present in the longest OmegaScan plot from DQR, note the highest frequency of a glitch
 
+**Other recommendations**:
+
+- Make extensive notes from GraceDB, Detector summary pages and the data quality report, and post them after to the GitLab issue
+- Note any DQR task failures or any other issues -- this is a useful feedback which helps to improve the DQR!
+- When looking for any excess noise, make sure you look at least +2s after the merger time. Use *omegascan*, *omega_overlap* or *glitchfind* tasks.
+- As to how far back you should look from the merger time, that depends on the signal type. Use *omega_overlap* or *glitchfind* task to see the time-frequency track of the signal. BBH signals are usually short, so it is enough to look at the omegascans from *omega_overlap* and *glitchfind* tasks that plot data up to 16s before the merger time. For BNS and NSBH signals, you may need to manually produce omegascans.
+
+For more recommendations, see the training recording and slides: [LIGO-G2300839](https://dcc.ligo.org/LIGO-G2300839).
+
 ### Example
 
 Here is an OmegaScan for an event at 1368658140.57 with a glitch just after it. The glitch is from +1.6 to +1.9s after the event time 1368658140.57.

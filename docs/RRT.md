@@ -11,21 +11,17 @@ In O4, we will use a weekly rota where a DetChar RRT expert is responsible for a
 
 ## Training
 
-To become a DetChar RRT expert, one should have experience in:
+To become a DetChar RRT expert, the expert should have experience in:
 
 - Data quality shifts
 - Event validation shifts
 - Shadowing RRT calls
 
-For more information, see the training slides and recording [LIGO-G2300983](https://dcc.ligo.org/G2300983). If you are interested in becoming a DetChar RRT expert, please contact event validation leads Ronaldas ([ronaldas.macas@ligo.org](mailto:ronaldas.macas@ligo.org)) and Sidd ([siddharth.soni@ligo.org](mailto:siddharth.soni@ligo.org)). 
-
-### Training status
-
-Write the current training status here later.
+For more information, see the DetChar RRT training slides and recording [LIGO-G2300983](https://dcc.ligo.org/G2300983). If you are interested in becoming a DetChar RRT expert, please contact event validation leads Ronaldas ([ronaldas.macas@ligo.org](mailto:ronaldas.macas@ligo.org)) and Sidd ([siddharth.soni@ligo.org](mailto:siddharth.soni@ligo.org)). 
 
 ## Personpower
 
-People able to serve as DetChar RRT expert:
+People able to serve as a DetChar RRT expert:
 
 - Laura Nuttall 
 - Jess McIver
@@ -38,6 +34,13 @@ People that are currently under training:
 - Brenann Hughey
 - Amber Stuver
 
+### Training status
+
+| Name           | Completed a DQ shift | Completed event validation shift | Shadowed an RRT call |
+|----------------|----------------------|----------------------------------|----------------------|
+| Marie Curie    | Yes                  | Yes                              | No                   |   
+
+
 ## Checklist for starting your RRT shift
 
 - Sign-up for GraceDB alerts: [link](https://emfollow.docs.ligo.org/followup-advocate-guide/preparation.html#a-sign-up-for-gracedb-alerts)
@@ -47,11 +50,11 @@ People that are currently under training:
 
 ## Useful links
 
-- DetChar RRT training slides and recording [LIGO-G2300983](https://dcc.ligo.org/G2300983)
-- O4 RRT LVK presentation (March 2023 LVK meeting): [LIGO-G2300580](https://dcc.ligo.org/LIGO-G2300580)
-- LVK RRT guide: [link](https://emfollow.docs.ligo.org/followup-advocate-guide/index.html)
 - GraceDB alert sign-up instructions [link](https://emfollow.docs.ligo.org/followup-advocate-guide/preparation.html#a-sign-up-for-gracedb-alerts)
 - RRT roster sheet: [link](https://drive.google.com/drive/u/0/folders/1LgncDpMSn7zDKq0Bu9TFMKBu7WKOddY3)
+- DetChar RRT training slides and recording [LIGO-G2300983](https://dcc.ligo.org/G2300983)
+- Event validation training slides and recording [LIGO-G2300839](https://dcc.ligo.org/LIGO-G2300839)
+- LVK RRT guide: [link](https://emfollow.docs.ligo.org/followup-advocate-guide/index.html)
 
 ## ER15 rota
 

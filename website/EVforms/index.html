@@ -518,6 +518,14 @@
 <p><strong>Noise box end GPS time</strong> : If there are glitches present in the longest OmegaScan plot from DQR, note the gpstime of the last occurrence of a glitch</p>
 <p><strong>Noise box f_low</strong>: If there are glitches present in the longest OmegaScan plot from DQR, note the starting frequency of a glitch</p>
 <p><strong>Noise box f_high</strong>: If there are glitches present in the longest OmegaScan plot from DQR, note the highest frequency of a glitch</p>
+<p><strong>Other recommendations</strong>:</p>
+<ul>
+<li>Make extensive notes from GraceDB, Detector summary pages and the data quality report, and post them after to the GitLab issue</li>
+<li>Note any DQR task failures or any other issues -- this is a useful feedback which helps to improve the DQR!</li>
+<li>When looking for any excess noise, make sure you look at least +2s after the merger time. Use <em>omegascan</em>, <em>omega_overlap</em> or <em>glitchfind</em> tasks.</li>
+<li>As to how far back you should look from the merger time, that depends on the signal type. Use <em>omega_overlap</em> or <em>glitchfind</em> task to see the time-frequency track of the signal. BBH signals are usually short, so it is enough to look at the omegascans from <em>omega_overlap</em> and <em>glitchfind</em> tasks that plot data up to 16s before the merger time. For BNS and NSBH signals, you may need to manually produce omegascans.</li>
+</ul>
+<p>For more recommendations, see the training recording and slides: <a href="https://dcc.ligo.org/LIGO-G2300839">LIGO-G2300839</a>.</p>
 <h3 id="example">Example</h3>
 <p>Here is an OmegaScan for an event at 1368658140.57 with a glitch just after it. The glitch is from +1.6 to +1.9s after the event time 1368658140.57.</p>
 <p>Noise box properties:</p>
@@ -644,7 +652,7 @@
 
   
   <div>
-    Last updated May 30, 2023.
+    Last updated May 31, 2023.
   </div>
   
 </div>

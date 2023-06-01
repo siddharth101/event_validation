@@ -300,7 +300,7 @@ def gen_json_dict(event_info):
     publichtml = os.path.join(dqrfile, 'index.html')
     dqrfile = publichtml.replace('https://ldas-jobs.ligo.caltech.edu/~dqr/', '/home/dqr/public_html/')
     ParticipatingDetectors = list(event_info['forms']['review'].keys())[1:]
-    val_status = val_flags[event_info['status']]
+    val_status = "complete" 
 
 
     rec_dets = []
@@ -369,7 +369,7 @@ def gen_json_dict(event_info):
     dqrresults = {
                   "UID": " ",
                   "DQRFile": {"Path": dqrfile, 'PublicHTML': publichtml},
-                  "ReviewStatus": review_status[event_info['reviewed']],
+                  "ReviewStatus":"pass", 
                   "ValidationResult": ["pending", "pass", "fail"][1], #hardcoded
                   "ValidationNotes": [event_info["comments"]["validation"]],
                   "Notes": [event_info["comments"]["other"]]}

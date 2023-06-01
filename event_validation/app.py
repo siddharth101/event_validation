@@ -6,9 +6,8 @@
 FLASK website for event validation
 Based on https://dcc.ligo.org/LIGO-G2300083, https://dcc.ligo.org/LIGO-T2200265
 """
-import json, argparse, os
+import json, argparse, os, cbcflow
 import pandas as pd
-import cbcflow
 
 from .utils import get_events_dict, first_upper, first_lower, Nonestr, send_email, get_dets, get_event_properties, gen_json_dict
 
@@ -586,7 +585,6 @@ def create_app(url, wdir, event_list, website_md, notify):
                         send_email(event_data['contacts']['lead1_email'], subject, body)
                         send_email(event_data['contacts']['lead2_email'], subject, body)
 
-                    # TODO CBC SCHEMA STUFF HERE
                     ev_info = get_event_properties(gid)
                     dict_ev_info = gen_json_dict(ev_info)
                     metadata = cbcflow.get_superevent(gid)

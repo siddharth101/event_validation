@@ -16,7 +16,7 @@ setuptools.setup(
           'event_validation': ['templates/*'],
     },
     include_package_data=True,
-    install_requires=['numpy', 'scipy', 'gwpy', 'matplotlib', 'astropy', 'pandas', 'mdutils', 'markdown-include', 'mkdocs-material-igwn', 'tabulate', 'flask', 'Flask-WTF', 'Flask-Bootstrap4', 'Flask-Table', 'gunicorn', 'python-gitlab'],
+    install_requires=['numpy', 'scipy', 'gwpy', 'matplotlib', 'astropy', 'pandas', 'mdutils', 'markdown-include', 'mkdocs-material-igwn', 'tabulate', 'flask', 'Flask-WTF', 'Flask-Bootstrap4', 'Flask-Table', 'gunicorn', 'python-gitlab', 'cbcflow'],
     entry_points = {
         "console_scripts": [
         'event-validation-app = event_validation.app:main',

@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='event_validation',
-    version='0.4',
+    version='0.5',
     author='Ronaldas Macas',
     author_email='ronaldas.macas@ligo.org',
     description='Event validation infrastructure',

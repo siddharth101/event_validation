@@ -16,7 +16,7 @@ from flask import Flask, render_template, request, flash
 
 __author__ = 'Ronaldas Macas'
 __email__ = 'ronaldas.macas@ligo.org'
-__version__ = '0.6'
+__version__ = '0.7'
 __process_name__ = 'ev-forms-website'
 
 #------------------------------------------------------------------------------

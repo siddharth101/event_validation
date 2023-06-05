@@ -18,7 +18,8 @@ Currently we split the shifts at 4pm UTC time.
 | May 24      | Siddharth Soni      | Ronaldas Macas      | Derek Davis    |        |       |
 | May 31      | Shania Nichols      | Shivaraj Kandhasamy | Andrew Lundgren|        |       |
 | June 6      | Alan Weinstein      | Anupreeta More      | Marissa Walker |        |       |
-| June 13     | Brennan Hughey      |                     | Jess McIver    |        |       |
+| June 13     | Brennan Hughey      | Max Trevor          | Jess McIver    |        |       |
+| June 20     | Amber Stuver        |                     | Laura Nuttall  |        |       |
  
 ## Events
 

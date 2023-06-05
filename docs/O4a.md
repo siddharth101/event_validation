@@ -15,8 +15,8 @@ Currently we split the shifts at 4pm UTC time.
 
 | Week        | Volunteer (morning) | Volunteer (evening) | DetChar expert | Events | Notes |
 |-------------|---------------------|---------------------|----------------|--------|-------|
-| May 24      | Siddharth Soni      | Ronaldas Macas      | Derek Davis    |        |       |
-| May 31      | Shania Nichols      | Shivaraj Kandhasamy | Andrew Lundgren|        |       |
+| May 24      | Siddharth Soni      | Ronaldas Macas      | Derek Davis    | S230524x, S230529ay | Ronaldas and Sidd also validate events from ER15 (S230502m, S230518h, S230520ae, S230522a, S230522n) |
+| May 31      | Shania Nichols      | Shivaraj Kandhasamy | Andrew Lundgren| S230601bf, S230605o |       |
 | June 6      | Alan Weinstein      | Anupreeta More      | Marissa Walker |        |       |
 | June 13     | Brennan Hughey      | Max Trevor          | Jess McIver    |        |       |
 | June 20     | Amber Stuver        |                     | Laura Nuttall  |        |       |

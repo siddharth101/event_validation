@@ -3,10 +3,10 @@
     "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb-test.ligo.org/superevents/S230502m/view",
+        "gracedb": "https://gracedb-test.ligo.org/superevents/S230502m",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230502",
         "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230502m",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/141",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/145",
         "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230502m"
     },
     "forms": {
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1367030137.32,
+            "t0": 1367030137.0,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -121,8 +121,8 @@
     "contacts": {
         "validator_name": "Ronaldas Macas",
         "validator_email": "ronaldas.macas@ligo.org",
-        "expert_name": "Ronaldas Macas",
-        "expert_email": "ronaldas.macas@ligo.org",
+        "expert_name": "Andrew Lundgren",
+        "expert_email": "andrew.lundgren@port.ac.uk",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
         "review_name": "Ronaldas Macas",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "event_validation/create_event.py --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230502m --superevent_url https://gracedb-test.ligo.org/superevents/S230502m/view --ignore_far --t0 1367030137.32 --send_email --create_issue --event_name S230502m"
+    "cmd": "event_validation/create_event.py --verbose --git_dir . --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230502m --superevent_url https://gracedb-test.ligo.org/superevents/S230502m --ignore_far --send_email --create_issue --t0 1367030137 --time 1367030137 --validator Ronaldas Macas --expert Andrew Lundgren --event_name S230502m"
 }

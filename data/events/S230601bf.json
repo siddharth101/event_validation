@@ -1,0 +1,137 @@
+{
+    "event_name": "S230601bf",
+    "status": 0,
+    "reviewed": 0,
+    "links": {
+        "gracedb": "https://gracedb.ligo.org/superevents/S230601bf",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230601",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230601bf",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/152",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230601bf"
+    },
+    "forms": {
+        "validation": {
+            "H1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            }
+        },
+        "review": {
+            "duration": "",
+            "H1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            }
+        },
+        "glitch_request": {
+            "t0": 1369694512.0,
+            "H1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "L1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "V1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            }
+        },
+        "glitch_result": {
+            "H1": {
+                "frame_type": "",
+                "channel": ""
+            },
+            "L1": {
+                "frame_type": "",
+                "channel": ""
+            },
+            "V1": {
+                "frame_type": "",
+                "channel": ""
+            }
+        }
+    },
+    "comments": {
+        "validation": "",
+        "review": "",
+        "glitch_request": "",
+        "glitch_result": "",
+        "other": ""
+    },
+    "contacts": {
+        "validator_name": "Shania Nichols",
+        "validator_email": "shania.nichols@ligo.org",
+        "expert_name": "Andrew Lundgren",
+        "expert_email": "andrew.lundgren@port.ac.uk",
+        "mitigation_name": "Ronaldas Macas",
+        "mitigation_email": "ronaldas.macas@ligo.org",
+        "review_name": "Ronaldas Macas",
+        "review_email": "ronaldas.macas@ligo.org",
+        "lead1_name": "Ronaldas Macas",
+        "lead1_email": "ronaldas.macas@ligo.org",
+        "lead2_name": "Siddharth Soni",
+        "lead2_email": "siddharth.soni@ligo.org"
+    },
+    "other": "",
+    "cmd": "event_validation/create_event.py --verbose --git_dir . --label O4a --ignore_far --create_issue --send_email --validator Shania Nichols --event_name S230601bf --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230601bf --superevent_url https://gracedb.ligo.org/superevents/S230601bf --t0 1369694512 --time 1369694512"
+}

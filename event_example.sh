@@ -5,9 +5,8 @@ python event_validation/create_event.py \
     --ignore_far \
     --create_issue \
     --send_email \
-    --validator 'Shania Nichols' \
-    --event_name  S230601bf \
-    --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230601bf \
-    --superevent_url https://gracedb.ligo.org/superevents/S230601bf \
-    --t0 1369694512 \
-    --time 1369694512
+    --event_name S230605o \
+    --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230605o \
+    --superevent_url https://gracedb.ligo.org/superevents/S230605o \
+    --t0 1369983241 \
+    --time 1369983241

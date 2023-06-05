@@ -1,9 +1,13 @@
 python event_validation/create_event.py \
     --verbose \
     --git_dir . \
-    --label ER15 \
-    --dqr_url https://dqr.com \
-    --superevent_url https://superevent.com \
+    --label O4a \
     --ignore_far \
-    --t0 1368662418 \
-    --event_name G00001
+    --create_issue \
+    --send_email \
+    --validator 'Shania Nichols' \
+    --event_name  S230601bf \
+    --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230601bf \
+    --superevent_url https://gracedb.ligo.org/superevents/S230601bf \
+    --t0 1369694512 \
+    --time 1369694512

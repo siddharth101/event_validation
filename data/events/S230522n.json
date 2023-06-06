@@ -1,6 +1,6 @@
 {
     "event_name": "S230522n",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230522n",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1368804651.19",
+                "noise_tend": "1368804651.19",
+                "noise_flow": "25",
+                "noise_fhigh": "40"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "L1: GSpyNetTree predicts fast scattering; omegascan predicts a DQ issue but ignoring it; Glitchfind raises a DQ issue. Omegascan looks suspicious, looks like there is an event with some noise just before the merger time. Or is it just quirky omegascan plotting? See more extensive notes in the GitLab issue (https://git.ligo.org/detchar/event-validation/-/issues/149).",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Ronaldas Macas",
-        "validator_email": "ronaldas.macas@ligo.org",
+        "validator_email": "ronaldas.macas@port.ac.uk",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Ronaldas Macas",

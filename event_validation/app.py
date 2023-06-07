@@ -284,7 +284,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                 if notify:
                     subject = f'Event validation report complete for {gid}'
-                    body_valid = f'{subject}. See the summary at {summary_url}.'
+                    body_valid = f'{subject}. See the summary at {flask_base_url}summary/{gid}.'
                     body_review = f'{body_valid}\n\nPlease submit your event validation review report at {flask_base_url}/review/{gid}.'
 
                     # send an email to the validator
@@ -381,7 +381,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                 if notify:
                     subject = f'Event validation review report complete for {gid}'
-                    body = f'{subject}. See the summary at {summary_url}.'
+                    body = f'{subject}. See the summary at {flask_base_url}summary/{gid}.'
 
                     # send an email to the reviewer
                     send_email(form.email.data, subject, body)
@@ -454,7 +454,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                 if notify:
                     subject = f'Glitch subtraction requested for {gid}'
-                    body = f'{subject}. See the summary at {summary_url}.'
+                    body = f'{subject}. See the summary at {flask_base_url}summary/{gid}.'
 
                     # send an email to the reviewer
                     send_email(form.email.data, subject, body)
@@ -519,7 +519,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                 if notify:
                     subject = f'Glitch subtraction completed for {gid}'
-                    body = f'{subject}. See the summary at {summary_url}.'
+                    body = f'{subject}. See the summary at {flask_base_url}summary/{gid}.'
 
                     # send an email to the glitch mitigation
                     send_email(form.email.data, subject, body)
@@ -577,7 +577,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     if notify:
                         subject = f'Final review completed for {gid}'
-                        body= f'{subject}. See the summary at {summary_url}.'
+                        body= f'{subject}. See the summary at {flask_base_url}summary/{gid}.'
 
                         # send an email to the reviewer
                         send_email(form.email.data, subject, body)

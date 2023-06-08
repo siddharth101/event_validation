@@ -11,13 +11,7 @@ In O4, we will use a weekly rota where a DetChar RRT expert is responsible for a
 
 ## Training
 
-To become a DetChar RRT expert, the expert should have experience in:
-
-- Data quality shifts
-- Event validation shifts
-- Shadowing RRT calls
-
-For more information, see the DetChar RRT training slides and recording [LIGO-G2300983](https://dcc.ligo.org/G2300983). If you are interested in becoming a DetChar RRT expert, please contact event validation leads Ronaldas ([ronaldas.macas@ligo.org](mailto:ronaldas.macas@ligo.org)) and Sidd ([siddharth.soni@ligo.org](mailto:siddharth.soni@ligo.org)). 
+If you are interested in becoming a DetChar RRT expert, please contact the event validation leads Ronaldas ([ronaldas.macas@ligo.org](mailto:ronaldas.macas@ligo.org)) and Sidd ([siddharth.soni@ligo.org](mailto:siddharth.soni@ligo.org)). 
 
 ## Personpower
 
@@ -33,13 +27,6 @@ People that are currently under training:
 
 - Brenann Hughey
 - Amber Stuver
-
-### Training status
-
-| Name           | Completed a DQ shift | Completed event validation shift | Shadowed an RRT call |
-|----------------|----------------------|----------------------------------|----------------------|
-| Marie Curie    | Yes                  | Yes                              | No                   |   
-
 
 ## Checklist for starting your RRT shift
 
@@ -71,9 +58,9 @@ People that are currently under training:
 |----------------|---------------|-------|
 | May 24, 2023   | Derek Davis   | Backup Andy Lundgren |
 | May 31, 2023   | Andy Lundgren |       |
-| June 7, 2023   | Marissa Walker|       |
-| June 14, 2023  | Jess McIver   | Need a backup for June 15, June 19, June 20 |
+| June 7, 2023   | Marissa Walker| Backup Laura Nuttall |
+| June 14, 2023  | Jess McIver   | Need a backup for June 15, June 19, June 20; Laura Nutall is a backup |
 | June 21, 2023  | Laura Nuttall | Need a backup for June 26, June 27 |
-| June 28, 2023  |               |       |
+| June 28, 2023  | Andy Lundgren |       |
 
 

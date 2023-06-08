@@ -1,0 +1,3 @@
+[submodule "event_validation/cbc_flow/cbc-workflow-o4a"]
+	path = event_validation/cbc_flow/cbc-workflow-o4a
+	url = git@git.ligo.org:cbc/projects/cbc-workflow-o4a.git

@@ -590,12 +590,7 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     ev_info = get_event_properties(gid)
                     dict_ev_info = gen_json_dict(ev_info)
-                    # TODO where can the library path be found?
-                    # This should be a clone of https://git.ligo.org/cbc/projects/cbc-workflow-o4a/-/tree/main
-                    # local to the directory this is being run in
-                    # See here:
-                    # https://cbc.docs.ligo.org/projects/cbcflow/local-library-copy-setup.html
-                    # for detailed instructions
+                    library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-o4a"
                     library = LocalLibraryDatabase(library_path)
                     library.git_pull_from_remote(automated=True)
                     metadata = get_superevent(gid, library)

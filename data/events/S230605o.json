@@ -1,6 +1,6 @@
 {
     "event_name": "S230605o",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230605o",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1369983241.49-0.04",
+                "noise_tend": "1369983241.49-0.01",
+                "noise_flow": "80",
+                "noise_fhigh": "140"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "Both H1 and L1 were in observing mode. The SNRs in each detector is ~8. Except GSpyNetTree all the reported tasks passed for both detector (there is known issue with the GSpyNetTree task). The omega scan for H1 looks relatively clean. The omega scan for L1 looks a bit noiser and there is an excess just (~0.01 sec) before the event time (which Glitchfind also shows, but the task is passed). It is not clear whether the excess corresponds to the event itself and something close to the event, may be needs another check.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

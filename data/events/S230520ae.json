@@ -1,6 +1,6 @@
 {
     "event_name": "S230520ae",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230520ae",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 1,
+                "low_noise": 1,
+                "noise_tstart": "1368658140.27, 1368658141",
+                "noise_tend": "1368658140.265, 1368658141.005",
+                "noise_flow": "60, 40",
+                "noise_fhigh": "110, 80"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1368658142.27",
+                "noise_tend": "1368658142.37",
+                "noise_flow": "20",
+                "noise_fhigh": "350"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,14 +112,14 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "Hanford: some excess noise between 60 and 110 Hz 0.3 seconds before the merger as seen in the glitchfind task scan, excess noise between 40 and 80 Hz, 0.43 seconds after the merger as seen in the first scan of the OmegaScan task. No large glitches. OmegaOverlap task failed. Livingston: Large glitch between 20 and 350 Hz, about 1.7 secs after merger as seen in the OmegaScan task. Glitchfind task passed but there is a loud glitch visible in the scan. OmegaOverlap task failed for both Hanford and Livingston but using Hveto I could not find evidence of correlation between the auxiliary channel and h(t)",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Siddharth Soni",
+        "validator_name": "siddharth soni",
         "validator_email": "siddharth.soni@ligo.org",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",

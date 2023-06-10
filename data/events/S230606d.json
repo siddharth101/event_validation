@@ -1,6 +1,6 @@
 {
     "event_name": "S230606d",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230606d",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1370047404.993",
+                "noise_tend": "1370047405.093",
+                "noise_flow": "20",
+                "noise_fhigh": "70"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "H1: GSpyNetTree DQ issue due to using old data set. Glitch find task passed but there is a glitch present 1.2 seconds after the event. In the Q transform of the original data, there is a glitch found 0.4 seconds before the event. This seems like excess noise, but it is not very loud.    L1: GSpyNetTree DQ issue due to using old data set. The rayleigh task failed indicating there is some variation in the PSD before the event. ",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

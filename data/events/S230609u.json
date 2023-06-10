@@ -1,35 +1,35 @@
 {
-    "event_name": "S230518h",
-    "status": 1,
+    "event_name": "S230609u",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org/superevents/S230518h",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230518",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230518h/S230518h_01",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/146",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230518h"
+        "gracedb": "https://gracedb.ligo.org/superevents/S230609u",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230609",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230609u",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/157",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230609u"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 1,
-                "low_noise": 1,
-                "noise_tstart": "1368449967.17",
-                "noise_tend": "1368449967.87",
-                "noise_flow": "40",
-                "noise_fhigh": "200"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1368449966.0,
+            "t0": 1370328616.0,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "Hanford: Stationarity task failed but looks good. No big glitches seen in Glitchfind and OmegaScan. In the OmegaScan, we can see some excess noise between 40 and 100 Hz but no loud transients. GspyNetTree says Chirp, though I do not see a chirp waveform.OmegaOverlap Task doesn\u2019t load but the task failed. Concludes that H1:HPI-ITMY_BLND_L4C_Z_IN1_DQ could have caused the event in h(t). But the Hveto analysis does not show that this channel has a high correlation with h(t). Livingston: Glitchfind task passed and I do not observe any loud glitches in the scan and in the OmegaScan task. GspyNetTree says \u201cNo_Glitch\u201d which is NOT problematic. OmegaOverlap task doesn\u2019t load but the task failed. Concludes that L1:SQZ-ASC_ANG_Y_OUT_DQ could have caused the event in h(t). But the Hveto analysis does not show that this channel has a high correlation with h(t)",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Siddharth Soni",
-        "validator_email": "siddharth.soni@ligo.org",
-        "expert_name": "Derek Davis",
-        "expert_email": "derek.davis@ligo.org",
+        "validator_name": "Anupreeta More",
+        "validator_email": "anupreeta.more@ligo.org",
+        "expert_name": "Marissa Walker",
+        "expert_email": "marissa.walker@ligo.org",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
         "review_name": "Ronaldas Macas",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "event_validation/create_event.py --verbose --git_dir . --label O4a --ignore_far --send_email --create_issue --validator Siddharth Soni --t0 1368449966 --time 1368449966 --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230518h/S230518h_01 --superevent_url https://gracedb.ligo.org/superevents/S230518h --event_name S230518h"
+    "cmd": "event_validation/create_event.py --verbose --git_dir . --label O4a --ignore_far --create_issue --send_email --event_name S230609u --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230609u --superevent_url https://gracedb.ligo.org/superevents/S230609u --t0 1370328616 --time 1370328616"
 }

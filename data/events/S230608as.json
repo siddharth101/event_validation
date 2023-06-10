@@ -1,6 +1,6 @@
 {
     "event_name": "S230608as",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230608as",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "High mass BBH (M~117), 2023-06-08 20:50:47 UTC, 1370292665.161, H1,L1 (no V1).  H1,L1 in observing, not V1. But both detectors lost lock minutes later due to big earthquake (maybe Rat Island, 4.6 Mag, 2023-06-08 20:34:54 UTC). Still, both omegascans look pretty clean; signal is evident by eye, vaguely chirplike, and coincident in t-f, coherence lnB ~ 5.0. omega_overlap failed for H1. GSpyNetTree reports Fast_Scattering 100% for both detectors, but I don't see anything in the omegascans.  Superevent: https://gracedb.ligo.org/superevents/S230608as/ -     FAR 1.37e-10, SNR 10.2, subm: 14 s. gstlal, MBTA, CWB, spiir (no pycbc!).  Preferred event: https://gracedb.ligo.org/events/G410337/view/ -     gstlal, SNR=10.2, FAR=1.4e-10, BBH > 99%, m=76+41, spin~0. DQR: https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/  ______________  H1: https://ldas-jobs.ligo-wa.caltech.edu/~detchar/summary/day/20230608/ H1 was in lock, with BNS range ~ 135 Mpc and falling. Dropped out of observing 2 minutes before the event, back 13 seconds before the event, but was locked and in low noise till 8 minutes after the event.   https://alog.ligo-wa.caltech.edu/aLOG/index.php?callRep=70281 : Out of observing 2048-2050UTC, earthquake mode cause SEI_CS to change state. Changes this node to not be monitored by the IFO node Lockloss 2058 UTC, earthquake  https://ldas-jobs.ligo-wa.caltech.edu/~detchar/summary/day/20230608/sei/ground_blrms_overview/#gallery-1 Seismic is clearly rising since before the event. Could be this one: https://earthquake.usgs.gov/earthquakes/eventpage/us7000k78d/executive  https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/wrapped_gspynettree_h1_index.html Fast Scattering - 100% (but not visible to my eye on spectrogram, unless it's within 0.05 s of the event).  https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/wrapped_omega_overlap_h1_index.html Failed: https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/omega_overlap_h1/condor/?C=M;O=A https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/omega_overlap_h1/condor/omega_overlap_omc_slow_h1-S230608as.err  Noise box: https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/wrapped_omegascan_h1_index.html#gallery-3 Well, there's a bit of noise > 1.5 s after the event, mostly below 100 Hz, but it doesn't seem too bad to me.   ______________  L1: https://ldas-jobs.ligo-la.caltech.edu/~detchar/summary/day/20230608/ L1 was in lock, with BNS range ~ 143 Mpc, down from ~150 Mpc a few hours earlier. Lock lost around 16 minutes later.  https://ldas-jobs.ligo-la.caltech.edu/~detchar/summary/day/20230608/sei/ground_blrms_overview/#gallery-1 Seismic rising minutes after the event.    https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/wrapped_gspynettree_l1_index.html Fast Scattering - 100% (but not visible to my eye on spectrogram)        https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/wrapped_omega_overlap_l1_index.html#gallery-7 L1:PEM-CS_MAG_LVEA_VERTEX_Z_DQ  - huge glitch in window.             Noise box: https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230608as/wrapped_omegascan_l1_index.html#gallery-3 Well, there's a bit of noise throughout, mostly below 100 Hz, but it doesn't seem too bad to me.                                         ",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

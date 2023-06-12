@@ -11,6 +11,8 @@ O4a starts on May 24, 2023 4pm UTC. All volunteers should have completed the tra
 
 The weekly event validation rota will consist of two volunteers and one DetChar expert. These two volunteers will be assigned 12-hour shifts for each day, i.e. they will be responsible for validating events that happened during their 12-hour shift for one week.
 
+Sign up for the event validation rota [right here](https://docs.google.com/document/d/1KG7r8cv---d1DZ6uqUmnudz8fZ_eBrCXiIMq8UDTfXA/edit#).
+
 Currently we split the shifts at 4pm UTC time.
 
 | Week        | Volunteer (morning) | Volunteer (evening) | DetChar expert | Events | Notes |

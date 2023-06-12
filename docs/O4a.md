@@ -17,7 +17,7 @@ Currently we split the shifts at 4pm UTC time.
 |-------------|---------------------|---------------------|----------------|--------|-------|
 | May 24      | Siddharth Soni      | Ronaldas Macas      | Derek Davis    | S230524x, S230529ay | Ronaldas and Sidd also validate events from ER15 (S230502m, S230518h, S230520ae, S230522a, S230522n) |
 | May 31      | Shania Nichols      | Shivaraj Kandhasamy | Andrew Lundgren| S230601bf, S230605o, S230606d |       |
-| June 7      | Alan Weinstein      | Anupreeta More      | Marissa Walker |        |       |
+| June 7      | Alan Weinstein      | Anupreeta More      | Marissa Walker | S230608as, S230609u |       |
 | June 14     | Brennan Hughey      | Max Trevor          | Jess McIver    |        |       |
 | June 21     | Amber Stuver        |                     | Laura Nuttall  |        |       |
 | June 28     | Caitlin Rawcliffe   |                     |                |        |       |

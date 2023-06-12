@@ -1,6 +1,6 @@
 {
     "event_name": "S230522a",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230522a",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 1,
+                "low_noise": 1,
+                "noise_tstart": "1368783502.84",
+                "noise_tend": "1368783502.88",
+                "noise_flow": "40",
+                "noise_fhigh": "100"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "Livingston: Observing and in Low Noise. No loud glitches in OmegaScan task. Very low SNR, excess noise about 0.3 seconds before the event time, as seen in the OmegaScan task . Stationarity, OmegaOverlap, GspyNetTree, hveto, idq, pemcheck tasks failed to load. ",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

@@ -93,7 +93,7 @@ Noise box properties:
 - Noise box f_low in Hz: 10
 - Noise box f_high in Hz: 25
 
-![L1 for S230520ae](img/S230520ae_L1_oscan.png)
+![L1 for S230520ae](img/S230502m_L1_glitchfind.png)
 
 
 ### Validation notes on GitLab

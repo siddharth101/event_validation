@@ -1,11 +1,11 @@
 ---
-title: EVforms
+title: EV forms
 author: Ronaldas Macas <ronaldas.macas@ligo.org>
 ---
 
-# EVforms
+# EV forms
 
-EVforms is a website that automates the process of communicating DetChar event validation results between different groups. To do that, the website contains forms that event validation volunteers and the noise mitigation review team should fill out. 
+EV forms is a website that automates the process of communicating DetChar event validation results between different groups. To do that, the website contains forms that event validation volunteers and the noise mitigation review team should fill out. 
 
 The website can be found [here](https://dqr.ligo.caltech.edu/ev_forms).
 

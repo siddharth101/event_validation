@@ -282,7 +282,7 @@ def get_event_properties(event_id, filepath=None):
 
 def gen_json_dict(event_info):
 
-    CBC_SCHEMA = 'cbc-meta-data-v2.schema'
+    CBC_SCHEMA = 'cbc_flow/cbc-meta-data-v2.schema'
     with open(CBC_SCHEMA) as f:
         schema_f = f.read()
 

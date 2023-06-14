@@ -60,7 +60,8 @@ People that are currently under training:
 | May 31, 2023   | Andy Lundgren |       |
 | June 7, 2023   | Marissa Walker| Backup Laura Nuttall |
 | June 14, 2023  | Jess McIver   | Need a backup for June 15, June 19, June 20; Laura Nutall is a backup |
-| June 21, 2023  | Laura Nuttall | Need a backup for June 26, June 27 |
-| June 28, 2023  | Andy Lundgren |       |
+| June 21, 2023  | Laura Nuttall | Need a backup for June 26, June 27; Jess McIver is a backup |
+| June 28, 2023  | Andy Lundgren | Backup Jess McIver |
+| July 5, 2023   | Jess McIver   | Backup Andy Lundgren |
 
 

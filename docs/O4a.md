@@ -21,9 +21,11 @@ Currently we split the shifts at 4pm UTC time.
 | May 31      | Shania Nichols      | Shivaraj Kandhasamy     | Andrew Lundgren| S230601bf, S230605o, S230606d |       |
 | June 7      | Alan Weinstein      | Anupreeta More          | Marissa Walker | S230608as, S230609u |       |
 | June 14     | Brennan Hughey      | Max Trevor              | Jess McIver    |        |       |
-| June 21     | Amber Stuver        | Adrian Helmling-Cornell | Laura Nuttall  |        |       |
-| June 28     | Caitlin Rawcliffe   |                         | Andy Lundgren  |        |       |
-| July 5      |                     |                         | Jess McIver    |        |       |
+| June 21     | Amber Stuver        | Adrian Helmling-Cornell | Laura Nuttall  | S230622ba, S230624av, S230627c |       |
+| June 28     | Caitlin Rawcliffe   | Max Trevor              | Andy Lundgren  |        |       |
+| July 5      | Brennan Hughey      |                         |                |        |       |
+| July 12     | Zach Yarbrough      |                         | Sidd Soni      |        |       |
+
  
 ## Events
 

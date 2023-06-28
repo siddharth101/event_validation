@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 2.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": 1369983237.0,
+                "analysis_tend": 1369983244.0,
+                "analysis_flow": 10,
+                "analysis_fhigh": 2048,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": 1369983237.0,
+                "analysis_tend": 1369983244.0,
+                "analysis_flow": 10,
+                "analysis_fhigh": 2048,
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Both H1 and L1 were in observing mode. The SNRs in each detector is ~8. Except GSpyNetTree all the reported tasks passed for both detector (there is known issue with the GSpyNetTree task). The omega scan for H1 looks relatively clean. The omega scan for L1 looks a bit noiser and there is an excess just (~0.01 sec) before the event time (which Glitchfind also shows, but the task is passed). It is not clear whether the excess corresponds to the event itself and something close to the event, may be needs another check.",
-        "review": "",
+        "review": "some reports of noise around event time...I'm not convinced. Prefer to see what PE says",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -125,8 +125,8 @@
         "expert_email": "andrew.lundgren@port.ac.uk",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@ligo.org",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

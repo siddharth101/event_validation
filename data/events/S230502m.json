@@ -37,63 +37,63 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 1.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": 1367030125.0,
+                "analysis_tend": 1367030149.0,
+                "analysis_flow": 20,
+                "analysis_fhigh": 2048,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
             "t0": 1367030137.0,
             "H1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             },
             "L1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             },
             "V1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             }
         },
         "glitch_result": {
@@ -113,8 +113,8 @@
     },
     "comments": {
         "validation": "Some excess power at H1, L1 before the event; recommend limiting analysis time/frequency windows. Also, Andy found that there were HEPI injections done at L1 two minutes before the event time, see https://alog.ligo-la.caltech.edu/EVNT/index.php?callRep=12533. For more extensive notes, see the GitLab issue: https://git.ligo.org/detchar/event-validation/-/issues/145 ",
-        "review": "",
-        "glitch_request": "",
+        "review": "L1 is in low noise, but not observing.",
+        "glitch_request": "L1 is in low noise, but not observing",
         "glitch_result": "",
         "other": ""
     },
@@ -125,8 +125,8 @@
         "expert_email": "andrew.lundgren@port.ac.uk",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@ligo.org",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

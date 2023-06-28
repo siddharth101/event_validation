@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 360.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Early warning alert that was not found in all-sky full bandwidth search. False alarm likely caused by the forklift movement, see the alog aLOG https://alog.ligo-wa.caltech.edu/aLOG/index.php?callRep=69899 and other discussions on DetChar - LHO Mattermost channel on May 24th. PEM and Glitchfind tasks also note DQ issues. GraceDB has label \"ADVNO\". Full validation notes can be found in event's GitLab issue: https://git.ligo.org/detchar/event-validation/-/issues/150. ",
-        "review": "",
+        "review": "Retraction",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -125,8 +125,8 @@
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@ligo.org",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

@@ -36,7 +36,7 @@ def create_app(url, wdir, event_list, website_md, notify):
     events = get_events_dict(event_list_fname, wdir)
 
     ifos = ['H1', 'L1', 'V1']
-    status_flags = ['not started', 'in progress', 'completed']
+    status_flags = ['not started', 'in progress', 'completed', 'retracted']
     val_flags = ['Not observing', 'No DQ issues', 'DQ issues']
     val_team_flags = ['Not observing', 'no DQ issues', 'DQ issues but no noise mitigation required', 'Noise mitigation required']
     glitch_flags = ['not required', 'required']
@@ -210,7 +210,7 @@ def create_app(url, wdir, event_list, website_md, notify):
         name = TextAreaField('name', [validators.InputRequired()])
         email = TextAreaField('email:', [validators.InputRequired()])
 
-        finalize_status = [(0, 'No'), (1, 'Yes')]
+        finalize_status = [(0, 'No'), (1, 'Yes'), (2, 'Retracting the event')]
 
         finalize = SelectField('finalize:', coerce=int, choices=finalize_status, validators=[validators.InputRequired()])
 
@@ -547,7 +547,6 @@ def create_app(url, wdir, event_list, website_md, notify):
 
         if request.method == 'POST':
             if form.validate():
-
                 if form.finalize.data == 1:
 
                     # read event json
@@ -598,8 +597,52 @@ def create_app(url, wdir, event_list, website_md, notify):
                     metadata.write_to_library(message="Updating Detchar Schema for {}".format(gid))
                     library.git_push_to_remote()
 
+                    return render_template('form_finalize_success.html', gid=gid, name=form.name.data)
 
-                return render_template('form_finalize_success.html', gid=gid, name=form.name.data)
+                elif form.finalize.data == 2:
+
+                    # read event json
+                    with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
+                        event_data = json.load(fp)
+
+                    event_data['contacts']['review_name'] = form.name.data
+                    event_data['contacts']['review_email'] = form.email.data
+
+                    event_data['reviewed'] = 1
+                    event_data['status'] = 3
+
+                    # update event json
+                    with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
+                        json.dump(event_data, fp, indent=4)
+
+                    # read event list and find idx
+                    event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                    gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                    # update the events list
+                    event_list_df.at[gid_idx,'Next step'] = 'Retracted'
+                    event_list_df.at[gid_idx,'Validation conclusion'] = 'Retracted'
+                    event_list_df.at[gid_idx,'Review conclusion'] = 'Retracted'
+                    event_list_df.at[gid_idx,'Glitch subtraction'] = 'Retracted'
+                    event_list_df.at[gid_idx,'Finalized'] = 'Yes'
+                    event_list_df.to_csv(event_list_fname, index=False)
+
+                    # update website's .md table
+                    with open(md_fname, 'w') as md:
+                        event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                    os.system(f'cd {wdir}; mkdocs -q build')
+
+                    if notify:
+                        subject = f'{gid} retracted'
+                        body= f'{subject}. See the summary at {flask_base_url}summary/{gid}.'
+
+                        # send an email to the reviewer
+                        send_email(form.email.data, subject, body)
+                        # send an email to leads
+                        send_email(event_data['contacts']['lead1_email'], subject, body)
+                        send_email(event_data['contacts']['lead2_email'], subject, body)
+
+                    return render_template('form_finalize_success.html', gid=gid, name=form.name.data)
 
             else:
                 flash('Error:'+str(form.errors),'danger')

@@ -343,7 +343,7 @@ def gen_json_dict(event_info):
             rec_frame = '/'
 
         if glitch_rev[i]['conclusion']:
-            rec_conc = mitigation_flags[glitch_mit[i]['conclusion']]
+            rec_conc = mitigation_flags[glitch_rev[i]['conclusion']]
         else:
             rec_conc = "not yet reviewed"
 

@@ -595,7 +595,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     library.git_pull_from_remote(automated=True)
                     metadata = get_superevent(gid, library)
                     metadata.update(dict_ev_info)
-                    metadata.write_to_library(message="Updating Detchar Schema for {}".format(gid))
+                    metadata.write_to_library(message="Updating Detchar Schema for {}".format(gid), branch_name="main")
                     library.git_push_to_remote()
 
                     return render_template('form_finalize_success.html', gid=gid, name=form.name.data)

@@ -587,8 +587,9 @@ def create_app(url, wdir, event_list, website_md, notify):
                         send_email(event_data['contacts']['lead1_email'], subject, body)
                         send_email(event_data['contacts']['lead2_email'], subject, body)
 
-                    ev_info = get_event_properties(gid)
-                    dict_ev_info = gen_json_dict(ev_info)
+                    # send results to CBCFlow
+                    ev_info = get_event_properties(gid, wdir)
+                    dict_ev_info = gen_json_dict(ev_info, wdir)
                     library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-o4a"
                     library = LocalLibraryDatabase(library_path)
                     library.git_pull_from_remote(automated=True)

@@ -264,9 +264,9 @@ def get_dets(h1, l1, v1):
 
     return dets
 
-def get_event_properties(event_id, filepath=None):
-    if filepath:
-        path = filepath
+def get_event_properties(event_id, wdir=None):
+    if wdir:
+        path = f"{wdir}/data/events/"
     else:
         path = "../data/events/"
 
@@ -280,9 +280,13 @@ def get_event_properties(event_id, filepath=None):
     return event_fd
 
 
-def gen_json_dict(event_info):
+def gen_json_dict(event_info, wdir=None):
 
-    CBC_SCHEMA = 'cbc_flow/cbc-meta-data-v2.schema'
+    if wdir:
+        CBC_SCHEMA = f'{wdir}/event_validation/cbc_flow/cbc-meta-data-v2.schema'
+    else:
+        CBC_SCHEMA = 'cbc_flow/cbc-meta-data-v2.schema'
+
     with open(CBC_SCHEMA) as f:
         schema_f = f.read()
 

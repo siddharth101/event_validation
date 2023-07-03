@@ -66,3 +66,4 @@ People that are currently under training:
 | July 12, 2023  | Marissa Walker| Backup Brennan Hughey |
 | July 19, 2023  | Laura Nuttall |                       |
 | July 26, 2023  | Jess McIver   |                       |
+| August 2 2023  | Brennan Hughey|                       |

@@ -1,35 +1,35 @@
 {
-    "event_name": "S230622ba",
-    "status": 3,
-    "reviewed": 1,
+    "event_name": "S230702an",
+    "status": 0,
+    "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230622ba",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230622",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230622ba/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/160",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230622ba"
+        "gracedb": "https://gracedb.ligo.org//superevents/S230702an",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230702",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202307/S230702an/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/166",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230702an"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
-                "low_noise": 1,
-                "noise_tstart": "1371479754.65, 1371479754.7",
-                "noise_tend": "1371479754.7, 1371479754.8",
-                "noise_flow": "250, 195",
-                "noise_fhigh": "280, 205"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 1,
-                "noise_tstart": "1371479754.255",
-                "noise_tend": "1371479754.516",
-                "noise_flow": "20",
-                "noise_fhigh": "70"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1371479754.732994,
+            "t0": 1372359311.73792,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "Retracted by RRT",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Adrian Helmling-Cornell",
-        "validator_email": "adrian.helmling-cornell@ligo.org",
-        "expert_name": "Laura Nuttall",
-        "expert_email": "laura.nuttall@port.ac.uk",
+        "validator_name": "Max Trevor",
+        "validator_email": "max.trevor@ligo.org",
+        "expert_name": "Andrew Lundgren",
+        "expert_email": "andrew.lundgren@port.ac.uk",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230622ba/ --superevent_url https://gracedb.ligo.org//superevents/S230622ba --ignore_far --event_name S230622ba --t0 1371479754.732994 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202307/S230702an/ --superevent_url https://gracedb.ligo.org//superevents/S230702an --ignore_far --event_name S230702an --t0 1372359311.73792 --send_email --create_issue"
 }

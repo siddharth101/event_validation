@@ -23,9 +23,9 @@ Currently we split the shifts at 4pm UTC time.
 | June 14     | Brennan Hughey      | Max Trevor              | Jess McIver    |        |       |
 | June 21     | Amber Stuver        | Adrian Helmling-Cornell | Laura Nuttall  | S230622ba, S230624av, S230627c |       |
 | June 28     | Caitlin Rawcliffe   | Max Trevor              | Andy Lundgren  |        |       |
-| July 5      | Brennan Hughey      |                         |                |        |       |
+| July 5      | Brennan Hughey      | Shivaraj Kandhasamy     |                |        |       |
 | July 12     | Zach Yarbrough      |                         | Sidd Soni      |        |       |
-
+| July 19     | Yanyan Zheng        | Max Trevor              |                |        |       |
  
 ## Events
 

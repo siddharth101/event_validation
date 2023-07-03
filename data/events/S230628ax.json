@@ -1,6 +1,6 @@
 {
     "event_name": "S230628ax",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230628ax",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 1,
+                "low_noise": 1,
+                "noise_tstart": "1372029137.57, 1372029138.47, 1372029136.12",
+                "noise_tend": "1372029137.77, 1372029138.67, 1372029136.50",
+                "noise_flow": "20, 60, 100",
+                "noise_fhigh": "106, 105, 110"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "H1 omegaoverlap flagged channel H1:SUS-SR2_M1_DAMP_Y_IN1_DQ, however channel looks clean within signal track. H1 glitchaverage raised a DQ issue \u2013 consulted with Jess, data looks clean enough for there to not be a DQ issue, however some low SNR excess power surrounding the event that was recommended to be flagged in the noise box and cleaned up before. L1 omega_overlap flagged channel L1:ISI-ITMY_ST1_BLND_RX_T240_CUR_IN1_DQ as a probable cause of event, visually cannot see anything to suggest this. L1 rayleigh test raised a DQ issue - was recommended by Jess to ignore this DQ issue as spectrogram looked fine and data was clean. Overall no DQ issues for this event.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

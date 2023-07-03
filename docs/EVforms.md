@@ -43,8 +43,8 @@ There is also a GitLab issue created for each event separately. We recommend to 
 **Validation conclusion**:
 
 - Not observing — if the detector is not observing
-- No DQ issues — if there are no data quality (DQ) issues
-- DQ issues — if there are DQ issues present in any of the interferometer
+- No DQ issues — if there are no data quality (DQ) issues, i.e. the noise boxes are empty
+- DQ issues — if there are DQ issues present in any of the interferometer, i.e. any of the noise boxes are filled
 
 **Detector is in low noise**: this can be checked from the summary pages (e.g. [link](https://ldas-jobs.ligo-la.caltech.edu/~detchar/summary/day/20230501/)) in the Lock Segments plot.
 

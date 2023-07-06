@@ -5,7 +5,7 @@
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230522a",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230522",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230522a/S230522a_01",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230522a",
         "issue": "https://git.ligo.org/detchar/event-validation/-/issues/148",
         "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230522a"
     },

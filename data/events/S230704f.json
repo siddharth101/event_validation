@@ -1,31 +1,31 @@
 {
-    "event_name": "S230630bq",
+    "event_name": "S230704f",
     "status": 1,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230630bq",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230630",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230630bq/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/165",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230630bq"
+        "gracedb": "https://gracedb.ligo.org//superevents/S230704f",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230704",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202307/S230704f/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/167",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230704f"
     },
     "forms": {
         "validation": {
             "H1": {
                 "conclusion": 1,
                 "low_noise": 1,
-                "noise_tstart": "1372203941.01, 1372203951.61, 1372203951.91, 1372203955.61",
-                "noise_tend": "1372203943.11, 1372203951.91, 1372203954.91, 1372203957.91",
-                "noise_flow": "10, 101, 10, 10",
-                "noise_fhigh": "70, 104, 40, 50"
+                "noise_tstart": "1372471936.22, 1372471943.22, 1372471946.02, 1372471950.22",
+                "noise_tend": "1372471937.42, 1372471943.52, 1372471946.22, 1372471950.72",
+                "noise_flow": "20, 20, 102, 20",
+                "noise_fhigh": "60, 80, 105, 40"
             },
             "L1": {
                 "conclusion": 1,
                 "low_noise": 1,
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "noise_tstart": "1372471937.52, 1372471948.87, 1372471950.32",
+                "noise_tend": "1372471937.82, 1372471948.98, 1372471950.42",
+                "noise_flow": "30, 80, 115",
+                "noise_fhigh": "90, 120, 130"
             },
             "V1": {
                 "conclusion": 0,
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1372203950.407284,
+            "t0": 1372471949.223567,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "No DQ issues for H1, L1. Low frequency noise (around 30Hz) shown in H1 pemcheck for several channels with top channel H1:PEM-CS_ACC_OPLEV_ITMX_Y_DQ. H1, L1 omega_overlap tasks failed to load \u2013 DetChar group have been notified. Noise boxes flagged for removal before PE",
+        "validation": "H1 omega_overlap task failed, top channel was H1:SUS-OMC_M1_DAMP_L_IN1_DQ, however no visible signs of this channel causing the event. High frequency lines (~104Hz) in H1 pemcheck for several channels\u2019 excess noise probability but task is still passing. H1 GSpyNetTree predicts no_glitch (77.91%), low freq lines (7.36%), GW (4.91%). H1 glitchfind detects low frequency blips between -13.0s and -11.8s of event. Blip at around -5.8s. Low freq blip around +1.3s. L1 omega_overlap DQ issue flagged with top channel of L1:PSL-ISS_AOM_DRIVER_MON_OUT_DQ, visually looks fine and hasn\u2019t caused the event. L1 Rayleigh DQ issue flagged - DetChar experts on Mattermost say that it\u2019s fine and the data is clean. L1 GSpyNetTree predicts GW (91.33%), no_glitch (20.71%). L1 glitchfind identifies low frequency blip between -11.7s and -11.4s",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202306/S230630bq/ --superevent_url https://gracedb.ligo.org//superevents/S230630bq --ignore_far --event_name S230630bq --t0 1372203950.407284 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202307/S230704f/ --superevent_url https://gracedb.ligo.org//superevents/S230704f --ignore_far --event_name S230704f --t0 1372471949.223567 --send_email --create_issue"
 }

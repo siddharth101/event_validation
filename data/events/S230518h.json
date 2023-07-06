@@ -5,7 +5,7 @@
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230518h",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230518",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230518h/S230518h_01",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202305/S230518h",
         "issue": "https://git.ligo.org/detchar/event-validation/-/issues/146",
         "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230518h"
     },
@@ -125,8 +125,8 @@
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@port.ac.uk",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@ligo.org",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

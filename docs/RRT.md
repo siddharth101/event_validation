@@ -54,16 +54,20 @@ People that are currently under training:
 
 ## O4a rota
 
-| Week           | Person        | Notes |
-|----------------|---------------|-------|
-| May 24, 2023   | Derek Davis   | Backup Andy Lundgren |
-| May 31, 2023   | Andy Lundgren |       |
-| June 7, 2023   | Marissa Walker| Backup Laura Nuttall |
-| June 14, 2023  | Jess McIver   | Need a backup for June 15, June 19, June 20; Laura Nutall is a backup |
-| June 21, 2023  | Laura Nuttall | Need a backup for June 26, June 27; Jess McIver is a backup |
-| June 28, 2023  | Andy Lundgren | Backup Jess McIver |
-| July 5, 2023   | Jess McIver   | Backup Andy Lundgren |
-| July 12, 2023  | Marissa Walker| Backup Brennan Hughey |
-| July 19, 2023  | Laura Nuttall |                       |
-| July 26, 2023  | Jess McIver   |                       |
-| August 2 2023  | Brennan Hughey|                       |
+| Week            | Person        | Notes |
+|-----------------|---------------|-------|
+| May 24, 2023    | Derek Davis   | Backup Andy Lundgren |
+| May 31, 2023    | Andy Lundgren |       |
+| June 7, 2023    | Marissa Walker| Backup Laura Nuttall |
+| June 14, 2023   | Jess McIver   | Need a backup for June 15, June 19, June 20; Laura Nutall is a backup |
+| June 21, 2023   | Laura Nuttall | Need a backup for June 26, June 27; Jess McIver is a backup |
+| June 28, 2023   | Andy Lundgren | Backup Jess McIver |
+| July 5, 2023    | Jess McIver   | Backup Andy Lundgren |
+| July 12, 2023   | Marissa Walker| Backup Brennan Hughey |
+| July 19, 2023   | Laura Nuttall |                       |
+| July 26, 2023   | Jess McIver   |                       |
+| August 2, 2023  | Brennan Hughey|                       |
+| August 9, 2023  | Andy Lundgren |                       |
+| August 16, 2023 | Laura Nuttall |                       |
+| August 23, 2023 | Jess McIver   |                       |
+| August 30, 2023 | Brennan Hughey|                       |

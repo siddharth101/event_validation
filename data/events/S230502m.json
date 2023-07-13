@@ -37,14 +37,14 @@
             }
         },
         "review": {
-            "duration": 1.0,
+            "duration": 4.0,
             "H1": {
                 "conclusion": 1,
                 "recommend_ifo": 1,
-                "analysis_tstart": 1367030125.0,
-                "analysis_tend": 1367030149.0,
-                "analysis_flow": 20,
-                "analysis_fhigh": 2048,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
                 "noise_left": 0
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Some excess power at H1, L1 before the event; recommend limiting analysis time/frequency windows. Also, Andy found that there were HEPI injections done at L1 two minutes before the event time, see https://alog.ligo-la.caltech.edu/EVNT/index.php?callRep=12533. For more extensive notes, see the GitLab issue: https://git.ligo.org/detchar/event-validation/-/issues/145 ",
-        "review": "L1 is in low noise, but not observing.",
+        "review": "L1 is in low noise, but not observing",
         "glitch_request": "L1 is in low noise, but not observing",
         "glitch_result": "",
         "other": ""

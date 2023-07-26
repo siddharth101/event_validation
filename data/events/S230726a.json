@@ -1,35 +1,35 @@
 {
-    "event_name": "S230707ai",
-    "status": 1,
+    "event_name": "S230726a",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230707ai",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230707",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202307/S230707ai/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/169",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230707ai"
+        "gracedb": "https://gracedb.ligo.org//superevents/S230726a",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230726",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202307/S230726a/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/184",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230726a"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
-                "low_noise": 1,
-                "noise_tstart": "1372768865.35-0.1",
-                "noise_tend": "1372768865.35+0.05",
-                "noise_flow": "20",
-                "noise_fhigh": "25"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 1,
-                "noise_tstart": "1372768865.35-0.06",
-                "noise_tend": "1372768865.35-0.01",
-                "noise_flow": "35",
-                "noise_fhigh": "50"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1372768865.349078,
+            "t0": 1374366598.060065,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "Both H1 and L1 were in observing mode. For both detectors, all the DQR tasks reported passed. In the omega scan of H1 we see excess power around 20 Hz at the event time (-0.1 to +0.05 sec). This is also reported by the Glitchfind tool. We also see some excess power just before the event time in L1. However, this is not reported by the Glitchfind tool. This may not be a problem or even real, but reporting it here for further check.",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Shivaraj Kandhasamy",
-        "validator_email": "shivaraj@iucaa.in",
-        "expert_name": "Jess McIver",
-        "expert_email": "jess.mciver@ligo.org",
+        "validator_name": "Yanyan Zheng",
+        "validator_email": "yanyan.zheng@ligo.org",
+        "expert_name": "Laura Nuttall",
+        "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202307/S230707ai/ --superevent_url https://gracedb.ligo.org//superevents/S230707ai --ignore_far --event_name S230707ai --t0 1372768865.349078 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202307/S230726a/ --superevent_url https://gracedb.ligo.org//superevents/S230726a --ignore_far --event_name S230726a --t0 1374366598.060065 --send_email --create_issue"
 }

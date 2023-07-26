@@ -1,7 +1,7 @@
 {
     "event_name": "S230715bw",
-    "status": 0,
-    "reviewed": 0,
+    "status": 3,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230715bw",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230715",

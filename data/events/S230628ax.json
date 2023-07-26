@@ -1,7 +1,7 @@
 {
     "event_name": "S230628ax",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230628ax",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230628",
@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 1
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1 omegaoverlap flagged channel H1:SUS-SR2_M1_DAMP_Y_IN1_DQ, however channel looks clean within signal track. H1 glitchaverage raised a DQ issue \u2013 consulted with Jess, data looks clean enough for there to not be a DQ issue, however some low SNR excess power surrounding the event that was recommended to be flagged in the noise box and cleaned up before. L1 omega_overlap flagged channel L1:ISI-ITMY_ST1_BLND_RX_T240_CUR_IN1_DQ as a probable cause of event, visually cannot see anything to suggest this. L1 rayleigh test raised a DQ issue - was recommended by Jess to ignore this DQ issue as spectrogram looked fine and data was clean. Overall no DQ issues for this event.",
-        "review": "",
+        "review": "some noise low SNR noise around 100 Hz 0.8 seconds before merger, but not overlapping with signal track",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

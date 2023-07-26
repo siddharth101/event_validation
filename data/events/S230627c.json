@@ -1,7 +1,7 @@
 {
     "event_name": "S230627c",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230627c",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230627",
@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 64.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 1
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "In L1, there is a little more excess noise between 10-20 Hz than there is in H1.  However, I don't believe this reaches the level that would need a noise box.",
-        "review": "",
+        "review": "Some excess noise at LHO around 16s before merger, but not loud. Can see this feature repeating before and after event time.",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

@@ -1,7 +1,7 @@
 {
     "event_name": "S230522n",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230522n",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230522",
@@ -37,7 +37,7 @@
             }
         },
         "review": {
-            "duration": 16.0,
+            "duration": 8.0,
             "H1": {
                 "conclusion": 0,
                 "recommend_ifo": 0,
@@ -50,12 +50,12 @@
                 "noise_left": 0
             },
             "L1": {
-                "conclusion": 3,
+                "conclusion": 2,
                 "recommend_ifo": 1,
-                "analysis_tstart": 1368804635.0,
-                "analysis_tend": 1368804654.0,
-                "analysis_flow": 10,
-                "analysis_fhigh": 2048,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "L1_HOFT_C00",
                 "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
                 "noise_left": 1
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "L1: GSpyNetTree predicts fast scattering; omegascan predicts a DQ issue but ignoring it; Glitchfind raises a DQ issue. Omegascan looks suspicious, looks like there is an event with some noise just before the merger time. Or is it just quirky omegascan plotting? See more extensive notes in the GitLab issue (https://git.ligo.org/detchar/event-validation/-/issues/149).",
-        "review": "",
+        "review": "Appears to be some low SNR noise about 0.1 seconds before merger at 30-40Hz. Just leaving a note in case it comes back to us from PE",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

@@ -1,7 +1,7 @@
 {
     "event_name": "S230606d",
     "status": 1,
-    "reviewed": 0,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230606d",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230606",
@@ -37,27 +37,27 @@
             }
         },
         "review": {
-            "duration": 1.0,
+            "duration": 8.0,
             "H1": {
-                "conclusion": 3,
+                "conclusion": 2,
                 "recommend_ifo": 1,
-                "analysis_tstart": 1370047399.0,
-                "analysis_tend": 1370047406.0,
-                "analysis_flow": 10,
-                "analysis_fhigh": 2048,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 0
+                "noise_left": 1
             },
             "L1": {
-                "conclusion": 3,
+                "conclusion": 1,
                 "recommend_ifo": 1,
-                "analysis_tstart": 1370047399.0,
-                "analysis_tend": 1370047406.0,
-                "analysis_flow": 10,
-                "analysis_fhigh": 2048,
-                "frame_type": "",
-                "channel": "",
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
                 "noise_left": 0
             },
             "V1": {
@@ -98,12 +98,12 @@
         },
         "glitch_result": {
             "H1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN"
             },
             "L1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN"
             },
             "V1": {
                 "frame_type": "",
@@ -113,9 +113,9 @@
     },
     "comments": {
         "validation": "H1: GSpyNetTree DQ issue due to using old data set. Glitch find task passed but there is a glitch present 1.2 seconds after the event. In the Q transform of the original data, there is a glitch found 0.4 seconds before the event. This seems like excess noise, but it is not very loud.    L1: GSpyNetTree DQ issue due to using old data set. The rayleigh task failed indicating there is some variation in the PSD before the event. ",
-        "review": "",
+        "review": "glitch 1.2 seconds after merger, around 30-50Hz. Bayeswave unable to subtract.",
         "glitch_request": "",
-        "glitch_result": "",
+        "glitch_result": "Bayeswave unable to subtract LHO glitch 1.2 seconds after merger",
         "other": ""
     },
     "contacts": {
@@ -123,8 +123,8 @@
         "validator_email": "shania.nichols@ligo.org",
         "expert_name": "Andrew Lundgren",
         "expert_email": "andrew.lundgren@port.ac.uk",
-        "mitigation_name": "Ronaldas Macas",
-        "mitigation_email": "ronaldas.macas@ligo.org",
+        "mitigation_name": "Laura Nuttall",
+        "mitigation_email": "laura.nuttall@port.ac.uk",
         "review_name": "Laura Nuttall",
         "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",

@@ -1,7 +1,7 @@
 {
     "event_name": "S230726a",
-    "status": 0,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230726a",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230726",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 0,
+                "low_noise": 0,
+                "noise_tstart": "1374366590.56",
+                "noise_tend": "1374366596.56",
+                "noise_flow": "100",
+                "noise_fhigh": "1000"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "For Livingston: No large glitches. Glitchaverage failed with rate of 0.032Hz. For Handford: it is not in observing or low noise mode. Excess noise at 100-1000Hz 1.5 s before and after the merger time periodically from Omega scan. Stationarity and Rayleigh failed. The template length is ~17 s from GraceDB..  ",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Yanyan Zheng",
-        "validator_email": "yanyan.zheng@ligo.org",
+        "validator_email": "zytfc@mst.edu",
         "expert_name": "Laura Nuttall",
         "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Ronaldas Macas",

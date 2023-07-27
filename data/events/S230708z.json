@@ -1,7 +1,7 @@
 {
     "event_name": "S230708z",
-    "status": 0,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230708z",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230708",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1372835957.44+0.16",
+                "noise_tend": "1372835957.44+0.24",
+                "noise_flow": "90",
+                "noise_fhigh": "130"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 1
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -112,15 +112,15 @@
         }
     },
     "comments": {
-        "validation": "",
-        "review": "",
+        "validation": "Both H1 and L1 were in observing mode. It is a relatively high-mass BBH event. At H1, all the tasks were reported as passed. The Glithfind tool reports some excess around -8 sec, which is probably not an issue for this event. At L1, all the tasks, except Glitchfind were reported as passed. We can't see the signal in the omega scan. Given the reported SNR of 5.6, maybe it is expected. But we see a slight excess at +0.2 sec which is probably what Glitchfind is reporting. ",
+        "review": "in the 8 second window the DQ is fine, but if PE decides to extend the window please come back to detchar",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Brennan Hughey",
-        "validator_email": "brennan.hughey@ligo.org",
+        "validator_name": "Shivaraj Kandhasamy",
+        "validator_email": "shivaraj@iucaa.in",
         "expert_name": "Jess McIver",
         "expert_email": "jess.mciver@ligo.org",
         "mitigation_name": "Ronaldas Macas",

@@ -1,6 +1,6 @@
 {
     "event_name": "S230709bi",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230709bi",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1372940865.2-0.9",
+                "noise_tend": "1372940865.2+0.05",
+                "noise_flow": "15",
+                "noise_fhigh": "70"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,63 +37,63 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 3,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 1
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
             "t0": 1372940865.202158,
             "H1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 1,
+                "noise_tstart": 1372940864.3,
+                "noise_tend": 1372940865.3,
+                "noise_flow": 15,
+                "noise_fhigh": 70
             },
             "L1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             },
             "V1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             }
         },
         "glitch_result": {
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "Both H1 and L1 were in observing mode. It is a relatively high-mass BBH event. At H1, we see some data quality issues. Fast-scattering glitches are present around the event time. The glitchfind tool identifies many of these excess power bins in the Omegacan. Here, I have reported excess power bins within the four-second interval around the event.  At L1, all the tasks reported passed. The omega scan looks clean.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

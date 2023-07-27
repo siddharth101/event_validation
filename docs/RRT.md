@@ -68,6 +68,6 @@ People that are currently under training:
 | July 26, 2023   | Jess McIver   |                       |
 | August 2, 2023  | Brennan Hughey|                       |
 | August 9, 2023  | Andy Lundgren |                       |
-| August 16, 2023 | Laura Nuttall |                       |
+| August 16, 2023 | Adrian Helmling-Cornell | Need a backup for starting from August 22 |
 | August 23, 2023 | Jess McIver   |                       |
 | August 30, 2023 | Brennan Hughey|                       |

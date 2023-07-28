@@ -65,6 +65,7 @@ There is also a GitLab issue created for each event separately. We recommend to 
 - If a DQR task fails, it does not necessarily mean that there are DQ issues. Use your own judgement! If in doubt, contact a DetChar expert of the week. 
 - When looking for any excess noise, make sure you look at least +2s after the merger time. Use *omegascan*, *omega_overlap* or *glitchfind* tasks.
 - As to how far back you should look from the merger time, that depends on the signal type. Use *omega_overlap* or *glitchfind* task to see the time-frequency track of the signal. BBH signals are usually short, so it is enough to look at the omegascans from *omega_overlap* and *glitchfind* tasks that plot data up to 16s before the merger time. For BNS and NSBH signals, you may need to manually produce omegascans.
+- Please complete the even validation within one week after your shift ends. After the validation is completed, report your findings at a DetChar call.
 
 For more recommendations, see the training recording and slides: [LIGO-G2300839](https://dcc.ligo.org/LIGO-G2300839).
 

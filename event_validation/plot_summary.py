@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 parser = argparse.ArgumentParser(description='Optional app description')
 
 # Required positional argument
-parser.add_argument('--fname', required=False, type=str, help='full filename path of the csv summary file', default='/home/dqr/event-validation/data/events_O4a')
+parser.add_argument('--fname', required=False, type=str, help='full filename path of the csv summary file', default='/home/dqr/event-validation/data/events_O4a.csv')
 parser.add_argument('--git_dir', required=False, type=str, help='git directory path', default='/home/dqr/event-validation')
 parser.add_argument('--prefix', required=False, type=str, help='prefix for output plots', default='O4a')
 args = parser.parse_args()
@@ -57,6 +57,7 @@ for idx, val in enumerate(finalized):
 total = np.array([np.sum(finalized), len(finalized) - np.sum(finalized)])
 labels = ["Finalized", "Not finalized"]
 
+plt.figure()
 plt.pie(total, labels=labels,
         autopct=lambda x: '{:.0f}'.format(x*total.sum()/100))
 plt.axis('equal')
@@ -66,6 +67,8 @@ plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_total.png', dpi=200)
 # finalized
 finalized = np.array([no_dq_issues, glitch_sub_req, dq_issues_no_glitch_sub_req, retracted])
 labels = ['No DQ issues', 'Glitch subtraction required', 'DQ issues but no glitch subtraction required', 'Rertracted']
+
+plt.figure()
 plt.pie(finalized, labels=labels,
         autopct=lambda x: '{:.0f}'.format(x*finalized.sum()/100))
 plt.axis('equal')
@@ -75,6 +78,8 @@ plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_finalized.png', dpi=200)
 # not finalized
 not_finalized = np.array([ev, glitch_sub_req_not_finalized, review])
 labels = ['Event validation', 'Glitch subtraction', 'Review']
+
+plt.figure()
 plt.pie(not_finalized, labels=labels,
         autopct=lambda x: '{:.0f}'.format(x*not_finalized.sum()/100))
 plt.axis('equal')

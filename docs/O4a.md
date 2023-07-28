@@ -31,3 +31,9 @@ Currently we split the shifts at 4pm UTC time.
 ## Events
 
 {!data/table_O4a.md!}
+
+## Summary
+
+![total](img/O4a_total.png)
+![finalized](img/O4a_finalized.png)
+![nfinalized](img/O4a_not_finalized.png)

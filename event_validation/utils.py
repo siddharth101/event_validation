@@ -178,7 +178,9 @@ def emails(event_data, ev_forms_url, logger):
                        f"1. View the GraceDB SuperEvent and preferred event pages\n"
                        f"2. View the Detector Status Summary pages\n"
                        f"3. View the Data Quality Report\n"
-                       f"4. Fill in the event validation form\n\n"
+                       f"4. Fill in the event validation form\n"
+                       f"5. Use the assigned GitLab issue to write down your event validation notes\n"
+                       f"6. Present your validation findings at a DetChar call\n\n"
                        )
     pre_body_expert = f"{valid_name} ({valid_email}) has been assigned to validate candidate event {event_data['event_name']}, while you are assigned to act a DetChar expert. More information about the event is given below.\n\n"
     body = (f"Candidate event: {event_data['event_name']}\n"

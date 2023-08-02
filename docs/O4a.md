@@ -15,18 +15,19 @@ Sign up for the event validation rota [right here](https://docs.google.com/docum
 
 Currently we split the shifts at 4pm UTC time.
 
-| Week        | Volunteer (morning)     | Volunteer (evening) | DetChar expert | Events | Notes |
-|-------------|-------------------------|---------------------|----------------|--------|-------|
-| May 24      | Siddharth Soni          | Ronaldas Macas          | Derek Davis    | S230524x, S230529ay | Ronaldas and Sidd also validate events from ER15 (S230502m, S230518h, S230520ae, S230522a, S230522n) |
-| May 31      | Shania Nichols          | Shivaraj Kandhasamy     | Andrew Lundgren| S230601bf, S230605o, S230606d |       |
-| June 7      | Alan Weinstein          | Anupreeta More          | Marissa Walker | S230608as, S230609u |       |
-| June 14     | Brennan Hughey          | Max Trevor              | Jess McIver    |        |       |
-| June 21     | Amber Stuver            | Adrian Helmling-Cornell | Laura Nuttall  | S230622ba, S230624av, S230627c |       |
-| June 28     | Caitlin Rawcliffe       | Max Trevor              | Andy Lundgren  | S230628ax, S230630am, S230630bq, S230702an, S230704f |       |
-| July 5      | Brennan Hughey          | Shivaraj Kandhasamy     | Jess McIver    | S230706ah, S230707ai, S230708t, S230708z, S230708cf, S230709bi |       |
-| July 12     | Zach Yarbrough          | Debasmita Nandi         | Marissa Walker |        |       |
-| July 19     | Yanyan Zheng            | Max Trevor              | Laura Nuttall  | S230723ac, S230726a |       |
-| July 26     | Adrian Helmling-Cornell | Ronaldas Macas          | Jess McIver    |        |       |
+| Week        | Volunteer (morning)     | Volunteer (evening) | DetChar expert | Events | DetChar presentations | Notes |
+|-------------|-------------------------|---------------------|----------------|--------|-------|--------|
+| May 24      | Siddharth Soni          | Ronaldas Macas          | Derek Davis    | S230524x, S230529ay | [RM](https://wiki.ligo.org/DetChar/Telecon20230612), [SS](https://wiki.ligo.org/DetChar/Telecon20230612) | Ronaldas and Sidd also validate events from ER15 (S230502m, S230518h, S230520ae, S230522a, S230522n | 
+| May 31      | Shania Nichols          | Shivaraj Kandhasamy     | Andrew Lundgren| S230601bf, S230605o, S230606d | |      |
+| June 7      | Alan Weinstein          | Anupreeta More          | Marissa Walker | S230608as, S230609u |       | |
+| June 14     | Brennan Hughey          | Max Trevor              | Jess McIver    |        |       | |
+| June 21     | Amber Stuver            | Adrian Helmling-Cornell | Laura Nuttall  | S230622ba, S230624av, S230627c |       | |
+| June 28     | Caitlin Rawcliffe       | Max Trevor              | Andy Lundgren  | S230628ax, S230630am, S230630bq, S230702an, S230704f |       | |
+| July 5      | Brennan Hughey          | Shivaraj Kandhasamy     | Jess McIver    | S230706ah, S230707ai, S230708t, S230708z, S230708cf, S230709bi | |      |
+| July 12     | Zach Yarbrough          | Debasmita Nandi         | Marissa Walker |        |       | |
+| July 19     | Yanyan Zheng            | Max Trevor              | Laura Nuttall  | S230723ac, S230726a |  |     |
+| July 26     | Adrian Helmling-Cornell | Ronaldas Macas          | Jess McIver    |        |       | |
+| August 2    | Yanyan Zheng            | Adrian Helmling-Cornell | Brennan Hughey |        |       | |
  
 ## Events
 

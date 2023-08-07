@@ -26,8 +26,9 @@ Currently we split the shifts at 4pm UTC time.
 | July 5      | Brennan Hughey          | Shivaraj Kandhasamy     | Jess McIver    | S230706ah, S230707ai, S230708t, S230708z, S230708cf, S230709bi | |      |
 | July 12     | Zach Yarbrough          | Debasmita Nandi         | Marissa Walker |        |       | |
 | July 19     | Yanyan Zheng            | Max Trevor              | Laura Nuttall  | S230723ac, S230726a |  |     |
-| July 26     | Adrian Helmling-Cornell | Ronaldas Macas          | Jess McIver    |        |       | |
+| July 26     | Adrian Helmling-Cornell | Ronaldas Macas          | Jess McIver    | S230729z, S230731an, S230802aq |       | |
 | August 2    | Yanyan Zheng            | Adrian Helmling-Cornell | Brennan Hughey |        |       | |
+| August 9    | Alan Weinstein          | Debasmita Nandi         | Andrew Lundgren|        |       | |
  
 ## Events
 

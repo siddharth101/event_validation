@@ -22,10 +22,11 @@ People able to serve as a DetChar RRT expert:
 - Marissa Walker
 - Derek Davis
 - Andy Lundgren
+- Brenann Hughey
+- Adrian Helmling-Cornell
 
 People that are currently under training:
 
-- Brenann Hughey
 - Amber Stuver
 
 ## Checklist for starting your RRT shift

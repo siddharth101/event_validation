@@ -1,6 +1,6 @@
 {
     "event_name": "S230802aq",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230802aq",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1375011257.96 - 19",
+                "noise_tend": "1375011257.96 - +2",
+                "noise_flow": "10",
+                "noise_fhigh": "80"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "H1 DQ issues, L1 and V1 not observing. Lots of broadband noise at low freq just at late inspiral part, as well as some noise during the whole segment (128s). Recommend restricting analysis window to 80Hz. See the GitLab issue for more info and plots.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Ronaldas Macas",
-        "validator_email": "ronaldas.macas@ligo.org",
+        "validator_email": "ronaldas.macas@port.ac.uk",
         "expert_name": "Laura Nuttall",
         "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Sophie Hourihane",

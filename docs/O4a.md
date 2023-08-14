@@ -22,12 +22,12 @@ Currently we split the shifts at 4pm UTC time.
 | June 7      | Alan Weinstein          | Anupreeta More          | Marissa Walker | S230608as, S230609u |       | |
 | June 14     | Brennan Hughey          | Max Trevor              | Jess McIver    |        |       | |
 | June 21     | Amber Stuver            | Adrian Helmling-Cornell | Laura Nuttall  | S230622ba, S230624av, S230627c |[AS](https://dcc.ligo.org/LIGO-G2301340), [AHC](https://dcc.ligo.org/LIGO-T2300247), [AHC](https://dcc.ligo.org/LIGO-T2300242)  | |
-| June 28     | Caitlin Rawcliffe       | Max Trevor              | Andy Lundgren  | S230628ax, S230630am, S230630bq, S230702an, S230704f |       | |
+| June 28     | Caitlin Rawcliffe       | Max Trevor              | Andy Lundgren  | S230628ax, S230630am, S230630bq, S230702an, S230704f |[CR](https://dcc.ligo.org/LIGO-G2301353)       | |
 | July 5      | Brennan Hughey          | Shivaraj Kandhasamy     | Jess McIver    | S230706ah, S230707ai, S230708t, S230708z, S230708cf, S230709bi | |      |
 | July 12     | Zach Yarbrough          | Debasmita Nandi         | Marissa Walker |        |       | |
 | July 19     | Yanyan Zheng            | Max Trevor              | Laura Nuttall  | S230723ac, S230726a |  |     |
-| July 26     | Adrian Helmling-Cornell | Ronaldas Macas          | Jess McIver    | S230729z, S230731an, S230802aq |       | |
-| August 2    | Yanyan Zheng            | Adrian Helmling-Cornell | Brennan Hughey |        |       | |
+| July 26     | Adrian Helmling-Cornell | Ronaldas Macas          | Jess McIver    | S230729z, S230731an, S230802aq | [RM](https://dcc.ligo.org/G2301496) | |
+| August 2    | Yanyan Zheng            | Adrian Helmling-Cornell | Brennan Hughey | S230805x, S230806ak, S230807f, S230808i |       | |
 | August 9    | Alan Weinstein          | Debasmita Nandi         | Andrew Lundgren|        |       | |
  
 ## Events

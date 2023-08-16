@@ -28,7 +28,7 @@ Currently we split the shifts at 4pm UTC time.
 | July 19     | Yanyan Zheng            | Max Trevor              | Laura Nuttall  | S230723ac, S230726a |  |     |
 | July 26     | Adrian Helmling-Cornell | Ronaldas Macas          | Jess McIver    | S230729z, S230731an, S230802aq | [RM](https://dcc.ligo.org/G2301496) | |
 | August 2    | Yanyan Zheng            | Adrian Helmling-Cornell | Brennan Hughey | S230805x, S230806ak, S230807f, S230808i |       | |
-| August 9    | Alan Weinstein          | Debasmita Nandi         | Andrew Lundgren|        |       | |
+| August 9    | Alan Weinstein          | Debasmita Nandi         | Andrew Lundgren| S230811n, S230814r, S230814ah |       | |
 | August 16   | Zach Yarbrough          | Sudhagar Suyamprakasam  | Adrian HC      |        |       | |
  
 ## Events

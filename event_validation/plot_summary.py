@@ -66,7 +66,7 @@ plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_total.png', dpi=200)
 
 # finalized
 finalized = np.array([no_dq_issues, glitch_sub_req, dq_issues_no_glitch_sub_req, retracted])
-labels = ['No DQ issues', 'Glitch subtraction required', 'DQ issues but no glitch subtraction required', 'Rertracted']
+labels = ['No DQ issues', 'Glitch subtraction required', 'DQ issues but no glitch subtraction required', 'Retracted']
 
 plt.figure()
 plt.pie(finalized, labels=labels,

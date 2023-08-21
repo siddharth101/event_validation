@@ -20,4 +20,4 @@ Event validation forms website is created using Flask. The script to run the web
 
 ## Contact
 
-Ronaldas Macas (ronaldas.macas@ligo.org) and Sidd Soni (siddharth.soni@ligo.org). 
+Sidd Soni (siddharth.soni@ligo.org) Francesco Di Renzo (f.di-renzo@ip2i.in2p3.fr)

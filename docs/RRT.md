@@ -28,3 +28,7 @@ See the DetChar Rapid Response Team guide [here](https://wiki.ligo.org/DetChar/O
 | August 16 | Adrian Helmling-Cornell | Need a backup for starting from August 22 |
 | August 23 | Jess McIver   |                       |
 | August 30 | Brennan Hughey|                       |
+| September 6 | Andrew Lundgren |                       |
+| September 13 | Adrian Helmling-Cornell |                       |
+| September 20 | Derek Davis |                       |
+| September 27 | Jess McIver |                       |

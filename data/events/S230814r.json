@@ -1,6 +1,6 @@
 {
     "event_name": "S230814r",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230814r",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
+                "conclusion": 1,
+                "low_noise": 1,
+                "noise_tstart": "N/A",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
+                "conclusion": 1,
+                "low_noise": 1,
+                "noise_tstart": "N/A",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "2023-08-14 06:19:20 UTC, 1376029178.458,  H1 observing @ 170 Mpc, L1 observing @ 180 Mpc  Lock stretch: L1 in 6+ hr; H1 in 17+ hr. Both stable. V1 not observing.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

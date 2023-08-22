@@ -346,7 +346,7 @@ def gen_json_dict(event_info, wdir=None):
         if glitch_res[i]['frame_type']:
             rec_frame = glitch_res[i]['frame_type']
         else:
-            rec_frame = '/'
+            rec_frame = ''
 
         if glitch_rev[i]['conclusion']:
             rec_conc = mitigation_flags[glitch_rev[i]['conclusion']]

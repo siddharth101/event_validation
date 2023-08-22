@@ -305,7 +305,7 @@ def gen_json_dict(event_info, wdir=None):
     dqrfile = event_info['links']['dqr']
     publichtml = os.path.join(dqrfile, 'index.html')
     dqrfile = publichtml.replace('https://ldas-jobs.ligo.caltech.edu/~dqr/', '/home/dqr/public_html/')
-    ParticipatingDetectors = list(event_info['forms']['review'].keys())[1:]
+    ParticipatingDetectors = ['H1','L1']#list(event_info['forms']['review'].keys())[1:]
     val_status = "complete" 
 
 

@@ -29,9 +29,9 @@ Currently we split the shifts at 4pm UTC time.
 | July 26     | Adrian Helmling-Cornell | Ronaldas Macas          | Jess McIver    | S230729z, S230731an, S230802aq |[AHC](https://dcc.ligo.org/LIGO-T2300321), [RM](https://dcc.ligo.org/G2301496) | |
 | August 2    | Yanyan Zheng            | Adrian Helmling-Cornell | Brennan Hughey | S230805x, S230806ak, S230807f, S230808i |[AHC](https://dcc.ligo.org/LIGO-T2300322)       | |
 | August 9    | Alan Weinstein          | Debasmita Nandi         | Andrew Lundgren| S230811n, S230814r, S230814ah |[AW](https://dcc.ligo.org/G2301717-v1)      | |
-| August 16   | Zach Yarbrough          | Sudhagar Suyamprakasam  | Adrian HC      |        |       | |
-| August 23   | Adrian Helmling-Cornell | Jane Glanzer            | Jess McIver    |        |       | |
-| August 30   | Amber Stuver            | Shivaraj Kandhasamy     | Brennan Hughey |        |       | |
+| August 16   | Zach Yarbrough          | Sudhagar Suyamprakasam  | Adrian HC      | S230819ax, S230820bq, S230822bm |       | |
+| August 23   | Adrian Helmling-Cornell | Jane Glanzer            | Jess McIver    | S230824r, S230825k, S230830b |       | |
+| August 30   | Amber Stuver            | Shivaraj Kandhasamy     | Brennan Hughey | S230831e, S230904n |       | |
 | Sept 6      | Manasadevi Thirugnanasambandam |Caitlin Rawcliffe | Andrew Lundgren|        |       | |
  
 ## Events

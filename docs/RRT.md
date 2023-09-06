@@ -32,3 +32,5 @@ See the DetChar Rapid Response Team guide [here](https://wiki.ligo.org/DetChar/O
 | September 13 | Adrian Helmling-Cornell |                       |
 | September 20 | Derek Davis |                       |
 | September 27 | Jess McIver |                       |
+| October 4 |                |                       |
+| October 11 | Brennan Hughey |                       |

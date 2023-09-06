@@ -1,26 +1,26 @@
 {
-    "event_name": "S230814ah",
+    "event_name": "S230825k",
     "status": 2,
     "reviewed": 1,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230814ah",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230814",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230814ah/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/194",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230814ah"
+        "gracedb": "https://gracedb.ligo.org//superevents/S230825k",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230825",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230825k/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/199",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230825k"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 1,
+                "conclusion": 2,
                 "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
@@ -39,15 +39,15 @@
         "review": {
             "duration": 8.0,
             "H1": {
-                "conclusion": 0,
-                "recommend_ifo": 0,
+                "conclusion": 1,
+                "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
-                "noise_left": 0
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 1
             },
             "L1": {
                 "conclusion": 1,
@@ -58,7 +58,7 @@
                 "analysis_fhigh": null,
                 "frame_type": "L1_HOFT_C00",
                 "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 0
+                "noise_left": 1
             },
             "V1": {
                 "conclusion": 0,
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1376089759.810067,
+            "t0": 1376972032.545885,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,26 +112,26 @@
         }
     },
     "comments": {
-        "validation": "",
-        "review": "",
+        "validation": "H1 and L1 were in observing mode. H1 doesn't have DQ issues.  L1 has not passed the IDQ.  This event has a low SNR value at L1, Omega Scan SNR = 4.9, and the GSTLal pipeline reported 5.1479387 as an SNR. So, The excess power for this event at L1 is not visually clear in the Omega Scan Time-Frequency map.",
+        "review": "DQ issues outside of 8 second window. If PE extends window please come back to detchar",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Debasmita Nandi",
-        "validator_email": "debasmita.nandi@ligo.org",
-        "expert_name": "Andrew Lundgren",
-        "expert_email": "andrew.lundgren@port.ac.uk",
+        "validator_name": "Sudhagar Suyamprakasam",
+        "validator_email": "sudhagar.suyamprakasam@ligo.org",
+        "expert_name": "Adrian Helmling-Cornell",
+        "expert_email": "ahelmlin@uoregon.edu",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
         "review_email": "laura.nuttall@port.ac.uk",
-        "lead1_name": "Ronaldas Macas",
-        "lead1_email": "ronaldas.macas@ligo.org",
+        "lead1_name": "Francesco Di Renzo",
+        "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
         "lead2_name": "Siddharth Soni",
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230814ah/ --superevent_url https://gracedb.ligo.org//superevents/S230814ah --ignore_far --event_name S230814ah --t0 1376089759.810067 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230825k/ --superevent_url https://gracedb.ligo.org//superevents/S230825k --ignore_far --event_name S230825k --t0 1376972032.545885 --send_email --create_issue"
 }

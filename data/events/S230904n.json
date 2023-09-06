@@ -1,35 +1,35 @@
 {
-    "event_name": "S230819ax",
-    "status": 1,
+    "event_name": "S230904n",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230819ax",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230819",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230819ax/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/195",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230819ax"
+        "gracedb": "https://gracedb.ligo.org//superevents/S230904n",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230904",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230904n/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/202",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230904n"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,27 +73,27 @@
             }
         },
         "glitch_request": {
-            "t0": 1376500768.454896,
+            "t0": 1377839431.127552,
             "H1": {
-                "required": 0,
-                "noise_tstart": null,
-                "noise_tend": null,
-                "noise_flow": null,
-                "noise_fhigh": null
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "L1": {
-                "required": 1,
-                "noise_tstart": 1376500765.25,
-                "noise_tend": 1376500765.65,
-                "noise_flow": 15,
-                "noise_fhigh": 40
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "V1": {
-                "required": 0,
-                "noise_tstart": null,
-                "noise_tend": null,
-                "noise_flow": null,
-                "noise_fhigh": null
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             }
         },
         "glitch_result": {
@@ -112,26 +112,26 @@
         }
     },
     "comments": {
-        "validation": "H1: The presence of excess power ~0.1 sec before and after the event time. Glitchfind and Rayleigh have not passed the DQ issue. L1:  Little excess power was present ~2.5 sec before the event time. Stationarity has not passed in the DQ Issue. The excess power present around the event in both detectors is not overlapped.",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Sudhagar Suyamprakasam",
-        "validator_email": "sudhagar.suyamprakasam@ligo.org",
-        "expert_name": "Adrian Helmling-Cornell",
-        "expert_email": "ahelmlin@uoregon.edu",
+        "validator_name": "Amber Stuver",
+        "validator_email": "amber.stuver@ligo.org",
+        "expert_name": "Brennan Hughey",
+        "expert_email": "brennan.hughey@ligo.org",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
         "review_email": "laura.nuttall@port.ac.uk",
-        "lead1_name": "Ronaldas Macas",
-        "lead1_email": "ronaldas.macas@ligo.org",
+        "lead1_name": "Francesco Di Renzo",
+        "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
         "lead2_name": "Siddharth Soni",
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230819ax/ --superevent_url https://gracedb.ligo.org//superevents/S230819ax --ignore_far --event_name S230819ax --t0 1376500768.454896 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230904n/ --superevent_url https://gracedb.ligo.org//superevents/S230904n --ignore_far --event_name S230904n --t0 1377839431.127552 --send_email --create_issue"
 }

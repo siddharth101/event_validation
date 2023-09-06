@@ -1,19 +1,19 @@
 {
-    "event_name": "S230814ah",
+    "event_name": "S230824r",
     "status": 2,
     "reviewed": 1,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230814ah",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230814",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230814ah/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/194",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230814ah"
+        "gracedb": "https://gracedb.ligo.org//superevents/S230824r",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230824",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230824r/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/198",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230824r"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,16 +37,16 @@
             }
         },
         "review": {
-            "duration": 8.0,
+            "duration": 4.0,
             "H1": {
-                "conclusion": 0,
-                "recommend_ifo": 0,
+                "conclusion": 1,
+                "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
                 "noise_left": 0
             },
             "L1": {
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1376089759.810067,
+            "t0": 1376883065.747559,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,26 +112,26 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "Both H1 and L1 were in observing mode.  H1 and L1 passed all the DQ issues.  H1 and L1 don't have high excess power nearer the event time in the Omega Scan Time Frequency map.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Debasmita Nandi",
-        "validator_email": "debasmita.nandi@ligo.org",
-        "expert_name": "Andrew Lundgren",
-        "expert_email": "andrew.lundgren@port.ac.uk",
+        "validator_name": "Sudhagar Suyamprakasam",
+        "validator_email": "sudhagar.suyamprakasam@ligo.org",
+        "expert_name": "Adrian Helmling-Cornell",
+        "expert_email": "ahelmlin@uoregon.edu",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
         "review_email": "laura.nuttall@port.ac.uk",
-        "lead1_name": "Ronaldas Macas",
-        "lead1_email": "ronaldas.macas@ligo.org",
+        "lead1_name": "Francesco Di Renzo",
+        "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
         "lead2_name": "Siddharth Soni",
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230814ah/ --superevent_url https://gracedb.ligo.org//superevents/S230814ah --ignore_far --event_name S230814ah --t0 1376089759.810067 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230824r/ --superevent_url https://gracedb.ligo.org//superevents/S230824r --ignore_far --event_name S230824r --t0 1376883065.747559 --send_email --create_issue"
 }

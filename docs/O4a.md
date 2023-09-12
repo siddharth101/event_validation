@@ -19,7 +19,7 @@ Currently we split the shifts at 4pm UTC time.
 |-------------|-------------------------|---------------------|----------------|--------|-------|--------|
 | May 24      | Siddharth Soni          | Ronaldas Macas          | Derek Davis    | S230524x, S230529ay | [RM](https://wiki.ligo.org/DetChar/Telecon20230612), [SS](https://wiki.ligo.org/DetChar/Telecon20230612) | Ronaldas and Sidd also validate events from ER15 (S230502m, S230518h, S230520ae, S230522a, S230522n | 
 | May 31      | Shania Nichols          | Shivaraj Kandhasamy     | Andrew Lundgren| S230601bf, S230605o, S230606d |[SN](https://dcc.ligo.org/LIGO-G2301271), [SK](https://dcc.ligo.org/LIGO-G2301315) |      |
-| June 7      | Alan Weinstein          | Anupreeta More          | Marissa Walker | S230608as, S230609u | [AW](https://dcc.ligo.org/G2301716-v1)      | |
+| June 7      | Alan Weinstein          | Anupreeta More          | Marissa Walker | S230608as, S230609u | [AW](https://dcc.ligo.org/G2301716-v1), [AM](https://dcc.ligo.org/G2301733) | |
 | June 14     | Brennan Hughey          | Max Trevor              | Jess McIver    |        |       | |
 | June 21     | Amber Stuver            | Adrian Helmling-Cornell | Laura Nuttall  | S230622ba, S230624av, S230627c |[AS](https://dcc.ligo.org/LIGO-G2301340), [AHC](https://dcc.ligo.org/LIGO-T2300247), [AHC](https://dcc.ligo.org/LIGO-T2300242)  | |
 | June 28     | Caitlin Rawcliffe       | Max Trevor              | Andy Lundgren  | S230628ax, S230630am, S230630bq, S230702an, S230704f |[CR](https://dcc.ligo.org/LIGO-G2301353), [MT](https://dcc.ligo.org/LIGO-G2301573) | |
@@ -33,6 +33,7 @@ Currently we split the shifts at 4pm UTC time.
 | August 23   | Adrian Helmling-Cornell | Jane Glanzer            | Jess McIver    | S230824r, S230825k, S230830b |       | |
 | August 30   | Amber Stuver            | Shivaraj Kandhasamy     | Brennan Hughey | S230831e, S230904n |       | |
 | Sept 6      | Manasadevi Thirugnanasambandam |Caitlin Rawcliffe | Andrew Lundgren|        |       | |
+| Sept 13     | Samuel Salvador         |Dishari Malakar          | Adrian Helmling-Cornell |        |       | |
  
 ## Events
 

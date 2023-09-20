@@ -1,35 +1,35 @@
 {
-    "event_name": "S230831e",
-    "status": 1,
+    "event_name": "S230920al",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230831e",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230831",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230831e/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/201",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230831e"
+        "gracedb": "https://gracedb.ligo.org//superevents/S230920al",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230920",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230920al/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/206",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230920al"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 1,
-                "noise_tstart": "1377482061.25",
-                "noise_tend": "1377482072.0",
-                "noise_flow": "15",
-                "noise_fhigh": "22"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1377482072.068329,
+            "t0": 1379229102.729004,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "There is repeating excess low frequency noise in L1 that I suggest mitigating.  The very end of the noise box crosses the signal track.",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Amber Stuver",
-        "validator_email": "amber.stuver@ligo.org",
-        "expert_name": "Brennan Hughey",
-        "expert_email": "brennan.hughey@ligo.org",
+        "validator_name": "Dishari Malakar",
+        "validator_email": "dishari.malakar@ligo.org",
+        "expert_name": "Adrian Helmling-Cornell",
+        "expert_email": "ahelmlin@uoregon.edu",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202308/S230831e/ --superevent_url https://gracedb.ligo.org//superevents/S230831e --ignore_far --event_name S230831e --t0 1377482072.068329 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230920al/ --superevent_url https://gracedb.ligo.org//superevents/S230920al --ignore_far --event_name S230920al --t0 1379229102.729004 --send_email --create_issue"
 }

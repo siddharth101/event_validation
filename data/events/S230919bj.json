@@ -1,6 +1,6 @@
 {
     "event_name": "S230919bj",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230919bj",
@@ -12,28 +12,28 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1379195837",
+                "noise_tend": "1379195852",
+                "noise_flow": "20",
+                "noise_fhigh": "350"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1379195842",
+                "noise_tend": "1379195846",
+                "noise_flow": "20",
+                "noise_fhigh": "30"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1379195844",
+                "noise_tend": "1379195852",
+                "noise_flow": "10",
+                "noise_fhigh": "60"
             }
         },
         "review": {
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "L1 was locked for an hour around the merger; Glitch seen at -12 s in H1 not detected by glitch_find; Some excess noises in H1 and L1; V1 locked (h(t) available) but not in science mode, was included with the omegascan in graceDB; Glitches in V1 before and after the merger at low frequencies;",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

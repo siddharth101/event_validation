@@ -14,7 +14,7 @@ def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, 
     if time:
         valid_time = time
     else:
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(datetime.timezone.utc)
         now_str = now.strftime("%Y-%m-%dT%H:%M:%S")
         valid_time = Time(now_str, format='isot', scale='utc').gps
 

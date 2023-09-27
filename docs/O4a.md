@@ -31,10 +31,11 @@ Currently we split the shifts at 4pm UTC time.
 | August 9    | Alan Weinstein                 | Debasmita Nandi         | Andrew Lundgren         | S230811n, S230814r, S230814ah |[AW](https://dcc.ligo.org/G2301717-v1)      | |
 | August 16   | Zach Yarbrough                 | Sudhagar Suyamprakasam  | Adrian HC               | S230819ax, S230820bq, S230822bm |       | |
 | August 23   | Adrian Helmling-Cornell        | Jane Glanzer            | Jess McIver             | S230824r, S230825k, S230830b | [SS](https://dcc.ligo.org/DocDB/0190/G2301962/001/EV_S230824r_S230825k_S230830b.pdf) | Sudhagar S validated the events |
-| August 30   | Amber Stuver                   | Shivaraj Kandhasamy     | Brennan Hughey          | S230831e, S230904n |       | |
+| August 30   | Amber Stuver                   | Shivaraj Kandhasamy     | Brennan Hughey          | S230831e, S230904n |      | |
 | Sept 6      | Manasadevi Thirugnanasambandam | Caitlin Rawcliffe       | Andrew Lundgren         | S230911ae |       | |
-| Sept 13     | Samuel Salvador                | Dishari Malakar         | Adrian Helmling-Cornell |  S230914ak, S230919bj, S230920al |       | |
-| Sept 20     | Sudhagar Suyamprakasam         | Anupreeta More          | Derek Davis             |        |       | |
+| Sept 13     | Samuel Salvador                | Dishari Malakar         | Adrian Helmling-Cornell | S230914ak, S230919bj, S230920al | [DM](https://dcc.ligo.org/G2301996)  | |
+| Sept 20     | Sudhagar Suyamprakasam         | Anupreeta More          | Derek Davis             | S230922g, S230922q, S230924an, S230927l |       | |
+| Sept 27     | Tabata Ferreira                | Tabata Ferreira         | Jess McIver             |        |       | |
  
 ## Events
 

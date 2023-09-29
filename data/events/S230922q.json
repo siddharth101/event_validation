@@ -1,6 +1,6 @@
 {
     "event_name": "S230922q",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230922q",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "H1 and L1 have IDq issues. Excess noise power is present at ~4.4 s after the event time at H1. And it does not overlap with the candidate signal. At L1, a little excess power is present at -6.5 to -7.5 s in the 10 - 20 Hz frequency range before the event time. ",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Sudhagar Suyamprakasam",
-        "validator_email": "sudhagar@camk.edu.pl",
+        "validator_email": "sudhagar.suyamprakasam@ligo.org",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Sophie Hourihane",

@@ -1,35 +1,35 @@
 {
-    "event_name": "S230922g",
-    "status": 1,
+    "event_name": "S230927be",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230922g",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230922",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230922g/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/208",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230922g"
+        "gracedb": "https://gracedb.ligo.org//superevents/S230927be",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230927",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230927be/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/212",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230927be"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1379383442.886049,
+            "t0": 1379864330.918945,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,15 +112,15 @@
         }
     },
     "comments": {
-        "validation": "H1 and L1 have IDq issues. Additionally, H1 has stationarity issues. In the time-frequency map, a small excess noise power is present at -0.3 s and 0.2 s before and after the event time. Omega overlap finds noise overlaps with auxiliary channels (suspension system) for L1.",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Sudhagar Suyamprakasam",
-        "validator_email": "sudhagar.suyamprakasam@ligo.org",
+        "validator_name": "Anupreeta More",
+        "validator_email": "anupreeta.more@ligo.org",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Sophie Hourihane",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230922g/ --superevent_url https://gracedb.ligo.org//superevents/S230922g --ignore_far --event_name S230922g --t0 1379383442.886049 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230927be/ --superevent_url https://gracedb.ligo.org//superevents/S230927be --ignore_far --event_name S230927be --t0 1379864330.918945 --send_email --create_issue"
 }

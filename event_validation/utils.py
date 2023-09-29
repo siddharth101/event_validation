@@ -1,4 +1,4 @@
-# DetChar Event Validation - Ronaldas Macas
+# DetChar Event Validation - Ronaldas Macas, Siddharth Soni
 
 import os, json, datetime, gitlab
 import pandas as pd

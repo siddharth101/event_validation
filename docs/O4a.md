@@ -34,8 +34,9 @@ Currently we split the shifts at 4pm UTC time.
 | August 30   | Amber Stuver                   | Shivaraj Kandhasamy     | Brennan Hughey          | S230831e, S230904n | [AS](https://dcc.ligo.org/LIGO-G2302015) | |
 | Sept 6      | Manasadevi Thirugnanasambandam | Caitlin Rawcliffe       | Andrew Lundgren         | S230911ae |       | |
 | Sept 13     | Samuel Salvador                | Dishari Malakar         | Adrian Helmling-Cornell | S230914ak, S230919bj, S230920al | [DM](https://dcc.ligo.org/G2301996)  | |
-| Sept 20     | Sudhagar Suyamprakasam         | Anupreeta More          | Derek Davis             | S230922g, S230922q, S230924an, S230927l |       | |
-| Sept 27     | Tabata Ferreira                | Tabata Ferreira         | Jess McIver             |        |       | |
+| Sept 20     | Sudhagar Suyamprakasam         | Anupreeta More          | Derek Davis             | S230922g, S230922q, S230924an, S230927li, S230927be |       | |
+| Sept 27     | Tabata Ferreira                | Tabata Ferreira         | Jess McIver             | S230928cb, S230930al, S231001aq |       | |
+| Oct 4       | Shivaraj Kandhasamy            | Shivaraj Kandhasamy     | Laura Nuttall           |        |       | |
  
 ## Events
 

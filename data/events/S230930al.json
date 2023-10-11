@@ -1,6 +1,6 @@
 {
     "event_name": "S230930al",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230930al",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "(1380107268.411 -12s, 1380107268.411 -1.5s)",
+                "noise_tend": "(1380107268.411 - 9s, 1380107268.411)",
+                "noise_flow": "20, 15",
+                "noise_fhigh": "40, 30"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "H1: Glitchfind presented no DQ issues, but we can see two glitches: one 1.5 in the 15-30Hz range 1.5 seconds prior to the candidate time, and another one around 11 seconds before. GSpyNetTree shows a (very) different spectrogram from Omegascan, and the template is too long. L1: The glitchfind task presents a DQ issue, but there are no loud glitches around the event. Actually, it is even difficult to see the chirp shape due to the low SNR. The GSpyNetTree, on the other hand, didn\u2019t show any DQ issues, but it classified the candidate as LowFrequencyLines with a 43% probability, which we personally agree looking at the spectrogram. ",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Tabata Ferreira",
-        "validator_email": "tabata.ferreira@ligo.org",
+        "validator_email": "tabata.ferreira@ligo.orb",
         "expert_name": "Jess McIver",
         "expert_email": "jess.mciver@ligo.org",
         "mitigation_name": "Sophie Hourihane",

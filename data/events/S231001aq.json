@@ -1,6 +1,6 @@
 {
     "event_name": "S231001aq",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S231001aq",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1380204158.716 -9s",
+                "noise_tend": "1380204158.716-8s",
+                "noise_flow": "20",
+                "noise_fhigh": "40"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "H1: Even though it\u2019s distant from the candidate, we chose to flag the glitch specially because it occurs at low frequency. L1:Although glitchfind task finds a DQ issue, there are no significant glitches around the event. There was also a DQ issue on idq task, but the channels are not related to the signal",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

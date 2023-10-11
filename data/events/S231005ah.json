@@ -1,35 +1,35 @@
 {
-    "event_name": "S230928cb",
-    "status": 1,
+    "event_name": "S231005ah",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230928cb",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230928",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230928cb/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/213",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230928cb"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231005ah",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231005",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231005ah/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/217",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231005ah"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1379973525.132324,
+            "t0": 1380532567.484843,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "L1: Although the stationarity and omega_overlap tasks failed, there are no identified DQ issues in L1 data that could affect PE for the candidate. ",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Tabata Ferreira",
-        "validator_email": "tabata.ferreira@ligo.org",
-        "expert_name": "Jess McIver",
-        "expert_email": "jess.mciver@ligo.org",
+        "validator_name": "Shivaraj Kandhasamy",
+        "validator_email": "shivaraj@iucaa.in",
+        "expert_name": "Laura Nuttall",
+        "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230928cb/ --superevent_url https://gracedb.ligo.org//superevents/S230928cb --ignore_far --event_name S230928cb --t0 1379973525.132324 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231005ah/ --superevent_url https://gracedb.ligo.org//superevents/S231005ah --ignore_far --event_name S231005ah --t0 1380532567.484843 --send_email --create_issue"
 }

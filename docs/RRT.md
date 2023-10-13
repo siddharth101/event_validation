@@ -38,7 +38,7 @@ See the DetChar Rapid Response Team guide [here](https://wiki.ligo.org/DetChar/O
 | October 25   | Adrian Helmling-Cornell |                       |
 | November 1   | Andy Lundgren           |                       |
 | November 8   | Laura Nuttall           |                       |
-| November 15  |                         |                       |
+| November 15  | Derek Davis             |                       |
 | November 22  | Laura Nuttall           |                       |
 | November 29  | Jess McIver             |                       |
 | December 6   | Brennan Hughey          |                       |

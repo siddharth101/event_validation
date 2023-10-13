@@ -214,7 +214,7 @@ def init_event_validation(event_name,
     # create a git issue using gitlab api
     if create_issue:
         logger.debug('Making a git issue')
-        token = 'glpat-CE-i6fzUxsUpUhcyRmFC'
+        token = 'glpat-aV3aJxFHagxYZayfC-ef'#'glpat-CE-i6fzUxsUpUhcyRmFC'
         project_id = 13628
         git_issue(event_data, gitlab_url, token, project_id, label, logger)
 

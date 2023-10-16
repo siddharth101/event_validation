@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 3,
+                "recommend_ifo": 1,
+                "analysis_tstart": 1380107267.411,
+                "analysis_tend": 1380107250.411,
+                "analysis_flow": 10,
+                "analysis_fhigh": 2048,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1: Glitchfind presented no DQ issues, but we can see two glitches: one 1.5 in the 15-30Hz range 1.5 seconds prior to the candidate time, and another one around 11 seconds before. GSpyNetTree shows a (very) different spectrogram from Omegascan, and the template is too long. L1: The glitchfind task presents a DQ issue, but there are no loud glitches around the event. Actually, it is even difficult to see the chirp shape due to the low SNR. The GSpyNetTree, on the other hand, didn\u2019t show any DQ issues, but it classified the candidate as LowFrequencyLines with a 43% probability, which we personally agree looking at the spectrogram. ",
-        "review": "",
+        "review": "Clear glitching in H1 - GF finds some glitching in L1 too, but I am less concerned about it.",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -125,8 +125,8 @@
         "expert_email": "jess.mciver@ligo.org",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
-        "review_name": "Laura Nuttall",
-        "review_email": "laura.nuttall@port.ac.uk",
+        "review_name": "Adrian Helmling-Cornell",
+        "review_email": "adrian.helmling-cornell@ligo.org",
         "lead1_name": "Francesco Di Renzo",
         "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
         "lead2_name": "Siddharth Soni",

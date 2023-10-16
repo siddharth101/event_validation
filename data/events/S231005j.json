@@ -1,6 +1,6 @@
 {
     "event_name": "S231005j",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S231005j",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "Both H1 and L1 were in observing mode. The SNRs in H1 and L1 were 6 and 7 respectively. In H1, except iDQ other tasks are passed. The iDQ issue seems a recurring one not relevant for this event. The omega scan for H1 looks relatively clean, maybe there is a small excess ~6.75 sec before the event in the 10 -30 Hz band. Since it is a high-mass BBH event that is not flagged here. The omega scan for L1 looks clean. The L1 omega overlap task failed for this event, but there is nothing obvious to see in the corresponding channel, so not flagging it here. ",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

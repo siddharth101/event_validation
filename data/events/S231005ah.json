@@ -1,6 +1,6 @@
 {
     "event_name": "S231005ah",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S231005ah",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "Both H1 and L1 were in observing mode. The SNRs in H1 and L1 were around 6. For H1, all the DQR tasks were reported as passed. For H1, even though the task is passed, the glitchfind reports some excess around -5.5 sec in the 20-30 Hz band. For this BBH event, we are not flagging that here. For L1, except for omega overlap, all other DQR tasks were reported as passed. The channel identified by the omega overlap doesn't show any features, so we are not flagging that here. Maybe there is a small excess in the L1 omega scan around -0.22 sec in the 30-100 Hz band. Since it is a relatively low SNR event in L1, it may be normal to see such variations and hence not flagged here.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

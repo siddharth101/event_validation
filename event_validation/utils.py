@@ -305,7 +305,7 @@ def gen_json_dict(event_info, wdir=None):
     dqrfile = event_info['links']['dqr']
     publichtml = os.path.join(dqrfile, 'index.html')
     dqrfile = publichtml.replace('https://ldas-jobs.ligo.caltech.edu/~dqr/', '/home/dqr/public_html/')
-    ParticipatingDetectors = ['H1','L1']#list(event_info['forms']['review'].keys())[1:]
+    ParticipatingDetectors = [i for i in ['H1', 'L1'] if event_info['forms']['review'][i]['recommend_ifo']]
     val_status = "complete" 
 
 
@@ -341,12 +341,12 @@ def gen_json_dict(event_info, wdir=None):
         if glitch_res[i]['channel']:
             rec_channel = glitch_res[i]['channel']
         else:
-            rec_channel = i + ':'
+            rec_channel = np.NaN
 
         if glitch_res[i]['frame_type']:
             rec_frame = glitch_res[i]['frame_type']
         else:
-            rec_frame = ''
+            rec_frame = np.NaN
 
         if glitch_rev[i]['conclusion']:
             rec_conc = mitigation_flags[glitch_rev[i]['conclusion']]
@@ -361,10 +361,17 @@ def gen_json_dict(event_info, wdir=None):
         rec_dets_values = [uid, rec_min_freq, rec_max_freq, rec_t_start, rec_t_end,
                            rec_conc, rec_frame, rec_channel, notes]
 
-
-
         rec_dets.append(dict(zip(rec_dict_keys, rec_dets_values)))
 
+    rec_dets_dict = {}
+    rec_dets_ = []
+    for i in range(len(rec_dets)):
+        rec_dets_dict[rec_dets[i]['UID']] = {k: v for k, v in rec_dets[i].items() if v is not np.NaN}
+        rec_dets_.append(rec_dets_dict[rec_dets[i]['UID']])
+
+
+
+    
     if event_info['forms']['review']['duration']:
         RecommendedDuration = event_info['forms']['review']['duration']
     else:
@@ -388,7 +395,7 @@ def gen_json_dict(event_info, wdir=None):
         "Reviewers": Reviewers,
         "ParticipatingDetectors": ParticipatingDetectors,
         "Status": val_status,
-        "RecommendedDetectors" : rec_dets,
+        "RecommendedDetectors" : rec_dets_,
         "RecommendedDuration":RecommendedDuration,
         "DQRResults":[dqrresults],
         "Notes":[Notes]

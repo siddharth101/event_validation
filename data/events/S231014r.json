@@ -1,6 +1,6 @@
 {
     "event_name": "S231014r",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S231014r",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "138129143.49",
+                "noise_tend": "1381291552.69",
+                "noise_flow": "10",
+                "noise_fhigh": "50"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "H1: There is noise below 50 Hz before and after the event, some of the noise was found by glitchfind although the task passed. GSpyNetTree identified event as no glitch then GW (maybe this is due to the event being low mass) L1: GSpyNetTree identified event as no glitch then GW (maybe this is due to the event being low mass)",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Shania Nichols",
-        "validator_email": "shania.nichols@ligo.org",
+        "validator_email": "shania.nichols@gmail.com",
         "expert_name": "Brennan Hughey",
         "expert_email": "brennan.hughey@ligo.org",
         "mitigation_name": "Sophie Hourihane",

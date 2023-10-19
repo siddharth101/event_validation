@@ -38,6 +38,7 @@ Currently we split the shifts at 4pm UTC time.
 | Sept 27     | Tabata Ferreira                | Tabata Ferreira         | Jess McIver             | S230928cb, S230930al, S231001aq |       | |
 | Oct 4       | Shivaraj Kandhasamy            | Shivaraj Kandhasamy     | Laura Nuttall           |        |       | |
 | Oct 11      | Shania Nichols                 | Shania Nichols          | Brennan Hughey          |        |       | |
+| Oct 18      | Dishari Malakar                | Dishari Malakar         | Jess McIver             |        |       | |
 ## Events
 
 {!data/table_O4a.md!}

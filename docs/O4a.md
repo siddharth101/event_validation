@@ -36,9 +36,10 @@ Currently we split the shifts at 4pm UTC time.
 | Sept 13     | Samuel Salvador                | Dishari Malakar         | Adrian Helmling-Cornell | S230914ak, S230919bj, S230920al | [DM](https://dcc.ligo.org/G2301996)  | |
 | Sept 20     | Sudhagar Suyamprakasam         | Anupreeta More          | Derek Davis             | S230922g, S230922q, S230924an, S230927li, S230927be | [SS](https://dcc.ligo.org/G2302036-v1) | |
 | Sept 27     | Tabata Ferreira                | Tabata Ferreira         | Jess McIver             | S230928cb, S230930al, S231001aq |       | |
-| Oct 4       | Shivaraj Kandhasamy            | Shivaraj Kandhasamy     | Laura Nuttall           |        |       | |
-| Oct 11      | Shania Nichols                 | Shania Nichols          | Brennan Hughey          |        |       | |
+| Oct 4       | Shivaraj Kandhasamy            | Shivaraj Kandhasamy     | Laura Nuttall           | S231005j, S231005ah, S231008ap |       | |
+| Oct 11      | Shania Nichols                 | Shania Nichols          | Brennan Hughey          |  S231014r |       | |
 | Oct 18      | Dishari Malakar                | Dishari Malakar         | Jess McIver             |        |       | |
+
 ## Events
 
 {!data/table_O4a.md!}

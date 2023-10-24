@@ -1,6 +1,6 @@
 {
     "event_name": "S230927be",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230927be",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1379864330.87",
+                "noise_tend": "1379864330.93",
+                "noise_flow": "80",
+                "noise_fhigh": "200"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "Notes: H1: DQ Issue noted for iDQ Task. The aux channel H1:PEM-CS_MAG_LVEA_VERTEX_X_DQ_0_2048 is marked to have high rank (0.2) from 1379864322.918945 \u00a0to 1379864338.918945. However, this is at -2sec of the trigger time likely to be of less importance.\u00a0 Instead, excess power is found in the channel H1:PEM-CS_MAINSMON_EBAY_2_DQ at trigger time of 1379864330.919 with a p-vale of 0.008 which might be noteworthy. L1: DQ Issue noted for Omegascan Overlap Task. The L1:SQZ-SHG_GR_LF_OUT_DQ channel shows excess power between 80Hz to 200Hz almost coincident with the trigger time of 1379864330.919 with a p-value of 0. There are a few other channels - L1:SQZ-SHG_TRANS_LF_OUT_DQ, L1:PEM-CS_MAG_LVEA_VERTEX_Z_DQ which also show excess power at similar times.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Anupreeta More",
-        "validator_email": "anupreeta.more@ligo.org",
+        "validator_email": "anupreeta@iucaa.in",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Sophie Hourihane",

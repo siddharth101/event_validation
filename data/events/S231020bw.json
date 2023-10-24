@@ -1,35 +1,35 @@
 {
-    "event_name": "S230924an",
-    "status": 1,
+    "event_name": "S231020bw",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S230924an",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230924",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230924an/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/210",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S230924an"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231020bw",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231020",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020bw/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/221",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231020bw"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 1,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 0,
-                "noise_tstart": "1379594711.65",
-                "noise_tend": "1379594711.75",
-                "noise_flow": "20",
-                "noise_fhigh": "70"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1379594711.839844,
+            "t0": 1381860327.780446,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "Notes: L1: DQ Issue noted in the glitchfind task. The channel L1:SQZ-OMC_TRANS_RF3_Q_NORM_DQ shows excess power from 20Hz to 70Hz between 1379594711.65 and 1379594711.75 with a p-value of 0.009.",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Anupreeta More",
-        "validator_email": "anupreeta@iucaa.in",
-        "expert_name": "Derek Davis",
-        "expert_email": "derek.davis@ligo.org",
+        "validator_name": "Dishari Malakar",
+        "validator_email": "dishari.malakar@ligo.org",
+        "expert_name": "Jess McIver",
+        "expert_email": "jess.mciver@ligo.org",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202309/S230924an/ --superevent_url https://gracedb.ligo.org//superevents/S230924an --ignore_far --event_name S230924an --t0 1379594711.839844 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020bw/ --superevent_url https://gracedb.ligo.org//superevents/S231020bw --ignore_far --event_name S231020bw --t0 1381860327.780446 --send_email --create_issue"
 }

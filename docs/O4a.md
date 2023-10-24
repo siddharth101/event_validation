@@ -39,6 +39,7 @@ Currently we split the shifts at 4pm UTC time.
 | Oct 4       | Shivaraj Kandhasamy            | Shivaraj Kandhasamy     | Laura Nuttall           | S231005j, S231005ah, S231008ap |       | |
 | Oct 11      | Shania Nichols                 | Shania Nichols          | Brennan Hughey          |  S231014r |       | |
 | Oct 18      | Dishari Malakar                | Dishari Malakar         | Jess McIver             |        |       | |
+| Oct 25      | Jane Glanzer                   | Jane Glanzer		 | Adrian Helmling-Cornell |        |       | |
 
 ## Events
 

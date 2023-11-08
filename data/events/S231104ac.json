@@ -1,18 +1,18 @@
 {
-    "event_name": "S231020ba",
+    "event_name": "S231104ac",
     "status": 1,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S231020ba",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231020",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020ba/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/220",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231020ba"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231104ac",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231104",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231104ac/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/225",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231104ac"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
+                "conclusion": 1,
                 "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
@@ -20,7 +20,7 @@
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
+                "conclusion": 1,
                 "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1381847405.583496,
+            "t0": 1383140076.944824,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "Glitchfind & stationarity tasks failed for H1, and stationarity failed for L1. But there no noise in the signal box, so no noise mitigation required for both.",
+        "validation": "All tasks have passed for Livingston, but idq task failed for Hanford. No glitches present in both.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -121,8 +121,8 @@
     "contacts": {
         "validator_name": "Dishari Malakar",
         "validator_email": "dishari.malakar@ligo.org",
-        "expert_name": "Jess McIver",
-        "expert_email": "jess.mciver@ligo.org",
+        "expert_name": "Andrew Lundgren",
+        "expert_email": "andrew.lundgren@port.ac.uk",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020ba/ --superevent_url https://gracedb.ligo.org//superevents/S231020ba --ignore_far --event_name S231020ba --t0 1381847405.583496 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231104ac/ --superevent_url https://gracedb.ligo.org//superevents/S231104ac --ignore_far --event_name S231104ac --t0 1383140076.944824 --send_email --create_issue"
 }

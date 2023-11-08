@@ -35,11 +35,13 @@ Currently we split the shifts at 4pm UTC time.
 | Sept 6      | Manasadevi Thirugnanasambandam | Caitlin Rawcliffe       | Andrew Lundgren         | S230911ae |       | |
 | Sept 13     | Samuel Salvador                | Dishari Malakar         | Adrian Helmling-Cornell | S230914ak, S230919bj, S230920al | [DM](https://dcc.ligo.org/G2301996)  | |
 | Sept 20     | Sudhagar Suyamprakasam         | Anupreeta More          | Derek Davis             | S230922g, S230922q, S230924an, S230927li, S230927be | [SS](https://dcc.ligo.org/G2302036-v1) | |
-| Sept 27     | Tabata Ferreira                | Tabata Ferreira         | Jess McIver             | S230928cb, S230930al, S231001aq |       | |
+| Sept 27     | Tabata Ferreira                | Tabata Ferreira         | Jess McIver             | S230928cb, S230930al, S231001aq | [TF](https://dcc.ligo.org/LIGO-G2302063) | |
 | Oct 4       | Shivaraj Kandhasamy            | Shivaraj Kandhasamy     | Laura Nuttall           | S231005j, S231005ah, S231008ap |       | |
-| Oct 11      | Shania Nichols                 | Shania Nichols          | Brennan Hughey          |  S231014r |       | |
-| Oct 18      | Dishari Malakar                | Dishari Malakar         | Jess McIver             |        |       | |
-| Oct 25      | Jane Glanzer                   | Jane Glanzer		 | Adrian Helmling-Cornell |        |       | |
+| Oct 11      | Shania Nichols                 | Shania Nichols          | Brennan Hughey          | S231014r | [SN](https://dcc.ligo.org/LIGO-G2302097) | |
+| Oct 18      | Dishari Malakar                | Dishari Malakar         | Jess McIver             | S231020ba, S231020bw | [DM](https://dcc.ligo.org/DocDB/0190/G2302136/001/Validation.pdf) | |
+| Oct 25      | Jane Glanzer                   | Jane Glanzer		 | Adrian Helmling-Cornell | S231028bg, S231029y |       | |
+| Nov 1       | Dishari Malakar                | Dishari Malakar         | Andrew Lundgren         |        |       | |
+| Nov 8       | Andre Guimaraes                | Andre Guimaraes         | Laura Nuttall           |        |       | |
 
 ## Events
 

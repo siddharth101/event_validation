@@ -1,13 +1,13 @@
 {
-    "event_name": "S231104ac",
+    "event_name": "S231108u",
     "status": 2,
     "reviewed": 1,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S231104ac",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231104",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231104ac/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/225",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231104ac"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231108u",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231108",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231108u/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/226",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231108u"
     },
     "forms": {
         "validation": {
@@ -37,7 +37,7 @@
             }
         },
         "review": {
-            "duration": 16.0,
+            "duration": 8.0,
             "H1": {
                 "conclusion": 1,
                 "recommend_ifo": 1,
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1383140076.944824,
+            "t0": 1383483120.462891,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "All tasks have passed for Livingston, but idq task failed for Hanford. No glitches present in both.",
+        "validation": "Glitchfind failed for Hanford and idq task failed for Livingston. There was a glitch present around -0.8 sec near the signal in Hanford.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231104ac/ --superevent_url https://gracedb.ligo.org//superevents/S231104ac --ignore_far --event_name S231104ac --t0 1383140076.944824 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231108u/ --superevent_url https://gracedb.ligo.org//superevents/S231108u --ignore_far --event_name S231108u --t0 1383483120.462891 --send_email --create_issue"
 }

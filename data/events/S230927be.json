@@ -1,7 +1,7 @@
 {
     "event_name": "S230927be",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230927be",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230927",
@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 1
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 1,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 1
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Notes: H1: DQ Issue noted for iDQ Task. The aux channel H1:PEM-CS_MAG_LVEA_VERTEX_X_DQ_0_2048 is marked to have high rank (0.2) from 1379864322.918945 \u00a0to 1379864338.918945. However, this is at -2sec of the trigger time likely to be of less importance.\u00a0 Instead, excess power is found in the channel H1:PEM-CS_MAINSMON_EBAY_2_DQ at trigger time of 1379864330.919 with a p-vale of 0.008 which might be noteworthy. L1: DQ Issue noted for Omegascan Overlap Task. The L1:SQZ-SHG_GR_LF_OUT_DQ channel shows excess power between 80Hz to 200Hz almost coincident with the trigger time of 1379864330.919 with a p-value of 0. There are a few other channels - L1:SQZ-SHG_TRANS_LF_OUT_DQ, L1:PEM-CS_MAG_LVEA_VERTEX_Z_DQ which also show excess power at similar times.",
-        "review": "",
+        "review": "At LLO some low level noise at 1379864331.32 at 30 Hz and at LHO some low level noise at 1379864330.3 at 55Hz. I don't think either is a problem so recommend normal settings. PE to come back if anything looks odd in analysis.",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

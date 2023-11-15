@@ -1,35 +1,35 @@
 {
-    "event_name": "S231008ap",
-    "status": 2,
-    "reviewed": 1,
+    "event_name": "S231113bw",
+    "status": 0,
+    "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S231008ap",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231008",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231008ap/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/218",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231008ap"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231113bw",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231113",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231113bw/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/230",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231113bw"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,43 +37,43 @@
             }
         },
         "review": {
-            "duration": 8.0,
+            "duration": "",
             "H1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": null,
-                "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 0
-            },
-            "L1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": null,
-                "analysis_fhigh": null,
-                "frame_type": "L1_HOFT_C00",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 0
-            },
-            "V1": {
-                "conclusion": 0,
-                "recommend_ifo": 0,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": null,
-                "analysis_fhigh": null,
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
                 "frame_type": "",
                 "channel": "",
-                "noise_left": 0
+                "noise_left": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
             }
         },
         "glitch_request": {
-            "t0": 1380810339.816279,
+            "t0": 1383941075.910645,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,15 +112,15 @@
         }
     },
     "comments": {
-        "validation": "Both H1 and L1 were in observing mode. The SNRs in H1 and L1 were around 6.6. In both detectors, all DQR tasks were reported as passed. Omega scans from both H1 and L1 look relatively clean.",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Shivaraj Kandhasamy",
-        "validator_email": "shivaraj@iucaa.in",
+        "validator_name": "Andre Guimaraes",
+        "validator_email": "andre.guimaraes@ligo.org",
         "expert_name": "Laura Nuttall",
         "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Sophie Hourihane",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231008ap/ --superevent_url https://gracedb.ligo.org//superevents/S231008ap --ignore_far --event_name S231008ap --t0 1380810339.816279 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231113bw/ --superevent_url https://gracedb.ligo.org//superevents/S231113bw --ignore_far --event_name S231113bw --t0 1383941075.910645 --send_email --create_issue"
 }

@@ -215,6 +215,16 @@ def create_app(url, wdir, event_list, website_md, notify):
         finalize = SelectField('finalize:', coerce=int, choices=finalize_status, validators=[validators.InputRequired()])
 
 
+    class form_send_cbcflow(Form):
+
+        name = TextAreaField('name', [validators.InputRequired()])
+        email = TextAreaField('email:', [validators.InputRequired()])
+
+        send_status = [(0, 'No'), (1, 'Yes')]
+
+        send = SelectField('send:', coerce=int, choices=send_status, validators=[validators.InputRequired()])
+
+
     class form_comment(Form):
 
         comment = TextAreaField('comment:')
@@ -649,6 +659,56 @@ def create_app(url, wdir, event_list, website_md, notify):
                 flash('Error:'+str(form.errors),'danger')
 
         return render_template('form_finalize.html', form=form, gid=gid)
+
+
+    @app.route('/send/<gid>', methods=('GET', 'POST'))
+    def gen_send_cbcflow_form(gid):
+
+        form = form_send_cbcflow(request.form)
+
+        if request.method == 'POST':
+            if form.validate():
+                if form.send.data == 1:
+
+                    # read event json
+                    with open(f'{wdir}/data/events/{gid}.json', 'r') as fp:
+                        event_data = json.load(fp)
+
+                    event_data['contacts']['review_name'] = form.name.data
+                    event_data['contacts']['review_email'] = form.email.data
+
+                    # update event json
+                    with open(f'{wdir}/data/events/{gid}.json', 'w') as fp:
+                        json.dump(event_data, fp, indent=4)
+
+                    # read event list and find idx
+                    event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                    gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+                    if notify:
+                        subject = f'EV results sent to CBCflow for {gid}'
+                        body= f'{subject}. See the summary at {flask_base_url}summary/{gid}.'
+
+                        # send an email to the reviewer
+                        send_email(form.email.data, subject, body)
+
+                    # send results to CBCFlow
+                    ev_info = get_event_properties(gid, wdir)
+                    dict_ev_info = gen_json_dict(ev_info, wdir)
+                    library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-o4a"
+                    library = LocalLibraryDatabase(library_path)
+                    library.git_pull_from_remote(automated=True)
+                    metadata = get_superevent(gid, library)
+                    metadata.update(dict_ev_info)
+                    metadata.write_to_library(message="Updating Detchar Schema for {}".format(gid), branch_name="main")
+                    library.git_push_to_remote()
+
+                    return render_template('form_send_cbcflow_success.html', gid=gid, name=form.name.data)
+
+            else:
+                flash('Error:'+str(form.errors),'danger')
+
+        return render_template('form_send_cbcflow.html', form=form, gid=gid)
 
 
     @app.route('/summary/<gid>', methods=('GET', 'POST'))

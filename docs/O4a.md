@@ -43,6 +43,7 @@ Currently we split the shifts at 4pm UTC time.
 | Nov 1       | Dishari Malakar                | Dishari Malakar         | Andrew Lundgren         | S231102w, S231104ac, S231108u |       | |
 | Nov 8       | Andre Guimaraes                | Andre Guimaraes         | Laura Nuttall           |        |       | |
 | Nov 15      | Debasmita Nandi                | Debasmita Nandi         | Derek Davis             |        |       | |
+
 ## Events
 
 {!data/table_O4a.md!}

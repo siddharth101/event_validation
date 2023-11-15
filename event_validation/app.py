@@ -711,8 +711,6 @@ def create_app(url, wdir, event_list, website_md, notify):
         return render_template('form_send_cbcflow.html', form=form, gid=gid)
 
 
-
-
     @app.route('/summary/<gid>', methods=('GET', 'POST'))
     def get_summary(gid):
 

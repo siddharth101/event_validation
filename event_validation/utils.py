@@ -306,8 +306,7 @@ def gen_json_dict(event_info, wdir=None):
     publichtml = os.path.join(dqrfile, 'index.html')
     dqrfile = publichtml.replace('https://ldas-jobs.ligo.caltech.edu/~dqr/', '/home/dqr/public_html/')
     ParticipatingDetectors = [i for i in ['H1', 'L1'] if event_info['forms']['review'][i]['recommend_ifo']]
-    val_status = "complete" 
-
+    val_status = val_flags[2] if event_info['reviewed']==1 else val_flags[1]
 
     rec_dets = []
     glitch_mit = event_info['forms']['glitch_request']

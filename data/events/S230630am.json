@@ -40,7 +40,7 @@
             "duration": 8.0,
             "H1": {
                 "conclusion": 1,
-                "recommend_ifo": 0,
+                "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,
@@ -51,7 +51,7 @@
             },
             "L1": {
                 "conclusion": 1,
-                "recommend_ifo": 0,
+                "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,

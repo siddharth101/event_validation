@@ -40,7 +40,7 @@ Currently we split the shifts at 4pm UTC time.
 | Oct 11      | Shania Nichols                 | Shania Nichols          | Brennan Hughey          | S231014r | [SN](https://dcc.ligo.org/LIGO-G2302097) | |
 | Oct 18      | Dishari Malakar                | Dishari Malakar         | Jess McIver             | S231020ba, S231020bw | [DM](https://dcc.ligo.org/DocDB/0190/G2302136/001/Validation.pdf) | |
 | Oct 25      | Jane Glanzer                   | Jane Glanzer		 | Adrian Helmling-Cornell | S231028bg, S231029y |       | |
-| Nov 1       | Dishari Malakar                | Dishari Malakar         | Andrew Lundgren         | S231102w, S231104ac, S231108u |       | |
+| Nov 1       | Dishari Malakar                | Dishari Malakar         | Andrew Lundgren         | S231102w, S231104ac, S231108u | [DM](https://dcc.ligo.org/G2302207) | |
 | Nov 8       | Andre Guimaraes                | Andre Guimaraes         | Laura Nuttall           |        |       | |
 | Nov 15      | Debasmita Nandi                | Debasmita Nandi         | Derek Davis             |        |       | |
 

@@ -352,9 +352,7 @@ def gen_json_dict(event_info, wdir=None):
         else:
             rec_conc = "not yet reviewed"
 
-        notes = [event_info['comments']['validation'], event_info['comments']['review'],
-                 event_info['comments']['glitch_request'], event_info['comments']['glitch_result'],
-                 event_info['comments']['other']]
+        notes = [event_info['comments']['review']]
 
 
         rec_dets_values = [uid, rec_min_freq, rec_max_freq, rec_t_start, rec_t_end,

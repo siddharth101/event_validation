@@ -685,6 +685,15 @@ def create_app(url, wdir, event_list, website_md, notify):
                     event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
                     gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
+                    # update the events list
+                    event_list_df.at[gid_idx,'Next step'] = f"PE ([contact](mailto:{event_data['contacts']['review_email']}))"
+                    event_list_df.to_csv(event_list_fname, index=False)
+
+                    # update website's .md table
+                    with open(md_fname, 'w') as md:
+                        event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                    os.system(f'cd {wdir}; mkdocs -q build')
+
                     if notify:
                         subject = f'EV results sent to CBCflow for {gid}'
                         body= f'{subject}. See the summary at {flask_base_url}summary/{gid}.'

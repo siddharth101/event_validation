@@ -1,0 +1,137 @@
+{
+    "event_name": "S231123cg",
+    "status": 0,
+    "reviewed": 0,
+    "links": {
+        "gracedb": "https://gracedb.ligo.org//superevents/S231123cg",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231123",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231123cg/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/236",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231123cg"
+    },
+    "forms": {
+        "validation": {
+            "H1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            }
+        },
+        "review": {
+            "duration": "",
+            "H1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            }
+        },
+        "glitch_request": {
+            "t0": 1384782888.634277,
+            "H1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "L1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            },
+            "V1": {
+                "required": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
+            }
+        },
+        "glitch_result": {
+            "H1": {
+                "frame_type": "",
+                "channel": ""
+            },
+            "L1": {
+                "frame_type": "",
+                "channel": ""
+            },
+            "V1": {
+                "frame_type": "",
+                "channel": ""
+            }
+        }
+    },
+    "comments": {
+        "validation": "",
+        "review": "",
+        "glitch_request": "",
+        "glitch_result": "",
+        "other": ""
+    },
+    "contacts": {
+        "validator_name": "Manasadevi Thirugnanasambandam",
+        "validator_email": "manasadevi.thirugnanasambandam@ligo.org",
+        "expert_name": "Laura Nuttall",
+        "expert_email": "laura.nuttall@port.ac.uk",
+        "mitigation_name": "Sophie Hourihane",
+        "mitigation_email": "sophie.hourihane@ligo.org",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
+        "lead1_name": "Francesco Di Renzo",
+        "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
+        "lead2_name": "Siddharth Soni",
+        "lead2_email": "siddharth.soni@ligo.org"
+    },
+    "other": "",
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231123cg/ --superevent_url https://gracedb.ligo.org//superevents/S231123cg --ignore_far --event_name S231123cg --t0 1384782888.634277 --send_email --create_issue"
+}

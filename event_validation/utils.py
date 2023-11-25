@@ -337,13 +337,13 @@ def gen_json_dict(event_info, wdir=None):
         else:
             rec_t_end = np.NaN
 
-        if glitch_res[i]['channel']:
-            rec_channel = glitch_res[i]['channel']
+        if glitch_rev[i]['channel']:
+            rec_channel = glitch_rev[i]['channel']
         else:
             rec_channel = np.NaN
 
-        if glitch_res[i]['frame_type']:
-            rec_frame = glitch_res[i]['frame_type']
+        if glitch_rev[i]['frame_type']:
+            rec_frame = glitch_rev[i]['frame_type']
         else:
             rec_frame = np.NaN
 
@@ -381,7 +381,7 @@ def gen_json_dict(event_info, wdir=None):
                   "DQRFile": {"Path": dqrfile, 'PublicHTML': publichtml},
                   "ReviewStatus":"pass", 
                   "ValidationResult": ["pending", "pass", "fail"][1], #hardcoded
-                  "ValidationNotes": [event_info["comments"]["validation"]],
+                  "ValidationNotes": [event_info["comments"]["other"]],
                   "Notes": [event_info["comments"]["other"]]}
 
     Notes = event_info["comments"]["other"]

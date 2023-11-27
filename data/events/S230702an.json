@@ -43,7 +43,7 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": null,
+                "analysis_flow": 30,
                 "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "",
-        "review": "Some noise at LHO below 30 Hz at 0.3 seconds before merger. Low SNR, leaving for now and will see if any feedback from PE (in which case would recommend flow 30Hz)",
+        "review": "Some noise at LHO below 30 Hz at 0.3 seconds before merger. PE to also run with default settings",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -125,8 +125,8 @@
         "expert_email": "andrew.lundgren@port.ac.uk",
         "mitigation_name": "Ronaldas Macas",
         "mitigation_email": "ronaldas.macas@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@port.ac.uk",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

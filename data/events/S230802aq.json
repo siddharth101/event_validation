@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1 DQ issues, L1 and V1 not observing. Lots of broadband noise at low freq just at late inspiral part, as well as some noise during the whole segment (128s). Recommend restricting analysis window to 80Hz. See the GitLab issue for more info and plots.",
-        "review": "",
+        "review": "PE to also run with default settings",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -125,8 +125,8 @@
         "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@port.ac.uk",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

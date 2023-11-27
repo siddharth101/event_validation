@@ -43,11 +43,11 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": null,
+                "analysis_flow": 60,
                 "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 1
+                "noise_left": 0
             },
             "L1": {
                 "conclusion": 1,
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "All DQR tests are passed. But excess noise, looks like scatter noise, is found in Hanford from the event time to 6s after. Livingston looks clean around the event time.",
-        "review": "scattered like at LHO after the event (in 0 to +2s window). If PE looks weird with default settings, then come back to detchar where will recommend a restricted frequency range",
+        "review": "scattered like at LHO after the event (in 0 to +2s window). PE to also run with default settings",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -125,8 +125,8 @@
         "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@port.ac.uk",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

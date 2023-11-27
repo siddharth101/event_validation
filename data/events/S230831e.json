@@ -58,7 +58,7 @@
                 "analysis_fhigh": null,
                 "frame_type": "L1_HOFT_C00",
                 "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 0
+                "noise_left": 1
             },
             "V1": {
                 "conclusion": 0,
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "There is repeating excess low frequency noise in L1 that I suggest mitigating.  The very end of the noise box crosses the signal track.",
-        "review": "",
+        "review": "Some low level noise in LLO. PE to also run with default settings",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

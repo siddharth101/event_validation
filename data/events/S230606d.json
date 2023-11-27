@@ -43,7 +43,7 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": null,
+                "analysis_flow": 50,
                 "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1: GSpyNetTree DQ issue due to using old data set. Glitch find task passed but there is a glitch present 1.2 seconds after the event. In the Q transform of the original data, there is a glitch found 0.4 seconds before the event. This seems like excess noise, but it is not very loud.    L1: GSpyNetTree DQ issue due to using old data set. The rayleigh task failed indicating there is some variation in the PSD before the event. ",
-        "review": "glitch 1.2 seconds after merger, around 30-50Hz. Bayeswave unable to subtract.",
+        "review": "glitch 1.2 seconds after merger, around 30-50Hz. Bayeswave unable to subtract. PE to also run using default settings since PE can't cut the analysis window to +1s rather than +2s.",
         "glitch_request": "",
         "glitch_result": "Bayeswave unable to subtract LHO glitch 1.2 seconds after merger",
         "other": ""
@@ -125,8 +125,8 @@
         "expert_email": "andrew.lundgren@port.ac.uk",
         "mitigation_name": "Laura Nuttall",
         "mitigation_email": "laura.nuttall@port.ac.uk",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@port.ac.uk",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

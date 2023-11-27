@@ -42,9 +42,9 @@ Currently we split the shifts at 4pm UTC time.
 | Oct 25      | Jane Glanzer                   | Jane Glanzer		 | Adrian Helmling-Cornell | S231028bg, S231029y |       | |
 | Nov 1       | Dishari Malakar                | Dishari Malakar         | Andrew Lundgren         | S231102w, S231104ac, S231108u | [DM](https://dcc.ligo.org/G2302207) | |
 | Nov 8       | Andre Guimaraes                | Andre Guimaraes         | Laura Nuttall           | S231110g, S231112a, S231113bb, S231113bw, S231114n |       | |
-| Nov 15      | Debasmita Nandi                | Debasmita Nandi         | Derek Davis             |        |       | |
-| Nov 22      | Manasadevi Thirugnanasambandam   | Manasadevi Thirugnanasambandam |              |        |       | |
-| Nov 29      | Sudhagar Suyamprakasam | Sudhagar Suyamprakasam |     |     |  |  |
+| Nov 15      | Debasmita Nandi                | Debasmita Nandi         | Derek Davis             | S231118d, S231118ab, S231118an, S231119u |       | |
+| Nov 22      | Manasadevi Thirugnanasambandam   | Manasadevi Thirugnanasambandam | Laura Nuttall  | S231123cg, S231127cg |       | |
+| Nov 29      | Sudhagar Suyamprakasam | Sudhagar Suyamprakasam | Jess McIver |     |  |  |
 
 
 ## Events

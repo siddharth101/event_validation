@@ -45,6 +45,8 @@ Currently we split the shifts at 4pm UTC time.
 | Nov 15      | Debasmita Nandi                | Debasmita Nandi         | Derek Davis             | S231118d, S231118ab, S231118an, S231119u |       | |
 | Nov 22      | Manasadevi Thirugnanasambandam   | Manasadevi Thirugnanasambandam | Laura Nuttall  | S231123cg, S231127cg |       | |
 | Nov 29      | Sudhagar Suyamprakasam | Sudhagar Suyamprakasam | Jess McIver |     |  |  |
+| Dec 6       | Zach Yarbrough         | Zach Yarbrough         | Brennan Hughey|    |  |  |
+| Dec 13      | Adrian Helmling-Cornell | Adrian Helmling-Cornell |  |    |  |  |
 
 
 ## Events

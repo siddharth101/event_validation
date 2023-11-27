@@ -604,6 +604,8 @@ def create_app(url, wdir, event_list, website_md, notify):
                     library = LocalLibraryDatabase(library_path)
                     library.git_pull_from_remote(automated=True)
                     metadata = get_superevent(gid, library)
+                    for key in metadata.data['DetectorCharacterization']: # this will remove earlier entries
+                        metadata.data['DetectorCharacterization'][key] = []
                     metadata.update(dict_ev_info)
                     metadata.write_to_library(message="Updating Detchar Schema for {}".format(gid), branch_name="main")
                     library.git_push_to_remote()

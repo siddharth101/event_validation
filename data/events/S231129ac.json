@@ -1,35 +1,35 @@
 {
-    "event_name": "S231119u",
-    "status": 1,
+    "event_name": "S231129ac",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S231119u",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231119",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231119u/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/235",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231119u"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231129ac",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231129",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231129ac/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/238",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231129ac"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 1,
-                "low_noise": 1,
-                "noise_tstart": "1384415586.09-9.0",
-                "noise_tend": "1384415586.09-8.25",
-                "noise_flow": "10.0",
-                "noise_fhigh": "50.0"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1384415586.094507,
+            "t0": 1385281083.642696,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "L1: No DQ issues but idq task failed; H1: There is a glitch at around 9 seconds before the event",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Debasmita Nandi",
-        "validator_email": "debasmita.nandi@ligo.org",
-        "expert_name": "Derek Davis",
-        "expert_email": "derek.davis@ligo.org",
+        "validator_name": "Manasadevi Thirugnanasambandam",
+        "validator_email": "manasadevi.thirugnanasambandam@ligo.org",
+        "expert_name": "Laura Nuttall",
+        "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231119u/ --superevent_url https://gracedb.ligo.org//superevents/S231119u --ignore_far --event_name S231119u --t0 1384415586.094507 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231129ac/ --superevent_url https://gracedb.ligo.org//superevents/S231129ac --ignore_far --event_name S231129ac --t0 1385281083.642696 --send_email --create_issue"
 }

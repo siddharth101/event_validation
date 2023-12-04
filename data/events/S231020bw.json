@@ -47,7 +47,7 @@
                 "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 0
+                "noise_left": 1
             },
             "L1": {
                 "conclusion": 3,
@@ -56,8 +56,8 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
+                "frame_type": "L1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
                 "noise_left": 0
             },
             "V1": {
@@ -98,12 +98,12 @@
         },
         "glitch_result": {
             "H1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN"
             },
             "L1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "L1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00"
             },
             "V1": {
                 "frame_type": "",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Tasks like idq, gspynettree and glitchfind failed for L1. There is a noise covering the signal in L1.",
-        "review": "",
+        "review": "Bayeswave got rid of the noise in LLO. But there's a lot of noise in LHO which requires some investigation. I would like to see 1) this run 2) LLO = bayeswave frame, LHO = f_low=20Hz 3) LLO = normal frame, LHO = f_low=50Hz 4) LLO = normal frame, LHO = f_low=20Hz",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -123,8 +123,8 @@
         "validator_email": "dishari.malakar@ligo.org",
         "expert_name": "Jess McIver",
         "expert_email": "jess.mciver@ligo.org",
-        "mitigation_name": "Sophie Hourihane",
-        "mitigation_email": "sophie.hourihane@ligo.org",
+        "mitigation_name": "Laura Nuttall",
+        "mitigation_email": "laura.nuttall@port.ac.uk",
         "review_name": "Laura Nuttall",
         "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Francesco Di Renzo",

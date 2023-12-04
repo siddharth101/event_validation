@@ -45,9 +45,9 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
-                "noise_left": 1
+                "frame_type": "H1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
+                "noise_left": 0
             },
             "L1": {
                 "conclusion": 1,
@@ -56,8 +56,8 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
                 "noise_left": 0
             },
             "V1": {
@@ -98,12 +98,12 @@
         },
         "glitch_result": {
             "H1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "H1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00"
             },
             "L1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN"
             },
             "V1": {
                 "frame_type": "",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Both H1 and L1 were in observing mode. For both detectors, all the DQR tasks reported passed. In the omega scan of H1 we see excess power around 20 Hz at the event time (-0.1 to +0.05 sec). This is also reported by the Glitchfind tool. We also see some excess power just before the event time in L1. However, this is not reported by the Glitchfind tool. This may not be a problem or even real, but reporting it here for further check.",
-        "review": "",
+        "review": "bayeswave subtracted a glitch at t=0 at around 20 Hz. PE to also perform a second run with the usual channels to check bayeswave data is fine.",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -123,10 +123,10 @@
         "validator_email": "shivaraj@iucaa.in",
         "expert_name": "Jess McIver",
         "expert_email": "jess.mciver@ligo.org",
-        "mitigation_name": "Ronaldas Macas",
-        "mitigation_email": "ronaldas.macas@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@port.ac.uk",
+        "mitigation_name": "Laura Nuttall",
+        "mitigation_email": "laura.nuttall@port.ac.uk",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

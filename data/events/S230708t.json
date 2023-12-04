@@ -45,8 +45,8 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
+                "frame_type": "H1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
                 "noise_left": 1
             },
             "L1": {
@@ -98,12 +98,12 @@
         },
         "glitch_result": {
             "H1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "H1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00"
             },
             "L1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN"
             },
             "V1": {
                 "frame_type": "",
@@ -113,9 +113,9 @@
     },
     "comments": {
         "validation": "Low frequency noise H1 already the subject of extensive discussion between PE and DetChar Lvl 1 RRT; Dubious whether this will appear in offline analysis",
-        "review": "",
+        "review": "Bayeswave has removed a lot of the noise at LHO around the event time. But some noise remains. I would like to see 1) this run 2) a run with these frames but f_low = 40Hz 3) a run with the usual frames and f_low=20Hz 4) a run with the usual frames with f_low=50Hz",
         "glitch_request": "",
-        "glitch_result": "",
+        "glitch_result": "Bayeswave got rid of most of the noise at LHO, but some remaining.",
         "other": ""
     },
     "contacts": {
@@ -123,10 +123,10 @@
         "validator_email": "brennan.hughey@ligo.org",
         "expert_name": "Jess McIver",
         "expert_email": "jess.mciver@ligo.org",
-        "mitigation_name": "Ronaldas Macas",
-        "mitigation_email": "ronaldas.macas@ligo.org",
-        "review_name": "Ronaldas Macas",
-        "review_email": "ronaldas.macas@port.ac.uk",
+        "mitigation_name": "Laura Nuttall",
+        "mitigation_email": "laura.nuttall@port.ac.uk",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

@@ -56,9 +56,9 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
-                "noise_left": 1
+                "frame_type": "L1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
+                "noise_left": 0
             },
             "V1": {
                 "conclusion": 0,
@@ -98,12 +98,12 @@
         },
         "glitch_result": {
             "H1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN"
             },
             "L1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "L1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00"
             },
             "V1": {
                 "frame_type": "",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1: The presence of excess power ~0.1 sec before and after the event time. Glitchfind and Rayleigh have not passed the DQ issue. L1:  Little excess power was present ~2.5 sec before the event time. Stationarity has not passed in the DQ Issue. The excess power present around the event in both detectors is not overlapped.",
-        "review": "",
+        "review": "PE to also run with normal frames to check bayeswave subtraction",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -123,8 +123,8 @@
         "validator_email": "sudhagar.suyamprakasam@ligo.org",
         "expert_name": "Adrian Helmling-Cornell",
         "expert_email": "ahelmlin@uoregon.edu",
-        "mitigation_name": "Sophie Hourihane",
-        "mitigation_email": "sophie.hourihane@ligo.org",
+        "mitigation_name": "Laura Nuttall",
+        "mitigation_email": "laura.nuttall@port.ac.uk",
         "review_name": "Laura Nuttall",
         "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",

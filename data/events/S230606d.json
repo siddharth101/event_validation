@@ -39,15 +39,15 @@
         "review": {
             "duration": 8.0,
             "H1": {
-                "conclusion": 2,
+                "conclusion": 3,
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": 50,
+                "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 1
+                "frame_type": "H1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
+                "noise_left": 0
             },
             "L1": {
                 "conclusion": 1,
@@ -98,8 +98,8 @@
         },
         "glitch_result": {
             "H1": {
-                "frame_type": "H1_HOFT_C00",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN"
+                "frame_type": "H1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00"
             },
             "L1": {
                 "frame_type": "L1_HOFT_C00",
@@ -113,9 +113,9 @@
     },
     "comments": {
         "validation": "H1: GSpyNetTree DQ issue due to using old data set. Glitch find task passed but there is a glitch present 1.2 seconds after the event. In the Q transform of the original data, there is a glitch found 0.4 seconds before the event. This seems like excess noise, but it is not very loud.    L1: GSpyNetTree DQ issue due to using old data set. The rayleigh task failed indicating there is some variation in the PSD before the event. ",
-        "review": "glitch 1.2 seconds after merger, around 30-50Hz. Bayeswave unable to subtract. PE to also run using default settings since PE can't cut the analysis window to +1s rather than +2s.",
+        "review": "glitch 1.2 seconds after merger subtracted by Bayeswave. PE to also perform a second run with normal channels to check the subtracted frame is fine",
         "glitch_request": "",
-        "glitch_result": "Bayeswave unable to subtract LHO glitch 1.2 seconds after merger",
+        "glitch_result": "",
         "other": ""
     },
     "contacts": {

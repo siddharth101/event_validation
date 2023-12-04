@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Omega_overlap finds noise overlaps with auxiliary channels for both H1 and L1; Glitch seen in H1 omegascan (even though not found by glitchfind) +2 s after the merger; Excess noises seconds before the merger in L1; Glitch in L1 omegascan (not detected by glitchfind) at +1.3 s that looks \u2018chirpy\u2019, no low significance event associated with it though.",
-        "review": "glitch in LHO right at +2s after event, not sure if this will be an issue. At LLO low level noise at 1378725261 at 200Hz which noise mitigation failed to remove. Come back to detchar if any issues in PE analysis",
+        "review": "glitch in LHO right at +2s after event, but I don't think this falls in analysis window so not an issue. At LLO low level noise at 1378725261 at 200Hz which noise mitigation failed to remove. Come back to detchar if any issues in PE analysis.",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

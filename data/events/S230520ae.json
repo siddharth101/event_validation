@@ -37,28 +37,28 @@
             }
         },
         "review": {
-            "duration": 1.0,
+            "duration": 8.0,
             "H1": {
-                "conclusion": 0,
+                "conclusion": 2,
                 "recommend_ifo": 1,
-                "analysis_tstart": 1368658132.0,
-                "analysis_tend": 1368658143.0,
-                "analysis_flow": 10,
-                "analysis_fhigh": 2048,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 0
+                "noise_left": 1
             },
             "L1": {
                 "conclusion": 3,
                 "recommend_ifo": 1,
-                "analysis_tstart": 1368658132.0,
-                "analysis_tend": 1368658143.0,
-                "analysis_flow": 10,
-                "analysis_fhigh": 2048,
-                "frame_type": "L1_HOFT_C00",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 1
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "L1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
+                "noise_left": 0
             },
             "V1": {
                 "conclusion": 0,
@@ -98,12 +98,12 @@
         },
         "glitch_result": {
             "H1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN"
             },
             "L1": {
-                "frame_type": "",
-                "channel": ""
+                "frame_type": "L1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00"
             },
             "V1": {
                 "frame_type": "",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Hanford: some excess noise between 60 and 110 Hz 0.3 seconds before the merger as seen in the glitchfind task scan, excess noise between 40 and 80 Hz, 0.43 seconds after the merger as seen in the first scan of the OmegaScan task. No large glitches. OmegaOverlap task failed. Livingston: Large glitch between 20 and 350 Hz, about 1.7 secs after merger as seen in the OmegaScan task. Glitchfind task passed but there is a loud glitch visible in the scan. OmegaOverlap task failed for both Hanford and Livingston but using Hveto I could not find evidence of correlation between the auxiliary channel and h(t)",
-        "review": "",
+        "review": "Glitch in LHO between 60 and 110 Hz at -0.3 seconds which we are not doing anything about. PE to also perform a second run with default channels and frames.",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
@@ -123,8 +123,8 @@
         "validator_email": "siddharth.soni@ligo.org",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",
-        "mitigation_name": "Ronaldas Macas",
-        "mitigation_email": "ronaldas.macas@ligo.org",
+        "mitigation_name": "Laura Nuttall",
+        "mitigation_email": "laura.nuttall@port.ac.uk",
         "review_name": "Laura Nuttall",
         "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Ronaldas Macas",

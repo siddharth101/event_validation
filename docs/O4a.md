@@ -32,21 +32,25 @@ Currently we split the shifts at 4pm UTC time.
 | August 16   | Zach Yarbrough                 | Sudhagar Suyamprakasam  | Adrian HC               | S230819ax, S230820bq, S230822bm |[AHC](https://dcc.ligo.org/LIGO-T2300343)       | |
 | August 23   | Adrian Helmling-Cornell        | Jane Glanzer            | Jess McIver             | S230824r, S230825k, S230830b | [SS](https://dcc.ligo.org/DocDB/0190/G2301962/001/EV_S230824r_S230825k_S230830b.pdf) | Sudhagar S validated the events |
 | August 30   | Amber Stuver                   | Shivaraj Kandhasamy     | Brennan Hughey          | S230831e, S230904n | [AS](https://dcc.ligo.org/LIGO-G2302015) | |
-| Sept 6      | Manasadevi Thirugnanasambandam | Caitlin Rawcliffe       | Andrew Lundgren         | S230911ae |       | |
+| Sept 6      | Manasadevi Thirugnanasambandam | Caitlin Rawcliffe       | Andrew Lundgren         | S230911ae |  [MT](https://dcc.ligo.org/LIGO-G2400199) | |
 | Sept 13     | Samuel Salvador                | Dishari Malakar         | Adrian Helmling-Cornell | S230914ak, S230919bj, S230920al | [DM](https://dcc.ligo.org/G2301996)  | |
 | Sept 20     | Sudhagar Suyamprakasam         | Anupreeta More          | Derek Davis             | S230922g, S230922q, S230924an, S230927li, S230927be | [SS](https://dcc.ligo.org/G2302036-v1) | |
 | Sept 27     | Tabata Ferreira                | Tabata Ferreira         | Jess McIver             | S230928cb, S230930al, S231001aq | [TF](https://dcc.ligo.org/LIGO-G2302063) | |
 | Oct 4       | Shivaraj Kandhasamy            | Shivaraj Kandhasamy     | Laura Nuttall           | S231005j, S231005ah, S231008ap | [SK](https://dcc.ligo.org/G2302165) | |
 | Oct 11      | Shania Nichols                 | Shania Nichols          | Brennan Hughey          | S231014r | [SN](https://dcc.ligo.org/LIGO-G2302097) | |
 | Oct 18      | Dishari Malakar                | Dishari Malakar         | Jess McIver             | S231020ba, S231020bw | [DM](https://dcc.ligo.org/DocDB/0190/G2302136/001/Validation.pdf) | |
-| Oct 25      | Jane Glanzer                   | Jane Glanzer		 | Adrian Helmling-Cornell | S231028bg, S231029y |       | |
+| Oct 25      | Jane Glanzer                   | Jane Glanzer		 | Adrian Helmling-Cornell | S231028bg, S231029y | [JG](https://dcc.ligo.org/G2400178) | |
 | Nov 1       | Dishari Malakar                | Dishari Malakar         | Andrew Lundgren         | S231102w, S231104ac, S231108u | [DM](https://dcc.ligo.org/G2302207) | |
 | Nov 8       | Andre Guimaraes                | Andre Guimaraes         | Laura Nuttall           | S231110g, S231112a, S231113bb, S231113bw, S231114n |       | |
-| Nov 15      | Debasmita Nandi                | Debasmita Nandi         | Derek Davis             | S231118d, S231118ab, S231118an, S231119u |       | |
-| Nov 22      | Manasadevi Thirugnanasambandam   | Manasadevi Thirugnanasambandam | Laura Nuttall  | S231123cg, S231127cg |       | |
-| Nov 29      | Sudhagar Suyamprakasam | Sudhagar Suyamprakasam | Jess McIver |     |  |  |
-| Dec 6       | Zach Yarbrough         | Zach Yarbrough         | Brennan Hughey|    |  |  |
-| Dec 13      | Adrian Helmling-Cornell | Adrian Helmling-Cornell |  |    |  |  |
+| Nov 15      | Debasmita Nandi                | Debasmita Nandi         | Derek Davis             | S231118d, S231118ab, S231118an, S231119u | [DN](https://dcc.ligo.org/G2400035) | |
+| Nov 22      | Manasadevi Thirugnanasambandam   | Manasadevi Thirugnanasambandam | Laura Nuttall  | S231123cg, S231127cg, S231129ac |  [MT](https://dcc.ligo.org/LIGO-G2400201) | |
+| Nov 29      | Sudhagar Suyamprakasam | Sudhagar Suyamprakasam | Jess McIver |  |  |  |
+| Dec 6       | Zach Yarbrough         | Zach Yarbrough         | Brennan Hughey| S231206ca, S231206cc | [ZY](https://docs.google.com/presentation/d/1YLovIhNdgIVt83VkGMR3beFYXd5XWHuJQlH7mj-46TY/edit?usp=sharing)  |  |
+| Dec 13      | Adrian Helmling-Cornell | Adrian Helmling-Cornell | Laura Nuttall | S231213ap | [AHC](https://docs.google.com/presentation/d/1kQZpNSr3iykxQcfUuaCW0u9xXdVCFqrby8Nv0AHTc9s/edit?usp=sharing) |  |
+| Dec 20      | Sudhagar Suyamprakasam  | Sudhagar Suyamprakasam  | Jess McIver   | S231223j, S231224e, S231226av | [SS](https://dcc.ligo.org/G2400004) |  |
+| Dec 27      | Sudhagar Suyamprakasam  | Sudhagar Suyamprakasam  | Adrian Helmling-Cornell | S231231ag | [SS](https://dcc.ligo.org/G2400004) |  |
+| Jan 3       | Kaylah McGowan          | Kaylah McGowan          | Derek Davis   | S240104bl, S240107b, S240109a |  |  |
+| Jan 10      | Samuel Salvador         | Samuel Salvador         | Jess McIver   |    |  |  |
 
 
 ## Events

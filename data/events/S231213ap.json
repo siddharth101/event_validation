@@ -1,27 +1,27 @@
 {
-    "event_name": "S231127cg",
+    "event_name": "S231213ap",
     "status": 1,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S231127cg",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231127",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231127cg/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/237",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231127cg"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231213ap",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231213",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231213ap/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/241",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231213ap"
     },
     "forms": {
         "validation": {
             "H1": {
                 "conclusion": 1,
                 "low_noise": 1,
-                "noise_tstart": "1385139192",
-                "noise_tend": "1385139196",
-                "noise_flow": "15",
-                "noise_fhigh": "50"
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "L1": {
                 "conclusion": 1,
-                "low_noise": 1,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,43 +37,43 @@
             }
         },
         "review": {
-            "duration": 8.0,
+            "duration": "",
             "H1": {
-                "conclusion": 2,
-                "recommend_ifo": 1,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": 50,
-                "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 1
-            },
-            "L1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": null,
-                "analysis_fhigh": null,
-                "frame_type": "L1_HOFT_C00",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 0
-            },
-            "V1": {
-                "conclusion": 0,
-                "recommend_ifo": 0,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": null,
-                "analysis_fhigh": null,
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
                 "frame_type": "",
                 "channel": "",
-                "noise_left": 0
+                "noise_left": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
             }
         },
         "glitch_request": {
-            "t0": 1385139198.882199,
+            "t0": 1386501275.914062,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,15 +112,15 @@
         }
     },
     "comments": {
-        "validation": "Both H1 and L1 observing. H1 Stationarity dqr task failed due to glitches at -6s to -2s before t0",
-        "review": "some noise in LLO outside of 8s window, so if window is extended please come back to detchar",
+        "validation": "H1 iDQ task gives p-value below threshold. After checking consistency between glitching channel and strain as well as glitching channel glitch rate, we determined that this does not present a DQ issue.",
+        "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Manasadevi Thirugnanasambandam",
-        "validator_email": "manasadevi.thirugnanasambandam@ligo.org",
+        "validator_name": "Adrian Helmling-Cornell",
+        "validator_email": "adrian.helmling-cornell@ligo.org",
         "expert_name": "Laura Nuttall",
         "expert_email": "laura.nuttall@port.ac.uk",
         "mitigation_name": "Sophie Hourihane",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202311/S231127cg/ --superevent_url https://gracedb.ligo.org//superevents/S231127cg --ignore_far --event_name S231127cg --t0 1385139198.882199 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231213ap/ --superevent_url https://gracedb.ligo.org//superevents/S231213ap --ignore_far --event_name S231213ap --t0 1386501275.914062 --send_email --create_issue"
 }

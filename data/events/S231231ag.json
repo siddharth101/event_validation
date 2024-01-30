@@ -1,18 +1,18 @@
 {
-    "event_name": "S231020ba",
+    "event_name": "S231231ag",
     "status": 2,
     "reviewed": 1,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S231020ba",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231020",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020ba/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/220",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231020ba"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231231ag",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231231",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231231ag/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/245",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231231ag"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
+                "conclusion": 1,
                 "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
@@ -20,8 +20,8 @@
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 1,
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,27 +37,27 @@
             }
         },
         "review": {
-            "duration": 32.0,
+            "duration": 8.0,
             "H1": {
-                "conclusion": 2,
-                "recommend_ifo": 1,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": 45,
-                "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 1
-            },
-            "L1": {
                 "conclusion": 1,
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "L1_HOFT_C00",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
+            },
+            "L1": {
+                "conclusion": 0,
+                "recommend_ifo": 0,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "",
+                "channel": "",
                 "noise_left": 0
             },
             "V1": {
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1381847405.583496,
+            "t0": 1388072434.669984,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,15 +112,15 @@
         }
     },
     "comments": {
-        "validation": "Glitchfind & stationarity tasks failed for H1, and stationarity failed for L1. But there no noise in the signal box, so no noise mitigation required for both.",
-        "review": "After feedback with PE experts in issue no. 69 I am updating the LHO recommendation to a min freq of 45Hz",
+        "validation": "H1 doesn't have data quality issues. L1 was not observing.",
+        "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Dishari Malakar",
-        "validator_email": "dishari.malakar@ligo.org",
+        "validator_name": "Sudhagar Suyamprakasam",
+        "validator_email": "sudhagar.suyamprakasam@ligo.org",
         "expert_name": "Jess McIver",
         "expert_email": "jess.mciver@ligo.org",
         "mitigation_name": "Sophie Hourihane",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020ba/ --superevent_url https://gracedb.ligo.org//superevents/S231020ba --ignore_far --event_name S231020ba --t0 1381847405.583496 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231231ag/ --superevent_url https://gracedb.ligo.org//superevents/S231231ag --ignore_far --event_name S231231ag --t0 1388072434.669984 --send_email --create_issue"
 }

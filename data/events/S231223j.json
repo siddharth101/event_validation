@@ -1,26 +1,26 @@
 {
-    "event_name": "S231020ba",
-    "status": 2,
-    "reviewed": 1,
+    "event_name": "S231223j",
+    "status": 1,
+    "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S231020ba",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231020",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020ba/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/220",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231020ba"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231223j",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231223",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231223j/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/242",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231223j"
     },
     "forms": {
         "validation": {
             "H1": {
                 "conclusion": 2,
                 "low_noise": 1,
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "noise_tstart": "1387337332.54",
+                "noise_tend": "1387337332.74",
+                "noise_flow": "10",
+                "noise_fhigh": "42"
             },
             "L1": {
-                "conclusion": 2,
+                "conclusion": 1,
                 "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
@@ -37,17 +37,17 @@
             }
         },
         "review": {
-            "duration": 32.0,
+            "duration": 8.0,
             "H1": {
-                "conclusion": 2,
+                "conclusion": 3,
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": 45,
+                "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 1
+                "frame_type": "",
+                "channel": "",
+                "noise_left": 0
             },
             "L1": {
                 "conclusion": 1,
@@ -73,27 +73,27 @@
             }
         },
         "glitch_request": {
-            "t0": 1381847405.583496,
+            "t0": 1387337334.047106,
             "H1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 1,
+                "noise_tstart": 1387337333.5,
+                "noise_tend": 1387337333.8,
+                "noise_flow": 10,
+                "noise_fhigh": 25
             },
             "L1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             },
             "V1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             }
         },
         "glitch_result": {
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "Glitchfind & stationarity tasks failed for H1, and stationarity failed for L1. But there no noise in the signal box, so no noise mitigation required for both.",
-        "review": "After feedback with PE experts in issue no. 69 I am updating the LHO recommendation to a min freq of 45Hz",
+        "validation": "The excess power was present around -6 s, -0.4 s, and 6s at H1 and exists in the 18-32 Hz frequency range. The glitch find identified ~0.4 s excess power. No data quality issues in the L1. The presence of excess power at ~6.5 s to 7.5 s in the frequency band 10-40 Hz.",
+        "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Dishari Malakar",
-        "validator_email": "dishari.malakar@ligo.org",
-        "expert_name": "Jess McIver",
-        "expert_email": "jess.mciver@ligo.org",
+        "validator_name": "Sudhagar Suyamprakasam",
+        "validator_email": "sudhagar.suyamprakasam@ligo.org",
+        "expert_name": "Derek Davis",
+        "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020ba/ --superevent_url https://gracedb.ligo.org//superevents/S231020ba --ignore_far --event_name S231020ba --t0 1381847405.583496 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231223j/ --superevent_url https://gracedb.ligo.org//superevents/S231223j --ignore_far --event_name S231223j --t0 1387337334.047106 --send_email --create_issue"
 }

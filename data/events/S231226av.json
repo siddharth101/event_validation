@@ -1,18 +1,18 @@
 {
-    "event_name": "S231020ba",
+    "event_name": "S231226av",
     "status": 2,
     "reviewed": 1,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S231020ba",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231020",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020ba/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/220",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231020ba"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231226av",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231226",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231226av/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/244",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231226av"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
+                "conclusion": 1,
                 "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
@@ -20,7 +20,7 @@
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
+                "conclusion": 1,
                 "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
@@ -37,17 +37,17 @@
             }
         },
         "review": {
-            "duration": 32.0,
+            "duration": 4.0,
             "H1": {
-                "conclusion": 2,
+                "conclusion": 1,
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": 45,
+                "analysis_flow": null,
                 "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
-                "noise_left": 1
+                "noise_left": 0
             },
             "L1": {
                 "conclusion": 1,
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1381847405.583496,
+            "t0": 1387620938.305845,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "Glitchfind & stationarity tasks failed for H1, and stationarity failed for L1. But there no noise in the signal box, so no noise mitigation required for both.",
-        "review": "After feedback with PE experts in issue no. 69 I am updating the LHO recommendation to a min freq of 45Hz",
+        "validation": "iDQ failed for H1. Excess noise power is present in the frequency range 10 - 40 Hz in H1 at multiple time instances in the +8 and - 8 s duration from the event time, and it does not overlap with the candidate signal.  L1 doesn't have data quality issues. The presence of excess power at ~5.5s to 6 s in the frequency band 10-20 Hz.",
+        "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Dishari Malakar",
-        "validator_email": "dishari.malakar@ligo.org",
-        "expert_name": "Jess McIver",
-        "expert_email": "jess.mciver@ligo.org",
+        "validator_name": "Sudhagar Suyamprakasam",
+        "validator_email": "sudhagar.suyamprakasam@ligo.org",
+        "expert_name": "Brennan Hughey",
+        "expert_email": "brennan.hughey@ligo.org",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Laura Nuttall",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202310/S231020ba/ --superevent_url https://gracedb.ligo.org//superevents/S231020ba --ignore_far --event_name S231020ba --t0 1381847405.583496 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231226av/ --superevent_url https://gracedb.ligo.org//superevents/S231226av --ignore_far --event_name S231226av --t0 1387620938.305845 --send_email --create_issue"
 }

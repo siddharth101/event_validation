@@ -1,7 +1,7 @@
 {
     "event_name": "S230709bi",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230709bi",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230709",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Both H1 and L1 were in observing mode. It is a relatively high-mass BBH event. At H1, we see some data quality issues. Fast-scattering glitches are present around the event time. The glitchfind tool identifies many of these excess power bins in the Omegacan. Here, I have reported excess power bins within the four-second interval around the event.  At L1, all the tasks reported passed. The omega scan looks clean.",
-        "review": "PE to also run with default settings",
+        "review": "After feedback with PE (issue no. 23) we have decided to keep fmin=50 Hz at LHO due to extended noise. ",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

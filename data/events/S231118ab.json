@@ -1,7 +1,7 @@
 {
     "event_name": "S231118ab",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S231118ab",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231118",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "There are some low frequency glitches ~3-5 seconds before the event at Hanford",
-        "review": "Please also run with default PE settings, Noise present in Hanford below 50 Hz",
+        "review": "After feedback with PE (issue no. 84) we are keeping the fmin at LHO = 50Hz due to extended noise.",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

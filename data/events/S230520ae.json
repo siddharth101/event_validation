@@ -1,7 +1,7 @@
 {
     "event_name": "S230520ae",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230520ae",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230520",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Hanford: some excess noise between 60 and 110 Hz 0.3 seconds before the merger as seen in the glitchfind task scan, excess noise between 40 and 80 Hz, 0.43 seconds after the merger as seen in the first scan of the OmegaScan task. No large glitches. OmegaOverlap task failed. Livingston: Large glitch between 20 and 350 Hz, about 1.7 secs after merger as seen in the OmegaScan task. Glitchfind task passed but there is a loud glitch visible in the scan. OmegaOverlap task failed for both Hanford and Livingston but using Hveto I could not find evidence of correlation between the auxiliary channel and h(t)",
-        "review": "Glitch in LHO between 60 and 110 Hz at -0.3 seconds which we are not doing anything about. PE to also perform a second run with default channels and frames.",
+        "review": "Glitch in LHO between 60 and 110 Hz at -0.3 seconds which we are not doing anything about",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

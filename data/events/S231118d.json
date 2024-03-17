@@ -1,7 +1,7 @@
 {
     "event_name": "S231118d",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S231118d",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231118",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "All tasks are passed, however there are glitches around the event both in L1 and H1.",
-        "review": "Please also run with default PE settings, Noise present in Hanford below 30 Hz",
+        "review": "Extended noise in LHO below 30 Hz. PE (Issue no. 83) have performed fmin at 20 and 30 Hz and don't find much difference. Since noise is extended we'll be conservative with this one and keep fmin at 30Hz.",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

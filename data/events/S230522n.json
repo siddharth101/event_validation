@@ -1,7 +1,7 @@
 {
     "event_name": "S230522n",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230522n",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230522",

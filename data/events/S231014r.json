@@ -1,7 +1,7 @@
 {
     "event_name": "S231014r",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S231014r",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231014",

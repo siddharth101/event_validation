@@ -1,7 +1,7 @@
 {
     "event_name": "S230731an",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230731an",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230731",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1 DQ issues, L1 clean data, V1 not observing. H1 has short duration noise bursts at low frequencies, probably not bayeswave-subtractable. Recommend truncating analysis window by starting PE at -6.5s. See the GitLab issue for more info and plots.",
-        "review": "Noise in LHO around -24s and -6.5s in the 10-40Hz range. The noise doesn't look terrible settings",
+        "review": "After feedback with PE (issue no. 31) we will keep fmin=40Hz at LHO due to extended noise",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

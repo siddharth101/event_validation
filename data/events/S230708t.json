@@ -1,7 +1,7 @@
 {
     "event_name": "S230708t",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230708t",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230708",
@@ -43,7 +43,7 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": null,
+                "analysis_flow": 20,
                 "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00_BAYESWAVE_S00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "Low frequency noise H1 already the subject of extensive discussion between PE and DetChar Lvl 1 RRT; Dubious whether this will appear in offline analysis",
-        "review": "Bayeswave has removed a lot of the noise at LHO around the event time. But some noise remains. I would like to see 1) this run 2) a run with these frames but f_low = 40Hz 3) a run with the usual frames and f_low=20Hz 4) a run with the usual frames with f_low=50Hz",
+        "review": "After consultation with PE, we have decided that a 20Hz fmin at LHO is sufficient given the bayeswave subtraction.",
         "glitch_request": "",
         "glitch_result": "Bayeswave got rid of most of the noise at LHO, but some remaining.",
         "other": ""

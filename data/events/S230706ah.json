@@ -1,7 +1,7 @@
 {
     "event_name": "S230706ah",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230706ah",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230706",
@@ -43,7 +43,7 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": 30,
+                "analysis_flow": 20,
                 "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1 noise box above track ending a few seconds before coalescence, but no really significant DQ issues",
-        "review": "Some noise in LHO above signal track - around -9 seconds at 20-30Hz. PE to also run with default settings.",
+        "review": "Some noise in LHO above signal track - around -9 seconds at 20-30Hz. PE runs show no significant different between fmin at LHO of 20 and 30 Hz. Therefore I think it's fine to use the lower frequency since this noise isn't bad",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

@@ -1,7 +1,7 @@
 {
     "event_name": "S230606d",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org/superevents/S230606d",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230606",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1: GSpyNetTree DQ issue due to using old data set. Glitch find task passed but there is a glitch present 1.2 seconds after the event. In the Q transform of the original data, there is a glitch found 0.4 seconds before the event. This seems like excess noise, but it is not very loud.    L1: GSpyNetTree DQ issue due to using old data set. The rayleigh task failed indicating there is some variation in the PSD before the event. ",
-        "review": "glitch 1.2 seconds after merger subtracted by Bayeswave. PE to also perform a second run with normal channels to check the subtracted frame is fine",
+        "review": "LHO bayeswave subtracted has been tested by PE and is fine to use. Finalising recommendations with this frame",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

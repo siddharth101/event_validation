@@ -1,7 +1,7 @@
 {
     "event_name": "S230930al",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230930al",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230930",
@@ -43,7 +43,7 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": 30,
+                "analysis_flow": 20,
                 "analysis_fhigh": null,
                 "frame_type": "H1_HOFT_C00",
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1: Glitchfind presented no DQ issues, but we can see two glitches: one 1.5 in the 15-30Hz range 1.5 seconds prior to the candidate time, and another one around 11 seconds before. GSpyNetTree shows a (very) different spectrogram from Omegascan, and the template is too long. L1: The glitchfind task presents a DQ issue, but there are no loud glitches around the event. Actually, it is even difficult to see the chirp shape due to the low SNR. The GSpyNetTree, on the other hand, didn\u2019t show any DQ issues, but it classified the candidate as LowFrequencyLines with a 43% probability, which we personally agree looking at the spectrogram. ",
-        "review": "Some minor glitching in LHO around -1.5s. PE please also fun with default settings.",
+        "review": "Some minor glitching in LHO around -1.5s, but after the PE investigation in issue no. 61 the low freq recommendation at LHO has been dropped to 20Hz",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

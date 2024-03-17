@@ -45,13 +45,13 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
+                "frame_type": "H1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
                 "noise_left": 0
             },
             "L1": {
                 "conclusion": 1,
-                "recommend_ifo": 1,
+                "recommend_ifo": 0,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "The excess power was present around -6 s, -0.4 s, and 6s at H1 and exists in the 18-32 Hz frequency range. The glitch find identified ~0.4 s excess power. No data quality issues in the L1. The presence of excess power at ~6.5 s to 7.5 s in the frequency band 10-40 Hz.",
-        "review": "",
+        "review": "PE please do another run with the deglitched frame and compare to the original frames to check the new frame results make sense",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

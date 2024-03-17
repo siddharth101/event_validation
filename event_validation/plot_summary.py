@@ -29,6 +29,7 @@ retracted = 0
 ev = 0
 glitch_sub_req_not_finalized = 0
 review = 0
+pe = 0
 
 for idx, val in enumerate(finalized):
 
@@ -51,6 +52,8 @@ for idx, val in enumerate(finalized):
             glitch_sub_req_not_finalized += 1
         elif iloc == "Revi":
             review += 1
+        elif iloc == 'PE (':
+            pe +=1
 
 ## PLOTS
 # total
@@ -76,12 +79,20 @@ plt.title('Finalized events')
 plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_finalized.png', dpi=200)
 
 # not finalized
-not_finalized = np.array([ev, glitch_sub_req_not_finalized, review])
-labels = ['Event validation', 'Glitch subtraction', 'Review']
-
+not_finalized = np.array([ev, glitch_sub_req_not_finalized, review, pe])
+labels = ['Event \n validation', 'Glitch \n subtraction', 'Review', 'PE']
 plt.figure()
-plt.pie(not_finalized, labels=labels,
-        autopct=lambda x: '{:.0f}'.format(x*not_finalized.sum()/100))
-plt.axis('equal')
+plt.bar(labels, not_finalized)
 plt.title('Next step for not finalized events')
+plt.grid(False)
 plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_not_finalized.png', dpi=200)
+
+#not_finalized = np.array([ev, glitch_sub_req_not_finalized, review])
+#labels = ['Event validation', 'Glitch subtraction', 'Review']
+
+#plt.figure()
+#plt.pie(not_finalized, labels=labels,
+#        autopct=lambda x: '{:.0f}'.format(x*not_finalized.sum()/100))
+#plt.axis('equal')
+#plt.title('Next step for not finalized events')
+#plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_not_finalized.png', dpi=200)

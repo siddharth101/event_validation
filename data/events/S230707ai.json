@@ -56,8 +56,8 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "L1_HOFT_C00",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "frame_type": "L1_HOFT_C00_AR",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_AR",
                 "noise_left": 0
             },
             "V1": {
@@ -102,8 +102,8 @@
                 "channel": "H1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00"
             },
             "L1": {
-                "frame_type": "L1_HOFT_C00",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN"
+                "frame_type": "L1_HOFT_C00_AR",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_AR"
             },
             "V1": {
                 "frame_type": "",

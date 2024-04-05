@@ -317,23 +317,23 @@ def gen_json_dict(event_info, wdir=None):
     for i in ParticipatingDetectors:
         uid = i
 
-        if glitch_mit[i]['noise_flow']:
-            rec_min_freq = glitch_mit[i]['noise_flow']
+        if glitch_rev[i]['analysis_flow']:
+            rec_min_freq = glitch_rev[i]['analysis_flow']
         else:
             rec_min_freq = 20
 
-        if glitch_mit[i]['noise_fhigh']:
-            rec_max_freq = glitch_mit[i]['noise_fhigh']
+        if glitch_rev[i]['analysis_fhigh']:
+            rec_max_freq = glitch_rev[i]['analysis_fhigh']
         else:
             rec_max_freq = np.NaN
 
-        if glitch_mit[i]['noise_tstart']:
-            rec_t_start = glitch_mit[i]['noise_tstart']
+        if glitch_rev[i]['analysis_tstart']:
+            rec_t_start = glitch_rev[i]['analysis_tstart']
         else:
             rec_t_start = np.NaN
 
-        if glitch_mit[i]['noise_tend']:
-            rec_t_end = glitch_mit[i]['noise_tend']
+        if glitch_rev[i]['analysis_tend']:
+            rec_t_end = glitch_rev[i]['analysis_tend']
         else:
             rec_t_end = np.NaN
 

@@ -42,4 +42,31 @@ See the DetChar Rapid Response Team guide [here](https://wiki.ligo.org/DetChar/O
 | November 22  | Laura Nuttall           |                       |
 | November 29  | Jess McIver             |                       |
 | December 6   | Brennan Hughey          |                       |
+| December 13  | Laura Nuttall           |                       |
+| December 14  | Laura Nuttall           |                       |
+| December 15  | Adrian Helmling-Cornell |                       |
+| December 16  | Adrian Helmling-Cornell |                       |
+| December 17  | Laura Nuttall           |                       |
+| December 18  | Adrian Helmling-Cornell |                       |
+| December 19  | Adrian Helmling-Cornell |                       |
+| December 20  | Laura Nuttall           |                       |
+| December 21  | Laura Nuttall           |                       |
+| December 22  | Derek Davis             |                       |
+| December 23  | Jess McIver             |                       |
+| December 24  | Jess McIver             |                       |
+| December 25  | Brennan Hughey          |                       |
+| December 26  | Jess McIver             |                       |
+| December 28  | Adrian Helmling-Cornell |                       |
+| December 30  | Brennan Hughey          |                       |
+| January  1   | Jess McIver             |                       |
+| January 3    | Derek Davis             |                       |
+| January 10   | Jess McIver             |                       |
 
+## O4b rota
+| Week         | Person                  | Notes                 |
+|--------------|-------------------------|-----------------------|
+| April 10     | Derek Davis             |                       |
+| April 17     |                         |                       |
+| April 24     |                         |                       |
+| May 1        |                         |                       |
+| May 8        |                         |                       |

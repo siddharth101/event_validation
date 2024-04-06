@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 parser = argparse.ArgumentParser(description='Optional app description')
 
 # Required positional argument
-parser.add_argument('--fname', required=False, type=str, help='full filename path of the csv summary file', default='/home/dqr/event-validation/data/events_O4a.csv')
+parser.add_argument('--fname', required=False, type=str, help='full filename path of the csv summary file', default='/home/dqr/event-validation/data/events_O4b.csv')
 parser.add_argument('--git_dir', required=False, type=str, help='git directory path', default='/home/dqr/event-validation')
-parser.add_argument('--prefix', required=False, type=str, help='prefix for output plots', default='O4a')
+parser.add_argument('--prefix', required=False, type=str, help='prefix for output plots', default='O4b')
 args = parser.parse_args()
 
 # read the csv summary file

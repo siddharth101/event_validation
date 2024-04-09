@@ -18,7 +18,7 @@ Sign up for the event validation rota [right here](https://docs.google.com/docum
 
 | Week        | Volunteer (main)        | Volunteer (backup)  | DetChar expert | Events | DetChar presentations | Notes |
 |-------------|-------------------------|---------------------|----------------|--------|-------|--------|
-| April 10    |                         |                     | Derek Davis, Francesco Di Renzo| | |    | 
+| April 10    | Beverly Berger          |                     | Derek Davis, Francesco Di Renzo| | |    | 
 | April 17    | Adrian Helmling-Cornell |                     |                |        |       |        |
 | April 24    | Dishari Malakar         |                     |                |        |       |        |
 | May 1       | Yanyan Zheng            |                     |                |        |       |        |

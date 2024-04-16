@@ -1,35 +1,35 @@
 {
-    "event_name": "S240406aj",
-    "status": 1,
+    "event_name": "S240413p",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S240406aj",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240406",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202404/S240406aj/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/249",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240406aj"
+        "gracedb": "https://gracedb.ligo.org//superevents/S240413p",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240413",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202404/S240413p/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/250",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240413p"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
-                "low_noise": 1,
-                "noise_tstart": "1396420137",
-                "noise_tend": "1396420148",
-                "noise_flow": "10",
-                "noise_fhigh": "2048"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 1,
-                "noise_tstart": "1396420137",
-                "noise_tend": "1396420148",
-                "noise_flow": "10",
-                "noise_fhigh": "2048"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1396420145.896816,
+            "t0": 1397010037.851562,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "Data for both H1 and L1 look clean with some slight noise excesses (H1: -1.5 s and -1.0s; L1: -2.0 s) but not significant and not really glitchy. The stationarity test for L1 did not pass as some noise excess has been found around 40 Hz (related to the excess noise mentioned at -2 s); Noise mitigation might not be necessary so I report the entire time segment and frequency band.",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202404/S240406aj/ --superevent_url https://gracedb.ligo.org//superevents/S240406aj --ignore_far --event_name S240406aj --t0 1396420145.896816 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202404/S240413p/ --superevent_url https://gracedb.ligo.org//superevents/S240413p --ignore_far --event_name S240413p --t0 1397010037.851562 --send_email --create_issue"
 }

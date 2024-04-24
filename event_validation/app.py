@@ -600,7 +600,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     # send results to CBCFlow
                     ev_info = get_event_properties(gid, wdir)
                     dict_ev_info = gen_json_dict(ev_info, wdir)
-                    library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-o4a"
+                    library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-er16-o4b"
                     library = LocalLibraryDatabase(library_path)
                     library.git_pull_from_remote(automated=True)
                     metadata = get_superevent(gid, library)
@@ -706,7 +706,7 @@ def create_app(url, wdir, event_list, website_md, notify):
                     # send results to CBCFlow
                     ev_info = get_event_properties(gid, wdir)
                     dict_ev_info = gen_json_dict(ev_info, wdir)
-                    library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-o4a"
+                    library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-er16-o4b"
                     library = LocalLibraryDatabase(library_path)
                     library.git_pull_from_remote(automated=True)
                     metadata = get_superevent(gid, library)

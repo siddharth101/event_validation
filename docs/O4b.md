@@ -18,9 +18,9 @@ Sign up for the event validation rota [right here](https://docs.google.com/docum
 
 | Week        | Volunteer (main)        | Volunteer (backup)  | DetChar expert | Events | DetChar presentations | Notes |
 |-------------|-------------------------|---------------------|----------------|--------|-------|--------|
-| April 3     | Samuel Salvador         |                     | Derek Davis, Francesco Di Renzo | [S240406aj](https://gracedb.ligo.org/superevents/S240406aj/view/) |  | ER16 |
+| April 3     | Samuel Salvador         |                     | Derek Davis, Francesco Di Renzo | [S240406aj](https://gracedb.ligo.org/superevents/S240406aj/view/) | [SS](https://dcc.ligo.org/G2400982) | ER16 |
 | April 10    | Beverly Berger          |                     | Derek Davis, Francesco Di Renzo| [S240413p](https://gracedb.ligo.org/superevents/S240413p/view/) |  |    | 
-| April 17    | Adrian Helmling-Cornell |                     | Jess McIver, Francesco Di Renzo | [S240420aw](https://gracedb.ligo.org/superevents/S240420aw/view/) [R], [S240421ar](https://gracedb.ligo.org/superevents/S240421ar/view/) |       |        |
+| April 17    | Adrian Helmling-Cornell |                     | Jess McIver, Francesco Di Renzo | [S240420aw](https://gracedb.ligo.org/superevents/S240420aw/view/) [R], [S240421ar](https://gracedb.ligo.org/superevents/S240421ar/view/), [S240422ed](https://gracedb.ligo.org/superevents/S240422ed/view/), [S240423br](https://gracedb.ligo.org/superevents/S240423br/view/) [R] |       |        |
 | April 24    | Dishari Malakar         |                     | Brennan Hughey, Francesco Di Renzo |        |       |        |
 | May 1       | Yanyan Zheng            |                     |                |        |       |        |
 | May 8       | Anupreeta More          |                     |                |        |       |        |

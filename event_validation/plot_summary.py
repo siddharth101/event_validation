@@ -16,7 +16,7 @@ csv = pd.read_csv(args.fname)
 
 ## STATS
 finalized = []
-for final_bool in csv['Finalized']:
+for final_bool in csv.get('Finalized',[]):
     finalized.append(1) if final_bool == 'Yes' else finalized.append(0)
 
 # counters for finalized events
@@ -71,12 +71,19 @@ plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_total.png', dpi=200)
 finalized = np.array([no_dq_issues, glitch_sub_req, dq_issues_no_glitch_sub_req, retracted])
 labels = ['No DQ issues', 'Glitch subtraction required', 'DQ issues but no glitch subtraction required', 'Retracted']
 
-plt.figure()
-plt.pie(finalized, labels=labels,
-        autopct=lambda x: '{:.0f}'.format(x*finalized.sum()/100))
-plt.axis('equal')
-plt.title('Finalized events')
-plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_finalized.png', dpi=200)
+# Check if finalized events are present. Otherwise, don't try to make a pie from 0
+if finalized.any():
+    plt.figure()
+    plt.pie(finalized, labels=labels,
+            autopct=lambda x: '{:.0f}'.format(x*finalized.sum()/100))
+    plt.axis('equal')
+    plt.title('Finalized events')
+    plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_finalized.png', dpi=200)
+else:
+    fig, ax = plt.subplots(figsize=(5,5))
+    ax.text(.5,.5,"Coming soon...",ha="center",va="center",fontsize=36)
+    ax.axis('off')
+    fig.savefig(f'{args.git_dir}/docs/img/{args.prefix}_finalized.png', dpi=200)
 
 # not finalized
 not_finalized = np.array([ev, glitch_sub_req_not_finalized, review, pe])

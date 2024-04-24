@@ -63,10 +63,19 @@ See the DetChar Rapid Response Team guide [here](https://wiki.ligo.org/DetChar/O
 | January 10   | Jess McIver             |                       |
 
 ## O4b rota
-| Week         | Person                  | Notes                 |
-|--------------|-------------------------|-----------------------|
-| April 10     | Derek Davis             |                       |
-| April 17     |                         |                       |
-| April 24     |                         |                       |
-| May 1        |                         |                       |
-| May 8        |                         |                       |
+In O4b, we have established a joint LIGO-Virgo ROTA of DetChar experts, with two daily timeslots with individuals from both the Eastern and Western hemispheres. This ensures their availability in support of RRT shifters during daytime hours, for prompt and effective service.
+
+| Week         |  Eastern Hemisphere DetChar| Western Hemisphere DetChar | Notes    |
+|--------------|-------------------------|-----------------------|------------------|
+| April 10     |  Francesco Di Renzo     |   Derek Davis         |   |
+| April 17     |  Francesco Di Renzo     |   Jass McIver         |   |
+| April 24     |  Francesco Di Renzo     |   Brennan Hughuey     |   |
+| May 1        |  Francesco Di Renzo     |                       |   |
+| May 8        |                         |                       |   |
+| May 15       |                         |                       |   |
+| May 22       |                         |                       |   |
+| May 29       |                         |                       |   |
+| June 5       |                         |                       |   |
+| June 12      |                         |                       |   |
+| June 19      |                         |                       |   |
+

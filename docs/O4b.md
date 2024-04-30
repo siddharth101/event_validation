@@ -21,8 +21,8 @@ Sign up for the event validation rota [right here](https://docs.google.com/docum
 | April 3     | Samuel Salvador         |                     | Derek Davis, Francesco Di Renzo | [S240406aj](https://gracedb.ligo.org/superevents/S240406aj/view/) | [SS](https://dcc.ligo.org/G2400982) | ER16 |
 | April 10    | Beverly Berger          |                     | Derek Davis, Francesco Di Renzo| [S240413p](https://gracedb.ligo.org/superevents/S240413p/view/) |  |    | 
 | April 17    | Adrian Helmling-Cornell |                     | Jess McIver, Francesco Di Renzo | [S240420aw](https://gracedb.ligo.org/superevents/S240420aw/view/) [R], [S240421ar](https://gracedb.ligo.org/superevents/S240421ar/view/), [S240422ed](https://gracedb.ligo.org/superevents/S240422ed/view/), [S240423br](https://gracedb.ligo.org/superevents/S240423br/view/) [R] |       |        |
-| April 24    | Dishari Malakar         |                     | Brennan Hughey, Francesco Di Renzo |        |       |        |
-| May 1       | Yanyan Zheng            |                     |                |        |       |        |
+| April 24    | Dishari Malakar         |                     | Brennan Hughey, Francesco Di Renzo | [S240426s](https://gracedb.ligo.org/superevents/S240426s/view/), [S240426dl](https://gracedb.ligo.org/superevents/S240426dl/view/), [S240428dr](https://gracedb.ligo.org/superevents/S240428dr/view/), [S240429an](https://gracedb.ligo.org/superevents/S240429an/view/) [R], [S240430ca](https://gracedb.ligo.org/superevents/S240430ca/view/) |       |        |
+| May 1       | Yanyan Zheng            |                     | Francesco Di Renzo |        |       |        |
 | May 8       | Anupreeta More          |                     |                |        |       |        |
 | May 15      | Samuel Salvador         |                     |                |        |       |        |
 | May 22      | Amber Stuver            |                     |                |        |       |        |

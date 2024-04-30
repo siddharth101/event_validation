@@ -80,7 +80,7 @@ if finalized.any():
     plt.title('Finalized events')
     plt.savefig(f'{args.git_dir}/docs/img/{args.prefix}_finalized.png', dpi=200)
 else:
-    fig, ax = plt.subplots(figsize=(5,5))
+    fig, ax = plt.subplots(figsize=(5,4))
     ax.text(.5,.5,"Coming soon...",ha="center",va="center",fontsize=36)
     ax.axis('off')
     fig.savefig(f'{args.git_dir}/docs/img/{args.prefix}_finalized.png', dpi=200)

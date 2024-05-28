@@ -879,7 +879,7 @@ def main():
 
     app = create_app(url=args.url,
                      wdir=args.wdir,
-                     event_list=events_O4b.csv,
+                     event_list='events_O4b.csv',
                      website_md=args.table,
                      notify=args.send_email)
     app.run()

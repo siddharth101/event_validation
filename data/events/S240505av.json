@@ -13,7 +13,7 @@
         "validation": {
             "H1": {
                 "conclusion": 1,
-                "low_noise": 0,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -21,7 +21,7 @@
             },
             "L1": {
                 "conclusion": 1,
-                "low_noise": 0,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -29,7 +29,7 @@
             },
             "V1": {
                 "conclusion": 1,
-                "low_noise": 0,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "H1: bristol_L1 failed. Bristol evidence from a few HZ to kHz at 10 mins before the merger time. L1 and V1: No DQ issue; ",
+        "validation": "H1: bristol_L1 failed. Bristol evidence from a few HZ to kHz at 10 mins before the merger time. L1 and V1: No DQ issues.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

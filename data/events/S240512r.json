@@ -13,11 +13,11 @@
         "validation": {
             "H1": {
                 "conclusion": 2,
-                "low_noise": 0,
-                "noise_tstart": "1399516914.65",
-                "noise_tend": "1399516916.65",
-                "noise_flow": "30",
-                "noise_fhigh": "50"
+                "low_noise": 1,
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "L1": {
                 "conclusion": 1,

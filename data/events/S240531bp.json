@@ -1,6 +1,6 @@
 {
     "event_name": "S240531bp",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S240531bp",
@@ -12,28 +12,28 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 1,
+                "low_noise": 1,
+                "noise_tstart": "1401177186.063",
+                "noise_tend": "1401177186.263",
+                "noise_flow": "100",
+                "noise_fhigh": "130"
             }
         },
         "review": {
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "No DQ issues in any of the detectors. There is a noise present in V1. The signal is not quite visible in H1 and has low SNR in H1.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

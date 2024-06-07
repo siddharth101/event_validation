@@ -1,6 +1,6 @@
 {
     "event_name": "S240520cv",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S240520cv",
@@ -12,28 +12,28 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1400276189",
+                "noise_tend": "1400276193",
+                "noise_flow": "20",
+                "noise_fhigh": "40"
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1400276194",
+                "noise_tend": "1400276195",
+                "noise_flow": "70",
+                "noise_fhigh": "80"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1400276190",
+                "noise_tend": "1400276195",
+                "noise_flow": "30",
+                "noise_fhigh": "90"
             }
         },
         "review": {
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "All ITFs observing and in low noise. Bristol issue in H1 due to recent relock. Noise excesses in the low frequency part of the signal at -5 s and -3.2 s. L1 has a glitch_find issue as a glitch was clearly found very close to the event time and frequency. V1 has excess noises at -0.15 s and at -4.8 s.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

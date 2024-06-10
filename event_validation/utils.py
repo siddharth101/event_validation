@@ -400,3 +400,78 @@ def gen_json_dict(event_info, wdir=None):
     }
 
     return update_add_json
+
+
+def val_status(event_id, wdir=None):
+    if wdir:
+        path = f"{wdir}/data/events/"
+    else:
+        path = "../data/events/"
+
+    event_file = os.path.join(path, "{}.json".format(event_id))
+
+    with open(event_file, "r") as f:
+        ev_data = json.load(f)
+
+    val_H1_status = ev_data["forms"]["validation"]["H1"]["conclusion"]
+    val_L1_status = ev_data["forms"]["validation"]["L1"]["conclusion"]
+
+    a = val_H1_status + val_L1_status
+    b=0
+    if a:
+        b = 1
+    else:
+        b = 0
+
+    return b
+
+
+def val_data(event_id, wdir=None):
+
+    if wdir:
+        path = f"{wdir}/data/events/"
+    else:
+        path = "../data/events/"
+
+    event_file = os.path.join(path, "{}.json".format(event_id))
+
+    with open(event_file, "r") as f:
+            ev_data = json.load(f)
+
+    return ev_data
+
+
+def update_events(gid, wdir=None):
+    val_flags = ['Not observing', 'No DQ issues', 'DQ issues']
+    if val_status(event_id=gid, wdir=wdir):
+        print("Updating the events file")
+       
+        
+        ev_data = val_data(event_id=gid, wdir=wdir) 
+        val_H1_status = ev_data["forms"]["validation"]["H1"]["conclusion"]
+        val_L1_status = ev_data["forms"]["validation"]["L1"]["conclusion"]
+        val_V1_status = ev_data["forms"]["validation"]["V1"]["conclusion"]
+        print(ev_data['contacts']['review_email'])
+        if wdir:
+            path =  f"{wdir}/data/"
+        else:
+            path = "../data/"
+
+        event_list_fname = path + 'events_O4b.csv'
+         
+        event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+        gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+
+        event_list_df.at[gid_idx,'Next step'] = f"Review ([contact](mailto:{ev_data['contacts']['review_email']}))"
+        if val_H1_status == 2 or val_L1_status == 2 or val_V1_status == 2:
+            event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[2]
+        else:
+            event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[1]
+        print("Saving the {} file".format(event_list_fname))
+        event_list_df.to_csv(event_list_fname, index=False)
+
+    else:
+        print("EV not done yet")
+        
+    return
+

@@ -281,22 +281,22 @@ def create_app(url, wdir, event_list, website_md, notify):
                     json.dump(event_data, fp, indent=4)
     
                 # read event list and find idx
-               # event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
-               # gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
+                event_list_df = pd.read_csv(event_list_fname, keep_default_na=False)
+                gid_idx = event_list_df.loc[event_list_df['Event'].isin([gid])].index[0]
 
-               # 
-               # # update the events list
-               # event_list_df.at[gid_idx,'Next step'] = f"Review ([contact](mailto:{event_data['contacts']['review_email']}))"
-               # if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
-               #     event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[2]
-               # else:
-               #     event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[1]
-               # event_list_df.to_csv(event_list_fname, index=False)
+                
+                # update the events list
+                event_list_df.at[gid_idx,'Next step'] = f"Review ([contact](mailto:{event_data['contacts']['review_email']}))"
+                if form.h1_val.data == 2 or form.l1_val.data == 2 or form.v1_val.data == 2:
+                    event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[2]
+                else:
+                    event_list_df.at[gid_idx,'Validation conclusion'] = val_flags[1]
+                event_list_df.to_csv(event_list_fname, index=False)
 
                 # update website's .md table
-               # with open(md_fname, 'w') as md:
-               #     event_list_df.to_markdown(buf=md, numalign="center", index=False)
-               # os.system(f'cd {wdir}; mkdocs -q build')
+                with open(md_fname, 'w') as md:
+                    event_list_df.to_markdown(buf=md, numalign="center", index=False)
+                os.system(f'cd {wdir}; mkdocs -q build')
 
                 if notify:
                     subject = f'Event validation report complete for {gid}'
@@ -876,7 +876,7 @@ def main():
     parser.add_argument('--url', type=str, help='flask website url')
     parser.add_argument('--events', type=str, help='event list .csv file in /data directory')
     parser.add_argument('--table', type=str, help='website table .md file in /data directory')
-    parser.add_argument('--wdir', type=os.path.abspath, help='directory of this app')
+    parser.add_argument('--wdir', default=os.path.abspath('.'), help='directory of this app')
     parser.add_argument('--send_email', type=int, default=0, help='Send notification emails, default = 0 (False).')
     args = parser.parse_args()
 

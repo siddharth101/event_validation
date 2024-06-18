@@ -28,7 +28,7 @@ Sign up for the event validation rota [right here](https://docs.google.com/docum
 | May 22      | Amber Stuver            |    | Jess McIver, Francesco Di Renzo | [S240525p](https://gracedb.ligo.org/superevents/S240525p/view/), [S240527en](https://gracedb.ligo.org/superevents/S240527en/view/), [S240527fv](https://gracedb.ligo.org/superevents/S240527fv/view/)       |       |        |
 | May 29      | Dishari Malakar      |   | Jess McIver, Francesco Di Renzo | [S240530a](https://gracedb.ligo.org/superevents/S240530a/view/), [S240531bp](https://gracedb.ligo.org/superevents/S240531bp/view/), [S240601aj](https://gracedb.ligo.org/superevents/S240601aj/view/), [S240601co](https://gracedb.ligo.org/superevents/S240601co/view/) |        |       | 
 | June 5      | Alan Weinstein          |                     | Francesco Di Renzo |        |       |        |
-| June 12     | Soorya Narayan          |                     | Brennan Hughey, Francesco Di Renzo |        |       |        |
+| June 12     | Soorya Narayan          |                     | Brennan Hughey, Francesco Di Renzo | [S240615dg](https://gracedb.ligo.org/superevents/S240615dg/view/),  [S240615ea](https://gracedb.ligo.org/superevents/S240615ea/view/), [S240618ah](https://gracedb.ligo.org/superevents/S240618ah/view/) |       |        |
 | June 19     | Shivaraj Kandhasamy     |                     | Derek Davis, Francesco Di Renzo |        |       |        |
 | June 26     | Adrian Helmling-Cornell |                     | ..., Francesco Di Renzo |        |       |        |
 | July 3      | Airene Ahuja            |                     |                |        |       | Shadow: Alan Knee |

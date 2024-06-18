@@ -28,8 +28,8 @@
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "1399769597.11",
                 "noise_tend": "1399769598.91",
                 "noise_flow": "10",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Anupreeta More",
-        "validator_email": "anupreeta.more@ligo.org",
+        "validator_email": "anupreeta.more@ligo.or",
         "expert_name": "Adrian Helmling-Cornell",
         "expert_email": "ahelmlin@uoregon.edu",
         "mitigation_name": "Sophie Hourihane",

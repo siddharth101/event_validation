@@ -1,35 +1,35 @@
 {
-    "event_name": "S240421ar",
-    "status": 1,
+    "event_name": "S240618ah",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S240421ar",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240421",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202404/S240421ar/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/252",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240421ar"
+        "gracedb": "https://gracedb.ligo.org//superevents/S240618ah",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240618",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202406/S240618ah/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/278",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240618ah"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1397712593.7344,
+            "t0": 1402730205.151098,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,26 +112,26 @@
         }
     },
     "comments": {
-        "validation": "DQR test failures, but no apparent DQ issues. Glitchfind DQ issue likely due to inability to \"subtract\" burst candidates as it does normal CBCs",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Adrian Helmling-Cornell",
-        "validator_email": "adrian.helmling-cornell@ligo.org",
+        "validator_name": "Shivaraj Kandhasamy",
+        "validator_email": "shivaraj@iucaa.in",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
-        "review_name": "Laura Nuttall",
-        "review_email": "laura.nuttall@port.ac.uk",
+        "review_name": "Shania Nichols",
+        "review_email": "shania.nichols@ligo.org",
         "lead1_name": "Francesco Di Renzo",
         "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
         "lead2_name": "Siddharth Soni",
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202404/S240421ar/ --superevent_url https://gracedb.ligo.org//superevents/S240421ar --ignore_far --event_name S240421ar --t0 1397712593.7344 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4b --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202406/S240618ah/ --superevent_url https://gracedb.ligo.org//superevents/S240618ah --ignore_far --event_name S240618ah --t0 1402730205.151098 --send_email --create_issue"
 }

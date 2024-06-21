@@ -13,7 +13,7 @@
         "validation": {
             "H1": {
                 "conclusion": 1,
-                "low_noise": 0,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -21,7 +21,7 @@
             },
             "L1": {
                 "conclusion": 1,
-                "low_noise": 0,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -29,7 +29,7 @@
             },
             "V1": {
                 "conclusion": 1,
-                "low_noise": 0,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,14 +112,14 @@
         }
     },
     "comments": {
-        "validation": "L1: Bristol evidence at ~100 HZ to kHz around the merger time.  No noise mitigation is required. No DQ issue in H1 and V1",
+        "validation": "L1: Bristol evidence at ~100 HZ to kHz around the merger time. No noise mitigation is required. No DQ issue in H1 and V1",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Yanyan Zheng",
+        "validator_name": "yanyan zheng",
         "validator_email": "yanyan.zheng@ligo.org",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",

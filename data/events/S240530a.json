@@ -14,16 +14,16 @@
             "H1": {
                 "conclusion": 2,
                 "low_noise": 1,
-                "noise_tstart": "1401067475.95",
-                "noise_tend": "1401067475.45",
+                "noise_tstart": "1401067475.45",
+                "noise_tend": "1401067475.95",
                 "noise_flow": "40",
                 "noise_fhigh": "100"
             },
             "L1": {
                 "conclusion": 1,
                 "low_noise": 1,
-                "noise_tstart": "1401067475.75",
-                "noise_tend": "1401067475.45",
+                "noise_tstart": "1401067475.45",
+                "noise_tend": "1401067475.95",
                 "noise_flow": "30",
                 "noise_fhigh": "80"
             },

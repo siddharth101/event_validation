@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": " L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "V1_llhoft",
+                "channel": "V1:Hrec_hoft_16384Hz",
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "It is a three detector event, with no DQ issues or noise in any of the detectors.",
-        "review": "",
+        "review": "No DQ issues, however there is noise below 20 Hz in LHO and Virgo. Please come to detchar if the analysis frequency is lowered",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

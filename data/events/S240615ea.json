@@ -25,7 +25,7 @@
                 "noise_tstart": "1402502871",
                 "noise_tend": "1402502875",
                 "noise_flow": "10",
-                "noise_fhigh": "40"
+                "noise_fhigh": "300"
             },
             "V1": {
                 "conclusion": 1,
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "3 Dets observing;  Low-SNR; No discernible singal in omega scan of H1,L1,V1; H1 has a loud segment 0.4s before the event",
+        "validation": "Notes: 3 Dets observing; Low-SNR; No discernible singal in omega scan of H1,L1,V1; H1 has a loud segment 0.4s before the event; L1 has two chirp-like morphology back-to-back (<0.1s separation)",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

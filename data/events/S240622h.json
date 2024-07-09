@@ -1,6 +1,6 @@
 {
     "event_name": "S240622h",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S240622h",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "All three detectors H1, L1, and V1 were in observing mode. For H1, the stationarity task failed with a borderline p-value of 0.0469. The data has excess glitches, but they don't look too bad. To be conservative, I am flagging this as a DQ issue for H1. For L1, BRISTOL reports a small p-value near the event. Just to be safe, I'm flagging this as a DQ issue for L1 as well.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

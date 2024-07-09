@@ -1,13 +1,13 @@
 {
-    "event_name": "S240618ah",
-    "status": 1,
-    "reviewed": 0,
+    "event_name": "S240624cd",
+    "status": 3,
+    "reviewed": 1,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S240618ah",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240618",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202406/S240618ah/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/278",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240618ah"
+        "gracedb": "https://gracedb.ligo.org//superevents/S240624cd",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240624",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202406/S240624cd/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/283",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240624cd"
     },
     "forms": {
         "validation": {
@@ -22,14 +22,14 @@
             "L1": {
                 "conclusion": 2,
                 "low_noise": 1,
-                "noise_tstart": "1402730205.151 + 3.0",
-                "noise_tend": "1402730205.151 + 6.75",
-                "noise_flow": "10",
-                "noise_fhigh": "30"
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 0,
-                "low_noise": 0,
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1402730205.151098,
+            "t0": 1403300254.1583,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "Both H1 and L1 were in observing mode. The SNRs in each detector were ~5 - 6. For the L1 detector, the stationarity task failed and we see some glitches in omega scan 3 secs after the event time.",
+        "validation": "It is H1 and L1 cWB only AllSky trigger. For H1 and V1, all the DQR tasks were reported as passed and no obvious issues were seen. At L1, there is a strong correlation between h(t) and PEM and a couple of other channels. All these channels show similar excess around 1 kHz as the cWB trigger. So flagging L1 as DQ issue.  ",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4b --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202406/S240618ah/ --superevent_url https://gracedb.ligo.org//superevents/S240618ah --ignore_far --event_name S240618ah --t0 1402730205.151098 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4b --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202406/S240624cd/ --superevent_url https://gracedb.ligo.org//superevents/S240624cd --ignore_far --event_name S240624cd --t0 1403300254.1583 --send_email --create_issue"
 }

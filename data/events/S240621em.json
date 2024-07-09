@@ -1,6 +1,6 @@
 {
     "event_name": "S240621em",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S240621em",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "conclusion": 2,
+                "low_noise": 1,
+                "noise_tstart": "1403041259.72-1.0",
+                "noise_tend": "1403041259.72+0.25",
+                "noise_flow": "17",
+                "noise_fhigh": "22"
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 2,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "All the three detectors H1, L1 and V1 were in observing mode. No issues in H1. In L1, there is some excess around 20 Hz, 0.5 sec before the event and 4.5 sec after the event (excess before the event only reported in the EV form). BRISTOL task for V1 failed due to non-stationarity around the event.",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",

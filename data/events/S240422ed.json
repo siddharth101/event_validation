@@ -1,6 +1,6 @@
 {
     "event_name": "S240422ed",
-    "status": 0,
+    "status": 1,
     "reviewed": 0,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S240422ed",
@@ -12,24 +12,24 @@
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": "",
-                "low_noise": "",
+                "conclusion": 1,
+                "low_noise": 1,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "",
+        "validation": "H1 bristol, OO, & PEMcheck fail: DQ looks okay, and the other tasks are okay as well as discussed here: .https://git.ligo.org/detchar/detchar-requests/-/issues/235 L1 bristol & pemcheck fail: bristol fails because L1 was at start of lock stretch, PEMcheck reports outputoptics failure at 3 kHz, but coupling to darm there is overestimated so is okay.. V1 bristol fail, but well before event time",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -120,7 +120,7 @@
     },
     "contacts": {
         "validator_name": "Adrian Helmling-Cornell",
-        "validator_email": "ahelmlin@uoregon.edu",
+        "validator_email": "adrian.helmlingcornell@gmail.com",
         "expert_name": "Derek Davis",
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Sophie Hourihane",

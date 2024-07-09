@@ -30,13 +30,29 @@ Sign up for the event validation rota [right here](https://docs.google.com/docum
 | June 5      | Alan Weinstein          |                     | Francesco Di Renzo |        |       |        |
 | June 12     | Soorya Narayan          |                     | Brennan Hughey, Francesco Di Renzo | [S240615dg](https://gracedb.ligo.org/superevents/S240615dg/view/),  [S240615ea](https://gracedb.ligo.org/superevents/S240615ea/view/), [S240618ah](https://gracedb.ligo.org/superevents/S240618ah/view/) |       |        |
 | June 19     | Shivaraj Kandhasamy     |                     | Derek Davis, Francesco Di Renzo | [S240621dy](https://gracedb.ligo.org/superevents/S240621dy/view/), [S240621eb](https://gracedb.ligo.org/superevents/S240621eb/view/), [S240621em](https://gracedb.ligo.org/superevents/S240621em/view/), [S240622h](https://gracedb.ligo.org/superevents/S240622h/view/), [S240623dg](https://gracedb.ligo.org/superevents/S240623dg/view/) [R], [S240624cd](https://gracedb.ligo.org/superevents/S240624cd/view/)[R] |       |        |
-    | June 26     | Adrian Helmling-Cornell |                     | Adrian Helmling-Cornell, Francesco Di Renzo | [S240627by](https://gracedb.ligo.org/superevents/S240627by/view/), [S240629by](https://gracedb.ligo.org/superevents/S240629by/view/), [S240630t](https://gracedb.ligo.org/superevents/S240630t/view/)     |       |        |
-| July 3      | Airene Ahuja            |                     | Brennan Hughey, Francesco Di Renzo |        |       | Shadow: Alan Knee |
-| July 10      | Sudhagar Suyamprakasam |                     |                |        |       |        |
+| June 26     | Adrian Helmling-Cornell |                     | Adrian Helmling-Cornell, Francesco Di Renzo | [S240627by](https://gracedb.ligo.org/superevents/S240627by/view/), [S240629by](https://gracedb.ligo.org/superevents/S240629by/view/), [S240630t](https://gracedb.ligo.org/superevents/S240630t/view/)     |       |        |
+| July 3      | Airene Ahuja            |                     | Brennan Hughey, Francesco Di Renzo | [S240703ad](https://gracedb.ligo.org/superevents/S240703ad/view/), [S240705at](https://gracedb.ligo.org/superevents/S240705at/view/)  |       | Shadow: Alan Knee |
+| July 10      | Sudhagar Suyamprakasam |                     | Adrian Helmling-Cornell, Francesco Di Renzo |        |       |        |
 | July 17      | Samuel Salvador        |                     |                |        |       |        |
 | July 24      | Airene Ahuja           |                     |                |        |       |        |
 | July 31      | Alan Knee              |                     |                |        |       |        |
 | August 7     | Dishari Malakar        |                     |                |        |       |        |
+| August 14    | Alan Knee              |                     |                |        |       |        |
+| August 21    | Sudhagar Suyamprakasam |                     |                |        |       |        |
+| August 28    | Praveer Tiwari         |                     |                |        |       |        |
+| September 4  | Manasadevi Thirugnanasambandam |                     |                |        |       |        |
+| September 11 |                        |                     |                |        |       |        |
+| September 18 | Dishari Malakar        |                     |                |        |       |        |
+| September 25 | Sudhagar Suyamprakasam |                     |                |        |       |        |
+| October 2    |                        |                     |                |        |       |        |
+| October 9    | Dishari Malakar        |                     |                |        |       |        |
+| October 16   | Harshad Sawant         |                     |                |        |       |        |
+| October 23   | Praveer Tiwari         |                     |                |        |       |        |
+| October 30   | Praveer Tiwari         |                     |                |        |       |        |
+| November 6   | Praveer Tiwari         |                     |                |        |       |        |
+| November 13  | Praveer Tiwari         |                     |                |        |       |        |
+| November 20  | Praveer Tiwari         |                     |                |        |       |        |
+| November 27  | Praveer Tiwari         |                     |                |        |       |        |
 
 
 ## Events

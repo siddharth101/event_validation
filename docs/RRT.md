@@ -80,8 +80,8 @@ In O4b, we have established a joint LIGO-Virgo ROTA of DetChar experts, with two
 | June 19      |  Francesco Di Renzo     | Derek Davis           | Backup Nicolas Arnaud |
 | June 26      |  Francesco Di Renzo     | Adrian Helmling-Cornell |   |
 | Juky 3       |  Francesco Di Renzo     | Brennan Hughey        |   |
-| July 10      |  Francesco Di Renzo     |                       |   |
-| July 17      |                         |                       |   |
+| July 10      |  Francesco Di Renzo     | Adrian Helmling-Cornell |   |
+| July 17      |  Francesco Di Renzo     |                       |   |
 | July 24      |                         |                       |   |
 | July 31      |                         |                       |   |
 | August 7     |                         |                       |   |

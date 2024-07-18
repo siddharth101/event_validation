@@ -37,63 +37,63 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 3,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 3,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
             "t0": 1399769599.113644,
             "H1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             },
             "L1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 1,
+                "noise_tstart": 1399769595.1,
+                "noise_tend": 1399769596.1,
+                "noise_flow": 10,
+                "noise_fhigh": 50
             },
             "V1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 1,
+                "noise_tstart": 1399769595.1,
+                "noise_tend": 1399769599.9,
+                "noise_flow": 15,
+                "noise_fhigh": 200
             }
         },
         "glitch_result": {
@@ -113,8 +113,8 @@
     },
     "comments": {
         "validation": "Massive glitch 2 sec prior to the merger time of the event as noted by glitchfind. Stationarity is affected.",
-        "review": "",
-        "glitch_request": "",
+        "review": "Glitch Subtraction required for LLO and Virgo",
+        "glitch_request": "Glitch Subtraction for Virgo and LLO. I believe the virgo frames have already underwent glitch subtraction",
         "glitch_result": "",
         "other": ""
     },

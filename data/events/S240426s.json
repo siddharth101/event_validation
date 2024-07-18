@@ -50,14 +50,14 @@
                 "noise_left": 0
             },
             "L1": {
-                "conclusion": 2,
+                "conclusion": 3,
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,
-                "analysis_fhigh": 250,
-                "frame_type": " L1_HOFT_C00",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "analysis_fhigh": null,
+                "frame_type": "",
+                "channel": "",
                 "noise_left": 0
             },
             "V1": {
@@ -75,25 +75,25 @@
         "glitch_request": {
             "t0": 1398136509.975098,
             "H1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             },
             "L1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 1,
+                "noise_tstart": 1398136508.88,
+                "noise_tend": 1398136509.08,
+                "noise_flow": 250,
+                "noise_fhigh": 400
             },
             "V1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             }
         },
         "glitch_result": {
@@ -113,8 +113,8 @@
     },
     "comments": {
         "validation": "Virgo was not observing.",
-        "review": "PE should run analysis with f_high = 250 Hz for L1 and a run with no restrictions. L1 Glitchfind task finds glitch -1s before merger.",
-        "glitch_request": "",
+        "review": "Glitch Subtraction for L1 and a run with no restrictions. L1 Glitchfind task finds glitch -1s before merger.",
+        "glitch_request": "Glitch Subtraction for LLO ",
         "glitch_result": "",
         "other": ""
     },

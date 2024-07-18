@@ -1,7 +1,7 @@
 {
     "event_name": "S230819ax",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S230819ax",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20230819",
@@ -125,8 +125,8 @@
         "expert_email": "ahelmlin@uoregon.edu",
         "mitigation_name": "Laura Nuttall",
         "mitigation_email": "laura.nuttall@port.ac.uk",
-        "review_name": "Laura Nuttall",
-        "review_email": "laura.nuttall@port.ac.uk",
+        "review_name": "Shania Nichols",
+        "review_email": "shania.nichols@ligo.org",
         "lead1_name": "Ronaldas Macas",
         "lead1_email": "ronaldas.macas@ligo.org",
         "lead2_name": "Siddharth Soni",

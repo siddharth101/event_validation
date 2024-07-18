@@ -37,63 +37,63 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 3,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 3,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             }
         },
         "glitch_request": {
             "t0": 1403035793.532227,
             "H1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             },
             "L1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 1,
+                "noise_tstart": 1403035793.83,
+                "noise_tend": 1403035793.93,
+                "noise_flow": 200,
+                "noise_fhigh": 300
             },
             "V1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 1,
+                "noise_tstart": 1403035791.73,
+                "noise_tend": 1403035791.93,
+                "noise_flow": 100,
+                "noise_fhigh": 200
             }
         },
         "glitch_result": {
@@ -113,8 +113,8 @@
     },
     "comments": {
         "validation": "All the three detectors H1, L1 and V1 were in observing mode. The network SNR is ~8. All the DQR tasks were reported as passed. Even though the glitchfind task for L1 was reported as passed, the task reports some excess energy 0.4 sec after the event. However, the feature is not that prominent, so it is not reported in the EV form. ",
-        "review": "",
-        "glitch_request": "",
+        "review": "Glitch Subtraction for Virgo and LLO and runs with no restrictions",
+        "glitch_request": "Glitch Subtraction required for LLO and Virgo, PE should also do runs with no restrictions",
         "glitch_result": "",
         "other": ""
     },

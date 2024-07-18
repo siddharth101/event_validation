@@ -37,63 +37,63 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
+                "conclusion": 3,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
                 "frame_type": "",
                 "channel": "",
-                "noise_left": ""
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "V1_llhoft",
+                "channel": "V1:Hrec_hoft_16384Hz",
+                "noise_left": 0
             }
         },
         "glitch_request": {
             "t0": 1401257538.3594,
             "H1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             },
             "L1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 1,
+                "noise_tstart": 1401257538.88,
+                "noise_tend": 1401257539.09,
+                "noise_flow": 200,
+                "noise_fhigh": 300
             },
             "V1": {
-                "required": "",
-                "noise_tstart": "",
-                "noise_tend": "",
-                "noise_flow": "",
-                "noise_fhigh": ""
+                "required": 0,
+                "noise_tstart": null,
+                "noise_tend": null,
+                "noise_flow": null,
+                "noise_fhigh": null
             }
         },
         "glitch_result": {
@@ -114,7 +114,7 @@
     "comments": {
         "validation": "There are no DQ issues in H1 and V1. The glitchfind task failed in L1. But the probability of this event being terrestrial is 49%",
         "review": "",
-        "glitch_request": "",
+        "glitch_request": "Glitch Subtraction for L1 and a run with no restrictions. ",
         "glitch_result": "",
         "other": ""
     },

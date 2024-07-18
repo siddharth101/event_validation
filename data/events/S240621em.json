@@ -37,39 +37,39 @@
             }
         },
         "review": {
-            "duration": "",
+            "duration": 8.0,
             "H1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "H1_HOFT_C00",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "L1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": " L1_HOFT_C00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "noise_left": 0
             },
             "V1": {
-                "conclusion": "",
-                "recommend_ifo": "",
-                "analysis_tstart": "",
-                "analysis_tend": "",
-                "analysis_flow": "",
-                "analysis_fhigh": "",
-                "frame_type": "",
-                "channel": "",
-                "noise_left": ""
+                "conclusion": 1,
+                "recommend_ifo": 1,
+                "analysis_tstart": null,
+                "analysis_tend": null,
+                "analysis_flow": null,
+                "analysis_fhigh": null,
+                "frame_type": "V1_llhoft",
+                "channel": "V1:Hrec_hoft_16384Hz",
+                "noise_left": 0
             }
         },
         "glitch_request": {
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "All the three detectors H1, L1 and V1 were in observing mode. No issues in H1. In L1, there is some excess around 20 Hz, 0.5 sec before the event and 4.5 sec after the event (excess before the event only reported in the EV form). BRISTOL task for V1 failed due to non-stationarity around the event.",
-        "review": "",
+        "review": "No DQ Issues, Noise in LLO below 20 Hz please come back to Detchar if analysis frequency is lowered",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

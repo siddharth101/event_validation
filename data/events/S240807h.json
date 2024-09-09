@@ -1,19 +1,19 @@
 {
-    "event_name": "S240512r",
+    "event_name": "S240807h",
     "status": 1,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S240512r",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240512",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202405/S240512r/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/263",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240512r"
+        "gracedb": "https://gracedb.ligo.org//superevents/S240807h",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240807",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202408/S240807h/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/290",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240807h"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
-                "low_noise": 1,
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,43 +37,43 @@
             }
         },
         "review": {
-            "duration": 32.0,
+            "duration": "",
             "H1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": 20,
-                "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00_AR",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_AR",
-                "noise_left": 0
-            },
-            "L1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": 20,
-                "analysis_fhigh": null,
-                "frame_type": " L1_HOFT_C00_AR",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_AR",
-                "noise_left": 0
-            },
-            "V1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
-                "analysis_tstart": null,
-                "analysis_tend": null,
-                "analysis_flow": null,
-                "analysis_fhigh": null,
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
                 "frame_type": "",
                 "channel": "",
-                "noise_left": 0
+                "noise_left": ""
+            },
+            "L1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
+            },
+            "V1": {
+                "conclusion": "",
+                "recommend_ifo": "",
+                "analysis_tstart": "",
+                "analysis_tend": "",
+                "analysis_flow": "",
+                "analysis_fhigh": "",
+                "frame_type": "",
+                "channel": "",
+                "noise_left": ""
             }
         },
         "glitch_request": {
-            "t0": 1399516917.150879,
+            "t0": 1407102377.2,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,17 +112,17 @@
         }
     },
     "comments": {
-        "validation": "H1:PEM-CS_ACC_PSL_TABLE1_Y_DQ shows excess power. Noise box is specified for H1",
-        "review": "No DQ Issues",
+        "validation": "Hanford is not observing and there are no DQ issues in L1 or V1.",
+        "review": "",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Anupreeta More",
-        "validator_email": "anupreeta.more@ligo.org",
-        "expert_name": "Adrian Helmling-Cornell",
-        "expert_email": "ahelmlin@uoregon.edu",
+        "validator_name": "Dishari Malakar",
+        "validator_email": "dmkwf@umsystem.edu",
+        "expert_name": "Derek Davis",
+        "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Shania Nichols",
@@ -133,5 +133,5 @@
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4b --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202405/S240512r/ --superevent_url https://gracedb.ligo.org//superevents/S240512r --ignore_far --event_name S240512r --t0 1399516917.150879 --send_email --create_issue"
+    "cmd": "create_event.py --verbose --git_dir /home/dqr/event-validation --label O4 --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202408/S240807h/ --superevent_url https://gracedb.ligo.org//superevents/S240807h --ignore_far --event_name S240807h --t0 1407102377.20 --send_email --create_issue"
 }

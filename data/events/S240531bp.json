@@ -40,7 +40,7 @@
             "duration": 8.0,
             "H1": {
                 "conclusion": 1,
-                "recommend_ifo": 1,
+                "recommend_ifo": 0,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "No DQ issues in any of the detectors. There is a noise present in V1. The signal is not quite visible in H1 and has low SNR in H1.",
-        "review": "",
+        "review": "Glitch Subtraction required for Virgo. PE should do runs with bayeswave subtracted frame and original frame",
         "glitch_request": "Glitch subtraction required for Virgo",
         "glitch_result": "",
         "other": ""

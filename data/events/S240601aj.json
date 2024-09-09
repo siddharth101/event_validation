@@ -43,10 +43,10 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": null,
+                "analysis_flow": 20,
                 "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "frame_type": "H1_HOFT_C00_AR",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_AR",
                 "noise_left": 0
             },
             "L1": {
@@ -54,10 +54,10 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": null,
+                "analysis_flow": 20,
                 "analysis_fhigh": null,
-                "frame_type": "",
-                "channel": "",
+                "frame_type": "L1_HOFT_C00_BAYESWAVE_S00",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_BAYESWAVE_S00",
                 "noise_left": 0
             },
             "V1": {
@@ -67,8 +67,8 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "V1_llhoft",
-                "channel": "V1:Hrec_hoft_16384Hz",
+                "frame_type": "",
+                "channel": "",
                 "noise_left": 0
             }
         },
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "There are no DQ issues in H1 and V1. The glitchfind task failed in L1. But the probability of this event being terrestrial is 49%",
-        "review": "",
+        "review": "Glitch Subtraction required for L1. PE should do a run with bayeswave subtracted frame and original frame",
         "glitch_request": "Glitch Subtraction for L1 and a run with no restrictions. ",
         "glitch_result": "",
         "other": ""

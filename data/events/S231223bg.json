@@ -1,35 +1,35 @@
 {
-    "event_name": "S240627by",
-    "status": 1,
+    "event_name": "S231223bg",
+    "status": 0,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S240627by",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240627",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202406/S240627by/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/284",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240627by"
+        "gracedb": "https://gracedb.ligo.org//superevents/S231223bg",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20231223",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231223bg/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/296",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S231223bg"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 2,
-                "low_noise": 1,
-                "noise_tstart": "1403529398.6",
-                "noise_tend": "1403529399.4",
-                "noise_flow": "10",
-                "noise_fhigh": "36"
+                "conclusion": "",
+                "low_noise": "",
+                "noise_tstart": "",
+                "noise_tend": "",
+                "noise_flow": "",
+                "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": "",
+                "low_noise": "",
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1403529400.201782,
+            "t0": 1387398397.009159,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,7 +112,7 @@
         }
     },
     "comments": {
-        "validation": "OO failure in H1, but not apparent glitching in h(t). Loud glitch at frequencies below glitchfind cutoff, suggest glitch subtraction uses an flow of 10 or 16 Hz.",
+        "validation": "",
         "review": "",
         "glitch_request": "",
         "glitch_result": "",
@@ -125,13 +125,13 @@
         "expert_email": "derek.davis@ligo.org",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
-        "review_name": "Adrian Helmling-Cornell",
-        "review_email": "ahelmlin@uoregon.edu",
+        "review_name": "Laura Nuttall",
+        "review_email": "laura.nuttall@port.ac.uk",
         "lead1_name": "Francesco Di Renzo",
         "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
         "lead2_name": "Siddharth Soni",
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4b --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202406/S240627by/ --superevent_url https://gracedb.ligo.org//superevents/S240627by --ignore_far --event_name S240627by --t0 1403529400.201782 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4a --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202312/S231223bg/ --superevent_url https://gracedb.ligo.org//superevents/S231223bg --ignore_far --event_name S231223bg --t0 1387398397.009159 --send_email --create_issue"
 }

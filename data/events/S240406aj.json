@@ -1,7 +1,7 @@
 {
     "event_name": "S240406aj",
-    "status": 1,
-    "reviewed": 0,
+    "status": 2,
+    "reviewed": 1,
     "links": {
         "gracedb": "https://gracedb.ligo.org//superevents/S240406aj",
         "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240406",
@@ -126,7 +126,7 @@
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
         "review_name": "Shania Nichols",
-        "review_email": "snich27@lsu.edu",
+        "review_email": "shania.nichols@ligo.org",
         "lead1_name": "Francesco Di Renzo",
         "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
         "lead2_name": "Siddharth Soni",

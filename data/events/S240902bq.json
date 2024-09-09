@@ -1,35 +1,35 @@
 {
-    "event_name": "S240512r",
+    "event_name": "S240902bq",
     "status": 1,
     "reviewed": 0,
     "links": {
-        "gracedb": "https://gracedb.ligo.org//superevents/S240512r",
-        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240512",
-        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202405/S240512r/",
-        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/263",
-        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240512r"
+        "gracedb": "https://gracedb.ligo.org//superevents/S240902bq",
+        "detector": "https://ldas-jobs.ligo.caltech.edu/~detchar/summary/day/20240902",
+        "dqr": "https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202409/S240902bq/",
+        "issue": "https://git.ligo.org/detchar/event-validation/-/issues/300",
+        "summary": "https://dqr.ligo.caltech.edu/ev_forms/summary/S240902bq"
     },
     "forms": {
         "validation": {
             "H1": {
-                "conclusion": 2,
-                "low_noise": 1,
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "L1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
                 "noise_fhigh": ""
             },
             "V1": {
-                "conclusion": 1,
-                "low_noise": 1,
+                "conclusion": 0,
+                "low_noise": 0,
                 "noise_tstart": "",
                 "noise_tend": "",
                 "noise_flow": "",
@@ -37,32 +37,32 @@
             }
         },
         "review": {
-            "duration": 32.0,
+            "duration": 1.0,
             "H1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
+                "conclusion": 0,
+                "recommend_ifo": 0,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": 20,
+                "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00_AR",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_AR",
+                "frame_type": "",
+                "channel": "",
                 "noise_left": 0
             },
             "L1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
+                "conclusion": 0,
+                "recommend_ifo": 0,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": 20,
+                "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": " L1_HOFT_C00_AR",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_AR",
+                "frame_type": "",
+                "channel": "",
                 "noise_left": 0
             },
             "V1": {
-                "conclusion": 1,
-                "recommend_ifo": 1,
+                "conclusion": 0,
+                "recommend_ifo": 0,
                 "analysis_tstart": null,
                 "analysis_tend": null,
                 "analysis_flow": null,
@@ -73,7 +73,7 @@
             }
         },
         "glitch_request": {
-            "t0": 1399516917.150879,
+            "t0": 1409322804.762207,
             "H1": {
                 "required": "",
                 "noise_tstart": "",
@@ -112,26 +112,26 @@
         }
     },
     "comments": {
-        "validation": "H1:PEM-CS_ACC_PSL_TABLE1_Y_DQ shows excess power. Noise box is specified for H1",
-        "review": "No DQ Issues",
+        "validation": "This is a test, this is not the final report",
+        "review": "This is a test, this is not finalized",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""
     },
     "contacts": {
-        "validator_name": "Anupreeta More",
-        "validator_email": "anupreeta.more@ligo.org",
+        "validator_name": "Derek Davis",
+        "validator_email": "derek.davis@ligo.org",
         "expert_name": "Adrian Helmling-Cornell",
         "expert_email": "ahelmlin@uoregon.edu",
         "mitigation_name": "Sophie Hourihane",
         "mitigation_email": "sophie.hourihane@ligo.org",
-        "review_name": "Shania Nichols",
-        "review_email": "shania.nichols@ligo.org",
+        "review_name": "Derek Davis",
+        "review_email": "derek.davis@ligo.org",
         "lead1_name": "Francesco Di Renzo",
         "lead1_email": "f.di-renzo@ip2i.in2p3.fr",
         "lead2_name": "Siddharth Soni",
         "lead2_email": "siddharth.soni@ligo.org"
     },
     "other": "",
-    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4b --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202405/S240512r/ --superevent_url https://gracedb.ligo.org//superevents/S240512r --ignore_far --event_name S240512r --t0 1399516917.150879 --send_email --create_issue"
+    "cmd": "/home/dqr/mambaforge/envs/dqr-igwn310/bin/event-validation-create-event --verbose --git_dir /home/dqr/event-validation --label O4b --dqr_url https://ldas-jobs.ligo.caltech.edu/~dqr/o4dqr/online/events/202409/S240902bq/ --superevent_url https://gracedb.ligo.org//superevents/S240902bq --ignore_far --event_name S240902bq --t0 1409322804.762207 --send_email --create_issue"
 }

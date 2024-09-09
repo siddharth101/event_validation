@@ -40,13 +40,13 @@
             "duration": 8.0,
             "H1": {
                 "conclusion": 1,
-                "recommend_ifo": 0,
+                "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": null,
+                "analysis_flow": 20,
                 "analysis_fhigh": null,
-                "frame_type": "H1_HOFT_C00",
-                "channel": "H1:GDS-CALIB_STRAIN_CLEAN",
+                "frame_type": "H1_HOFT_C00_AR",
+                "channel": "H1:GDS-CALIB_STRAIN_CLEAN_AR",
                 "noise_left": 0
             },
             "L1": {
@@ -54,10 +54,10 @@
                 "recommend_ifo": 1,
                 "analysis_tstart": null,
                 "analysis_tend": null,
-                "analysis_flow": null,
+                "analysis_flow": 20,
                 "analysis_fhigh": null,
-                "frame_type": " L1_HOFT_C00",
-                "channel": "L1:GDS-CALIB_STRAIN_CLEAN",
+                "frame_type": " L1_HOFT_C00_AR",
+                "channel": "L1:GDS-CALIB_STRAIN_CLEAN_AR",
                 "noise_left": 0
             },
             "V1": {
@@ -67,8 +67,8 @@
                 "analysis_tend": null,
                 "analysis_flow": null,
                 "analysis_fhigh": null,
-                "frame_type": "V1_llhoft",
-                "channel": "V1:Hrec_hoft_16384Hz",
+                "frame_type": "",
+                "channel": "",
                 "noise_left": 0
             }
         },
@@ -113,7 +113,7 @@
     },
     "comments": {
         "validation": "H1: bristol_L1 failed. Bristol evidence from a few HZ to kHz at 10 mins before the merger time. L1 and V1: No DQ issues.",
-        "review": "",
+        "review": "No DQ Issues",
         "glitch_request": "",
         "glitch_result": "",
         "other": ""

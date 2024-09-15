@@ -17,8 +17,8 @@ from .utils import get_events_dict, first_upper, first_lower, Nonestr, send_emai
 from wtforms import Form, validators, SelectField, TextAreaField, FloatField, IntegerField
 from flask import Flask, render_template, request, flash
 
-__author__ = 'Ronaldas Macas'
-__email__ = 'ronaldas.macas@ligo.org'
+__author__ = 'Ronaldas Macas, Siddharth Soni'
+__email__ = 'ronaldas.macas@ligo.org, siddharth.soni@ligo.org'
 __version__ = '0.8'
 __process_name__ = 'ev-forms-website'
 
@@ -602,12 +602,13 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     # send results to CBCFlow
                     ev_info = get_event_properties(gid, wdir)
-                    dict_ev_info = gen_json_dict(ev_info, wdir)
+                    dict_ev_info = gen_json_dict(ev_info, wdir, gid)
                     date_ = int(ev_info['event_name'][1:5])
                     if date_ >= 2404:
                         library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-er16-o4b"
                     else:
                         library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-o4a"
+                    print('TRYING TO UPDATE', library_path)
                     library = LocalLibraryDatabase(library_path)
                     library.git_pull_from_remote(automated=True)
                     metadata = get_superevent(gid, library)
@@ -712,12 +713,13 @@ def create_app(url, wdir, event_list, website_md, notify):
 
                     # send results to CBCFlow
                     ev_info = get_event_properties(gid, wdir)
-                    dict_ev_info = gen_json_dict(ev_info, wdir)
+                    dict_ev_info = gen_json_dict(ev_info, wdir, gid)
                     date_ = int(ev_info['event_name'][1:5])
                     if date_ >= 2404:
                         library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-er16-o4b"
                     else:
                         library_path = "/home/dqr/event-validation/event_validation/cbc_flow/cbc-workflow-o4a"
+                    print('TRYING TO UPDATE v2', library_path)
                     library = LocalLibraryDatabase(library_path)
                     library.git_pull_from_remote(automated=True)
                     metadata = get_superevent(gid, library)

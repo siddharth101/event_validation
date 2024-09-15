@@ -7,6 +7,8 @@ import numpy as np
 from astropy.time import Time
 from mdutils.mdutils import MdUtils
 
+__author__ = 'Ronaldas Macas, Siddharth Soni'
+__email__ = 'ronaldas.macas@ligo.org, siddharth.soni@ligo.org'
 
 def assign_people(event_data, time, git_dir, vol_file, contact_file, validator, expert, mitigation, review, logger):
 
@@ -282,7 +284,7 @@ def get_event_properties(event_id, wdir=None):
     return event_fd
 
 
-def gen_json_dict(event_info, wdir=None):
+def gen_json_dict(event_info, gid, wdir=None):
 
     if wdir:
         CBC_SCHEMA = f'{wdir}/event_validation/cbc_flow/cbc-meta-data-v2.schema'
@@ -307,6 +309,8 @@ def gen_json_dict(event_info, wdir=None):
     dqrfile = publichtml.replace('https://ldas-jobs.ligo.caltech.edu/~dqr/', '/home/dqr/public_html/')
     ParticipatingDetectors = [i for i in ['H1', 'L1'] if event_info['forms']['review'][i]['recommend_ifo']]
     val_status = val_flags[2] if event_info['reviewed']==1 else val_flags[1]
+    val_concl = val_conclusion(gid=gid, wdir=wdir)
+
 
     rec_dets = []
     glitch_mit = event_info['forms']['glitch_request']
@@ -325,27 +329,27 @@ def gen_json_dict(event_info, wdir=None):
         if glitch_rev[i]['analysis_fhigh']:
             rec_max_freq = glitch_rev[i]['analysis_fhigh']
         else:
-            rec_max_freq = np.NaN
+            rec_max_freq = np.nan
 
         if glitch_rev[i]['analysis_tstart']:
             rec_t_start = glitch_rev[i]['analysis_tstart']
         else:
-            rec_t_start = np.NaN
+            rec_t_start = np.nan
 
         if glitch_rev[i]['analysis_tend']:
             rec_t_end = glitch_rev[i]['analysis_tend']
         else:
-            rec_t_end = np.NaN
+            rec_t_end = np.nan
 
         if glitch_rev[i]['channel']:
             rec_channel = glitch_rev[i]['channel']
         else:
-            rec_channel = np.NaN
+            rec_channel = np.nan
 
         if glitch_rev[i]['frame_type']:
             rec_frame = glitch_rev[i]['frame_type']
         else:
-            rec_frame = np.NaN
+            rec_frame = np.nan
 
         if glitch_rev[i]['conclusion']:
             rec_conc = mitigation_flags[glitch_rev[i]['conclusion']]
@@ -363,7 +367,7 @@ def gen_json_dict(event_info, wdir=None):
     rec_dets_dict = {}
     rec_dets_ = []
     for i in range(len(rec_dets)):
-        rec_dets_dict[rec_dets[i]['UID']] = {k: v for k, v in rec_dets[i].items() if v is not np.NaN}
+        rec_dets_dict[rec_dets[i]['UID']] = {k: v for k, v in rec_dets[i].items() if v is not np.nan}
         rec_dets_.append(rec_dets_dict[rec_dets[i]['UID']])
 
 
@@ -380,7 +384,7 @@ def gen_json_dict(event_info, wdir=None):
                   "UID": " ",
                   "DQRFile": {"Path": dqrfile, 'PublicHTML': publichtml},
                   "ReviewStatus":"pass", 
-                  "ValidationResult": ["pending", "pass", "fail"][1], #hardcoded
+                  "ValidationResult": val_concl[0], #["pending", "pass", "fail"][1], #hardcoded
                   "ValidationNotes": [event_info["comments"]["other"]],
                   "Notes": [event_info["comments"]["other"]]}
 
@@ -402,28 +406,28 @@ def gen_json_dict(event_info, wdir=None):
     return update_add_json
 
 
-def val_status(event_id, wdir=None):
-    if wdir:
-        path = f"{wdir}/data/events/"
-    else:
-        path = "../data/events/"
-
-    event_file = os.path.join(path, "{}.json".format(event_id))
-
-    with open(event_file, "r") as f:
-        ev_data = json.load(f)
-
-    val_H1_status = ev_data["forms"]["validation"]["H1"]["conclusion"]
-    val_L1_status = ev_data["forms"]["validation"]["L1"]["conclusion"]
-
-    a = val_H1_status + val_L1_status
-    b=0
-    if a:
-        b = 1
-    else:
-        b = 0
-
-    return b
+#def val_status(event_id, wdir=None):
+#    if wdir:
+#        path = f"{wdir}/data/events/"
+#    else:
+#        path = "../data/events/"
+#
+#    event_file = os.path.join(path, "{}.json".format(event_id))
+#
+#    with open(event_file, "r") as f:
+#        ev_data = json.load(f)
+#
+#    val_H1_status = ev_data["forms"]["validation"]["H1"]["conclusion"]
+#    val_L1_status = ev_data["forms"]["validation"]["L1"]["conclusion"]
+#
+#    a = val_H1_status + val_L1_status
+#    b=0
+#    if a:
+#        b = 1
+#    else:
+#        b = 0
+#
+#    return b
 
 
 def val_data(event_id, wdir=None):
@@ -474,4 +478,19 @@ def update_events(gid, wdir=None):
         print("EV not done yet")
         
     return
+
+def val_conclusion(gid, wdir=None):
+     ev_data = val_data(event_id=gid, wdir=wdir)
+     status = []
+     for ifo in ['H1', 'L1', 'V1']:
+         status.append(ev_data['forms']['validation'][ifo]['conclusion'])
+
+     status_val = []
+     if not any(status):
+         status_val.append("Not Observing")
+     elif 2 in status:
+         status_val.append("Fail")
+     else:
+         status_val.append("Pass")
+     return status_val
 
